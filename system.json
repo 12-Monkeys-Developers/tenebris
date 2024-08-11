@@ -1,0 +1,50 @@
+{
+    "id": "tenebris",
+    "title": "Cthulhu Tenebris",
+    "description": "",
+    "version": "1.0.0",
+    "manifest": "#{MANIFEST}#",
+    "download": "#{DOWNLOAD}#",
+    "url": "#{URL}#",
+    "authors": [
+      {
+        "name": "Kristov",
+        "discord": "kristovqaw"
+      }
+    ],
+    "compatibility": {
+      "minimum": "12",
+      "verified": "12"
+    },
+    "esmodules": ["module/tenebris.mjs"],
+    "styles": ["styles/tenebris.css"],
+    "languages": [
+      {
+        "lang": "en",
+        "name": "Anglais",
+        "path": "lang/fr.json"
+      },
+      {
+        "lang": "fr",
+        "name": "Français",
+        "path": "lang/fr.json"
+      }
+    ],
+    "documentTypes": {
+      "Actor": {
+        "character": {}
+      },
+      "Item": {}
+    },
+    "grid": {
+      "distance": 10,
+      "units": "m"
+    },
+    "flags": {
+      "hotReload": {
+        "extensions": ["css", "hbs", "json"],
+        "paths": ["lang/en.json", "lang/fr.json", "styles/*.css", "templates/**/*.hbs"]
+      }
+    }
+  }
+  

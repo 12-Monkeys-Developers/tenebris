@@ -1,0 +1,15 @@
+.tenebris :root {
+  --font-primary: "Cat Franken", sans-serif;
+}
+.tenebris .character-main {
+  background-image: url("../assets/gabarit.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  font-family: var(--font-primary);
+  font-size: calc(var(--font-size-standard) * 1.4);
+}
+.tenebris .character-main .character-img {
+  width: 100px;
+  flex: 0 0 25%;
+  /* Prend 25% de la largeur */
+}

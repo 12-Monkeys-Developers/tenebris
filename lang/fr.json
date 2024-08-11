@@ -1,0 +1,105 @@
+{
+  "TYPES": {
+    "Actor": {
+      "character": "Personnage"
+    },
+    "Item": {
+      "weapon": "Arme"
+    }
+  },
+
+  "TENEBRIS": {
+    "Character": {
+      "FIELDS": {
+        "voies":{
+          "majeure": {
+            "label": "Voie Majeure"
+          },
+          "mineure": {
+            "label": "Voie Mineure"
+          }
+        },
+        "commanditaire": {
+          "label": "Commanditaire"
+        },
+        "dv": {
+          "label": "Dé de Vie"
+        },
+        "pv": {
+          "valeur": {
+            "label": "Points de Vie",
+            "short": "PV"
+          }
+        },
+        "dmax": {
+          "label": "Dégâts max"
+        },
+        "caracteristiques": {
+          "rob": {
+            "valeur": {
+              "label": "Robustesse",
+              "short": "Rob"
+            }
+          },
+          "dex": {
+            "valeur": {
+              "label": "Dextérité",
+              "short": "Dex"
+            }
+          },
+          "int": {
+            "valeur": {
+              "label": "Intelligence",
+              "short": "Int"
+            }
+          },
+          "per": {
+            "valeur": {
+              "label": "Perception",
+              "short": "Per"
+            }
+          },
+          "vol": {
+            "valeur": {
+              "label": "Volonté",
+              "short": "Vol"
+            }
+          }
+        },
+        "ressources": {
+          "san": {
+            "valeur": {
+              "label": "Santé Mentale"
+            }
+          },
+          "oeil": {
+            "valeur": {
+              "label": "Œil"
+            }
+          },
+          "verbe": {
+            "valeur": {
+              "label": "Verbe"
+            }
+          },
+          "bourse": {
+            "valeur": {
+              "label": "Bourse"
+            }
+          },
+          "magie": {
+            "valeur": {
+              "label": "Magie"
+            }
+          }
+        }
+      },
+      "Label": {
+        "personnage": "Personnage",
+        "caracteristiques": "Caractéristiques",
+        "ressources": "Ressources",
+        "description": "Description"
+      }
+    }
+  }
+}
