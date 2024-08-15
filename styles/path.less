@@ -1,0 +1,23 @@
+.path-content {
+  .sheet-common();
+
+  .profil {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .profil-gauche,
+  .profil-droite {
+    flex: 1; /* Chaque colonne prend la moitié de l'espace disponible */
+    padding: 10px; /* Espacement intérieur */
+  }
+
+  .profil-gauche {
+    margin-right: 10px; /* Espace entre les deux colonnes */
+  }
+
+  /* Optionnel : supprimer le margin-right sur la dernière colonne si vous avez besoin d'un espacement précis */
+  .profil-droite {
+    margin-right: 0;
+  }
+}

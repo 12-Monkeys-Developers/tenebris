@@ -1,12 +1,69 @@
-.character-main {
+.character-content {
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 1.2);
   background-image: url("../assets/gabarit.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  font-family: var(--font-primary);
-  font-size: calc(var(--font-size-standard) * 1.4);
 }
-.character-main .character-img {
+.character-content input[name="name"] {
+  height: 50px;
+  font-size: calc(var(--font-size-standard) * 2.4);
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+}
+.character-content fieldset {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.character-content .form-fields input,
+.character-content .form-fields select {
+  text-align: center;
+  margin-top: 5px;
+}
+.character-content legend {
+  font-size: calc(var(--font-size-standard) * 2);
+  font-weight: bold;
+}
+.character-content label {
+  font-size: calc(var(--font-size-standard) * 1.6);
+  flex: 50%;
+}
+.character-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.character-main .character-personnage {
+  flex: 0 0 60%;
+}
+.character-main .character-personnage .character-personnag-contenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.character-main .character-personnage .character-personnag-contenu .character-personnage-gauche,
+.character-main .character-personnage .character-personnag-contenu .character-personnage-droite {
+  margin-top: 10px;
+}
+.character-main .character-personnage .character-personnag-contenu .character-personnage-gauche {
+  margin-right: 10px;
+}
+.character-main .character-personnage .character-img {
   width: 100px;
-  flex: 0 0 25%;
-  /* Prend 25% de la largeur */
+  margin: 10px;
+}
+.character-main .character-personnage .character-voies {
+  display: flex;
+  flex-direction: row;
+}
+.character-main .character-caracteristiques {
+  width: 15%;
+}
+.character-main .character-caracteristiques input {
+  width: 20px;
+}
+.character-main .character-ressources {
+  width: 20%;
 }

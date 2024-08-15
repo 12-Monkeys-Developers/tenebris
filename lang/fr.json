@@ -4,7 +4,8 @@
       "character": "Personnage"
     },
     "Item": {
-      "weapon": "Arme"
+      "path": "Voie",
+      "talent": "Talent"
     }
   },
 
@@ -98,8 +99,120 @@
         "personnage": "Personnage",
         "caracteristiques": "Caractéristiques",
         "ressources": "Ressources",
-        "description": "Description"
+        "description": "Description",
+        "langues": "Langues",
+        "notes": "Notes",
+        "details": "Détails",
+        "biography": "Biographie"
       }
+    },
+    "Talent": {
+      "FIELDS": {
+        "description": {
+          "label": "Description"
+        },
+        "progression": {
+          "label": "Progression"
+        },
+        "niveau": {
+          "label": "Niveau"
+        }
+      }
+    },
+    "Path": {
+      "FIELDS": {
+        "description": {
+          "label": "Description"
+        },
+        "biens": {
+          "label": "Biens"
+        },
+        "langues": {
+          "label": "Langues"
+        },
+        "talents": {
+          "label": "Talents"
+        },
+        "voies":{
+          "majeure": {
+            "label": "Voie Majeure"
+          },
+          "mineure": {
+            "label": "Voie Mineure"
+          }
+        },
+        "dv": {
+          "label": "Dé de Vie"
+        },
+        "dmax": {
+          "label": "Dégâts max"
+        },
+        "caracteristiques": {
+          "rob": {
+            "valeur": {
+              "label": "Robustesse",
+              "short": "Rob"
+            }
+          },
+          "dex": {
+            "valeur": {
+              "label": "Dextérité",
+              "short": "Dex"
+            }
+          },
+          "int": {
+            "valeur": {
+              "label": "Intelligence",
+              "short": "Int"
+            }
+          },
+          "per": {
+            "valeur": {
+              "label": "Perception",
+              "short": "Per"
+            }
+          },
+          "vol": {
+            "valeur": {
+              "label": "Volonté",
+              "short": "Vol"
+            }
+          }
+        },
+        "ressources": {
+          "san": {
+            "valeur": {
+              "label": "Santé Mentale"
+            }
+          },
+          "oeil": {
+            "valeur": {
+              "label": "Œil"
+            }
+          },
+          "verbe": {
+            "valeur": {
+              "label": "Verbe"
+            }
+          },
+          "bourse": {
+            "valeur": {
+              "label": "Bourse"
+            }
+          },
+          "magie": {
+            "valeur": {
+              "label": "Magie"
+            }
+          }
+        }
+      }
+    },
+    "Label": {
+      "description": "Description",
+      "biens": "Biens",
+      "langues": "Langues",
+      "profil": "Profil"
     }
   }
 }

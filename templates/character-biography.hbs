@@ -1,0 +1,41 @@
+<section class="tab character-{{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+  <fieldset>
+    <legend>{{localize "TENEBRIS.Character.Label.description"}}</legend>
+    {{formInput
+      systemFields.description
+      enriched=enrichedDescription
+      value=system.biography
+      documentUUID=actor.uuid
+      name="system.description"
+      collaborate="true"
+      toggled="true"
+      height="200"
+    }}
+  </fieldset>
+    <fieldset>
+    <legend>{{localize "TENEBRIS.Character.Label.langues"}}</legend>
+    {{formInput
+      systemFields.langues
+      enriched=enrichedLangues
+      value=system.langues
+      documentUUID=actor.uuid
+      name="system.langues"
+      collaborate="true"
+      toggled="true"
+      height="200"
+    }}
+  </fieldset>
+    <fieldset>
+    <legend>{{localize "TENEBRIS.Character.Label.notes"}}</legend>
+    {{formInput
+      systemFields.notes
+      enriched=enrichedNotes
+      value=system.notes
+      documentUUID=actor.uuid
+      name="system.notes"
+      collaborate="true"
+      toggled="true"
+      height="200"
+    }}
+  </fieldset>
+</section>

@@ -1,19 +1,28 @@
-<div class="character-main">
+<section class="character-main">
   {{!log "character-main" this}}
 
-  <fieldset>
+  <fieldset class="character-personnage">
     <legend>{{localize "TENEBRIS.Character.Label.personnage"}}</legend>
-    <img class="character-img" src="{{actor.img}}" data-edit="img" data-action="editImage" data-tooltip="{{actor.name}}" style="width: ;" />
-    <div class="character-name">{{formInput fields.name value=source.name rootId=partId}}</div>
-    {{formField systemFields.voies.fields.majeure value=system.majeure rootId=partId}}
-    {{formField systemFields.voies.fields.mineure value=system.mineure rootId=partId}}
-    {{formField systemFields.commanditaire value=system.commanditaire rootId=partId}}
-    {{formField systemFields.dv value=system.dv rootId=partId}}
-    {{formField systemFields.pv.fields.valeur value=system.pv.valeur rootId=partId}}
-    {{formField systemFields.dmax value=system.dmax rootId=partId}}
+    <div class="character-personnag-contenu">
+      <img class="character-img" src="{{actor.img}}" data-edit="img" data-action="editImage" data-tooltip="{{actor.name}}" style="width: ;" />
+      <div class="character-personnage-gauche">
+        <div class="character-name">{{formInput fields.name value=source.name rootId=partId}}</div>
+        <div class="character-voies">
+          {{formField systemFields.voies.fields.majeure value=system.majeure rootId=partId}}
+          {{formField systemFields.voies.fields.mineure value=system.mineure rootId=partId}}
+        </div>
+        {{formField systemFields.commanditaire value=system.commanditaire rootId=partId}}
+      </div>
+      <div class="character-personnage-droite">
+        {{formField systemFields.dv value=system.dv rootId=partId}}
+        {{formField systemFields.pv.fields.valeur value=system.pv.valeur rootId=partId}}
+        {{formField systemFields.dmax value=system.dmax rootId=partId}}
+      </div>
+    </div>
   </fieldset>
 
-  <fieldset>
+  <!-- <div class="character-details"> </div> -->
+  <fieldset class="character-caracteristiques">
     <legend>{{localize "TENEBRIS.Character.Label.caracteristiques"}}</legend>
     {{formField systemFields.caracteristiques.fields.rob.fields.valeur value=system.caracteristiques.rob.valeur rootId=partId}}
     {{formField systemFields.caracteristiques.fields.dex.fields.valeur value=system.caracteristiques.dex.valeur rootId=partId}}
@@ -22,7 +31,7 @@
     {{formField systemFields.caracteristiques.fields.vol.fields.valeur value=system.caracteristiques.vol.valeur rootId=partId}}
   </fieldset>
 
-  <fieldset>
+  <fieldset class="character-ressources">
     <legend>{{localize "TENEBRIS.Character.Label.ressources"}}</legend>
     {{formField systemFields.ressources.fields.san.fields.valeur value=system.ressources.san.valeur rootId=partId}}
     {{formField systemFields.ressources.fields.oeil.fields.valeur value=system.ressources.oeil.valeur rootId=partId}}
@@ -31,18 +40,4 @@
     {{formField systemFields.ressources.fields.magie.fields.valeur value=system.ressources.magie.valeur rootId=partId}}
   </fieldset>
 
-  <fieldset>
-    <legend>{{localize "TENEBRIS.Character.Label.description"}}</legend>
-    {{formInput
-      systemFields.description
-      enriched=enrichedDescription
-      value=system.biography
-      documentUUID=actor.uuid
-      name="system.description"
-      collaborate="true"
-      toggled="true"
-      height="200"
-    }}
-  </fieldset>
-
-</div>
+</section>

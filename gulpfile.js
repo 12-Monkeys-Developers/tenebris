@@ -7,7 +7,7 @@ const less = require('gulp-less');
 function compileLESS() {
   return gulp.src("styles/tenebris.less")
       .pipe(less())
-      .pipe(gulp.dest("./styles"))
+      .pipe(gulp.dest("./css"))
 }
 const css = gulp.series(compileLESS);
 

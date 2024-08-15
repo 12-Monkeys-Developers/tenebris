@@ -1,0 +1,216 @@
+@font-face {
+  font-family: "Cat Franken";
+  src: url("../fonts/catfranken-deutsch.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Caslon";
+  src: url("../fonts/caslonpro-regular.otf") format("truetype");
+}
+@font-face {
+  font-family: "Caslon Bold";
+  src: url("../fonts/caslonpro-bold.otf") format("truetype");
+}
+@font-face {
+  font-family: "Caslon Bold Italic";
+  src: url("../fonts/caslonpro-bolditalic.otf") format("truetype");
+}
+@font-face {
+  font-family: "Caslon Italic";
+  src: url("../fonts/caslonpro-italic.otf") format("truetype");
+}
+.tenebris :root {
+  --font-primary: 'Caslon', sans-serif;
+  --font-secondary: 'Cat Franken', sans-serif;
+  --font-size-base: var(--font-size-16);
+}
+.tenebris .character-content {
+  font-family: 'Caslon', sans-serif;
+  font-size: calc(var(--font-size-standard) * 1.2);
+  background-image: url("../assets/gabarit.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.tenebris .character-content input[name="name"] {
+  height: 60px;
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 2.4);
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+}
+.tenebris .character-content fieldset {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.tenebris .character-content .form-fields {
+  padding-top: 5px;
+}
+.tenebris .character-content .form-fields input,
+.tenebris .character-content .form-fields select {
+  text-align: center;
+  font-size: calc(var(--font-size-standard) * 1.6);
+}
+.tenebris .character-content .form-fields input {
+  padding-top: 10px;
+}
+.tenebris .character-content .form-fields select {
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 1.8);
+}
+.tenebris .character-content legend {
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 2);
+  font-weight: bold;
+}
+.tenebris .character-content label {
+  font-size: calc(var(--font-size-standard) * 1.6);
+  flex: 50%;
+}
+.tenebris .character-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.tenebris .character-main .character-personnage {
+  flex: 0 0 60%;
+}
+.tenebris .character-main .character-personnage .character-personnag-contenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-gauche,
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-droite {
+  margin-top: 10px;
+}
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-gauche {
+  margin-right: 10px;
+}
+.tenebris .character-main .character-personnage .character-img {
+  width: 100px;
+  margin: 10px;
+}
+.tenebris .character-main .character-personnage .character-voies {
+  display: flex;
+  flex-direction: row;
+}
+.tenebris .character-main .character-caracteristiques {
+  width: 15%;
+}
+.tenebris .character-main .character-caracteristiques input {
+  width: 20px;
+}
+.tenebris .character-main .character-ressources {
+  width: 20%;
+}
+.tenebris .path-content {
+  font-family: 'Caslon', sans-serif;
+  font-size: calc(var(--font-size-standard) * 1.2);
+  background-image: url("../assets/gabarit.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  /* Optionnel : supprimer le margin-right sur la dernière colonne si vous avez besoin d'un espacement précis */
+}
+.tenebris .path-content input[name="name"] {
+  height: 60px;
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 2.4);
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+}
+.tenebris .path-content fieldset {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.tenebris .path-content .form-fields {
+  padding-top: 5px;
+}
+.tenebris .path-content .form-fields input,
+.tenebris .path-content .form-fields select {
+  text-align: center;
+  font-size: calc(var(--font-size-standard) * 1.6);
+}
+.tenebris .path-content .form-fields input {
+  padding-top: 10px;
+}
+.tenebris .path-content .form-fields select {
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 1.8);
+}
+.tenebris .path-content legend {
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 2);
+  font-weight: bold;
+}
+.tenebris .path-content label {
+  font-size: calc(var(--font-size-standard) * 1.6);
+  flex: 50%;
+}
+.tenebris .path-content .profil {
+  display: flex;
+  justify-content: space-between;
+}
+.tenebris .path-content .profil-gauche,
+.tenebris .path-content .profil-droite {
+  flex: 1;
+  /* Chaque colonne prend la moitié de l'espace disponible */
+  padding: 10px;
+  /* Espacement intérieur */
+}
+.tenebris .path-content .profil-gauche {
+  margin-right: 10px;
+  /* Espace entre les deux colonnes */
+}
+.tenebris .path-content .profil-droite {
+  margin-right: 0;
+}
+.tenebris .talent-content {
+  font-family: 'Caslon', sans-serif;
+  font-size: calc(var(--font-size-standard) * 1.2);
+  background-image: url("../assets/gabarit.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.tenebris .talent-content input[name="name"] {
+  height: 60px;
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 2.4);
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+}
+.tenebris .talent-content fieldset {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.tenebris .talent-content .form-fields {
+  padding-top: 5px;
+}
+.tenebris .talent-content .form-fields input,
+.tenebris .talent-content .form-fields select {
+  text-align: center;
+  font-size: calc(var(--font-size-standard) * 1.6);
+}
+.tenebris .talent-content .form-fields input {
+  padding-top: 10px;
+}
+.tenebris .talent-content .form-fields select {
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 1.8);
+}
+.tenebris .talent-content legend {
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 2);
+  font-weight: bold;
+}
+.tenebris .talent-content label {
+  font-size: calc(var(--font-size-standard) * 1.6);
+  flex: 50%;
+}
+.tenebris .talent-content input[type="checkbox"] {
+  font-size: var(--font-size-14);
+}

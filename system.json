@@ -17,7 +17,7 @@
       "verified": "12"
     },
     "esmodules": ["module/tenebris.mjs"],
-    "styles": ["styles/tenebris.css"],
+    "styles": ["css/tenebris.css"],
     "languages": [
       {
         "lang": "en",
@@ -34,7 +34,10 @@
       "Actor": {
         "character": {}
       },
-      "Item": {}
+      "Item": {
+        "path": {},
+        "talent": {}
+      }
     },
     "grid": {
       "distance": 10,
@@ -43,7 +46,7 @@
     "flags": {
       "hotReload": {
         "extensions": ["css", "hbs", "json"],
-        "paths": ["lang/en.json", "lang/fr.json", "styles/*.css", "templates/**/*.hbs"]
+        "paths": ["lang/en.json", "lang/fr.json", "css/*.css", "templates/**/*.hbs"]
       }
     }
   }

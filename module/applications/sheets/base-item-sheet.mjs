@@ -1,6 +1,6 @@
 const { HandlebarsApplicationMixin } = foundry.applications.api
 
-export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ActorSheetV2) {
+export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2) {
   constructor(options = {}) {
     super(options)
     this.#dragDrop = this.#createDragDropHandlers()
@@ -10,86 +10,31 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
 
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ["tenebris", "actor", "character"],
+    classes: ["tenebris", "item"],
     position: {
-      width: 1400,
-      height: 800,
+      width: 600,
+      height: 500,
     },
     form: {
       submitOnChange: true,
     },
     window: {
-      contentClasses: ["character-content"],
       resizable: true,
     },
     dragDrop: [{ dragSelector: "[data-drag]", dropSelector: null }],
   }
 
   /** @override */
-  static PARTS = {
-    main: {
-      template: "systems/tenebris/templates/character-main.hbs",
-    },
-    tabs: {
-      template: "templates/generic/tab-navigation.hbs",
-    },
-    items: {
-      template: "systems/tenebris/templates/character-items.hbs",
-    },
-    biography: {
-      template: "systems/tenebris/templates/character-biography.hbs",
-    },
-  }
-
-  /** @override */
-  tabGroups = {
-    sheet: "items",
-  }
-
-  /**
-   * Prepare an array of form header tabs.
-   * @returns {Record<string, Partial<ApplicationTab>>}
-   */
-  #getTabs() {
-    const tabs = {
-      items: { id: "items", group: "sheet", icon: "fa-solid fa-shapes", label: "TENEBRIS.Character.Label.details" },
-      biography: { id: "biography", group: "sheet", icon: "fa-solid fa-book", label: "TENEBRIS.Character.Label.biography" },
-    }
-    for (const v of Object.values(tabs)) {
-      v.active = this.tabGroups[v.group] === v.id
-      v.cssClass = v.active ? "active" : ""
-    }
-    return tabs
-  }
-
-  /** @override */
   async _prepareContext() {
     const context = {
-      tabs: this.#getTabs(),
       fields: this.document.schema.fields,
       systemFields: this.document.system.schema.fields,
-      actor: this.document,
+      item: this.document,
       system: this.document.system,
       source: this.document.toObject(),
+      enrichedDescription: await TextEditor.enrichHTML(this.document.system.description, { async: true }),
     }
-    console.log("character context", context)
-    return context
-  }
-
-  /** @override */
-  async _preparePartContext(partId, context) {
-    const doc = this.document
-    switch (partId) {
-      case "items":
-        context.tab = context.tabs.items
-        break
-      case "biography":
-        context.tab = context.tabs.biography
-        context.enrichedDescription = await TextEditor.enrichHTML(this.document.system.description, { async: true })
-        context.enrichedLangues = await TextEditor.enrichHTML(this.document.system.langues, { async: true })
-        context.enrichedNotes = await TextEditor.enrichHTML(this.document.system.notes, { async: true })
-        break
-    }
+    console.log("item context", context)
     return context
   }
 

@@ -1,0 +1,50 @@
+<section>
+  {{formInput fields.name value=source.name rootId=partId}}
+
+  <fieldset>
+    <legend>{{localize "TENEBRIS.Label.profil"}}</legend>
+    <div class="profil">
+      <div class="profil-gauche">
+        {{formField systemFields.caracteristiques.fields.rob.fields.valeur value=system.caracteristiques.rob.valeur rootId=partId}}
+        {{formField systemFields.caracteristiques.fields.dex.fields.valeur value=system.caracteristiques.dex.valeur rootId=partId}}
+        {{formField systemFields.caracteristiques.fields.int.fields.valeur value=system.caracteristiques.int.valeur rootId=partId}}
+        {{formField systemFields.caracteristiques.fields.per.fields.valeur value=system.caracteristiques.per.valeur rootId=partId}}
+        {{formField systemFields.caracteristiques.fields.vol.fields.valeur value=system.caracteristiques.vol.valeur rootId=partId}}
+        {{formField systemFields.dv value=system.dv rootId=partId}}
+      </div>
+      <div class="profil-droite">
+        {{formField systemFields.dmax value=system.dmax rootId=partId}}
+        {{formField systemFields.ressources.fields.san.fields.valeur value=system.ressources.san.valeur rootId=partId}}
+        {{formField systemFields.ressources.fields.oeil.fields.valeur value=system.ressources.oeil.valeur rootId=partId}}
+        {{formField systemFields.ressources.fields.verbe.fields.valeur value=system.ressources.verbe.valeur rootId=partId}}
+        {{formField systemFields.ressources.fields.bourse.fields.valeur value=system.ressources.bourse.valeur rootId=partId}}
+        {{formField systemFields.ressources.fields.magie.fields.valeur value=system.ressources.magie.valeur rootId=partId}}
+      </div>
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>{{localize "TENEBRIS.Label.description"}}</legend>
+    {{formInput
+      systemFields.description
+      enriched=enrichedDescription
+      value=system.description
+      documentUUID=item.uuid
+      name="system.description"
+      collaborate="true"
+      toggled="true"
+      height="200"
+    }}
+  </fieldset>
+
+  <fieldset>
+    <legend>{{localize "TENEBRIS.Label.biens"}}</legend>
+    {{formInput systemFields.biens enriched=enrichedBiens value=system.biens documentUUID=item.uuid name="system.biens" collaborate="true" toggled="true" height="100"}}
+  </fieldset>
+
+  <fieldset>
+    <legend>{{localize "TENEBRIS.Label.langues"}}</legend>
+    {{formInput systemFields.langues enriched=enrichedLangues value=system.langues documentUUID=item.uuid name="system.langues" collaborate="true" toggled="true" height="20"}}
+  </fieldset>
+</section>

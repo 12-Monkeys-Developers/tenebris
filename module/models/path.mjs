@@ -1,30 +1,8 @@
 import { SYSTEM } from "../config/system.mjs"
-
-export default class TenebrisCharacterData extends foundry.abstract.TypeDataModel {
+export default class TenebrisPathData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields
     const schema = {}
-
-    schema.description = new fields.HTMLField({
-      required: false,
-      blank: true,
-      initial: "",
-      textSearch: true,
-    })
-
-    schema.langues = new fields.HTMLField({
-      required: false,
-      blank: true,
-      initial: "",
-      textSearch: true,
-    })
-
-    schema.notes = new fields.HTMLField({
-      required: false,
-      blank: true,
-      initial: "",
-      textSearch: true,
-    })
 
     // Caractéristiques
     const characteristicField = (label) => {
@@ -35,16 +13,6 @@ export default class TenebrisCharacterData extends foundry.abstract.TypeDataMode
           integer: true,
           initial: 10,
           min: 0,
-        }),
-        progression: new fields.SchemaField({
-          rectangle: new fields.NumberField({
-            required: true,
-            nullable: false,
-            integer: true,
-            initial: 0,
-            min: 0,
-          }),
-          rond: new fields.BooleanField({ initial: false }),
         }),
       }
       return new fields.SchemaField(schema, { label })
@@ -67,13 +35,6 @@ export default class TenebrisCharacterData extends foundry.abstract.TypeDataMode
           choices: Object.fromEntries(Object.entries(SYSTEM.RESOURCE_VALUE).map(([key, value]) => [value, { label: `${value}` }])),
           blank: true,
         }),
-        max: new fields.StringField({
-          required: true,
-          nullable: false,
-          initial: SYSTEM.RESOURCE_VALUE.ZERO,
-          choices: Object.fromEntries(Object.entries(SYSTEM.RESOURCE_VALUE).map(([key, value]) => [value, { label: `${value}` }])),
-          blank: true,
-        }),
       }
       return new fields.SchemaField(schema, { label })
     }
@@ -85,31 +46,11 @@ export default class TenebrisCharacterData extends foundry.abstract.TypeDataMode
       }, {}),
     )
 
-    schema.commanditaire = new fields.StringField({
-      required: false,
-      nullable: true,
-    })
-
     schema.dv = new fields.StringField({
       required: true,
       nullable: false,
       initial: SYSTEM.RESOURCE_VALUE.ZERO,
       choices: Object.fromEntries(Object.entries(SYSTEM.RESOURCE_VALUE).map(([key, value]) => [value, { label: `${value}` }])),
-    })
-
-    schema.pv = new fields.SchemaField({
-      valeur: new fields.NumberField({
-        required: true,
-        nullable: false,
-        initial: 10,
-        min: 0,
-      }),
-      max: new fields.NumberField({
-        required: true,
-        nullable: false,
-        integer: true,
-        initial: 10,
-      }),
     })
 
     schema.dmax = new fields.StringField({
@@ -119,20 +60,32 @@ export default class TenebrisCharacterData extends foundry.abstract.TypeDataMode
       choices: Object.fromEntries(Object.entries(SYSTEM.RESOURCE_VALUE).map(([key, value]) => [value, { label: `${value}` }])),
     })
 
-    schema.voies = new fields.SchemaField({
-      majeure: new fields.StringField({
-        required: true,
-        nullable: false,
-      }),
-      mineure: new fields.StringField({
-        required: false,
-        nullable: true,
-      }),
+    schema.description = new fields.HTMLField({
+      required: false,
+      blank: true,
+      initial: "",
+      textSearch: true,
     })
+
+    schema.biens = new fields.HTMLField({
+      required: false,
+      blank: true,
+      initial: "",
+      textSearch: true,
+    })
+
+    schema.langues = new fields.HTMLField({
+      required: false,
+      blank: true,
+      initial: "",
+      textSearch: true,
+    })
+
+    schema.talents = new fields.ArrayField(new fields.DocumentIdField())
 
     return schema
   }
 
   /** @override */
-  static LOCALIZATION_PREFIXES = ["TENEBRIS.Character"]
+  static LOCALIZATION_PREFIXES = ["TENEBRIS.Path"]
 }

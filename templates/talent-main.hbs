@@ -1,0 +1,23 @@
+<section>
+  {{formInput fields.name value=source.name rootId=partId}}
+  {{formField systemFields.progression value=system.progression rootId=partId}}
+
+  {{#if canProgress}}
+    {{formField systemFields.niveau value=system.niveau rootId=partId}}
+  {{/if}}
+
+  <fieldset>
+    <legend>{{localize "TENEBRIS.Label.description"}}</legend>
+    {{formInput
+      systemFields.description
+      enriched=enrichedDescription
+      value=system.description
+      documentUUID=item.uuid
+      name="system.description"
+      collaborate="true"
+      toggled="true"
+      height="200"
+    }}
+  </fieldset>
+
+</section>
