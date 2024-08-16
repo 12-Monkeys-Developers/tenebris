@@ -122,7 +122,8 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
       case "Item":
         const item = await fromUuid(data.uuid)
         // TODO if (item.type !== "equipment") return
-        return await this.actor.createEmbeddedDocuments("Item", [item], { renderSheet: false })
+        // return await this.actor.createEmbeddedDocuments("Item", [item], { renderSheet: false })
+        console.log("dropped item", item)
     }
   }
 

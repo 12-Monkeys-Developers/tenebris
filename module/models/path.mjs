@@ -81,7 +81,7 @@ export default class TenebrisPathData extends foundry.abstract.TypeDataModel {
       textSearch: true,
     })
 
-    schema.talents = new fields.ArrayField(new fields.DocumentIdField())
+    schema.talents = new fields.ArrayField(new fields.DocumentUUIDField())
 
     return schema
   }

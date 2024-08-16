@@ -1,6 +1,4 @@
-<section>
-  {{formInput fields.name value=source.name rootId=partId}}
-
+<section class="tab path-{{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
   <fieldset>
     <legend>{{localize "TENEBRIS.Label.profil"}}</legend>
     <div class="profil">
@@ -21,10 +19,19 @@
         {{formField systemFields.ressources.fields.magie.fields.valeur value=system.ressources.magie.valeur rootId=partId}}
       </div>
     </div>
-
   </fieldset>
 
-  <fieldset>
+  <fieldset class="biens">
+    <legend>{{localize "TENEBRIS.Label.biens"}}</legend>
+    {{formInput systemFields.biens enriched=enrichedBiens value=system.biens documentUUID=item.uuid name="system.biens" collaborate="true" toggled="true"}}
+  </fieldset>
+
+  <fieldset class="langues">
+    <legend>{{localize "TENEBRIS.Label.langues"}}</legend>
+    {{formInput systemFields.langues enriched=enrichedLangues value=system.langues documentUUID=item.uuid name="system.langues" collaborate="true" toggled="true"}}
+  </fieldset>
+
+  <fieldset class="description">
     <legend>{{localize "TENEBRIS.Label.description"}}</legend>
     {{formInput
       systemFields.description
@@ -36,15 +43,5 @@
       toggled="true"
       height="200"
     }}
-  </fieldset>
-
-  <fieldset>
-    <legend>{{localize "TENEBRIS.Label.biens"}}</legend>
-    {{formInput systemFields.biens enriched=enrichedBiens value=system.biens documentUUID=item.uuid name="system.biens" collaborate="true" toggled="true" height="100"}}
-  </fieldset>
-
-  <fieldset>
-    <legend>{{localize "TENEBRIS.Label.langues"}}</legend>
-    {{formInput systemFields.langues enriched=enrichedLangues value=system.langues documentUUID=item.uuid name="system.langues" collaborate="true" toggled="true" height="20"}}
   </fieldset>
 </section>

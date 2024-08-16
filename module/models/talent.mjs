@@ -11,7 +11,7 @@ export default class TenebrisTalentData extends foundry.abstract.TypeDataModel {
     })
 
     schema.progression = new fields.BooleanField()
-    schema.niveau = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0, max: 3 })
+    schema.niveau = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 1, max: 3 })
 
     return schema
   }
@@ -21,5 +21,9 @@ export default class TenebrisTalentData extends foundry.abstract.TypeDataModel {
 
   get canProgress() {
     return this.progression
+  }
+
+  get details() {
+    return this.description
   }
 }

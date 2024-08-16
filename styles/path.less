@@ -1,23 +1,75 @@
 .path-content {
   .sheet-common();
 
-  .profil {
-    display: flex;
-    justify-content: space-between;
+  .path-main {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+
+    .profil {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .profil-gauche,
+    .profil-droite {
+      flex: 1; /* Chaque colonne prend la moitié de l'espace disponible */
+      padding: 10px; /* Espacement intérieur */
+    }
+
+    .profil-gauche {
+      margin-right: 10px; /* Espace entre les deux colonnes */
+    }
+
+    /* Optionnel : supprimer le margin-right sur la dernière colonne si vous avez besoin d'un espacement précis */
+    .profil-droite {
+      margin-right: 0;
+    }
+
+    .biens {
+      prose-mirror {
+        height: 100%;
+      }
+    }
+
+    .langues {
+      prose-mirror {
+        height: 100%;
+      }
+    }
+
+    .description {
+      prose-mirror {
+        min-height: 100%;
+      }
+      grid-column: span 3;
+    }
   }
 
-  .profil-gauche,
-  .profil-droite {
-    flex: 1; /* Chaque colonne prend la moitié de l'espace disponible */
-    padding: 10px; /* Espacement intérieur */
-  }
-
-  .profil-gauche {
-    margin-right: 10px; /* Espace entre les deux colonnes */
-  }
-
-  /* Optionnel : supprimer le margin-right sur la dernière colonne si vous avez besoin d'un espacement précis */
-  .profil-droite {
-    margin-right: 0;
+  .path-talents {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Deux colonnes de taille égale */
+    gap: 10px; /* Espace entre les éléments */
+    .talent {
+      //height: 220px;
+      //width: 300px;
+      background-color: #f0f0f0; /* Optionnel: Pour rendre les talents plus visibles */
+      padding: 5px;
+      border-radius: 5px;
+      .header {
+        display: flex;
+        justify-content: space-between;
+        .name {
+          font-family: "Cat Franken", sans-serif;
+          font-size: calc(var(--font-size-standard) * 1.5);
+          padding-left: 20px;
+        }
+        .controls {
+          font-size: calc(var(--font-size-standard) * 0.8);
+        }
+      }      
+      .description {
+        font-size: calc(var(--font-size-standard) * 1);
+      }
+    }
   }
 }

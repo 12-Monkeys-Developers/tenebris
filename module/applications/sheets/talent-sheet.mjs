@@ -4,6 +4,10 @@ export default class TenebrisTalentSheet extends TenebrisItemSheet {
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ["talent"],
+    position: {
+      width: 600,
+      height: 800,
+    },
     window: {
       contentClasses: ["talent-content"],
     },

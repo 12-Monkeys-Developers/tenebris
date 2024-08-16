@@ -212,7 +212,12 @@
       "description": "Description",
       "biens": "Biens",
       "langues": "Langues",
-      "profil": "Profil"
-    }
+      "profil": "Profil",
+      "details": "Détails",
+      "talents": "Talents",
+      "progressionPossible": "Progression possible"
+    },
+    "Edit": "Editer",
+    "Delete": "Supprimer"
   }
 }
