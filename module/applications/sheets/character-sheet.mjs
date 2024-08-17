@@ -1,6 +1,12 @@
 const { HandlebarsApplicationMixin } = foundry.applications.api
 
 export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ActorSheetV2) {
+  /**
+   * Different sheet modes.
+   * @enum {number}
+   */
+  static SHEET_MODES = { EDIT: 0, PLAY: 1 }
+
   constructor(options = {}) {
     super(options)
     this.#dragDrop = this.#createDragDropHandlers()
@@ -23,6 +29,34 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
       resizable: true,
     },
     dragDrop: [{ dragSelector: "[data-drag]", dropSelector: null }],
+    actions: {
+      editImage: this._onEditImage,
+      toggleSheet: this._onToggleSheet,
+      deleteVoieMajeure: this._onDeleteVoieMajeure,
+      deleteVoieMineure: this._onDeleteVoieMineure,
+    },
+  }
+
+  /**
+   * The current sheet mode.
+   * @type {number}
+   */
+  _sheetMode = this.constructor.SHEET_MODES.PLAY
+
+  /**
+   * Is the sheet currently in 'Play' mode?
+   * @type {boolean}
+   */
+  get isPlayMode() {
+    return this._sheetMode === this.constructor.SHEET_MODES.PLAY
+  }
+
+  /**
+   * Is the sheet currently in 'Edit' mode?
+   * @type {boolean}
+   */
+  get isEditMode() {
+    return this._sheetMode === this.constructor.SHEET_MODES.EDIT
   }
 
   /** @override */
@@ -71,6 +105,9 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
       actor: this.document,
       system: this.document.system,
       source: this.document.toObject(),
+      isEditMode: this.isEditMode,
+      isPlayMode: this.isPlayMode,
+      isEditable: this.isEditable,
     }
     console.log("character context", context)
     return context
@@ -80,6 +117,8 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
   async _preparePartContext(partId, context) {
     const doc = this.document
     switch (partId) {
+      case "main":
+        break
       case "items":
         context.tab = context.tabs.items
         break
@@ -170,15 +209,101 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
    * @protected
    */
   async _onDrop(event) {
+    if (!this.isEditable || !this.isEditMode) return
     const data = TextEditor.getDragEventData(event)
 
     // Handle different data types
     switch (data.type) {
       case "Item":
         const item = await fromUuid(data.uuid)
-        // TODO if (item.type !== "equipment") return
-        return await this.actor.createEmbeddedDocuments("Item", [item], { renderSheet: false })
+        if (item.type !== "path") return
+        if (item.type === "path") return this.#onDropPathItem(item)
     }
+  }
+
+  async #onDropPathItem(item) {
+    if (this.actor.system.hasVoieMajeure && this.actor.system.hasVoieMineure) {
+      ui.notifications.warn(game.i18n.localize("TENEBRIS.Warnings.dejaDeuxVoies"))
+      return
+    }
+
+    if (this.actor.system.hasVoieMajeure) {
+      if (this.actor.system.voies.majeure.nom === item.name) {
+        ui.notifications.warn(game.i18n.localize("TENEBRIS.Warnings.dejaVoieMajeure"))
+        return
+      }
+
+      const voie = await this.actor.createEmbeddedDocuments("Item", [item], { renderSheet: false })
+      await this.actor.update({ "system.voies.mineure.nom": item.name, "system.voies.mineure.id": voie[0].id })
+      ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMineureAjoutee"))
+    } else {
+      const proceed = await foundry.applications.api.DialogV2.confirm({
+        content: game.i18n.localize("TENEBRIS.Dialog.ajoutVoieMajeure"),
+        rejectClose: false,
+        modal: true,
+      })
+      if (!proceed) return
+
+      const voie = await this.actor.createEmbeddedDocuments("Item", [item], { renderSheet: false })
+      await this.actor.update({
+        "system.voies.majeure.nom": item.name,
+        "system.voies.majeure.id": voie[0].id,
+        "system.caracteristiques.rob": item.system.caracteristiques.rob,
+        "system.caracteristiques.dex": item.system.caracteristiques.dex,
+        "system.caracteristiques.int": item.system.caracteristiques.int,
+        "system.caracteristiques.per": item.system.caracteristiques.per,
+        "system.caracteristiques.vol": item.system.caracteristiques.vol,
+        "system.ressources.san": item.system.ressources.san,
+        "system.ressources.oeil": item.system.ressources.oeil,
+        "system.ressources.verbe": item.system.ressources.verbe,
+        "system.ressources.bourse": item.system.ressources.bourse,
+        "system.ressources.magie": item.system.ressources.magie,
+        "system.dv": item.system.dv,
+        "system.dmax": item.system.dmax,
+        "system.langues": item.system.langues,
+      })
+      ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMajeureAjoutee"))
+    }
+
+    //return await this.actor.createEmbeddedDocuments("Item", [item], { renderSheet: false })
+  }
+
+  // #endregion
+
+  // #region Actions
+  /**
+   * Handle toggling between Edit and Play mode.
+   * @param {Event} event             The initiating click event.
+   * @param {HTMLElement} target      The current target of the event listener.
+   */
+  static _onToggleSheet(event, target) {
+    const modes = this.constructor.SHEET_MODES
+    this._sheetMode = this.isEditMode ? modes.PLAY : modes.EDIT
+    this.render()
+  }
+
+  /**
+   * Suppression de la voie majeure
+   * @param {Event} event             The initiating click event.
+   * @param {HTMLElement} target      The current target of the event listener.
+   */
+  static async _onDeleteVoieMajeure(event, target) {
+    const item = this.actor.items.get(this.actor.system.voies.majeure.id)
+    item.delete()
+    this.actor.system.resetVoieMajeure()
+    ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMajeureSupprimee"))
+  }
+
+  /**
+   * Suppression de la voie mineure
+   * @param {Event} event             The initiating click event.
+   * @param {HTMLElement} target      The current target of the event listener.
+   */
+  static async _onDeleteVoieMineure(event, target) {
+    const item = this.actor.items.get(this.actor.system.voies.mineure.id)
+    item.delete()
+    this.actor.system.resetVoieMineure()
+    ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMineureSupprimee"))
   }
 
   // #endregion

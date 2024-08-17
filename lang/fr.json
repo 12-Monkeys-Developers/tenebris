@@ -12,12 +12,16 @@
   "TENEBRIS": {
     "Character": {
       "FIELDS": {
-        "voies":{
+        "voies": {
           "majeure": {
-            "label": "Voie Majeure"
+            "nom": {
+              "label": "Voie Majeure"
+            }
           },
           "mineure": {
-            "label": "Voie Mineure"
+            "nom": {
+              "label": "Voie Mineure"
+            }
           }
         },
         "commanditaire": {
@@ -133,7 +137,7 @@
         "talents": {
           "label": "Talents"
         },
-        "voies":{
+        "voies": {
           "majeure": {
             "label": "Voie Majeure"
           },
@@ -218,6 +222,18 @@
       "progressionPossible": "Progression possible"
     },
     "Edit": "Editer",
-    "Delete": "Supprimer"
+    "Delete": "Supprimer",
+    "ToggleSheet": "Changer de mode",
+    "Warnings": {
+      "dejaDeuxVoies": "Vous avez déjà choisi deux voies",
+      "dejaVoieMajeure": "Vous avez déjà choisi cette voie comme voie majeure",
+      "voieMajeureAjoutee": "Voie majeure ajoutée",
+      "voieMineureAjoutee": "Voie mineure ajoutée",
+      "voieMajeureSupprimee": "Voie majeure supprimée",
+      "voieMineureSupprimee": "Voie mineure supprimée"
+    },
+    "Dialog": {
+      "ajoutVoieMajeure": "Ajouter une voie majeure va automatiquement remplacer les caractéristiques et les ressources. Continuer ?"
+    }
   }
 }

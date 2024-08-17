@@ -4,19 +4,23 @@
   <fieldset class="character-personnage">
     <legend>{{localize "TENEBRIS.Character.Label.personnage"}}</legend>
     <div class="character-personnag-contenu">
-      <img class="character-img" src="{{actor.img}}" data-edit="img" data-action="editImage" data-tooltip="{{actor.name}}" style="width: ;" />
+      <img class="character-img" src="{{actor.img}}" data-edit="img" data-action="editImage" data-tooltip="{{actor.name}}" />
+      <div class="character-name">{{formInput fields.name value=source.name rootId=partId disabled=isPlayMode}}
+        <a class="control" data-action="toggleSheet" data-tooltip="TENEBRIS.ToggleSheet">
+          <i class="fa-solid fa-user-{{ifThen isPlayMode 'lock' 'pen'}}"></i>
+        </a>
+      </div>
       <div class="character-personnage-gauche">
-        <div class="character-name">{{formInput fields.name value=source.name rootId=partId}}</div>
-        <div class="character-voies">
-          {{formField systemFields.voies.fields.majeure value=system.majeure rootId=partId}}
-          {{formField systemFields.voies.fields.mineure value=system.mineure rootId=partId}}
-        </div>
-        {{formField systemFields.commanditaire value=system.commanditaire rootId=partId}}
+        {{formField systemFields.voies.fields.majeure.fields.nom value=system.voies.majeure.nom rootId=partId disabled=isPlayMode}} {{#if (and isEditMode system.hasVoieMajeure (not system.hasVoieMineure)) }} <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="deleteVoieMajeure" ><i class="fas fa-trash"></i></a> {{/if}}
+        {{formField systemFields.voies.fields.mineure.fields.nom value=system.voies.mineure.nom rootId=partId disabled=isPlayMode}} {{#if (and isEditMode system.hasVoieMineure) }} <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="deleteVoieMineure" ><i class="fas fa-trash"></i></a> {{/if}}
+        {{formField systemFields.commanditaire value=system.commanditaire rootId=partId disabled=isPlayMode}}
       </div>
       <div class="character-personnage-droite">
-        {{formField systemFields.dv value=system.dv rootId=partId}}
-        {{formField systemFields.pv.fields.valeur value=system.pv.valeur rootId=partId}}
-        {{formField systemFields.dmax value=system.dmax rootId=partId}}
+        {{formField systemFields.dv value=system.dv rootId=partId disabled=isPlayMode}}
+        {{formField systemFields.dmax value=system.dmax rootId=partId disabled=isPlayMode}}
+        <div class="character-pv">
+          {{formField systemFields.pv.fields.valeur value=system.pv.valeur rootId=partId}} <span class="pv-separator">/</span>{{formInput systemFields.pv.fields.max value=system.pv.max rootId=partId disabled=isPlayMode}}
+        </div>
       </div>
     </div>
   </fieldset>
@@ -24,20 +28,20 @@
   <!-- <div class="character-details"> </div> -->
   <fieldset class="character-caracteristiques">
     <legend>{{localize "TENEBRIS.Character.Label.caracteristiques"}}</legend>
-    {{formField systemFields.caracteristiques.fields.rob.fields.valeur value=system.caracteristiques.rob.valeur rootId=partId}}
-    {{formField systemFields.caracteristiques.fields.dex.fields.valeur value=system.caracteristiques.dex.valeur rootId=partId}}
-    {{formField systemFields.caracteristiques.fields.int.fields.valeur value=system.caracteristiques.int.valeur rootId=partId}}
-    {{formField systemFields.caracteristiques.fields.per.fields.valeur value=system.caracteristiques.per.valeur rootId=partId}}
-    {{formField systemFields.caracteristiques.fields.vol.fields.valeur value=system.caracteristiques.vol.valeur rootId=partId}}
+    {{formField systemFields.caracteristiques.fields.rob.fields.valeur value=system.caracteristiques.rob.valeur rootId=partId disabled=isPlayMode}}
+    {{formField systemFields.caracteristiques.fields.dex.fields.valeur value=system.caracteristiques.dex.valeur rootId=partId disabled=isPlayMode}}
+    {{formField systemFields.caracteristiques.fields.int.fields.valeur value=system.caracteristiques.int.valeur rootId=partId disabled=isPlayMode}}
+    {{formField systemFields.caracteristiques.fields.per.fields.valeur value=system.caracteristiques.per.valeur rootId=partId disabled=isPlayMode}}
+    {{formField systemFields.caracteristiques.fields.vol.fields.valeur value=system.caracteristiques.vol.valeur rootId=partId disabled=isPlayMode}}
   </fieldset>
 
   <fieldset class="character-ressources">
     <legend>{{localize "TENEBRIS.Character.Label.ressources"}}</legend>
-    {{formField systemFields.ressources.fields.san.fields.valeur value=system.ressources.san.valeur rootId=partId}}
-    {{formField systemFields.ressources.fields.oeil.fields.valeur value=system.ressources.oeil.valeur rootId=partId}}
-    {{formField systemFields.ressources.fields.verbe.fields.valeur value=system.ressources.verbe.valeur rootId=partId}}
-    {{formField systemFields.ressources.fields.bourse.fields.valeur value=system.ressources.bourse.valeur rootId=partId}}
-    {{formField systemFields.ressources.fields.magie.fields.valeur value=system.ressources.magie.valeur rootId=partId}}
+    {{formField systemFields.ressources.fields.san.fields.valeur value=system.ressources.san.valeur rootId=partId disabled=isPlayMode}}
+    {{formField systemFields.ressources.fields.oeil.fields.valeur value=system.ressources.oeil.valeur rootId=partId disabled=isPlayMode}}
+    {{formField systemFields.ressources.fields.verbe.fields.valeur value=system.ressources.verbe.valeur rootId=partId disabled=isPlayMode}}
+    {{formField systemFields.ressources.fields.bourse.fields.valeur value=system.ressources.bourse.valeur rootId=partId disabled=isPlayMode}}
+    {{formField systemFields.ressources.fields.magie.fields.valeur value=system.ressources.magie.valeur rootId=partId disabled=isPlayMode}}
   </fieldset>
 
 </section>

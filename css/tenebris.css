@@ -82,12 +82,31 @@
   flex-direction: row;
   align-items: center;
 }
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-name {
+  display: flex;
+}
 .tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-gauche,
 .tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-droite {
   margin-top: 10px;
 }
 .tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-gauche {
   margin-right: 10px;
+}
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-droite {
+  display: flex;
+  flex-direction: column;
+}
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-droite .character-pv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-droite .character-pv input[name="system.pv.max"] {
+  padding-top: 10px;
+  text-align: center;
+  font-size: calc(var(--font-size-standard) * 1.6);
+  width: 80px;
 }
 .tenebris .character-main .character-personnage .character-img {
   width: 100px;

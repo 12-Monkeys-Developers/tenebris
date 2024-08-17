@@ -8,21 +8,18 @@ export default class TenebrisCharacterData extends foundry.abstract.TypeDataMode
     schema.description = new fields.HTMLField({
       required: false,
       blank: true,
-      initial: "",
       textSearch: true,
     })
 
     schema.langues = new fields.HTMLField({
       required: false,
       blank: true,
-      initial: "",
       textSearch: true,
     })
 
     schema.notes = new fields.HTMLField({
       required: false,
       blank: true,
-      initial: "",
       textSearch: true,
     })
 
@@ -120,14 +117,21 @@ export default class TenebrisCharacterData extends foundry.abstract.TypeDataMode
     })
 
     schema.voies = new fields.SchemaField({
-      majeure: new fields.StringField({
-        required: true,
-        nullable: false,
+      majeure: new fields.SchemaField({
+        id: new fields.DocumentIdField(),
+        nom: new fields.StringField({ required: true, nullable: false }),
       }),
-      mineure: new fields.StringField({
-        required: false,
-        nullable: true,
+      mineure: new fields.SchemaField({
+        id: new fields.DocumentIdField(),
+        nom: new fields.StringField({ required: true, nullable: false }),
       }),
+    })
+
+    schema.biens = new fields.HTMLField({
+      required: false,
+      blank: true,
+      initial: "",
+      textSearch: true,
     })
 
     return schema
@@ -135,4 +139,26 @@ export default class TenebrisCharacterData extends foundry.abstract.TypeDataMode
 
   /** @override */
   static LOCALIZATION_PREFIXES = ["TENEBRIS.Character"]
+
+  get hasVoieMajeure() {
+    return !!this.voies.majeure.id
+  }
+
+  get hasVoieMineure() {
+    return !!this.voies.mineure.id
+  }
+
+  resetVoieMajeure() {
+    return this.parent.update({
+      "system.voies.majeure.nom": "",
+      "system.voies.majeure.id": null,
+    })
+  }
+
+  resetVoieMineure() {
+    return this.parent.update({
+      "system.voies.mineure.nom": "",
+      "system.voies.mineure.id": null,
+    })
+  }
 }

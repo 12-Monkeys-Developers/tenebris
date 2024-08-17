@@ -1,5 +1,5 @@
 .character-content {
- .sheet-common();
+  .sheet-common();
 }
 
 .character-main {
@@ -15,6 +15,10 @@
       flex-direction: row;
       align-items: center;
 
+      .character-name {
+        display: flex;
+      }
+
       .character-personnage-gauche,
       .character-personnage-droite {
         margin-top: 10px;
@@ -25,6 +29,20 @@
       }
 
       .character-personnage-droite {
+        display: flex;
+        flex-direction: column;
+        .character-pv {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          input[name="system.pv.max"] {
+            padding-top: 10px;
+            text-align: center;
+            font-size: calc(var(--font-size-standard) * 1.6);
+            width: 80px;
+          }
+        }
       }
     }
 
