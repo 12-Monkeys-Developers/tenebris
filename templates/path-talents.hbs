@@ -5,10 +5,12 @@
     <div class="talent" data-item-uuid="{{item.uuid}}">
       <div class="header">
         <div class="name">{{item.name}} {{#if item.system.canProgress}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}</div>
-        <div class="controls">
-          <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
-          <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-uuid="{{item.uuid}}"><i class="fas fa-trash"></i></a>
-        </div>
+        {{#if @root.isEditMode}}
+          <div class="controls">
+            <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
+            <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-uuid="{{item.uuid}}"><i class="fas fa-trash"></i></a>
+          </div>
+        {{/if}}
       </div>
 
       <div class="description">{{{item.system.description}}}</div>

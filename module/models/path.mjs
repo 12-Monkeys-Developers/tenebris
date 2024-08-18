@@ -88,4 +88,13 @@ export default class TenebrisPathData extends foundry.abstract.TypeDataModel {
 
   /** @override */
   static LOCALIZATION_PREFIXES = ["TENEBRIS.Path"]
+
+  async getAllTalents() {
+    const talents = []
+    this.talents.forEach(async (element) => {
+      const talent = await fromUuid(element)
+      talents.push(talent)
+    })
+    return talents
+  }
 }

@@ -1,3 +1,6 @@
-<section>
-  {{formInput fields.name value=source.name rootId=partId}}
+<section class="path-name">
+  {{formInput fields.name value=source.name rootId=partId disabled=isPlayMode}}
+  <a class="control" data-action="toggleSheet" data-tooltip="TENEBRIS.ToggleSheet">
+    <i class="fa-solid fa-user-{{ifThen isPlayMode 'lock' 'pen'}}"></i>
+  </a>
 </section>

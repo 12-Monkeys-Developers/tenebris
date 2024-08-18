@@ -1,6 +1,12 @@
 const { HandlebarsApplicationMixin } = foundry.applications.api
 
 export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2) {
+  /**
+   * Different sheet modes.
+   * @enum {number}
+   */
+  static SHEET_MODES = { EDIT: 0, PLAY: 1 }
+
   constructor(options = {}) {
     super(options)
     this.#dragDrop = this.#createDragDropHandlers()
@@ -22,6 +28,31 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
       resizable: true,
     },
     dragDrop: [{ dragSelector: "[data-drag]", dropSelector: null }],
+    actions: {
+      toggleSheet: TenebrisItemSheet.#onToggleSheet,
+    },
+  }
+
+  /**
+   * The current sheet mode.
+   * @type {number}
+   */
+  _sheetMode = this.constructor.SHEET_MODES.PLAY
+
+  /**
+   * Is the sheet currently in 'Play' mode?
+   * @type {boolean}
+   */
+  get isPlayMode() {
+    return this._sheetMode === this.constructor.SHEET_MODES.PLAY
+  }
+
+  /**
+   * Is the sheet currently in 'Edit' mode?
+   * @type {boolean}
+   */
+  get isEditMode() {
+    return this._sheetMode === this.constructor.SHEET_MODES.EDIT
   }
 
   /** @override */
@@ -33,6 +64,9 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
       system: this.document.system,
       source: this.document.toObject(),
       enrichedDescription: await TextEditor.enrichHTML(this.document.system.description, { async: true }),
+      isEditMode: this.isEditMode,
+      isPlayMode: this.isPlayMode,
+      isEditable: this.isEditable,
     }
     console.log("item context", context)
     return context
@@ -114,18 +148,20 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
    * @param {DragEvent} event       The originating DragEvent
    * @protected
    */
-  async _onDrop(event) {
-    const data = TextEditor.getDragEventData(event)
+  async _onDrop(event) {}
 
-    // Handle different data types
-    switch (data.type) {
-      case "Item":
-        const item = await fromUuid(data.uuid)
-        // TODO if (item.type !== "equipment") return
-        // return await this.actor.createEmbeddedDocuments("Item", [item], { renderSheet: false })
-        console.log("dropped item", item)
-    }
+  // #endregion
+
+  // #region Actions
+  /**
+   * Handle toggling between Edit and Play mode.
+   * @param {Event} event             The initiating click event.
+   * @param {HTMLElement} target      The current target of the event listener.
+   */
+  static #onToggleSheet(event, target) {
+    const modes = this.constructor.SHEET_MODES
+    this._sheetMode = this.isEditMode ? modes.PLAY : modes.EDIT
+    this.render()
   }
-
   // #endregion
 }

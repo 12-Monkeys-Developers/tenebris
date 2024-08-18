@@ -5,7 +5,7 @@
 .character-main {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
   .character-personnage {
     flex: 0 0 60%;
@@ -26,6 +26,11 @@
 
       .character-personnage-gauche {
         margin-right: 10px;
+
+        .character-voie-majeure {
+          display: flex;
+          flex-direction: row;
+        }
       }
 
       .character-personnage-droite {
@@ -72,5 +77,11 @@
   .character-ressources {
     width: 20%;
     //flex: 0 0 20%;
+  }
+}
+
+.character-items {
+  .talent {
+    display: flex;
   }
 }
