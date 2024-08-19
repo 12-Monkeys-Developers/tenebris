@@ -12,7 +12,12 @@
           </div>
         {{/if}}
       </div>
-
+      {{#if item.system.isLearned}}
+        <div class="progression">
+          <div>Appris</div>
+          <div>Niveau {{item.system.niveau}}</div>
+        </div>
+      {{/if}}
       <div class="description">{{{item.system.description}}}</div>
     </div>
   {{/each}}

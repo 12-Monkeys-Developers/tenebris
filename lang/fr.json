@@ -107,13 +107,18 @@
         "langues": "Langues",
         "notes": "Notes",
         "details": "Détails",
-        "biography": "Biographie"
+        "biography": "Biographie",
+        "biens": "Biens",
+        "talents": "Talents"
       }
     },
     "Talent": {
       "FIELDS": {
         "description": {
           "label": "Description"
+        },
+        "appris": {
+          "label": "Appris"
         },
         "progression": {
           "label": "Progression"
@@ -233,7 +238,8 @@
       "voieMineureSupprimee": "Voie mineure supprimée"
     },
     "Dialog": {
-      "ajoutVoieMajeure": "Ajouter une voie majeure va automatiquement remplacer les caractéristiques et les ressources. Continuer ?"
+      "ajoutVoieMajeure": "Ajouter une voie majeure va automatiquement remplacer les caractéristiques et les ressources. Continuer ?",
+      "suppressionTalents": "Supprimer cette voie va supprimer les talents associés. Continuer ?"
     }
   }
 }

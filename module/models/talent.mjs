@@ -24,6 +24,10 @@ export default class TenebrisTalentData extends foundry.abstract.TypeDataModel {
     return this.progression
   }
 
+  get isLearned() {
+    return this.appris
+  }
+
   get details() {
     return this.description
   }

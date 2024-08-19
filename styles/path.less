@@ -47,12 +47,10 @@
 
   .path-talents {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Deux colonnes de taille égale */
-    gap: 10px; /* Espace entre les éléments */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
     .talent {
-      //height: 220px;
-      //width: 300px;
-      background-color: #f0f0f0; /* Optionnel: Pour rendre les talents plus visibles */
+      background-color: #f0f0f0;
       padding: 5px;
       border-radius: 5px;
       .header {
@@ -66,6 +64,11 @@
         .controls {
           font-size: calc(var(--font-size-standard) * 0.8);
         }
+      }
+      .progression {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
       }
       .description {
         font-size: calc(var(--font-size-standard) * 1);

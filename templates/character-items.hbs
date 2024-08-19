@@ -1,3 +1,36 @@
 <section class="tab character-{{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
 
+  <fieldset>
+    <legend>{{localize "TENEBRIS.Label.biens"}}</legend>
+    {{formInput systemFields.biens enriched=enrichedBiens value=system.biens documentUUID=actor.uuid name="system.biens" collaborate="true" toggled="true" height="100"}}
+  </fieldset>
+
+  <fieldset>
+    <legend>{{localize "TENEBRIS.Label.talents"}}</legend>
+    {{#if @root.isEditMode}}
+      {{#each talents as |item|}}
+        {{log "path-talent" this}}
+        <div class="talent" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+          <div class="name" data-tooltip="{{{item.system.description}}}">{{item.name}}
+            {{#if item.system.canProgress}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}</div>
+          <div class="controls">
+            <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
+            <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-trash"></i></a>
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      {{#each talentsAppris as |item|}}
+        {{log "path-talent appris" this}}
+        <div class="talent" data-item-id="{{item.id}}">
+
+          <div class="name" data-tooltip="{{{item.system.description}}}">{{item.name}}
+            {{#if item.system.canProgress}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}</div>
+          <div>Appris</div>
+
+        </div>
+      {{/each}}
+    {{/if}}
+  </fieldset>
+
 </section>

@@ -148,15 +148,15 @@ export default class TenebrisCharacterData extends foundry.abstract.TypeDataMode
     return !!this.voies.mineure.id
   }
 
-  resetVoieMajeure() {
-    return this.parent.update({
+  async resetVoieMajeure() {
+    return await this.parent.update({
       "system.voies.majeure.nom": "",
       "system.voies.majeure.id": null,
     })
   }
 
-  resetVoieMineure() {
-    return this.parent.update({
+  async resetVoieMineure() {
+    return await this.parent.update({
       "system.voies.mineure.nom": "",
       "system.voies.mineure.id": null,
     })

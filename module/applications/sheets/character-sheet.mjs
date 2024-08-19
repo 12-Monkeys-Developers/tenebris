@@ -30,10 +30,11 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
     },
     dragDrop: [{ dragSelector: "[data-drag]", dropSelector: null }],
     actions: {
-      editImage: this._onEditImage,
-      toggleSheet: this._onToggleSheet,
-      deleteVoieMajeure: this._onDeleteVoieMajeure,
-      deleteVoieMineure: this._onDeleteVoieMineure,
+      editImage: TenebrisCharacterSheet.#onEditImage,
+      toggleSheet: TenebrisCharacterSheet.#onToggleSheet,
+      deleteVoieMajeure: TenebrisCharacterSheet.#onDeleteVoieMajeure,
+      deleteVoieMineure: TenebrisCharacterSheet.#onDeleteVoieMineure,
+      edit: TenebrisCharacterSheet.#onItemEdit,
     },
   }
 
@@ -118,9 +119,13 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
     const doc = this.document
     switch (partId) {
       case "main":
+        context.enrichedBiens = await TextEditor.enrichHTML(this.document.system.biens, { async: true })
         break
       case "items":
         context.tab = context.tabs.items
+        const { talents, talentsAppris } = await this._prepareTalents()
+        context.talents = talents.sort((a, b) => a.name.localeCompare(b.name, game.i18n.lang))
+        context.talentsAppris = talentsAppris.sort((a, b) => a.name.localeCompare(b.name, game.i18n.lang))
         break
       case "biography":
         context.tab = context.tabs.biography
@@ -130,6 +135,32 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
         break
     }
     return context
+  }
+
+  async _prepareTalents() {
+    const talents = []
+    const talentsAppris = []
+    if (this.actor.system.hasVoieMajeure) {
+      const voie = this.actor.items.get(this.actor.system.voies.majeure.id)
+      for (const talent of voie.system.talents) {
+        const talentItem = await fromUuid(talent)
+        if (talentItem) {
+          talents.push(talentItem)
+          if (talentItem.system.appris) talentsAppris.push(talentItem)
+        }
+      }
+    }
+    if (this.actor.system.hasVoieMineure) {
+      const voie = this.actor.items.get(this.actor.system.voies.mineure.id)
+      for (const talent of voie.system.talents) {
+        const talentItem = await fromUuid(talent)
+        if (talentItem) {
+          talents.push(talentItem)
+          if (talentItem.system.appris) talentsAppris.push(talentItem)
+        }
+      }
+    }
+    return { talents, talentsAppris }
   }
 
   /** @override */
@@ -222,50 +253,7 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
   }
 
   async #onDropPathItem(item) {
-    if (this.actor.system.hasVoieMajeure && this.actor.system.hasVoieMineure) {
-      ui.notifications.warn(game.i18n.localize("TENEBRIS.Warnings.dejaDeuxVoies"))
-      return
-    }
-
-    if (this.actor.system.hasVoieMajeure) {
-      if (this.actor.system.voies.majeure.nom === item.name) {
-        ui.notifications.warn(game.i18n.localize("TENEBRIS.Warnings.dejaVoieMajeure"))
-        return
-      }
-
-      const voie = await this.actor.createEmbeddedDocuments("Item", [item], { renderSheet: false })
-      await this.actor.update({ "system.voies.mineure.nom": item.name, "system.voies.mineure.id": voie[0].id })
-      ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMineureAjoutee"))
-    } else {
-      const proceed = await foundry.applications.api.DialogV2.confirm({
-        content: game.i18n.localize("TENEBRIS.Dialog.ajoutVoieMajeure"),
-        rejectClose: false,
-        modal: true,
-      })
-      if (!proceed) return
-
-      const voie = await this.actor.createEmbeddedDocuments("Item", [item], { renderSheet: false })
-      await this.actor.update({
-        "system.voies.majeure.nom": item.name,
-        "system.voies.majeure.id": voie[0].id,
-        "system.caracteristiques.rob": item.system.caracteristiques.rob,
-        "system.caracteristiques.dex": item.system.caracteristiques.dex,
-        "system.caracteristiques.int": item.system.caracteristiques.int,
-        "system.caracteristiques.per": item.system.caracteristiques.per,
-        "system.caracteristiques.vol": item.system.caracteristiques.vol,
-        "system.ressources.san": item.system.ressources.san,
-        "system.ressources.oeil": item.system.ressources.oeil,
-        "system.ressources.verbe": item.system.ressources.verbe,
-        "system.ressources.bourse": item.system.ressources.bourse,
-        "system.ressources.magie": item.system.ressources.magie,
-        "system.dv": item.system.dv,
-        "system.dmax": item.system.dmax,
-        "system.langues": item.system.langues,
-      })
-      ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMajeureAjoutee"))
-    }
-
-    //return await this.actor.createEmbeddedDocuments("Item", [item], { renderSheet: false })
+    await this.actor.addPath(item)
   }
 
   // #endregion
@@ -276,7 +264,7 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
    * @param {Event} event             The initiating click event.
    * @param {HTMLElement} target      The current target of the event listener.
    */
-  static _onToggleSheet(event, target) {
+  static #onToggleSheet(event, target) {
     const modes = this.constructor.SHEET_MODES
     this._sheetMode = this.isEditMode ? modes.PLAY : modes.EDIT
     this.render()
@@ -287,10 +275,17 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
    * @param {Event} event             The initiating click event.
    * @param {HTMLElement} target      The current target of the event listener.
    */
-  static async _onDeleteVoieMajeure(event, target) {
+  static async #onDeleteVoieMajeure(event, target) {
+    const proceed = await foundry.applications.api.DialogV2.confirm({
+      content: game.i18n.localize("TENEBRIS.Dialog.suppressionTalents"),
+      rejectClose: false,
+      modal: true,
+    })
+    if (!proceed) return
     const item = this.actor.items.get(this.actor.system.voies.majeure.id)
+    if (!item) return
+    await this.actor.system.resetVoieMajeure(item.talents)
     item.delete()
-    this.actor.system.resetVoieMajeure()
     ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMajeureSupprimee"))
   }
 
@@ -299,11 +294,61 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
    * @param {Event} event             The initiating click event.
    * @param {HTMLElement} target      The current target of the event listener.
    */
-  static async _onDeleteVoieMineure(event, target) {
+  static async #onDeleteVoieMineure(event, target) {
+    const proceed = await foundry.applications.api.DialogV2.confirm({
+      content: game.i18n.localize("TENEBRIS.Dialog.suppressionTalents"),
+      rejectClose: false,
+      modal: true,
+    })
+    if (!proceed) return
     const item = this.actor.items.get(this.actor.system.voies.mineure.id)
+    if (!item) return
+    await this.actor.system.resetVoieMineure(item.talents)
     item.delete()
-    this.actor.system.resetVoieMineure()
     ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMineureSupprimee"))
+  }
+
+  /**
+   * Handle changing a Document's image.
+   *
+   * @this TenebrisCharacterSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise}
+   * @private
+   */
+  static async #onEditImage(event, target) {
+    const attr = target.dataset.edit
+    const current = foundry.utils.getProperty(this.document, attr)
+    const { img } = this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ?? {}
+    const fp = new FilePicker({
+      current,
+      type: "image",
+      redirectToRoot: img ? [img] : [],
+      callback: (path) => {
+        this.document.update({ [attr]: path })
+      },
+      top: this.position.top + 40,
+      left: this.position.left + 10,
+    })
+    return fp.browse()
+  }
+
+  /**
+   * Edit an existing item within the Actor
+   * Start with the uuid, if it's not found, fallback to the id (as Embedded item in the actor)
+   * @this TenebrisCharacterSheet
+   * @param {PointerEvent} event The originating click event
+   * @param {HTMLElement} target the capturing HTML element which defined a [data-action]
+   */
+  static async #onItemEdit(event, target) {
+    const id = target.getAttribute("data-item-id")
+    const uuid = target.getAttribute("data-item-uuid")
+    let item
+    item = await fromUuid(uuid)
+    if (!item) item = this.actor.items.get(id)
+    if (!item) return
+    item.sheet.render(true)
   }
 
   // #endregion

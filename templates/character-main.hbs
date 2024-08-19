@@ -11,15 +11,25 @@
         </a>
       </div>
       <div class="character-personnage-gauche">
-        {{formField systemFields.voies.fields.majeure.fields.nom value=system.voies.majeure.nom rootId=partId disabled=isPlayMode}} {{#if (and isEditMode system.hasVoieMajeure (not system.hasVoieMineure)) }} <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="deleteVoieMajeure" ><i class="fas fa-trash"></i></a> {{/if}}
-        {{formField systemFields.voies.fields.mineure.fields.nom value=system.voies.mineure.nom rootId=partId disabled=isPlayMode}} {{#if (and isEditMode system.hasVoieMineure) }} <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="deleteVoieMineure" ><i class="fas fa-trash"></i></a> {{/if}}
+        {{formField systemFields.voies.fields.majeure.fields.nom value=system.voies.majeure.nom rootId=partId disabled=isPlayMode}} 
+          {{#if (and isEditMode system.hasVoieMajeure) }}
+            <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{actor.system.voies.majeure.id}}"><i class="fas fa-edit"></i></a>
+            {{#if (not system.hasVoieMineure)}}
+              <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="deleteVoieMajeure" ><i class="fas fa-trash"></i></a>             
+            {{/if}}
+          {{/if}}          
+          {{formField systemFields.voies.fields.mineure.fields.nom value=system.voies.mineure.nom rootId=partId disabled=isPlayMode}} 
+          {{#if (and isEditMode system.hasVoieMineure) }} 
+            <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{actor.system.voies.majeure.id}}" ><i class="fas fa-edit"></i></a>
+            <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="deleteVoieMineure" ><i class="fas fa-trash"></i></a>
+          {{/if}}
         {{formField systemFields.commanditaire value=system.commanditaire rootId=partId disabled=isPlayMode}}
       </div>
       <div class="character-personnage-droite">
         {{formField systemFields.dv value=system.dv rootId=partId disabled=isPlayMode}}
         {{formField systemFields.dmax value=system.dmax rootId=partId disabled=isPlayMode}}
         <div class="character-pv">
-          {{formField systemFields.pv.fields.valeur value=system.pv.valeur rootId=partId}} <span class="pv-separator">/</span>{{formInput systemFields.pv.fields.max value=system.pv.max rootId=partId disabled=isPlayMode}}
+          {{formField systemFields.pv.fields.valeur value=system.pv.valeur }} <span class="pv-separator">/</span>{{formInput systemFields.pv.fields.max value=system.pv.max rootId=partId disabled=isPlayMode}}
         </div>
       </div>
     </div>
