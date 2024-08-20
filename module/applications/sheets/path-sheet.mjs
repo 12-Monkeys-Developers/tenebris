@@ -99,6 +99,7 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
 
     switch (data.type) {
       case "Item":
+        if (this.isPlayMode) return
         const item = await fromUuid(data.uuid)
         if (item.type !== "talent") return
 
@@ -112,7 +113,8 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
   // #region Actions
 
   /**
-   * Edit an existing item within the Actor
+   * Edit an existing talent within the path item
+   * Use the uuid to display the talent sheet
    * @param {PointerEvent} event The originating click event
    * @param {HTMLElement} target the capturing HTML element which defined a [data-action]
    */
@@ -123,7 +125,8 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
   }
 
   /**
-   * Delete an existing item within the Actor
+   * Delete an existing talent within the path item
+   * Use the uuid to display the talent sheet
    * @param {PointerEvent} event The originating click event
    * @param {HTMLElement} target the capturing HTML element which defined a [data-action]
    */

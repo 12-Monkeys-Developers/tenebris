@@ -1,5 +1,5 @@
 import { SYSTEM } from "../config/system.mjs"
-export default class TenebrisPathData extends foundry.abstract.TypeDataModel {
+export default class TenebrisPath extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields
     const schema = {}
@@ -93,7 +93,7 @@ export default class TenebrisPathData extends foundry.abstract.TypeDataModel {
     const talents = []
     this.talents.forEach(async (element) => {
       const talent = await fromUuid(element)
-      talents.push(talent)
+      if (talent) talents.push(talent)
     })
     return talents
   }

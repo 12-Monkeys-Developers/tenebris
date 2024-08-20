@@ -8,18 +8,21 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
     schema.description = new fields.HTMLField({
       required: false,
       blank: true,
+      initial: "",
       textSearch: true,
     })
 
     schema.langues = new fields.HTMLField({
       required: false,
       blank: true,
+      initial: "",
       textSearch: true,
     })
 
     schema.notes = new fields.HTMLField({
       required: false,
       blank: true,
+      initial: "",
       textSearch: true,
     })
 

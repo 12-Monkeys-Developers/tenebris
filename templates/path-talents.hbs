@@ -4,7 +4,11 @@
     {{log "path-talent" this}}
     <div class="talent" data-item-uuid="{{item.uuid}}">
       <div class="header">
-        <div class="name">{{item.name}} {{#if item.system.canProgress}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}</div>
+        <div class="name">{{item.name}} {{#if item.system.canProgress}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}
+        {{#if item.system.isLearned}}
+          <span data-tooltip="{{localize 'TENEBRIS.Talent.FIELDS.appris.label'}}"> <i class="fa-solid fa-book"></i>({{item.system.niveau}})</span>
+        {{/if}}
+        </div>
         {{#if @root.isEditMode}}
           <div class="controls">
             <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>

@@ -1,4 +1,4 @@
-export default class TenebrisTalentData extends foundry.abstract.TypeDataModel {
+export default class TenebrisTalent extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields
     const schema = {}

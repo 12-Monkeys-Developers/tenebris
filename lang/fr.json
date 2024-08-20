@@ -5,7 +5,10 @@
     },
     "Item": {
       "path": "Voie",
-      "talent": "Talent"
+      "talent": "Talent",
+      "weapon": "Arme",
+      "armor": "Armure",
+      "spell": "Sort"
     }
   },
 
@@ -217,6 +220,23 @@
         }
       }
     },
+    "Weapon": {
+      "FIELDS": {
+      "categorie": {
+        "label": "Catégorie"
+      },
+      "degats": {
+        "label": "Dégâts"
+      }
+    },
+    "Category": {
+      "main": "Mains Nues",
+      "improvisee": "Armes Improvisées",
+      "courte": "Armes courtes",
+      "longue": "Armes longues",
+      "lourde": "Armes lourdes"
+    }
+  },
     "Label": {
       "description": "Description",
       "biens": "Biens",
@@ -224,7 +244,8 @@
       "profil": "Profil",
       "details": "Détails",
       "talents": "Talents",
-      "progressionPossible": "Progression possible"
+      "progressionPossible": "Progression possible",
+      "equipement": "Equipement"
     },
     "Edit": "Editer",
     "Delete": "Supprimer",

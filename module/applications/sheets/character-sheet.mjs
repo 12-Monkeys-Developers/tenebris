@@ -35,6 +35,7 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
       deleteVoieMajeure: TenebrisCharacterSheet.#onDeleteVoieMajeure,
       deleteVoieMineure: TenebrisCharacterSheet.#onDeleteVoieMineure,
       edit: TenebrisCharacterSheet.#onItemEdit,
+      delete: TenebrisCharacterSheet.#onItemDelete,
     },
   }
 
@@ -123,9 +124,10 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
         break
       case "items":
         context.tab = context.tabs.items
-        const { talents, talentsAppris } = await this._prepareTalents()
-        context.talents = talents.sort((a, b) => a.name.localeCompare(b.name, game.i18n.lang))
-        context.talentsAppris = talentsAppris.sort((a, b) => a.name.localeCompare(b.name, game.i18n.lang))
+        const talents = await this._prepareTalents()
+        context.talents = talents
+        context.talentsAppris = talents.filter((talent) => talent.appris)
+        context.weapons = this.actor.itemTypes.weapon
         break
       case "biography":
         context.tab = context.tabs.biography
@@ -138,29 +140,20 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
   }
 
   async _prepareTalents() {
-    const talents = []
-    const talentsAppris = []
-    if (this.actor.system.hasVoieMajeure) {
-      const voie = this.actor.items.get(this.actor.system.voies.majeure.id)
-      for (const talent of voie.system.talents) {
-        const talentItem = await fromUuid(talent)
-        if (talentItem) {
-          talents.push(talentItem)
-          if (talentItem.system.appris) talentsAppris.push(talentItem)
+    const talents = this.actor.itemTypes.talent
+      .map((talent) => {
+        return {
+          id: talent.id,
+          uuid: talent.uuid,
+          name: talent.name,
+          description: talent.system.description,
+          progression: talent.system.progression,
+          niveau: talent.system.niveau,
+          appris: talent.system.appris,
         }
-      }
-    }
-    if (this.actor.system.hasVoieMineure) {
-      const voie = this.actor.items.get(this.actor.system.voies.mineure.id)
-      for (const talent of voie.system.talents) {
-        const talentItem = await fromUuid(talent)
-        if (talentItem) {
-          talents.push(talentItem)
-          if (talentItem.system.appris) talentsAppris.push(talentItem)
-        }
-      }
-    }
-    return { talents, talentsAppris }
+      })
+      .sort((a, b) => a.name.localeCompare(b.name, game.i18n.lang))
+    return talents
   }
 
   /** @override */
@@ -247,13 +240,19 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
     switch (data.type) {
       case "Item":
         const item = await fromUuid(data.uuid)
-        if (item.type !== "path") return
+        if (!["path", "weapon", "armor"].includes(item.type)) return
         if (item.type === "path") return this.#onDropPathItem(item)
+        if (item.type === "weapon") return this.#onDropWeaponItem(item)
     }
   }
 
   async #onDropPathItem(item) {
     await this.actor.addPath(item)
+  }
+
+  async #onDropWeaponItem(item) {
+    let itemData = item.toObject()
+    await this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
   }
 
   // #endregion
@@ -349,6 +348,18 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
     if (!item) item = this.actor.items.get(id)
     if (!item) return
     item.sheet.render(true)
+  }
+
+  /**
+   * Delete an existing talent within the Actor
+   * Use the uuid to display the talent sheet
+   * @param {PointerEvent} event The originating click event
+   * @param {HTMLElement} target the capturing HTML element which defined a [data-action]
+   */
+  static async #onItemDelete(event, target) {
+    const itemUuid = target.getAttribute("data-item-uuid")
+    const talent = await fromUuid(itemUuid)
+    await talent.deleteDialog()
   }
 
   // #endregion

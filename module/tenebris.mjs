@@ -26,6 +26,7 @@ Hooks.once("init", function () {
   CONFIG.Item.dataModels = {
     path: models.TenebrisPath,
     talent: models.TenebrisTalent,
+    weapon: models.TenebrisWeapon,
   }
 
   // Register sheet application classes
@@ -40,8 +41,12 @@ Hooks.once("init", function () {
     types: ["talent"],
     makeDefault: true,
   })
-  Items.registerSheet("tenebris", applicationsTenebrisPathSheet, {
+  Items.registerSheet("tenebris", applications.TenebrisPathSheet, {
     types: ["path"],
+    makeDefault: true,
+  })
+  Items.registerSheet("tenebris", applications.TenebrisWeaponSheet, {
+    types: ["weapon"],
     makeDefault: true,
   })
 })

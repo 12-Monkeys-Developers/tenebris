@@ -11,7 +11,7 @@
       {{#each talents as |item|}}
         {{log "path-talent" this}}
         <div class="talent" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
-          <div class="name" data-tooltip="{{{item.system.description}}}">{{item.name}}
+          <div class="name" data-tooltip="{{{item.description}}}">{{item.name}}
             {{#if item.system.canProgress}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}</div>
           <div class="controls">
             <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
@@ -22,15 +22,30 @@
     {{else}}
       {{#each talentsAppris as |item|}}
         {{log "path-talent appris" this}}
-        <div class="talent" data-item-id="{{item.id}}">
-
-          <div class="name" data-tooltip="{{{item.system.description}}}">{{item.name}}
-            {{#if item.system.canProgress}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}</div>
-          <div>Appris</div>
-
+        <div class="talent" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-tooltip="{{{item.description}}}">{{item.name}}
+          {{#if item.progression}}
+            Niveau
+            {{item.niveau}}
+          {{/if}}
         </div>
       {{/each}}
     {{/if}}
+  </fieldset>
+
+  <fieldset>
+    <legend>{{localize "TENEBRIS.Label.equipement"}}</legend>
+    {{#each weapons as |item|}}
+      <div class="weapon" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-tooltip="{{{item.description}}}">{{item.name}}
+        <div>{{item.system.categorie}}</div>
+        <div>{{item.system.degats}}</div>
+        {{#if @root.isEditMode}}
+          <div class="controls">
+            <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
+            <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-trash"></i></a>
+          </div>
+        {{/if}}
+      </div>
+    {{/each}}
   </fieldset>
 
 </section>
