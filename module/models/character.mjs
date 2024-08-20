@@ -1,6 +1,6 @@
 import { SYSTEM } from "../config/system.mjs"
 
-export default class TenebrisCharacterData extends foundry.abstract.TypeDataModel {
+export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields
     const schema = {}

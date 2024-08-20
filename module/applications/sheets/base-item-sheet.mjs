@@ -115,7 +115,7 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
    * @protected
    */
   _canDragDrop(selector) {
-    return this.isEditable
+    return this.isEditable && this.document.isOwner
   }
 
   /**

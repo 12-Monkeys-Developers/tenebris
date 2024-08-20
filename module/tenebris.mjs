@@ -6,44 +6,41 @@
  */
 
 import { SYSTEM } from "./config/system.mjs"
-import TenebrisCharacterData from "./models/character.mjs"
-import TenebrisPathData from "./models/path.mjs"
-import TenebrisTalentData from "./models/talent.mjs"
-import TenebrisActor from "./documents/actor.mjs"
-import TenebrisItem from "./documents/item.mjs"
-import TenebrisCharacterSheet from "./applications/sheets/character-sheet.mjs"
-import TenebrisTalentSheet from "./applications/sheets/talent-sheet.mjs"
-import TenebrisPathSheet from "./applications/sheets/path-sheet.mjs"
 
 globalThis.SYSTEM = SYSTEM // Expose the SYSTEM object to the global scope
+
+// Import modules
+import * as models from "./models/_module.mjs"
+import * as documents from "./documents/_module.mjs"
+import * as applications from "./applications/_module.mjs"
 
 Hooks.once("init", function () {
   console.log("Initializing Cthulhu Tenebris System")
 
-  CONFIG.Actor.documentClass = TenebrisActor
+  CONFIG.Actor.documentClass = documents.TenebrisActor
   CONFIG.Actor.dataModels = {
-    character: TenebrisCharacterData,
+    character: models.TenebrisCharacter,
   }
 
-  CONFIG.Item.documentClass = TenebrisItem
+  CONFIG.Item.documentClass = documents.TenebrisItem
   CONFIG.Item.dataModels = {
-    path: TenebrisPathData,
-    talent: TenebrisTalentData,
+    path: models.TenebrisPath,
+    talent: models.TenebrisTalent,
   }
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet)
-  Actors.registerSheet("tenebris", TenebrisCharacterSheet, {
+  Actors.registerSheet("tenebris", applications.TenebrisCharacterSheet, {
     types: ["character"],
     makeDefault: true,
   })
 
   Items.unregisterSheet("core", ItemSheet)
-  Items.registerSheet("tenebris", TenebrisTalentSheet, {
+  Items.registerSheet("tenebris", applications.TenebrisTalentSheet, {
     types: ["talent"],
     makeDefault: true,
   })
-  Items.registerSheet("tenebris", TenebrisPathSheet, {
+  Items.registerSheet("tenebris", applicationsTenebrisPathSheet, {
     types: ["path"],
     makeDefault: true,
   })

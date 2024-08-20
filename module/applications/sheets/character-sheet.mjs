@@ -206,7 +206,7 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
    * @protected
    */
   _canDragDrop(selector) {
-    return this.isEditable
+    return this.isEditable && this.document.isOwner
   }
 
   /**

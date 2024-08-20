@@ -36,7 +36,10 @@
       },
       "Item": {
         "path": {},
-        "talent": {}
+        "talent": {},
+        "weapon": {},
+        "armor": {},
+        "spell": {}
       }
     },
     "grid": {
