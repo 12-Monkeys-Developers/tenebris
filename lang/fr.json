@@ -222,21 +222,39 @@
     },
     "Weapon": {
       "FIELDS": {
-      "categorie": {
-        "label": "Catégorie"
+        "categorie": {
+          "label": "Catégorie"
+        },
+        "degats": {
+          "label": "Dégâts"
+        }
       },
-      "degats": {
-        "label": "Dégâts"
+      "Category": {
+        "main": "Mains Nues",
+        "improvisee": "Armes Improvisées",
+        "courte": "Armes courtes",
+        "longue": "Armes longues",
+        "lourde": "Armes lourdes"
       }
     },
-    "Category": {
-      "main": "Mains Nues",
-      "improvisee": "Armes Improvisées",
-      "courte": "Armes courtes",
-      "longue": "Armes longues",
-      "lourde": "Armes lourdes"
-    }
-  },
+    "Armor": {
+      "FIELDS": {
+        "categorie": {
+          "label": "Catégorie"
+        },
+        "valeur": {
+          "label": "Valeur"
+        },
+        "malus": {
+          "label": "Malus"
+        }
+      },
+      "Category": {
+        "sommaire": "Armures sommaires",
+        "legere": "Armures légères",
+        "guerre": "Armures de guerre"
+      }
+    },
     "Label": {
       "description": "Description",
       "biens": "Biens",

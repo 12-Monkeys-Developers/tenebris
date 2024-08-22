@@ -1,5 +1,6 @@
 import * as CHARACTER from "./character.mjs"
 import * as WEAPON from "./weapon.mjs"
+import * as ARMOR from "./armor.mjs"
 
 export const SYSTEM_ID = "tenebris"
 
@@ -23,4 +24,5 @@ export const SYSTEM = {
   RESOURCE_VALUE,
   WEAPON_CATEGORY: WEAPON.CATEGORY,
   WEAPON_DAMAGE: WEAPON.DAMAGE,
+  ARMOR_CATEGORY: ARMOR.CATEGORY,
 }

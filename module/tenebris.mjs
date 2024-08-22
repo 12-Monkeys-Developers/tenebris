@@ -27,26 +27,16 @@ Hooks.once("init", function () {
     path: models.TenebrisPath,
     talent: models.TenebrisTalent,
     weapon: models.TenebrisWeapon,
+    armor: models.TenebrisArmor,
   }
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet)
-  Actors.registerSheet("tenebris", applications.TenebrisCharacterSheet, {
-    types: ["character"],
-    makeDefault: true,
-  })
+  Actors.registerSheet("tenebris", applications.TenebrisCharacterSheet, { types: ["character"], makeDefault: true })
 
   Items.unregisterSheet("core", ItemSheet)
-  Items.registerSheet("tenebris", applications.TenebrisTalentSheet, {
-    types: ["talent"],
-    makeDefault: true,
-  })
-  Items.registerSheet("tenebris", applications.TenebrisPathSheet, {
-    types: ["path"],
-    makeDefault: true,
-  })
-  Items.registerSheet("tenebris", applications.TenebrisWeaponSheet, {
-    types: ["weapon"],
-    makeDefault: true,
-  })
+  Items.registerSheet("tenebris", applications.TenebrisTalentSheet, { types: ["talent"], makeDefault: true })
+  Items.registerSheet("tenebris", applications.TenebrisPathSheet, { types: ["path"], makeDefault: true })
+  Items.registerSheet("tenebris", applications.TenebrisWeaponSheet, { types: ["weapon"], makeDefault: true })
+  Items.registerSheet("tenebris", applications.TenebrisArmorSheet, { types: ["armor"], makeDefault: true })
 })

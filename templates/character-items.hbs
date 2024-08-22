@@ -1,11 +1,6 @@
 <section class="tab character-{{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
 
   <fieldset>
-    <legend>{{localize "TENEBRIS.Label.biens"}}</legend>
-    {{formInput systemFields.biens enriched=enrichedBiens value=system.biens documentUUID=actor.uuid name="system.biens" collaborate="true" toggled="true" height="100"}}
-  </fieldset>
-
-  <fieldset>
     <legend>{{localize "TENEBRIS.Label.talents"}}</legend>
     {{#if @root.isEditMode}}
       {{#each talents as |item|}}
@@ -48,4 +43,8 @@
     {{/each}}
   </fieldset>
 
+  <fieldset>
+    <legend>{{localize "TENEBRIS.Label.biens"}}</legend>
+    {{formInput systemFields.biens enriched=enrichedBiens value=system.biens documentUUID=actor.uuid name="system.biens" collaborate="true" toggled="true" height="100"}}
+  </fieldset>
 </section>

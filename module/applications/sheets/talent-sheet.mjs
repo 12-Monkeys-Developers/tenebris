@@ -15,7 +15,7 @@ export default class TenebrisTalentSheet extends TenebrisItemSheet {
   /** @override */
   static PARTS = {
     main: {
-      template: "systems/tenebris/templates/talent-main.hbs",
+      template: "systems/tenebris/templates/main.hbs",
     },
   }
 
