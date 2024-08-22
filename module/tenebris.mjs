@@ -6,7 +6,6 @@
  */
 
 import { SYSTEM } from "./config/system.mjs"
-
 globalThis.SYSTEM = SYSTEM // Expose the SYSTEM object to the global scope
 
 // Import modules
@@ -16,6 +15,9 @@ import * as applications from "./applications/_module.mjs"
 
 Hooks.once("init", function () {
   console.log("Initializing Cthulhu Tenebris System")
+
+  globalThis.tenebris = game.system
+  game.system.CONST = SYSTEM
 
   CONFIG.Actor.documentClass = documents.TenebrisActor
   CONFIG.Actor.dataModels = {
