@@ -178,6 +178,13 @@
   font-size: calc(var(--font-size-standard) * 1.6);
   flex: 50%;
 }
+.tenebris .path-content .path-name {
+  display: flex;
+  justify-content: space-between;
+}
+.tenebris .path-content .path-name .control {
+  margin: 5px;
+}
 .tenebris .path-content .path-main {
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
@@ -291,4 +298,50 @@
 }
 .tenebris .talent-content input[type="checkbox"] {
   font-size: var(--font-size-14);
+}
+.tenebris .weapon-content {
+  font-family: "Caslon", sans-serif;
+  font-size: calc(var(--font-size-standard) * 1.2);
+  background-image: url("../assets/gabarit.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.tenebris .weapon-content input[name="name"] {
+  height: 60px;
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 2.4);
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+}
+.tenebris .weapon-content fieldset {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.tenebris .weapon-content .form-fields {
+  padding-top: 5px;
+}
+.tenebris .weapon-content .form-fields input,
+.tenebris .weapon-content .form-fields select {
+  text-align: center;
+  font-size: calc(var(--font-size-standard) * 1.6);
+}
+.tenebris .weapon-content .form-fields input {
+  padding-top: 10px;
+}
+.tenebris .weapon-content .form-fields select {
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 1.8);
+}
+.tenebris .weapon-content legend {
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 2);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.tenebris .weapon-content label {
+  font-family: "Cat Franken", sans-serif;
+  font-size: calc(var(--font-size-standard) * 1.6);
+  flex: 50%;
 }

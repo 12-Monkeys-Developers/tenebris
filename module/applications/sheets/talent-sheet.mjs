@@ -6,7 +6,6 @@ export default class TenebrisTalentSheet extends TenebrisItemSheet {
     classes: ["talent"],
     position: {
       width: 600,
-      height: 800,
     },
     window: {
       contentClasses: ["talent-content"],

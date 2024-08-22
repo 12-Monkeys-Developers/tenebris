@@ -6,7 +6,6 @@ export default class TenebrisWeaponSheet extends TenebrisItemSheet {
     classes: ["weapon"],
     position: {
       width: 600,
-      height: 800,
     },
     window: {
       contentClasses: ["weapon-content"],

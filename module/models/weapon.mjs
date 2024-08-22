@@ -18,6 +18,7 @@ export default class TenebrisWeapon extends foundry.abstract.TypeDataModel {
     })
     return schema
   }
+
   /** @override */
   static LOCALIZATION_PREFIXES = ["TENEBRIS.Weapon"]
 }

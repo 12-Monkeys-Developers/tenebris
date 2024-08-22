@@ -19,7 +19,7 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
     classes: ["tenebris", "item"],
     position: {
       width: 600,
-      height: 500,
+      height: "auto",
     },
     form: {
       submitOnChange: true,

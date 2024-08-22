@@ -260,7 +260,8 @@
     },
     "Dialog": {
       "ajoutVoieMajeure": "Ajouter une voie majeure va automatiquement remplacer les caractéristiques et les ressources. Continuer ?",
-      "suppressionTalents": "Supprimer cette voie va supprimer les talents associés. Continuer ?"
+      "suppressionTalents": "Supprimer cette voie va supprimer les talents associés. Continuer ?",
+      "talentDansVoie": "Ce talent est présent dans la voie {path}. Voulez-vous vraiment le supprimer ?"
     }
   }
 }

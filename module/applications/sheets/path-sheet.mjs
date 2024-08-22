@@ -6,15 +6,14 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
     classes: ["path"],
     position: {
       width: 1400,
-      height: 800,
     },
     window: {
       contentClasses: ["path-content"],
     },
     dragDrop: [{ dragSelector: "[data-drag]", dropSelector: null }],
     actions: {
-      edit: TenebrisPathSheet.#onItemEdit,
-      delete: TenebrisPathSheet.#onItemDelete,
+      edit: TenebrisPathSheet.#onTalentEdit,
+      delete: TenebrisPathSheet.#onTalentDelete,
     },
   }
 
@@ -114,11 +113,11 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
 
   /**
    * Edit an existing talent within the path item
-   * Use the uuid to display the talent sheet
+   * Use the uuid to display the talent sheet (from world or compendium)
    * @param {PointerEvent} event The originating click event
    * @param {HTMLElement} target the capturing HTML element which defined a [data-action]
    */
-  static async #onItemEdit(event, target) {
+  static async #onTalentEdit(event, target) {
     const itemUuid = target.getAttribute("data-item-uuid")
     const talent = await fromUuid(itemUuid)
     talent.sheet.render(true)
@@ -126,14 +125,14 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
 
   /**
    * Delete an existing talent within the path item
-   * Use the uuid to display the talent sheet
+   * Use the uuid to remove it form the array of talents
    * @param {PointerEvent} event The originating click event
    * @param {HTMLElement} target the capturing HTML element which defined a [data-action]
    */
-  static async #onItemDelete(event, target) {
+  static async #onTalentDelete(event, target) {
     const itemUuid = target.getAttribute("data-item-uuid")
-    const talents = this.item.toObject().system.talents
 
+    const talents = this.item.toObject().system.talents
     const index = talents.indexOf(itemUuid)
     talents.splice(index, 1)
     this.item.update({ "system.talents": talents })
