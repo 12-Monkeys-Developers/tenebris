@@ -255,6 +255,38 @@
         "guerre": "Armures de guerre"
       }
     },
+    "Spell": {
+      "FIELDS": {
+        "description": {
+          "label": "Description"
+        },
+        "preparation": {
+          "label": "Préparation"
+        },
+        "cible": {
+          "label": "Cible"
+        },
+        "portee": {
+          "label": "Portée"
+        },
+        "duree": {
+          "label": "Durée"
+        },
+        "consequenceA": {
+          "label": "Conséquence A"
+        },
+        "consequenceB": {
+          "label": "Conséquence B"
+        }
+      },
+      "Range": {
+        "contact": "Contact",
+        "proche": "Proche",
+        "loin": "Loin",
+        "vue": "Vue",
+        "monde": "Monde"
+      }
+    },
     "Label": {
       "description": "Description",
       "biens": "Biens",

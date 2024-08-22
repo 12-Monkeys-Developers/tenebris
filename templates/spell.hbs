@@ -1,0 +1,14 @@
+<section>
+  {{formInput fields.name value=source.name}}
+
+  {{formField systemFields.preparation value=system.preparation}}
+  {{formField systemFields.cible value=system.cible}}
+  {{formField systemFields.portee value=system.portee localize=true}}
+  {{formField systemFields.duree value=system.duree}}
+  {{formField systemFields.consequenceA value=system.consequenceA}}
+  {{formField systemFields.consequenceB value=system.consequenceB}}
+  <fieldset>
+    <legend>{{localize "TENEBRIS.Label.description"}}</legend>
+    {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled="false"}}
+  </fieldset>
+</section>

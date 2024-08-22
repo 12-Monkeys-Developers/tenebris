@@ -1,29 +1,29 @@
 import TenebrisItemSheet from "./base-item-sheet.mjs"
 
-export default class TenebrisTalentSheet extends TenebrisItemSheet {
+export default class TenebrisSpellSheet extends TenebrisItemSheet {
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ["talent"],
+    classes: ["spell"],
     position: {
-      width: 600,
+      width: 450,
     },
     window: {
-      contentClasses: ["talent-content"],
+      contentClasses: ["spell-content"],
     },
   }
 
   /** @override */
   static PARTS = {
     main: {
-      template: "systems/tenebris/templates/talent.hbs",
+      template: "systems/tenebris/templates/spell.hbs",
     },
   }
 
   /** @override */
   async _prepareContext() {
     const context = await super._prepareContext()
-    context.canProgress = this.document.system.canProgress
-    console.log("item context", context)
+
+    console.log("Spell sheet context", context)
     return context
   }
 }

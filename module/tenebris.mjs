@@ -28,6 +28,7 @@ Hooks.once("init", function () {
     talent: models.TenebrisTalent,
     weapon: models.TenebrisWeapon,
     armor: models.TenebrisArmor,
+    spell: models.TenebrisSpell,
   }
 
   // Register sheet application classes
@@ -38,5 +39,8 @@ Hooks.once("init", function () {
   Items.registerSheet("tenebris", applications.TenebrisTalentSheet, { types: ["talent"], makeDefault: true })
   Items.registerSheet("tenebris", applications.TenebrisPathSheet, { types: ["path"], makeDefault: true })
   Items.registerSheet("tenebris", applications.TenebrisWeaponSheet, { types: ["weapon"], makeDefault: true })
+  Items.registerSheet("tenebris", applications.TenebrisSpellSheet, { types: ["spell"], makeDefault: true })
   Items.registerSheet("tenebris", applications.TenebrisArmorSheet, { types: ["armor"], makeDefault: true })
+
+  // Register system settings
 })
