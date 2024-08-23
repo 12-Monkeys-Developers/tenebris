@@ -31,12 +31,11 @@
   background-size: 100% 100%;
 }
 .tenebris .character-content input[name="name"] {
-  height: 60px;
+  height: 50px;
+  margin-right: 10px;
   font-family: "Cat Franken", sans-serif;
   font-size: calc(var(--font-size-standard) * 2.4);
   font-weight: bold;
-  margin-bottom: 10px;
-  padding: 10px;
   border: none;
 }
 .tenebris .character-content fieldset {
@@ -77,57 +76,81 @@
 .tenebris .character-main .character-personnage {
   flex: 0 0 60%;
 }
+.tenebris .character-main .character-personnage input[name="name"] {
+  height: 50px;
+}
+.tenebris .character-main .character-personnage label {
+  flex: 20%;
+}
 .tenebris .character-main .character-personnage .character-personnag-contenu {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+}
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-img {
+  grid-column: 1 / 2;
+  grid-row: 1 / 5;
+  height: 200px;
 }
 .tenebris .character-main .character-personnage .character-personnag-contenu .character-name {
   display: flex;
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-gauche,
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-droite {
-  margin-top: 10px;
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-voie-majeure {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-gauche {
-  margin-right: 10px;
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-voie-mineure {
+  grid-column: 2 / 4;
+  grid-row: 3 / 4;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-gauche .character-voie-majeure {
-  display: flex;
-  flex-direction: row;
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-commanditaire {
+  grid-column: 2 / 4;
+  grid-row: 4 / 5;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-droite {
-  display: flex;
-  flex-direction: column;
-}
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-droite .character-pv {
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-pv {
+  grid-column: 1 / 2;
+  grid-row: 5 / 6;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-personnage-droite .character-pv input[name="system.pv.max"] {
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-pv input[name="system.pv.value"] {
   padding-top: 10px;
   text-align: center;
   font-size: calc(var(--font-size-standard) * 1.6);
-  width: 80px;
+  width: 50px;
 }
-.tenebris .character-main .character-personnage .character-img {
-  width: 100px;
-  margin: 10px;
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-pv input[name="system.pv.max"] {
+  padding-top: 10px;
+  text-align: center;
+  font-size: calc(var(--font-size-standard) * 1.6);
+  width: 50px;
 }
-.tenebris .character-main .character-personnage .character-voies {
-  display: flex;
-  flex-direction: row;
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-dv {
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+}
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-dmax {
+  grid-column: 3 / 4;
+  grid-row: 5 / 6;
 }
 .tenebris .character-main .character-caracteristiques {
   width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .tenebris .character-main .character-caracteristiques input {
   width: 20px;
 }
 .tenebris .character-main .character-ressources {
   width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .tenebris .character-items .talent {
   display: flex;
@@ -140,12 +163,11 @@
   background-size: 100% 100%;
 }
 .tenebris .path-content input[name="name"] {
-  height: 60px;
+  height: 50px;
+  margin-right: 10px;
   font-family: "Cat Franken", sans-serif;
   font-size: calc(var(--font-size-standard) * 2.4);
   font-weight: bold;
-  margin-bottom: 10px;
-  padding: 10px;
   border: none;
 }
 .tenebris .path-content fieldset {
@@ -258,12 +280,11 @@
   background-size: 100% 100%;
 }
 .tenebris .talent-content input[name="name"] {
-  height: 60px;
+  height: 50px;
+  margin-right: 10px;
   font-family: "Cat Franken", sans-serif;
   font-size: calc(var(--font-size-standard) * 2.4);
   font-weight: bold;
-  margin-bottom: 10px;
-  padding: 10px;
   border: none;
 }
 .tenebris .talent-content fieldset {
@@ -307,12 +328,11 @@
   background-size: 100% 100%;
 }
 .tenebris .weapon-content input[name="name"] {
-  height: 60px;
+  height: 50px;
+  margin-right: 10px;
   font-family: "Cat Franken", sans-serif;
   font-size: calc(var(--font-size-standard) * 2.4);
   font-weight: bold;
-  margin-bottom: 10px;
-  padding: 10px;
   border: none;
 }
 .tenebris .weapon-content fieldset {
@@ -356,12 +376,11 @@
   background-size: 100% 100%;
 }
 .tenebris .armor-content input[name="name"] {
-  height: 60px;
+  height: 50px;
+  margin-right: 10px;
   font-family: "Cat Franken", sans-serif;
   font-size: calc(var(--font-size-standard) * 2.4);
   font-weight: bold;
-  margin-bottom: 10px;
-  padding: 10px;
   border: none;
 }
 .tenebris .armor-content fieldset {
@@ -405,12 +424,11 @@
   background-size: 100% 100%;
 }
 .tenebris .spell-content input[name="name"] {
-  height: 60px;
+  height: 50px;
+  margin-right: 10px;
   font-family: "Cat Franken", sans-serif;
   font-size: calc(var(--font-size-standard) * 2.4);
   font-weight: bold;
-  margin-bottom: 10px;
-  padding: 10px;
   border: none;
 }
 .tenebris .spell-content fieldset {
