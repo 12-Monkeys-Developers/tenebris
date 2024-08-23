@@ -27,9 +27,9 @@
       </div>
       <div class="character-personnage-droite">
         {{formField systemFields.dv value=system.dv rootId=partId disabled=isPlayMode}}
-        {{formField systemFields.dmax value=system.dmax rootId=partId disabled=isPlayMode}}
+        {{formField systemFields.dmax.fields.valeur value=system.dmax.valeur rootId=partId disabled=isPlayMode}}
         <div class="character-pv">
-          {{formField systemFields.pv.fields.valeur value=system.pv.valeur }} <span class="pv-separator">/</span>{{formInput systemFields.pv.fields.max value=system.pv.max rootId=partId disabled=isPlayMode}}
+          {{formField systemFields.pv.fields.value value=system.pv.value }} <span class="pv-separator">/</span>{{formInput systemFields.pv.fields.max value=system.pv.max rootId=partId disabled=isPlayMode}}
         </div>
       </div>
     </div>

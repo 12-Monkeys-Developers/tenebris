@@ -37,14 +37,14 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
           min: 0,
         }),
         progression: new fields.SchemaField({
-          rectangle: new fields.NumberField({
+          experience: new fields.NumberField({
             required: true,
             nullable: false,
             integer: true,
             initial: 0,
             min: 0,
           }),
-          rond: new fields.BooleanField({ initial: false }),
+          progres: new fields.BooleanField({ initial: false }),
         }),
       }
       return new fields.SchemaField(schema, { label })
@@ -74,6 +74,13 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
           choices: Object.fromEntries(Object.entries(SYSTEM.RESOURCE_VALUE).map(([key, value]) => [value, { label: `${value}` }])),
           blank: true,
         }),
+        experience: new fields.NumberField({
+          required: true,
+          nullable: false,
+          integer: true,
+          initial: 0,
+          min: 0,
+        }),
       }
       return new fields.SchemaField(schema, { label })
     }
@@ -98,7 +105,7 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
     })
 
     schema.pv = new fields.SchemaField({
-      valeur: new fields.NumberField({
+      value: new fields.NumberField({
         required: true,
         nullable: false,
         initial: 10,
@@ -112,11 +119,20 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
       }),
     })
 
-    schema.dmax = new fields.StringField({
-      required: true,
-      nullable: false,
-      initial: SYSTEM.RESOURCE_VALUE.ZERO,
-      choices: Object.fromEntries(Object.entries(SYSTEM.RESOURCE_VALUE).map(([key, value]) => [value, { label: `${value}` }])),
+    schema.dmax = new fields.SchemaField({
+      valeur: new fields.StringField({
+        required: true,
+        nullable: false,
+        initial: SYSTEM.RESOURCE_VALUE.ZERO,
+        choices: Object.fromEntries(Object.entries(SYSTEM.RESOURCE_VALUE).map(([key, value]) => [value, { label: `${value}` }])),
+      }),
+      experience: new fields.NumberField({
+        required: true,
+        nullable: false,
+        integer: true,
+        initial: 0,
+        min: 0,
+      }),
     })
 
     schema.voies = new fields.SchemaField({

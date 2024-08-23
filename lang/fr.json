@@ -34,13 +34,15 @@
           "label": "Dé de Vie"
         },
         "pv": {
-          "valeur": {
+          "value": {
             "label": "Points de Vie",
             "short": "PV"
           }
         },
         "dmax": {
-          "label": "Dégâts max"
+          "valeur": {
+            "label": "Dégâts max"
+          }
         },
         "caracteristiques": {
           "rob": {
