@@ -4,12 +4,7 @@ export default class TenebrisWeapon extends foundry.abstract.TypeDataModel {
     const fields = foundry.data.fields
     const schema = {}
 
-    schema.description = new fields.HTMLField({
-      required: false,
-      blank: true,
-      initial: "",
-      textSearch: true,
-    })
+    schema.description = new fields.HTMLField({ required: true, textSearch: true })
     schema.categorie = new fields.StringField({ required: true, initial: "mains", choices: SYSTEM.WEAPON_CATEGORY })
     schema.degats = new fields.StringField({
       required: true,

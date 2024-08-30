@@ -12,11 +12,11 @@ export default class TenebrisSpell extends foundry.abstract.TypeDataModel {
     })
 
     schema.preparation = new fields.NumberField({ required: true, nullable: false, integer: true, initial: 0, min: 0 })
-    schema.cible = new fields.StringField({ required: true, nullable: false, initial: "" })
+    schema.cible = new fields.StringField({ required: true })
     schema.portee = new fields.StringField({ required: true, initial: "contact", choices: SYSTEM.SPELL_RANGE })
-    schema.duree = new fields.StringField({ required: true, nullable: false, initial: "" })
-    schema.consequenceA = new fields.StringField({ required: true, nullable: false, initial: "" })
-    schema.consequenceB = new fields.StringField({ required: true, nullable: false, initial: "" })
+    schema.duree = new fields.StringField({ required: true })
+    schema.consequenceA = new fields.StringField({ required: true })
+    schema.consequenceB = new fields.StringField({ required: true })
 
     return schema
   }

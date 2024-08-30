@@ -30,10 +30,8 @@ export default class TenebrisPath extends foundry.abstract.TypeDataModel {
       const schema = {
         valeur: new fields.StringField({
           required: true,
-          nullable: false,
           initial: SYSTEM.RESOURCE_VALUE.ZERO,
           choices: Object.fromEntries(Object.entries(SYSTEM.RESOURCE_VALUE).map(([key, value]) => [value, { label: `${value}` }])),
-          blank: true,
         }),
       }
       return new fields.SchemaField(schema, { label })
@@ -48,38 +46,21 @@ export default class TenebrisPath extends foundry.abstract.TypeDataModel {
 
     schema.dv = new fields.StringField({
       required: true,
-      nullable: false,
       initial: SYSTEM.RESOURCE_VALUE.ZERO,
       choices: Object.fromEntries(Object.entries(SYSTEM.RESOURCE_VALUE).map(([key, value]) => [value, { label: `${value}` }])),
     })
 
     schema.dmax = new fields.StringField({
       required: true,
-      nullable: false,
       initial: SYSTEM.RESOURCE_VALUE.ZERO,
       choices: Object.fromEntries(Object.entries(SYSTEM.RESOURCE_VALUE).map(([key, value]) => [value, { label: `${value}` }])),
     })
 
-    schema.description = new fields.HTMLField({
-      required: false,
-      blank: true,
-      initial: "",
-      textSearch: true,
-    })
+    schema.description = new fields.HTMLField({ required: true, textSearch: true })
 
-    schema.biens = new fields.HTMLField({
-      required: false,
-      blank: true,
-      initial: "",
-      textSearch: true,
-    })
+    schema.biens = new fields.HTMLField({ required: true, textSearch: true })
 
-    schema.langues = new fields.HTMLField({
-      required: false,
-      blank: true,
-      initial: "",
-      textSearch: true,
-    })
+    schema.langues = new fields.HTMLField({ required: true, textSearch: true })
 
     schema.talents = new fields.ArrayField(new fields.DocumentUUIDField())
 

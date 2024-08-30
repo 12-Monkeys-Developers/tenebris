@@ -32,14 +32,14 @@
   ],
   "documentTypes": {
     "Actor": {
-      "character": {}
+      "character": { "htmlFields": ["description", "langues", "notes"] }
     },
     "Item": {
-      "path": {},
-      "talent": {},
-      "weapon": {},
-      "armor": {},
-      "spell": {}
+      "path": { "htmlFields": ["description", "biens", "langues"] },
+      "talent": { "htmlFields": ["description"] },
+      "weapon": { "htmlFields": ["description"] },
+      "armor": { "htmlFields": ["description"] },
+      "spell": { "htmlFields": ["description"] }
     }
   },
   "grid": {

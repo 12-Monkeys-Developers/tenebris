@@ -8,7 +8,7 @@
       "talent": "Talent",
       "weapon": "Arme",
       "armor": "Armure",
-      "spell": "Sort"
+      "spell": "Sortilège"
     }
   },
 
@@ -285,8 +285,7 @@
         "contact": "Contact",
         "proche": "Proche",
         "loin": "Loin",
-        "vue": "Vue",
-        "monde": "Monde"
+        "distant": "Distant"
       }
     },
     "Label": {
