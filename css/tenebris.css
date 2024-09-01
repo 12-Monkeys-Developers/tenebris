@@ -152,6 +152,16 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
+.tenebris .character-main .rollable:hover,
+.tenebris .character-main .rollable:focus {
+  text-shadow: 0 0 10px #eea3a3;
+  cursor: pointer;
+}
+.tenebris .character-main input[readonly],
+.tenebris .character-main input[disabled] {
+  pointer-events: none;
+  /* Permet aux clics de "passer à travers" l'input */
+}
 .tenebris .character-items .talent {
   display: flex;
 }
@@ -467,4 +477,10 @@
 .tenebris .spell-content input[name="system.consequenceA"],
 .tenebris .spell-content input[name="system.consequenceB"] {
   font-size: calc(var(--font-size-standard) * 1.2);
+}
+.tenebris.dice-roll {
+  font-family: "Caslon", sans-serif;
+  background-image: url("../assets/gabarit.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }

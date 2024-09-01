@@ -44,5 +44,12 @@ Hooks.once("init", function () {
   Items.registerSheet("tenebris", applications.TenebrisSpellSheet, { types: ["spell"], makeDefault: true })
   Items.registerSheet("tenebris", applications.TenebrisArmorSheet, { types: ["armor"], makeDefault: true })
 
+  // Other Document Configuration
+  CONFIG.ChatMessage.documentClass = documents.TenebrisChatMessage
+  CONFIG.ChatMessage.template = "systems/tenebris/templates/chat-message.hbs"
+
+  // Dice system configuration
+  CONFIG.Dice.rolls.push(documents.TenebrisRoll)
+
   // Register system settings
 })

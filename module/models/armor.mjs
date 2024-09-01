@@ -5,12 +5,7 @@ export default class TenebrisArmor extends foundry.abstract.TypeDataModel {
     const fields = foundry.data.fields
     const schema = {}
 
-    schema.description = new fields.HTMLField({
-      required: false,
-      blank: true,
-      initial: "",
-      textSearch: true,
-    })
+    schema.description = new fields.HTMLField({ required: true, textSearch: true })
 
     schema.categorie = new fields.StringField({ required: true, initial: "sommaire", choices: SYSTEM.ARMOR_CATEGORY })
 

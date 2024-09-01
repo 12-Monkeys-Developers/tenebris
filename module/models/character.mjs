@@ -1,4 +1,5 @@
 import { SYSTEM } from "../config/system.mjs"
+import TenebrisRoll from "../documents/roll.mjs"
 
 export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
   static defineSchema() {
@@ -179,5 +180,17 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
       "system.voies.mineure.nom": "",
       "system.voies.mineure.id": null,
     })
+  }
+
+  async roll(rollType, rollValue) {
+    let roll
+    if (rollType === "save") {
+      roll = await new TenebrisRoll("1d20", {}, { type: rollType, value: rollValue }).roll()
+    } else if (rollType === "resource") {
+      const formula = this.ressources[rollValue].valeur
+      if (formula === "0") return ui.notifications.warn("Vous n'avez plus de ressource")
+      roll = await new TenebrisRoll(formula, {}, { type: rollType, value: rollValue }).roll()
+    }
+    roll.toMessage()
   }
 }
