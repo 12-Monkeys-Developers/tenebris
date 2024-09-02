@@ -12,6 +12,12 @@ export default class TenebrisRoll extends Roll {
   static CHAT_TEMPLATE = "systems/tenebris/templates/standard-roll.hbs"
 
   /**
+   * Which Dialog subclass should display a prompt for this Roll type?
+   * @type {StandardCheckDialog}
+   */
+  static dialogClass = TenebrisDialog
+
+  /**
    * The type of this roll.
    * @type {string}
    */
@@ -59,12 +65,6 @@ export default class TenebrisRoll extends Roll {
     }
     return text
   }
-
-  /**
-   * Which Dialog subclass should display a prompt for this Roll type?
-   * @type {StandardCheckDialog}
-   */
-  static dialogClass = TenebrisDialog
 
   /* -------------------------------------------- */
   async toMessage(messageData = {}, { rollMode, create = true } = {}) {
