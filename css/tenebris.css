@@ -478,9 +478,43 @@
 .tenebris .spell-content input[name="system.consequenceB"] {
   font-size: calc(var(--font-size-standard) * 1.2);
 }
-.tenebris.dice-roll {
+.tenebris.chat-message {
   font-family: "Caslon", sans-serif;
   background-image: url("../assets/gabarit.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+.tenebris.chat-message .message-header {
+  font-family: "Caslon", sans-serif;
+}
+.tenebris.chat-message .tenebris.dice-roll {
+  font-family: "Caslon", sans-serif;
+}
+.tenebris.chat-message img {
+  border: 0px;
+}
+.tenebris.chat-message .intro-chat {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.tenebris.chat-message .intro-chat .intro-img {
+  padding: 5px;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  object-position: center;
+  align-self: center;
+}
+.tenebris.chat-message .intro-chat .intro-right {
+  display: flex;
+  flex-direction: column;
+}
+.tenebris.chat-message .intro-chat .intro-right .introText {
+  font-family: "Caslon", sans-serif;
+  font-size: calc(var(--font-size-standard) * 1.2);
+  width: 210px;
+  padding-top: 0.5em;
+  text-align: center;
 }

@@ -36,7 +36,6 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
       deleteVoieMineure: TenebrisCharacterSheet.#onDeleteVoieMineure,
       edit: TenebrisCharacterSheet.#onItemEdit,
       delete: TenebrisCharacterSheet.#onItemDelete,
-      //roll: TenebrisCharacterSheet.#onRoll,
     },
   }
 
@@ -215,7 +214,7 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
     const rollables = this.element.querySelectorAll(".rollable")
     rollables.forEach((d) => d.addEventListener("click", this.#onRoll.bind(this)))
     // Ajouter l'écouteur de clic sur le parent `.form-fields`
-    /*this.element.querySelectorAll(".form-group.rollable").addEventListener("click", (event) => {
+    /* this.element.querySelectorAll(".form-group.rollable").addEventListener("click", (event) => {
       this.#onRoll(event) // Par exemple, lancer le roll
     })*/
   }
@@ -427,26 +426,14 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
    * @param {HTMLElement} target the capturing HTML element which defined a [data-action]
    */
   async #onRoll(event, target) {
-    let elt
+    if (this.isEditMode) return
     // Jet de sauvegarde
-    elt = event.currentTarget.querySelector("input")
-    // Jet de ressource
+    let elt = event.currentTarget.querySelector("input")
+    // Sinon c'est un jet de ressource
     if (!elt) elt = event.currentTarget.querySelector("select")
     const rollType = elt.dataset.rollType
     const rollValue = elt.dataset.rollValue
     await this.actor.system.roll(rollType, rollValue)
-
-    /*
-    const elts = event.currentTarget.classList
-    if (!elts.contains("rollable")) return
-    const rollType = elts[2]
-    const rollValue = elts[3]
-    */
-    /*
-    const rollType = target.dataset.rollType
-    const rollValue = target.dataset.rollValue
-    await this.actor.system.roll(rollType, rollValue)
-    */
   }
   // #endregion
 }

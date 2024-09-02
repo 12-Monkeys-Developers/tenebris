@@ -184,12 +184,24 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
 
   async roll(rollType, rollValue) {
     let roll
-    if (rollType === "save") {
-      roll = await new TenebrisRoll("1d20", {}, { type: rollType, value: rollValue }).roll()
-    } else if (rollType === "resource") {
-      const formula = this.ressources[rollValue].valeur
-      if (formula === "0") return ui.notifications.warn("Vous n'avez plus de ressource")
-      roll = await new TenebrisRoll(formula, {}, { type: rollType, value: rollValue }).roll()
+    switch (rollType) {
+      case "save":
+        // Roll = await new TenebrisRoll("1d20", {}, { type: rollType, value: rollValue }).roll()
+        roll = new TenebrisRoll("1d20", {}, { type: rollType, value: rollValue, actorId: this.parent.id, actorName: this.parent.name, actorImage: this.parent.img })
+        const response = await roll.dialog({ title: "Jet de sauvegarde", flavor: `Jet de sauvegarde contre ${rollValue}` })
+        if (response === null) return null
+        await roll.roll()
+        break
+
+      case "resource":
+        const formula = this.ressources[rollValue].valeur
+        if (formula === "0") return ui.notifications.warn("Vous n'avez plus de ressource")
+        roll = await new TenebrisRoll(formula, {}, { type: rollType, value: rollValue, actorId: this.parent.id, actorName: this.parent.name, actorImage: this.parent.img }).roll()
+        break
+
+      default:
+        // Handle other cases or do nothing
+        break
     }
     roll.toMessage()
   }
