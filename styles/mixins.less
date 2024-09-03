@@ -1,5 +1,5 @@
 .sheet-common() {
-  font-family: "Caslon", sans-serif;
+  font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
   background-image: url("../assets/gabarit.webp");
   background-repeat: no-repeat;
@@ -8,7 +8,7 @@
   input[name="name"] {
     height: 50px;
     margin-right: 10px;
-    font-family: "Cat Franken", sans-serif;
+    font-family: var(--font-secondary);
     font-size: calc(var(--font-size-standard) * 2.4);
     font-weight: bold;
     border: none;
@@ -20,7 +20,6 @@
   }
 
   .form-fields {
-    padding-top: 5px;
     input,
     select {
       text-align: center;
@@ -30,20 +29,34 @@
       padding-top: 10px;
     }
     select {
-      font-family: "Cat Franken", sans-serif;
+      font-family: var(--font-secondary);
       font-size: calc(var(--font-size-standard) * 1.8);
     }
   }
 
   legend {
-    font-family: "Cat Franken", sans-serif;
+    font-family: var(--font-secondary);
     font-size: calc(var(--font-size-standard) * 2);
     font-weight: bold;
     letter-spacing: 1px;
   }
+}
+
+.character-sheet-common {
+  label {
+    font-family: var(--font-secondary);
+    font-size: calc(var(--font-size-standard) * 1.6);
+    flex: 50%;
+  }
+}
+
+.item-sheet-common {
+  .form-fields {
+    padding-top: 5px;
+  }
 
   label {
-    font-family: "Cat Franken", sans-serif;
+    font-family: var(--font-secondary);
     font-size: calc(var(--font-size-standard) * 1.6);
     flex: 50%;
   }

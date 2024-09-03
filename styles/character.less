@@ -1,5 +1,6 @@
 .character-content {
   .sheet-common();
+  .character-sheet-common();
 }
 
 .character-main {
@@ -37,11 +38,15 @@
       .character-voie-majeure {
         grid-column: 2 / 4;
         grid-row: 2 / 3;
+        display: flex;
+        justify-content: space-between;
       }
 
       .character-voie-mineure {
         grid-column: 2 / 4;
         grid-row: 3 / 4;
+        display: flex;
+        justify-content: space-between;
       }
 
       .character-commanditaire {
@@ -82,17 +87,10 @@
     }
 
     .character-img {
-      //width: 100px;
-      //height: 100%;
-      //padding-right: 30px;
-      //margin-right: 10px;
-      //margin: 10px 40px 10px 10px;
+      border: none;
     }
   }
 
-  //.character-details {}
-  //display: flex;
-  //justify-content: space-between;
   .character-caracteristiques {
     width: 15%;
     display: flex;
