@@ -4,48 +4,21 @@ import TenebrisRoll from "../documents/roll.mjs"
 export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields
+    const requiredInteger = { required: true, nullable: false, integer: true }
     const schema = {}
 
-    schema.description = new fields.HTMLField({
-      required: false,
-      blank: true,
-      initial: "",
-      textSearch: true,
-    })
-
-    schema.langues = new fields.HTMLField({
-      required: false,
-      blank: true,
-      initial: "",
-      textSearch: true,
-    })
-
-    schema.notes = new fields.HTMLField({
-      required: false,
-      blank: true,
-      initial: "",
-      textSearch: true,
-    })
+    schema.description = new fields.HTMLField({ required: true, textSearch: true })
+    schema.langues = new fields.HTMLField({ required: true, textSearch: true })
+    schema.notes = new fields.HTMLField({ required: true, textSearch: true })
+    schema.biens = new fields.HTMLField({ required: true, textSearch: true })
 
     // Caractéristiques
     const characteristicField = (label) => {
       const schema = {
-        valeur: new fields.NumberField({
-          required: true,
-          nullable: false,
-          integer: true,
-          initial: 10,
-          min: 0,
-        }),
+        valeur: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
         progression: new fields.SchemaField({
-          experience: new fields.NumberField({
-            required: true,
-            nullable: false,
-            integer: true,
-            initial: 0,
-            min: 0,
-          }),
-          progres: new fields.BooleanField({ initial: false }),
+          experience: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+          progres: new fields.BooleanField(),
         }),
       }
       return new fields.SchemaField(schema, { label })
@@ -75,13 +48,7 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
           choices: Object.fromEntries(Object.entries(SYSTEM.RESOURCE_VALUE).map(([key, value]) => [value, { label: `${value}` }])),
           blank: true,
         }),
-        experience: new fields.NumberField({
-          required: true,
-          nullable: false,
-          integer: true,
-          initial: 0,
-          min: 0,
-        }),
+        experience: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
       }
       return new fields.SchemaField(schema, { label })
     }
@@ -93,10 +60,7 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
       }, {}),
     )
 
-    schema.commanditaire = new fields.StringField({
-      required: false,
-      nullable: true,
-    })
+    schema.commanditaire = new fields.StringField({})
 
     schema.dv = new fields.StringField({
       required: true,
@@ -106,18 +70,8 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
     })
 
     schema.pv = new fields.SchemaField({
-      value: new fields.NumberField({
-        required: true,
-        nullable: false,
-        initial: 10,
-        min: 0,
-      }),
-      max: new fields.NumberField({
-        required: true,
-        nullable: false,
-        integer: true,
-        initial: 10,
-      }),
+      value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      max: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
     })
 
     schema.dmax = new fields.SchemaField({
@@ -127,31 +81,18 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
         initial: SYSTEM.RESOURCE_VALUE.ZERO,
         choices: Object.fromEntries(Object.entries(SYSTEM.RESOURCE_VALUE).map(([key, value]) => [value, { label: `${value}` }])),
       }),
-      experience: new fields.NumberField({
-        required: true,
-        nullable: false,
-        integer: true,
-        initial: 0,
-        min: 0,
-      }),
+      experience: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
     })
 
     schema.voies = new fields.SchemaField({
       majeure: new fields.SchemaField({
         id: new fields.DocumentIdField(),
-        nom: new fields.StringField({ required: true, nullable: false }),
+        nom: new fields.StringField({ required: true }),
       }),
       mineure: new fields.SchemaField({
         id: new fields.DocumentIdField(),
-        nom: new fields.StringField({ required: true, nullable: false }),
+        nom: new fields.StringField({ required: true }),
       }),
-    })
-
-    schema.biens = new fields.HTMLField({
-      required: false,
-      blank: true,
-      initial: "",
-      textSearch: true,
     })
 
     return schema

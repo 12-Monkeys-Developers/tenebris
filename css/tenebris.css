@@ -1,7 +1,8 @@
-.tenebris :root {
+:root {
   --font-primary: 'Caslon', sans-serif;
   --font-secondary: 'Cat Franken', sans-serif;
   --font-size-base: var(--font-size-16);
+  --color-shadow-primary: #524e4e;
 }
 @font-face {
   font-family: "Cat Franken";
@@ -267,7 +268,7 @@
   justify-content: space-between;
 }
 .tenebris .path-content .path-talents .talent .header .name {
-  font-family: "Cat Franken", sans-serif;
+  font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.5);
   padding-left: 20px;
 }
@@ -479,16 +480,16 @@
   font-size: calc(var(--font-size-standard) * 1.2);
 }
 .tenebris.chat-message {
-  font-family: "Caslon", sans-serif;
+  font-family: var(--font-primary);
   background-image: url("../assets/gabarit.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 .tenebris.chat-message .message-header {
-  font-family: "Caslon", sans-serif;
+  font-family: var(--font-primary);
 }
 .tenebris.chat-message .tenebris.dice-roll {
-  font-family: "Caslon", sans-serif;
+  font-family: var(--font-primary);
 }
 .tenebris.chat-message img {
   border: 0px;
@@ -512,7 +513,7 @@
   flex-direction: column;
 }
 .tenebris.chat-message .intro-chat .intro-right .introText {
-  font-family: "Caslon", sans-serif;
+  font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
   width: 210px;
   padding-top: 0.5em;

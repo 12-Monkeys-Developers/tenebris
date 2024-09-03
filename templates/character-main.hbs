@@ -10,14 +10,14 @@
           <i class="fa-solid fa-user-{{ifThen isPlayMode 'lock' 'pen'}}"></i>
         </a>
       </div>
-      {{formField systemFields.voies.fields.majeure.fields.nom value=system.voies.majeure.nom rootId=partId disabled=isPlayMode classes="character-voie-majeure"}}
+      {{formField systemFields.voies.fields.majeure.fields.nom value=system.voies.majeure.nom rootId=partId disabled=true classes="character-voie-majeure"}}
       {{#if (and isEditMode system.hasVoieMajeure)}}
         <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{actor.system.voies.majeure.id}}"><i class="fas fa-edit"></i></a>
         {{#if (not system.hasVoieMineure)}}
           <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="deleteVoieMajeure"><i class="fas fa-trash"></i></a>
         {{/if}}
       {{/if}}
-      {{formField systemFields.voies.fields.mineure.fields.nom value=system.voies.mineure.nom rootId=partId disabled=isPlayMode classes="character-voie-mineure"}}
+      {{formField systemFields.voies.fields.mineure.fields.nom value=system.voies.mineure.nom rootId=partId disabled=true classes="character-voie-mineure"}}
       {{#if (and isEditMode system.hasVoieMineure)}}
         <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{actor.system.voies.majeure.id}}"><i class="fas fa-edit"></i></a>
         <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="deleteVoieMineure"><i class="fas fa-trash"></i></a>
