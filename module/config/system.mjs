@@ -14,6 +14,12 @@ export const RESOURCE_VALUE = Object.freeze({
   D12: "d12",
 })
 
+export const ROLL_TYPE = Object.freeze({
+  SAVE: "save",
+  RESOURCE: "resource",
+  DAMAGE: "damage",
+})
+
 /**
  * Include all constant definitions within the SYSTEM global export
  * @type {Object}

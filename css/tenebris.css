@@ -505,9 +505,6 @@
 .tenebris.chat-message .message-header {
   font-family: var(--font-primary);
 }
-.tenebris.chat-message .tenebris.dice-roll {
-  font-family: var(--font-primary);
-}
 .tenebris.chat-message img {
   border: 0px;
 }
@@ -519,9 +516,7 @@
 }
 .tenebris.chat-message .intro-chat .intro-img {
   padding: 5px;
-  width: 60px;
-  object-fit: contain;
-  object-position: center;
+  width: 80px;
   align-self: center;
 }
 .tenebris.chat-message .intro-chat .intro-right {
@@ -530,8 +525,39 @@
 }
 .tenebris.chat-message .intro-chat .intro-right .introText {
   font-family: var(--font-primary);
-  font-size: calc(var(--font-size-standard) * 1.2);
+  font-size: calc(var(--font-size-standard) * 1.1);
   width: 210px;
-  padding-top: 0.5em;
   text-align: center;
+}
+.tenebris.chat-message .result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--font-size-standard) * 1.2);
+}
+.tenebris .aide-gene {
+  display: flex;
+}
+.tenebris .tenebris.dice-roll {
+  font-family: var(--font-primary);
+}
+.tenebris .tenebris.dice-roll .dice-total,
+.tenebris .tenebris.dice-roll .dice-formula {
+  padding-top: 5px;
+}
+.tenebris .tenebris.dice-roll .dice-total {
+  margin-bottom: 5px;
+}
+.application.dialog.tenebris {
+  font-family: var(--font-primary);
+  font-size: calc(var(--font-size-standard) * 1.2);
+  background-image: url("../assets/gabarit.webp");
+}
+.application.dialog.tenebris .legend {
+  font-family: var(--font-primary);
+}
+#tooltip.tooltip-avantages {
+  max-width: 550px;
+  text-align: left;
 }

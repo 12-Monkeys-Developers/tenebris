@@ -1,3 +1,36 @@
-<form class="dialog-roll">
-Roll
-</form>
+{{log "dialog" this}}
+<label>
+{{#if isSave}}
+    <div class="aide-gene">
+        <fieldSet>
+            <legend>Aide</legend>
+            <select name="aide">
+                {{selectOptions choiceAide}}
+            </select>
+        </fieldSet>
+        <fieldSet>
+          <legend>Gêne</legend>
+            <select name="gene">
+              {{selectOptions choiceGene}}
+            </select>
+        </fieldSet>
+    </div>
+    </fieldSet>
+        <fieldSet>
+        <legend>Modificateur</legend>
+           <select name="modificateur">
+                {{selectOptions choiceModificateur}}
+            </select>
+    </fieldSet>
+    <fieldSet>  
+    <legend>Avantages et Désavantages</legend>
+    <input type="range" name="avantages" min="1" max="5" data-tooltip="Double désavantage - Désavantage - Normal - Avantage - Double avantage" data-tooltip-direction="UP" data-tooltip-class="tooltip-avantages">    
+  </fieldSet>
+  {{/if}}  
+  <fieldSet>  
+    <legend>Visibilité du lancer</legend>
+    <select name="visibility">
+      {{selectOptions rollModes selected=visibility}}
+    </select>
+  </fieldSet>
+</label>

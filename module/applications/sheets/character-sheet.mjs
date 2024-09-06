@@ -1,3 +1,5 @@
+import { ROLL_TYPE } from "../../config/system.mjs"
+
 const { HandlebarsApplicationMixin } = foundry.applications.api
 
 export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ActorSheetV2) {
@@ -114,52 +116,52 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
         saveRob: {
           action: "roll",
           rollType: "save",
-          rollValue: "rob",
+          rollTarget: "rob",
         },
         saveDex: {
           action: "roll",
           rollType: "save",
-          rollValue: "dex",
+          rollTarget: "dex",
         },
         saveInt: {
           action: "roll",
           rollType: "save",
-          rollValue: "int",
+          rollTarget: "int",
         },
         savePer: {
           action: "roll",
           rollType: "save",
-          rollValue: "per",
+          rollTarget: "per",
         },
         saveVol: {
           action: "roll",
           rollType: "save",
-          rollValue: "vol",
+          rollTarget: "vol",
         },
         resourceSan: {
           action: "roll",
           rollType: "resource",
-          rollValue: "san",
+          rollTarget: "san",
         },
         resourceOeil: {
           action: "roll",
           rollType: "resource",
-          rollValue: "oeil",
+          rollTarget: "oeil",
         },
         resourceVerbe: {
           action: "roll",
           rollType: "resource",
-          rollValue: "verbe",
+          rollTarget: "verbe",
         },
         resourceBourse: {
           action: "roll",
           rollType: "resource",
-          rollValue: "bourse",
+          rollTarget: "bourse",
         },
         resourceMagie: {
           action: "roll",
           rollType: "resource",
-          rollValue: "magie",
+          rollTarget: "magie",
         },
       },
     }
@@ -432,8 +434,23 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
     // Sinon c'est un jet de ressource
     if (!elt) elt = event.currentTarget.querySelector("select")
     const rollType = elt.dataset.rollType
-    const rollValue = elt.dataset.rollValue
-    await this.actor.system.roll(rollType, rollValue)
+    const rollTarget = elt.dataset.rollTarget
+    let rollValue
+    switch (rollType) {
+      case ROLL_TYPE.SAVE:
+        rollValue = this.actor.system.caracteristiques[rollTarget].valeur
+        break
+      case ROLL_TYPE.RESOURCE:
+        rollValue = this.actor.system.ressources[rollTarget].valeur
+        break
+      case ROLL_TYPE.DAMAGE:
+        // TO DO
+        break
+      default:
+        // Handle other cases or do nothing
+        break
+    }
+    await this.actor.system.roll(rollType, rollTarget, rollValue)
   }
   // #endregion
 }

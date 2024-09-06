@@ -1,12 +1,26 @@
 @import "global.less";
-.tenebris {    
-    @import "fonts.less";    
-    @import "mixins.less";
-    @import "character.less";
-    @import "path.less";
-    @import "talent.less";
-    @import "weapon.less";
-    @import "armor.less";
-    @import "spell.less";
-    @import "roll.less";
+.tenebris {
+  @import "fonts.less";
+  @import "mixins.less";
+  @import "character.less";
+  @import "path.less";
+  @import "talent.less";
+  @import "weapon.less";
+  @import "armor.less";
+  @import "spell.less";
+  @import "roll.less";
+}
+
+.application.dialog.tenebris {
+  font-family: var(--font-primary);
+  font-size: calc(var(--font-size-standard) * 1.2);
+  background-image: url("../assets/gabarit.webp");
+  .legend {
+    font-family: var(--font-primary);
+  }
+}
+
+#tooltip.tooltip-avantages {
+  max-width: 550px;
+  text-align: left;
 }

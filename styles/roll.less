@@ -6,9 +6,6 @@
   .message-header {
     font-family: var(--font-primary);
   }
-  .tenebris.dice-roll {
-    font-family: var(--font-primary);
-  }
   img {
     border: 0px;
   }
@@ -19,9 +16,7 @@
     justify-content: center;
     .intro-img {
       padding: 5px;
-      width: 60px;
-      object-fit: contain;
-      object-position: center;
+      width: 80px;
       align-self: center;
     }
     .intro-right {
@@ -29,11 +24,32 @@
       flex-direction: column;
       .introText {
         font-family: var(--font-primary);
-        font-size: calc(var(--font-size-standard) * 1.2);
+        font-size: calc(var(--font-size-standard) * 1.1);
         width: 210px;
-        padding-top: 0.5em;
         text-align: center;
       }
     }
+  }
+  .result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(var(--font-size-standard) * 1.2);
+  }
+}
+
+.aide-gene {
+  display: flex;
+}
+
+.tenebris.dice-roll {
+  font-family: var(--font-primary);
+  .dice-total,
+  .dice-formula {
+    padding-top: 5px;
+  }
+  .dice-total {
+    margin-bottom: 5px;
   }
 }

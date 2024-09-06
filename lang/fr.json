@@ -315,8 +315,8 @@
       "talentDansVoie": "Ce talent est présent dans la voie {path}. Voulez-vous vraiment le supprimer ?"
     },
     "Roll": {
-      "Save": "Jet de sauvegarde - {save}",
-      "Resource": "Jet de ressource - {resource}"
+      "Save": "Jet de sauvegarde <br> {save}",
+      "Resource": "Jet de ressource <br> {resource}"
     }
   }
 }

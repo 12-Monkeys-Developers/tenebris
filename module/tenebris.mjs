@@ -52,4 +52,25 @@ Hooks.once("init", function () {
   CONFIG.Dice.rolls.push(documents.TenebrisRoll)
 
   // Register system settings
+
+  // Pre-localize configuration objects
+  preLocalizeConfig()
 })
+
+/**
+ * Perform one-time configuration of system configuration objects.
+ */
+function preLocalizeConfig() {
+  const localizeConfigObject = (obj, keys) => {
+    for (let o of Object.values(obj)) {
+      for (let k of keys) {
+        o[k] = game.i18n.localize(o[k])
+      }
+    }
+  }
+
+  //CONFIG.Dice.rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value)]))
+
+  //localizeConfigObject(SYSTEM.ACTION.TAG_CATEGORIES, ["label"])
+  //localizeConfigObject(CONFIG.Dice.rollModes, ["label"])
+}
