@@ -209,7 +209,11 @@ export default class TenebrisRoll extends Roll {
           return output
         },
       },
+      rejectClose: false, // Click on Close button will not launch an error
     })
+
+    // If the user cancels the dialog, exit
+    if (rollContext === null) return
 
     const aide = rollContext.aide === "" ? 0 : parseInt(rollContext.aide, 10)
     const gene = rollContext.gene === "" ? 0 : parseInt(rollContext.gene, 10)

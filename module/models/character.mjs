@@ -118,7 +118,7 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
    */
   async roll(rollType, rollTarget, rollValue) {
     let roll = await TenebrisRoll.prompt({ rollType, rollTarget, rollValue, actorId: this.parent.id, actorName: this.parent.name, actorImage: this.parent.img })
-    if (roll === null) return null
+    if (!roll) return null
     await roll.toMessage({}, { rollMode: roll.options.rollMode })
   }
 }
