@@ -224,7 +224,7 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
           appris: talent.system.appris,
         }
       })
-      .sort((a, b) => a.name.localeCompare(b.name, game.i18n.lang))
+      .sort((a, b) => b.appris - a.appris || a.name.localeCompare(b.name, game.i18n.lang))
     return talents
   }
 
@@ -442,20 +442,25 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
     if (this.isEditMode) return
     // Jet de sauvegarde
     let elt = event.currentTarget.querySelector("input")
-    // Sinon c'est un jet de ressource
+    // Jet de ressource
     if (!elt) elt = event.currentTarget.querySelector("select")
+    // Jet de dégâts
+    if (!elt) elt = event.currentTarget
     const rollType = elt.dataset.rollType
-    const rollTarget = elt.dataset.rollTarget
+    let rollTarget
     let rollValue
     switch (rollType) {
       case ROLL_TYPE.SAVE:
+        rollTarget = elt.dataset.rollTarget
         rollValue = this.actor.system.caracteristiques[rollTarget].valeur
         break
       case ROLL_TYPE.RESOURCE:
+        rollTarget = elt.dataset.rollTarget
         rollValue = this.actor.system.ressources[rollTarget].valeur
         break
       case ROLL_TYPE.DAMAGE:
-        // TO DO
+        rollTarget = elt.dataset.itemId
+        rollValue = elt.dataset.rollValue
         break
       default:
         // Handle other cases or do nothing

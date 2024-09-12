@@ -25,20 +25,22 @@
         <div class="intro-right">
             <p class="introText" {{#if isSave}}data-tooltip="{{introTextTooltip}}"{{/if}}>{{{introText}}}</p>
             {{#if isSave}}
-                {{#if (eq avantages "avantage")}} Avec avantage{{/if}}
-                {{#if (eq avantages "desavantage")}} Avec désavantage{{/if}}
-                {{#if (eq avantages "doubleAvantage")}} Avec double avantage{{/if}}
-                {{#if (eq avantages "doubleDesavantage")}} Avec double désavantage{{/if}}
+                {{#if (eq avantages "avantage")}} {{localize "TENEBRIS.Roll.avantage"}}{{/if}}
+                {{#if (eq avantages "desavantage")}} {{localize "TENEBRIS.Roll.desavantage"}}{{/if}}
+                {{#if (eq avantages "doubleAvantage")}} {{localize "TENEBRIS.Roll.doubleAvantage"}}{{/if}}
+                {{#if (eq avantages "doubleDesavantage")}} {{localize "TENEBRIS.Roll.doubleDesavantage"}}{{/if}}
             {{/if}}
         </div>
     </div>
-    <div class="result">
-        {{#if (eq resultType "success")}}
-        Succès
-        {{else}}
-        Echec
-        {{/if}}
-    </div>
+     {{#if (or isSave isResource)}}
+        <div class="result">
+            {{#if (eq resultType "success")}}
+                {{localize "TENEBRIS.Roll.success"}}
+            {{else}}
+                {{localize "TENEBRIS.Roll.failure"}}
+            {{/if}}
+        </div>
+     {{/if}}
     <div class="message-content">
         {{{message.content}}}
     </div>

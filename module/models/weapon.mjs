@@ -1,4 +1,5 @@
 import { SYSTEM } from "../config/system.mjs"
+import { CATEGORY } from "../config/weapon.mjs"
 export default class TenebrisWeapon extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields
@@ -16,4 +17,8 @@ export default class TenebrisWeapon extends foundry.abstract.TypeDataModel {
 
   /** @override */
   static LOCALIZATION_PREFIXES = ["TENEBRIS.Weapon"]
+
+  get weaponCategory() {
+    return game.i18n.localize(CATEGORY[this.categorie].label)
+  }
 }

@@ -1,38 +1,45 @@
 <section class="tab character-{{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
 
   <fieldset>
-    <legend>{{localize "TENEBRIS.Label.talents"}}</legend>
-    {{#if @root.isEditMode}}
-      {{#each talents as |item|}}
-        {{log "path-talent" this}}
-        <div class="talent" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
-          <div class="name" data-tooltip="{{{item.description}}}">{{item.name}}
-            {{#if item.system.canProgress}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}</div>
-          <div class="controls">
-            <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
-            <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-trash"></i></a>
+    <legend data-tooltip="{{localize "TENEBRIS.Tooltip.learnedTalents"}}" data-tooltip-direction="UP">{{localize "TENEBRIS.Label.talents"}}</legend>
+    <div class="talents">
+      {{#if @root.isEditMode}}
+        {{#each talents as |item|}}
+          {{log "path-talent" this}}
+          <div class="talent {{#if item.appris}}appris{{/if}}" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+            <div class="name" data-tooltip="{{{item.description}}}">{{item.name}}
+              {{#if item.progression}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}
+              {{#if (and item.progression (gt item.niveau 0))}}{{localize 'TENEBRIS.Label.level'}} {{item.niveau}}{{/if}}            
+            </div>
+            <div class="controls">
+              <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
+              <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-trash"></i></a>
+            </div>
           </div>
-        </div>
-      {{/each}}
-    {{else}}
-      {{#each talentsAppris as |item|}}
-        {{log "path-talent appris" this}}
-        <div class="talent" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-tooltip="{{{item.description}}}">{{item.name}}
-          {{#if item.progression}}
-            Niveau
-            {{item.niveau}}
-          {{/if}}
-        </div>
-      {{/each}}
-    {{/if}}
+        {{/each}}
+      {{else}}
+        {{#each talentsAppris as |item|}}
+          {{log "path-talent appris" this}}
+          <div class="talent" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-tooltip="{{{item.description}}}">{{item.name}}
+            {{#if item.progression}}
+              Niveau
+              {{item.niveau}}
+            {{/if}}
+          </div>
+        {{/each}}
+      {{/if}}
+    </div>
   </fieldset>
 
   <fieldset>
     <legend>{{localize "TENEBRIS.Label.equipement"}}</legend>
     {{#each weapons as |item|}}
-      <div class="weapon" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-tooltip="{{{item.description}}}">{{item.name}}
-        <div>{{item.system.categorie}}</div>
-        <div>{{item.system.degats}}</div>
+      {{log 'weapon' this}}
+      <div class="weapon" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+        <div class="name" data-tooltip="{{{item.description}}}">{{item.name}}
+          ({{item.system.weaponCategory}})          
+        </div>
+        <div {{#if (ne item.system.degats "1")}}class="rollable" data-item-id="{{item.id}}" data-action="roll" data-roll-type="damage" data-roll-value="{{item.system.degats}}"{{/if}}>{{item.system.degats}}</div>
         {{#if @root.isEditMode}}
           <div class="controls">
             <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>

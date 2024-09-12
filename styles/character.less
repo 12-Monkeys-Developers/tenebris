@@ -141,13 +141,23 @@
 
 .tab.character-items {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  .talent {
-    display: flex;
+  grid-template-columns: 1fr;
+  .talents {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
+    .talent {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+    }
   }
+
   .weapon {
     display: flex;
     gap: 10px;
+  }
+  .appris {
+    font-weight: bold;
   }
 }

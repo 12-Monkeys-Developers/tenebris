@@ -112,8 +112,8 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
   /**
    * Rolls a dice for a character.
    * @param {("save"|"resource|damage")} rollType The type of the roll, can be "save" or "resource".
-   * @param {number} rollTarget The target value for the roll.
-   * @param {number} rollValue The value of the roll
+   * @param {number} rollTarget The target value for the roll. Which caracteristic or resource. If the roll is a damage roll, this is the id of the item.
+   * @param {number} rollValue The value of the roll. If the roll is a damage roll, this is the dice to roll.
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
   async roll(rollType, rollTarget, rollValue) {

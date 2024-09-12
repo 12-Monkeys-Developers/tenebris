@@ -1,4 +1,5 @@
 import { ROLL_TYPE } from "../config/system.mjs"
+import TenebrisUtils from "../utils.mjs"
 
 export default class TenebrisRoll extends Roll {
   /**
@@ -77,12 +78,16 @@ export default class TenebrisRoll extends Roll {
     switch (this.type) {
       case ROLL_TYPE.SAVE:
         const saveLabel = game.i18n.localize(`TENEBRIS.Character.FIELDS.caracteristiques.${this.target}.valeur.label`)
-        text = game.i18n.format("TENEBRIS.Roll.Save", { save: saveLabel })
+        text = game.i18n.format("TENEBRIS.Roll.save", { save: saveLabel })
         text = text.concat("<br>").concat(`Seuil : ${this.treshold}`)
         break
       case ROLL_TYPE.RESOURCE:
         const resourceLabel = game.i18n.localize(`TENEBRIS.Character.FIELDS.ressources.${this.target}.valeur.label`)
-        text = game.i18n.format("TENEBRIS.Roll.Resource", { resource: resourceLabel })
+        text = game.i18n.format("TENEBRIS.Roll.resource", { resource: resourceLabel })
+        break
+      case ROLL_TYPE.DAMAGE:
+        const name = game.actors.get(this.actorId).items.get(this.target).name
+        text = game.i18n.format("TENEBRIS.Roll.damage", { item: name })
         break
     }
     return text
@@ -99,6 +104,7 @@ export default class TenebrisRoll extends Roll {
    */
   static async prompt(options = {}) {
     let formula
+
     if (options.rollType === ROLL_TYPE.RESOURCE) {
       formula = options.rollValue
       if (formula === "0") return ui.notifications.warn("Vous n'avez plus de ressource")
@@ -140,15 +146,32 @@ export default class TenebrisRoll extends Roll {
       "-10": "-10",
     }
 
+    let damageDice
+    let damageDiceMax
+    let damageDiceFinal
+    let damageDiceLowered
+    // Damage roll : check the roll is not above the maximum damage
+    if (options.rollType === ROLL_TYPE.DAMAGE) {
+      damageDice = options.rollValue
+      damageDiceMax = game.actors.get(options.actorId).system.dmax.valeur
+      damageDiceFinal = TenebrisUtils.maxDamage(damageDice, damageDiceMax)
+      damageDiceLowered = damageDiceFinal !== damageDice
+    }
+
     let dialogContext = {
       isSave: options.rollType === "save",
       isResource: options.rollType === "resource",
+      isDamage: options.rollType === "damage",
       rollModes,
       fieldRollMode,
       choiceAide,
       choiceGene,
       choiceAvantage,
       choiceModificateur,
+      damageDice,
+      damageDiceMax,
+      damageDiceFinal,
+      damageDiceLowered,
     }
     const content = await renderTemplate("systems/tenebris/templates/roll-dialog.hbs", dialogContext)
 
@@ -211,6 +234,10 @@ export default class TenebrisRoll extends Roll {
       formula = `${dice}`
     }
 
+    if (options.rollType === ROLL_TYPE.DAMAGE) {
+      formula = damageDiceFinal
+    }
+
     let treshold = options.rollValue + aide + gene + modificateur
 
     const roll = new this(formula, options.data, {
@@ -218,6 +245,7 @@ export default class TenebrisRoll extends Roll {
       target: options.rollTarget,
       value: options.rollValue,
       treshold: treshold,
+      actorId: options.actorId,
       actorName: options.actorName,
       actorImage: options.actorImage,
       rollMode: rollContext.visibility,
@@ -237,6 +265,12 @@ export default class TenebrisRoll extends Roll {
     return roll
   }
 
+  /**
+   * Creates a title based on the given type.
+   *
+   * @param {string} type - The type of the roll.
+   * @returns {string} The generated title.
+   */
   static createTitle(type) {
     if (type === ROLL_TYPE.SAVE) {
       return "Jet de sauvegarde"
@@ -252,6 +286,8 @@ export default class TenebrisRoll extends Roll {
     super.toMessage(
       {
         isSave: this.isSave,
+        isResource: this.isResource,
+        isDamage: this.isDamage,
         avantages: this.avantages,
         introText: this.introText,
         introTextTooltip: this.introTextTooltip,

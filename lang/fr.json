@@ -297,7 +297,8 @@
       "details": "Détails",
       "talents": "Talents",
       "progressionPossible": "Progression possible",
-      "equipement": "Equipement"
+      "equipement": "Equipement",
+      "level": "Niveau"
     },
     "Edit": "Editer",
     "Delete": "Supprimer",
@@ -316,8 +317,18 @@
       "talentDansVoie": "Ce talent est présent dans la voie {path}. Voulez-vous vraiment le supprimer ?"
     },
     "Roll": {
-      "Save": "Jet de sauvegarde <br> {save}",
-      "Resource": "Jet de ressource <br> {resource}"
+      "save": "Jet de sauvegarde <br> {save}",
+      "resource": "Jet de ressource <br> {resource}",
+      "damage": "Jet de dégâts <br> {item}",
+      "avantage": "Avec avantage",
+      "desavantage": "Avec désavantage",
+      "doubleAvantage": "Avec double avantage",
+      "doubleDesavantage": "Avec double désavantage",
+      "success": "Réussite",
+      "failure": "Echec"
+    },
+    "Tooltip": {
+      "learnedTalents": "Les talents appris sont en gras" 
     }
   }
 }

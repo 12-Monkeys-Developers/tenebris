@@ -200,15 +200,24 @@
 }
 .tenebris .tab.character-items {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
 }
-.tenebris .tab.character-items .talent {
+.tenebris .tab.character-items .talents {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.tenebris .tab.character-items .talents .talent {
   display: flex;
   gap: 10px;
+  justify-content: space-between;
 }
 .tenebris .tab.character-items .weapon {
   display: flex;
   gap: 10px;
+}
+.tenebris .tab.character-items .appris {
+  font-weight: bold;
 }
 .tenebris .path-content {
   font-family: var(--font-primary);
@@ -574,8 +583,14 @@
   align-items: center;
   font-size: calc(var(--font-size-standard) * 1.2);
 }
-.tenebris .aide-gene {
+.tenebris .dialog-aide-gene {
   display: flex;
+}
+.tenebris .dialog-damage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--font-size-standard) * 1.2);
 }
 .tenebris .tenebris.dice-roll {
   font-family: var(--font-primary);
