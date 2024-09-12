@@ -30,6 +30,7 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
     dragDrop: [{ dragSelector: "[data-drag]", dropSelector: null }],
     actions: {
       toggleSheet: TenebrisItemSheet.#onToggleSheet,
+      editImage: TenebrisItemSheet.#onEditImage,
     },
   }
 
@@ -162,6 +163,32 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
     const modes = this.constructor.SHEET_MODES
     this._sheetMode = this.isEditMode ? modes.PLAY : modes.EDIT
     this.render()
+  }
+
+  /**
+   * Handle changing a Document's image.
+   *
+   * @this TenebrisCharacterSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @returns {Promise}
+   * @private
+   */
+  static async #onEditImage(event, target) {
+    const attr = target.dataset.edit
+    const current = foundry.utils.getProperty(this.document, attr)
+    const { img } = this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ?? {}
+    const fp = new FilePicker({
+      current,
+      type: "image",
+      redirectToRoot: img ? [img] : [],
+      callback: (path) => {
+        this.document.update({ [attr]: path })
+      },
+      top: this.position.top + 40,
+      left: this.position.left + 10,
+    })
+    return fp.browse()
   }
   // #endregion
 }

@@ -1,4 +1,5 @@
 <section class="path-name">
+  <img class="item-img" src="{{item.img}}" data-edit="img" data-action="editImage" data-tooltip="{{item.name}}" />
   {{formInput fields.name value=source.name rootId=partId disabled=isPlayMode}}
   <a class="control" data-action="toggleSheet" data-tooltip="TENEBRIS.ToggleSheet">
     <i class="fa-solid fa-user-{{ifThen isPlayMode 'lock' 'pen'}}"></i>

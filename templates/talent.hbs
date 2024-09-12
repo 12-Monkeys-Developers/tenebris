@@ -1,5 +1,8 @@
 <section>
-  {{formInput fields.name value=source.name}}
+  <div class="header">
+    <img class="item-img" src="{{item.img}}" data-edit="img" data-action="editImage" data-tooltip="{{item.name}}" />
+    {{formInput fields.name value=source.name}}
+  </div>  
   {{formField systemFields.appris value=system.appris}}
   {{formField systemFields.progression value=system.progression}}
   {{#if canProgress}}

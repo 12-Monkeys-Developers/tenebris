@@ -101,6 +101,7 @@
 .tenebris .character-main .character-personnage .character-personnag-contenu .character-img {
   grid-column: 1 / 2;
   grid-row: 1 / 5;
+  width: 200px;
 }
 .tenebris .character-main .character-personnage .character-personnag-contenu .character-name {
   display: flex;
@@ -261,6 +262,10 @@
 .tenebris .path-content .path-name .control {
   margin: 5px;
 }
+.tenebris .path-content .path-name img {
+  width: 50px;
+  height: 50px;
+}
 .tenebris .path-content .path-main {
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
@@ -370,6 +375,13 @@
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
   flex: 50%;
+}
+.tenebris .talent-content .header {
+  display: flex;
+}
+.tenebris .talent-content .header img {
+  width: 50px;
+  height: 50px;
 }
 .tenebris .talent-content input[type="checkbox"] {
   font-size: var(--font-size-14);
