@@ -26,7 +26,6 @@
       .character-img {
         grid-column: 1 / 2;
         grid-row: 1 / 5;
-        height: 200px;
       }
 
       .character-name {
@@ -39,14 +38,32 @@
         grid-column: 2 / 4;
         grid-row: 2 / 3;
         display: flex;
-        justify-content: space-between;
+        .controls {
+          display: flex;
+          align-content: center;
+          align-items: center;
+          margin-left: 10px;
+        }
+        .control {
+          height: 30px;
+          width: 30px;
+        }
       }
 
       .character-voie-mineure {
         grid-column: 2 / 4;
         grid-row: 3 / 4;
         display: flex;
-        justify-content: space-between;
+        .controls {
+          display: flex;
+          align-content: center;
+          align-items: center;
+          margin-left: 10px;
+        }
+        .control {
+          height: 30px;
+          width: 30px;
+        }
       }
 
       .character-commanditaire {
@@ -120,8 +137,15 @@
   }
 }
 
-.character-items {
+.tab.character-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   .talent {
     display: flex;
+    gap: 10px;
+  }
+  .weapon {
+    display: flex;
+    gap: 10px;
   }
 }

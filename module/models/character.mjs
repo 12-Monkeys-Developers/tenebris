@@ -109,25 +109,11 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
     return !!this.voies.mineure.id
   }
 
-  async resetVoieMajeure() {
-    return await this.parent.update({
-      "system.voies.majeure.nom": "",
-      "system.voies.majeure.id": null,
-    })
-  }
-
-  async resetVoieMineure() {
-    return await this.parent.update({
-      "system.voies.mineure.nom": "",
-      "system.voies.mineure.id": null,
-    })
-  }
-
   /**
    * Rolls a dice for a character.
-   * @param {("save"|"resource|damage")} rollType - The type of the roll, can be "save" or "resource".
-   * @param {number} rollTarget - The target value for the roll.
-   * @param {number} rollValue - The value of the roll
+   * @param {("save"|"resource|damage")} rollType The type of the roll, can be "save" or "resource".
+   * @param {number} rollTarget The target value for the roll.
+   * @param {number} rollValue The value of the roll
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
   async roll(rollType, rollTarget, rollValue) {

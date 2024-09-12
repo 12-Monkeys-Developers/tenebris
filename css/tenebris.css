@@ -101,7 +101,6 @@
 .tenebris .character-main .character-personnage .character-personnag-contenu .character-img {
   grid-column: 1 / 2;
   grid-row: 1 / 5;
-  height: 200px;
 }
 .tenebris .character-main .character-personnage .character-personnag-contenu .character-name {
   display: flex;
@@ -112,13 +111,31 @@
   grid-column: 2 / 4;
   grid-row: 2 / 3;
   display: flex;
-  justify-content: space-between;
+}
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-voie-majeure .controls {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-voie-majeure .control {
+  height: 30px;
+  width: 30px;
 }
 .tenebris .character-main .character-personnage .character-personnag-contenu .character-voie-mineure {
   grid-column: 2 / 4;
   grid-row: 3 / 4;
   display: flex;
-  justify-content: space-between;
+}
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-voie-mineure .controls {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+.tenebris .character-main .character-personnage .character-personnag-contenu .character-voie-mineure .control {
+  height: 30px;
+  width: 30px;
 }
 .tenebris .character-main .character-personnage .character-personnag-contenu .character-commanditaire {
   grid-column: 2 / 4;
@@ -180,8 +197,17 @@
   pointer-events: none;
   /* Permet aux clics de "passer à travers" l'input */
 }
-.tenebris .character-items .talent {
+.tenebris .tab.character-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.tenebris .tab.character-items .talent {
   display: flex;
+  gap: 10px;
+}
+.tenebris .tab.character-items .weapon {
+  display: flex;
+  gap: 10px;
 }
 .tenebris .path-content {
   font-family: var(--font-primary);

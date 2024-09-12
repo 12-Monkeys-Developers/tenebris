@@ -1,4 +1,8 @@
 export const RANGE = Object.freeze({
+  na: {
+    id: "na",
+    label: "TENEBRIS.Spell.Range.na",
+  },
   contact: {
     id: "contact",
     label: "TENEBRIS.Spell.Range.contact",

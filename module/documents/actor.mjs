@@ -1,5 +1,15 @@
 export default class TenebrisActor extends Actor {
+  /**
+   * Adds a path to the character.
+   * First path added is the major path, second path added is the minor path.
+   * Create all talents of the path and add them to the character.
+   * Add the path to the character.
+   *
+   * @param {Object} item The item to add as a path.
+   * @returns {Promise<void>} - A promise that resolves when the path is added.
+   */
   async addPath(item) {
+    if (this.type !== "character") return
     let itemData = item.toObject()
     if (this.system.hasVoieMajeure && this.system.hasVoieMineure) {
       ui.notifications.warn(game.i18n.localize("TENEBRIS.Warnings.dejaDeuxVoies"))
@@ -74,6 +84,33 @@ export default class TenebrisActor extends Actor {
         "system.langues": item.system.langues,
       })
       return ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMajeureAjoutee"))
+    }
+  }
+
+  /**
+   * Delete a path from the character
+   * @param {*} path
+   * @param {*} isMajor
+   * @returns
+   */
+  async deletePath(path, isMajor) {
+    if (this.type !== "character") return
+
+    // Delete all talents linked to the path
+    let toDelete = path.system.talents.map((talent) => foundry.utils.parseUuid(talent).id)
+    toDelete.push(path.id)
+    await this.deleteEmbeddedDocuments("Item", toDelete)
+
+    // Voie majeure
+    if (isMajor) {
+      await this.update({ "system.voies.majeure.nom": "", "system.voies.majeure.id": null })
+      ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMajeureSupprimee"))
+    }
+
+    // Voie mineure
+    else {
+      await this.update({ "system.voies.mineure.nom": "", "system.voies.mineure.id": null })
+      ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMineureSupprimee"))
     }
   }
 }

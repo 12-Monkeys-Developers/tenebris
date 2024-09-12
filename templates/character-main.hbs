@@ -13,10 +13,10 @@
       <div class="character-voie-majeure">
         {{formField systemFields.voies.fields.majeure.fields.nom value=system.voies.majeure.nom rootId=partId disabled=true}}     
           {{#if (and isEditMode system.hasVoieMajeure)}}
-            <div>
-              <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{actor.system.voies.majeure.id}}"><i class="fas fa-edit"></i></a>
+            <div class="controls">
+              <a class="control" data-action="edit" data-item-id="{{actor.system.voies.majeure.id}}" data-tooltip="{{localize 'TENEBRIS.Edit'}}"><i class="fas fa-edit"></i></a>
               {{#if (not system.hasVoieMineure)}}
-                <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="deleteVoieMajeure"><i class="fas fa-trash"></i></a>
+                <a class="control" data-action="deleteVoieMajeure" data-tooltip="{{localize 'TENEBRIS.Delete'}}"><i class="fas fa-trash"></i></a>
               {{/if}}
             </div>
           {{/if}}    
@@ -24,9 +24,9 @@
       <div class="character-voie-mineure">
         {{formField systemFields.voies.fields.mineure.fields.nom value=system.voies.mineure.nom rootId=partId disabled=true}}
         {{#if (and isEditMode system.hasVoieMineure)}}
-          <div>
-            <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{actor.system.voies.majeure.id}}"><i class="fas fa-edit"></i></a>
-            <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="deleteVoieMineure"><i class="fas fa-trash"></i></a>
+          <div class="controls">
+            <a class="control" data-action="edit" data-item-id="{{actor.system.voies.majeure.id}}" data-tooltip="{{localize 'TENEBRIS.Edit'}}"><i class="fas fa-edit"></i></a>
+            <a class="control" data-action="deleteVoieMineure" data-tooltip="{{localize 'TENEBRIS.Delete'}}"><i class="fas fa-trash"></i></a>
           </div>
         {{/if}}
       </div>
@@ -39,17 +39,12 @@
       </div>
       {{formField systemFields.dv value=system.dv rootId=partId disabled=isPlayMode classes="character-dv"}}
       {{formField systemFields.dmax.fields.valeur value=system.dmax.valeur rootId=partId disabled=isPlayMode classes="character-dmax"}}
-      {{#if (and isEditMode system.hasVoieMineure)}}
-        <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{actor.system.voies.majeure.id}}"><i class="fas fa-edit"></i></a>
-        <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="deleteVoieMineure"><i class="fas fa-trash"></i></a>
-      {{/if}}
-
     </div>
   </fieldset>
 
   <!-- <div class="character-details"> </div> -->
   <fieldset class="character-caracteristiques">
-    <legend>{{localize "TENEBRIS.Character.Label.caracteristiques"}}</legend>
+    <legend data-tooltip="Expérience">{{localize "TENEBRIS.Character.Label.caracteristiques"}}</legend>
     {{formField systemFields.caracteristiques.fields.rob.fields.valeur value=system.caracteristiques.rob.valeur rootId=partId readonly=isPlayMode classes="rollable" dataset=rollType.saveRob}}
     {{formField systemFields.caracteristiques.fields.dex.fields.valeur value=system.caracteristiques.dex.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveDex}}
     {{formField systemFields.caracteristiques.fields.int.fields.valeur value=system.caracteristiques.int.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveInt}}

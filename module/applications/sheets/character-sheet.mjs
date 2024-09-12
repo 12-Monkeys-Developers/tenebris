@@ -117,56 +117,74 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
           action: "roll",
           rollType: "save",
           rollTarget: "rob",
+          tooltip: this._generateTooltip("save", "rob"),
         },
         saveDex: {
           action: "roll",
           rollType: "save",
           rollTarget: "dex",
+          tooltip: this._generateTooltip("save", "dex"),
         },
         saveInt: {
           action: "roll",
           rollType: "save",
           rollTarget: "int",
+          tooltip: this._generateTooltip("save", "int"),
         },
         savePer: {
           action: "roll",
           rollType: "save",
           rollTarget: "per",
+          tooltip: this._generateTooltip("save", "per"),
         },
         saveVol: {
           action: "roll",
           rollType: "save",
           rollTarget: "vol",
+          tooltip: this._generateTooltip("save", "vol"),
         },
         resourceSan: {
           action: "roll",
           rollType: "resource",
           rollTarget: "san",
+          tooltip: this._generateTooltip("resource", "san"),
         },
         resourceOeil: {
           action: "roll",
           rollType: "resource",
           rollTarget: "oeil",
+          tooltip: this._generateTooltip("resource", "oeil"),
         },
         resourceVerbe: {
           action: "roll",
           rollType: "resource",
           rollTarget: "verbe",
+          tooltip: this._generateTooltip("resource", "verbe"),
         },
         resourceBourse: {
           action: "roll",
           rollType: "resource",
           rollTarget: "bourse",
+          tooltip: this._generateTooltip("resource", "bourse"),
         },
         resourceMagie: {
           action: "roll",
           rollType: "resource",
           rollTarget: "magie",
+          tooltip: this._generateTooltip("resource", "magie"),
         },
       },
     }
     console.log("character context", context)
     return context
+  }
+
+  _generateTooltip(type, target) {
+    if (type === ROLL_TYPE.SAVE) {
+      return `Experience: ${this.document.system.caracteristiques[target].progression.experience}`
+    } else if (type === ROLL_TYPE.RESOURCE) {
+      return `Experience: ${this.document.system.ressources[target].experience}`
+    }
   }
 
   /** @override */
@@ -215,10 +233,6 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
     this.#dragDrop.forEach((d) => d.bind(this.element))
     const rollables = this.element.querySelectorAll(".rollable")
     rollables.forEach((d) => d.addEventListener("click", this.#onRoll.bind(this)))
-    // Ajouter l'écouteur de clic sur le parent `.form-fields`
-    /* this.element.querySelectorAll(".form-group.rollable").addEventListener("click", (event) => {
-      this.#onRoll(event) // Par exemple, lancer le roll
-    })*/
   }
 
   // #region Drag-and-Drop Workflow
@@ -302,7 +316,8 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
         const item = await fromUuid(data.uuid)
         if (!["path", "weapon", "armor"].includes(item.type)) return
         if (item.type === "path") return this.#onDropPathItem(item)
-        if (item.type === "weapon") return this.#onDropWeaponItem(item)
+        if (item.type === "weapon") return this.#onDropItem(item)
+        if (item.type === "armor") return this.#onDropItem(item)
     }
   }
 
@@ -310,7 +325,7 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
     await this.actor.addPath(item)
   }
 
-  async #onDropWeaponItem(item) {
+  async #onDropItem(item) {
     let itemData = item.toObject()
     await this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
   }
@@ -341,11 +356,9 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
       modal: true,
     })
     if (!proceed) return
-    const item = this.actor.items.get(this.actor.system.voies.majeure.id)
-    if (!item) return
-    await this.actor.system.resetVoieMajeure(item.talents)
-    item.delete()
-    ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMajeureSupprimee"))
+    const path = this.actor.items.get(this.actor.system.voies.majeure.id)
+    if (!path) return
+    await this.actor.deletePath(path, true)
   }
 
   /**
@@ -360,11 +373,9 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
       modal: true,
     })
     if (!proceed) return
-    const item = this.actor.items.get(this.actor.system.voies.mineure.id)
-    if (!item) return
-    await this.actor.system.resetVoieMineure(item.talents)
-    item.delete()
-    ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMineureSupprimee"))
+    const path = this.actor.items.get(this.actor.system.voies.mineure.id)
+    if (!path) return
+    await this.actor.deletePath(path, false)
   }
 
   /**

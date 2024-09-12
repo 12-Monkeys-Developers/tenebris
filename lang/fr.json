@@ -282,6 +282,7 @@
         }
       },
       "Range": {
+        "na": "-",
         "contact": "Contact",
         "proche": "Proche",
         "loin": "Loin",
