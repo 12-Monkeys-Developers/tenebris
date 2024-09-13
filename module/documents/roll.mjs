@@ -72,6 +72,10 @@ export default class TenebrisRoll extends Roll {
     return this.options.avantages
   }
 
+  get resultType() {
+    return this.options.resultType
+  }
+
   _createIntroText() {
     let text
 

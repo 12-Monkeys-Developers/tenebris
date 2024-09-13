@@ -46,6 +46,7 @@
     "distance": 10,
     "units": "m"
   },
+  "primaryTokenAttribute": "pv",
   "flags": {
     "hotReload": {
       "extensions": ["css", "hbs", "json"],
