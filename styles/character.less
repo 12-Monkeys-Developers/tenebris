@@ -1,6 +1,13 @@
 .character-content {
   .sheet-common();
   .character-sheet-common();
+  overflow: scroll;
+}
+
+.character-biography {
+  prose-mirror {
+    min-height: 50px;
+  }
 }
 
 .character-main {
@@ -152,12 +159,14 @@
       justify-content: space-between;
     }
   }
-
   .weapon {
     display: flex;
     gap: 10px;
   }
   .appris {
     font-weight: bold;
+  }
+  prose-mirror {
+    min-height: 50px;
   }
 }

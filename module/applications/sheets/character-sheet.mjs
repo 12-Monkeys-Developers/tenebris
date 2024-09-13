@@ -21,7 +21,7 @@ export default class TenebrisCharacterSheet extends HandlebarsApplicationMixin(f
     classes: ["tenebris", "actor", "character"],
     position: {
       width: 1400,
-      height: 800,
+      height: 850,
     },
     form: {
       submitOnChange: true,

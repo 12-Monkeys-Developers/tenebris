@@ -43,6 +43,7 @@
   background-image: url("../assets/gabarit.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  overflow: scroll;
 }
 .tenebris .character-content input[name="name"] {
   height: 50px;
@@ -78,6 +79,9 @@
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
   flex: 50%;
+}
+.tenebris .character-biography prose-mirror {
+  min-height: 50px;
 }
 .tenebris .character-main {
   display: flex;
@@ -218,6 +222,9 @@
 }
 .tenebris .tab.character-items .appris {
   font-weight: bold;
+}
+.tenebris .tab.character-items prose-mirror {
+  min-height: 50px;
 }
 .tenebris .path-content {
   font-family: var(--font-primary);
