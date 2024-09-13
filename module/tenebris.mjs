@@ -22,6 +22,7 @@ Hooks.once("init", function () {
   CONFIG.Actor.documentClass = documents.TenebrisActor
   CONFIG.Actor.dataModels = {
     character: models.TenebrisCharacter,
+    opponent: models.TenebrisOpponent,
   }
 
   CONFIG.Item.documentClass = documents.TenebrisItem
@@ -36,6 +37,7 @@ Hooks.once("init", function () {
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet)
   Actors.registerSheet("tenebris", applications.TenebrisCharacterSheet, { types: ["character"], makeDefault: true })
+  Actors.registerSheet("tenebris", applications.TenebrisOpponentSheet, { types: ["opponent"], makeDefault: true })
 
   Items.unregisterSheet("core", ItemSheet)
   Items.registerSheet("tenebris", applications.TenebrisTalentSheet, { types: ["talent"], makeDefault: true })
@@ -54,6 +56,7 @@ Hooks.once("init", function () {
   // Register system settings
 
   // Pre-localize configuration objects
+  // TODO : encore d'actualité ?
   preLocalizeConfig()
 })
 

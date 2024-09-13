@@ -32,7 +32,8 @@
   ],
   "documentTypes": {
     "Actor": {
-      "character": { "htmlFields": ["description", "langues", "notes"] }
+      "character": { "htmlFields": ["description", "langues", "notes"] },
+      "opponent": { "htmlFields": ["description"] }
     },
     "Item": {
       "path": { "htmlFields": ["description", "biens", "langues"] },
