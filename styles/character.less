@@ -5,8 +5,11 @@
 }
 
 .character-biography {
-  prose-mirror {
-    min-height: 50px;
+  prose-mirror.inactive{
+    min-height: 40px;
+  }
+  prose-mirror.active{
+    min-height: 150px;
   }
 }
 
@@ -25,7 +28,7 @@
       flex: 20%;
     }
 
-    .character-personnag-contenu {
+    .character-personnage-contenu {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 5px;
@@ -166,7 +169,10 @@
   .appris {
     font-weight: bold;
   }
-  prose-mirror {
-    min-height: 50px;
+  prose-mirror.inactive{
+    min-height: 40px;
+  }
+  prose-mirror.active{
+    min-height: 150px;
   }
 }

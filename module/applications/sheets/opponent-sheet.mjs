@@ -5,8 +5,8 @@ export default class TenebrisOpponentSheet extends TenebrisActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["opponent"],
     position: {
-      width: 600,
-      height: 400,
+      width: 680,
+      height: 480,
     },
     window: {
       contentClasses: ["opponent-content"],

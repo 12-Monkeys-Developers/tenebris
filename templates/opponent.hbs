@@ -1,3 +1,25 @@
 <section>
-    Opponent
+  {{log "opponent" this}}
+  <div class="opponent-header">
+    <img class="opponent-img" src="{{actor.img}}" data-edit="img" data-action="editImage" data-tooltip="{{actor.name}}" />
+    {{formInput fields.name value=source.name}}
+    <a class="control" data-action="toggleSheet" data-tooltip="TENEBRIS.ToggleSheet" data-tooltip-direction="UP">
+        <i class="fa-solid fa-user-{{ifThen isPlayMode 'lock' 'pen'}}"></i>
+    </a>
+  </div>
+  <div class="opponent-main">
+    <fieldset class="opponent-caracteristiques">
+        <legend>Caractéristiques</legend>    
+        {{formField systemFields.dv value=system.dv disabled=isPlayMode}}
+        {{formField systemFields.pv.fields.value value=system.pv.value}}
+        {{formField systemFields.pv.fields.max value=system.pv.max disabled=isPlayMode}}
+        {{formField systemFields.armure value=system.armure disabled=isPlayMode}}
+        {{formField systemFields.malus value=system.malus disabled=isPlayMode}}
+        {{formField systemFields.actions value=system.actions disabled=isPlayMode}}  
+    </fieldset>
+    <fieldset class="opponent-description">
+        <legend>Description</legend>
+        {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true compact=true}}
+    </fieldset>
+  </div>
 </section>

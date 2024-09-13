@@ -80,8 +80,11 @@
   font-size: calc(var(--font-size-standard) * 1.6);
   flex: 50%;
 }
-.tenebris .character-biography prose-mirror {
-  min-height: 50px;
+.tenebris .character-biography prose-mirror.inactive {
+  min-height: 40px;
+}
+.tenebris .character-biography prose-mirror.active {
+  min-height: 150px;
 }
 .tenebris .character-main {
   display: flex;
@@ -97,56 +100,56 @@
 .tenebris .character-main .character-personnage label {
   flex: 20%;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu {
+.tenebris .character-main .character-personnage .character-personnage-contenu {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 5px;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-img {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-img {
   grid-column: 1 / 2;
   grid-row: 1 / 5;
   width: 200px;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-name {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-name {
   display: flex;
   grid-column: 2 / 4;
   grid-row: 1 / 2;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-voie-majeure {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-voie-majeure {
   grid-column: 2 / 4;
   grid-row: 2 / 3;
   display: flex;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-voie-majeure .controls {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-voie-majeure .controls {
   display: flex;
   align-content: center;
   align-items: center;
   margin-left: 10px;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-voie-majeure .control {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-voie-majeure .control {
   height: 30px;
   width: 30px;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-voie-mineure {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-voie-mineure {
   grid-column: 2 / 4;
   grid-row: 3 / 4;
   display: flex;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-voie-mineure .controls {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-voie-mineure .controls {
   display: flex;
   align-content: center;
   align-items: center;
   margin-left: 10px;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-voie-mineure .control {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-voie-mineure .control {
   height: 30px;
   width: 30px;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-commanditaire {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-commanditaire {
   grid-column: 2 / 4;
   grid-row: 4 / 5;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-pv {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-pv {
   grid-column: 1 / 2;
   grid-row: 5 / 6;
   display: flex;
@@ -154,23 +157,23 @@
   align-items: center;
   justify-content: space-between;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-pv input[name="system.pv.value"] {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-pv input[name="system.pv.value"] {
   padding-top: 10px;
   text-align: center;
   font-size: calc(var(--font-size-standard) * 1.6);
   width: 50px;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-pv input[name="system.pv.max"] {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-pv input[name="system.pv.max"] {
   padding-top: 10px;
   text-align: center;
   font-size: calc(var(--font-size-standard) * 1.6);
   width: 50px;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-dv {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-dv {
   grid-column: 2 / 3;
   grid-row: 5 / 6;
 }
-.tenebris .character-main .character-personnage .character-personnag-contenu .character-dmax {
+.tenebris .character-main .character-personnage .character-personnage-contenu .character-dmax {
   grid-column: 3 / 4;
   grid-row: 5 / 6;
 }
@@ -223,8 +226,109 @@
 .tenebris .tab.character-items .appris {
   font-weight: bold;
 }
-.tenebris .tab.character-items prose-mirror {
-  min-height: 50px;
+.tenebris .tab.character-items prose-mirror.inactive {
+  min-height: 40px;
+}
+.tenebris .tab.character-items prose-mirror.active {
+  min-height: 150px;
+}
+.tenebris .opponent-content {
+  font-family: var(--font-primary);
+  font-size: calc(var(--font-size-standard) * 1.2);
+  background-image: url("../assets/gabarit.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.tenebris .opponent-content input[name="name"] {
+  height: 50px;
+  margin-right: 10px;
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 2.4);
+  font-weight: bold;
+  border: none;
+}
+.tenebris .opponent-content fieldset {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.tenebris .opponent-content .form-fields input,
+.tenebris .opponent-content .form-fields select {
+  text-align: center;
+  font-size: calc(var(--font-size-standard) * 1.6);
+}
+.tenebris .opponent-content .form-fields input {
+  padding-top: 10px;
+}
+.tenebris .opponent-content .form-fields select {
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 1.8);
+}
+.tenebris .opponent-content legend {
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 2);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.tenebris .opponent-content label {
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 1.6);
+}
+.tenebris .opponent-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tenebris .opponent-header .opponent-img {
+  width: 100px;
+  height: auto;
+  margin: 10px;
+}
+.tenebris .opponent-header .character-name {
+  display: flex;
+  width: 100%;
+}
+.tenebris .opponent-main {
+  display: flex;
+  gap: 20px;
+  /* Espace entre les deux fieldsets */
+  /*.opponent-caracteristiques {
+    display: flex;
+    flex-direction: column;
+    //flex: 0 0 25%;
+    justify-content: space-between;
+    .form-fields {
+      flex: none;
+      width: 100px;
+    }
+  }*/
+}
+.tenebris .opponent-main .opponent-caracteristiques,
+.tenebris .opponent-main .opponent-description {
+  flex: 1;
+  /* Prend également l'espace disponible */
+  min-width: 0;
+  /* Pour éviter que le contenu ne déborde */
+}
+.tenebris .opponent-main fieldset {
+  width: 100%;
+  /* Assurez-vous que les fieldsets prennent toute la largeur possible */
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.tenebris .opponent-main .form-group {
+  margin-bottom: 5px;
+}
+.tenebris .opponent-main .form-fields {
+  display: flex;
+  justify-content: flex-start;
+}
+.tenebris .opponent-main .opponent-description prose-mirror.inactive {
+  min-height: 40px;
+}
+.tenebris .opponent-main .opponent-description prose-mirror.active {
+  min-height: 150px;
+  height: 100%;
 }
 .tenebris .path-content {
   font-family: var(--font-primary);

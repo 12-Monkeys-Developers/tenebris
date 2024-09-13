@@ -118,6 +118,30 @@
         "talents": "Talents"
       }
     },
+    "Opponent": {
+      "FIELDS": {
+        "dv": {
+          "label": "Dé de Vie"
+        },
+        "pv": {
+          "value": {
+            "label": "Points de Vie"
+          },
+          "max": {
+            "label": "Points de Vie max"
+          }
+        },
+        "armure": {
+          "label": "Armure"
+        },
+        "malus": {
+          "label": "Malus d'adversité"
+        },
+        "actions": {
+          "label": "Actions"
+        }
+      }
+    },
     "Talent": {
       "FIELDS": {
         "description": {
@@ -329,7 +353,7 @@
       "failure": "Echec"
     },
     "Tooltip": {
-      "learnedTalents": "Les talents appris sont en gras" 
+      "learnedTalents": "Les talents appris sont en gras"
     }
   }
 }

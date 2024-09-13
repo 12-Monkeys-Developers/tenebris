@@ -1,0 +1,69 @@
+.opponent-content {
+  .sheet-common();
+  label {
+    font-family: var(--font-secondary);
+    font-size: calc(var(--font-size-standard) * 1.6);
+  }
+}
+
+.opponent-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .opponent-img {
+    width: 100px;
+    height: auto;
+    margin: 10px;
+  }
+  .character-name {
+    display: flex;
+    width: 100%;
+  }
+}
+
+.opponent-main {
+  display: flex;
+  gap: 20px; /* Espace entre les deux fieldsets */
+
+  .opponent-caracteristiques,
+  .opponent-description {
+    flex: 1; /* Prend également l'espace disponible */
+    min-width: 0; /* Pour éviter que le contenu ne déborde */
+  }
+
+  fieldset {
+    width: 100%; /* Assurez-vous que les fieldsets prennent toute la largeur possible */
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .form-group {
+    margin-bottom: 5px;
+  }
+
+  .form-fields {
+    display: flex;
+    justify-content: flex-start;
+  }
+  /*.opponent-caracteristiques {
+    display: flex;
+    flex-direction: column;
+    //flex: 0 0 25%;
+    justify-content: space-between;
+    .form-fields {
+      flex: none;
+      width: 100px;
+    }
+  }*/
+  .opponent-description {
+    prose-mirror.inactive {
+      min-height: 40px;
+      //min-width: 200px;
+    }
+    prose-mirror.active {
+      min-height: 150px;
+      height: 100%
+    }
+  }
+}
