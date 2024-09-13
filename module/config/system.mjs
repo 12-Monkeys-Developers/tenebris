@@ -26,6 +26,7 @@ export const ROLL_TYPE = Object.freeze({
   SAVE: "save",
   RESOURCE: "resource",
   DAMAGE: "damage",
+  ATTACK: "attack",
 })
 
 /**

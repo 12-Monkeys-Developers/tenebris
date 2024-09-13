@@ -1,29 +1,28 @@
 import TenebrisItemSheet from "./base-item-sheet.mjs"
 
-export default class TenebrisTalentSheet extends TenebrisItemSheet {
+export default class TenebrisAttackSheet extends TenebrisItemSheet {
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ["talent"],
+    classes: ["attack"],
     position: {
       width: 600,
     },
     window: {
-      contentClasses: ["talent-content"],
+      contentClasses: ["attack-content"],
     },
   }
 
   /** @override */
   static PARTS = {
     main: {
-      template: "systems/tenebris/templates/talent.hbs",
+      template: "systems/tenebris/templates/attack.hbs",
     },
   }
 
   /** @override */
   async _prepareContext() {
     const context = await super._prepareContext()
-    context.canProgress = this.document.system.canProgress
-    console.log("talent context", context)
+    console.log("attack context", context)
     return context
   }
 }

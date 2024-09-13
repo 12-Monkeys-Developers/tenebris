@@ -289,44 +289,50 @@
 }
 .tenebris .opponent-main {
   display: flex;
-  gap: 20px;
-  /* Espace entre les deux fieldsets */
-  /*.opponent-caracteristiques {
-    display: flex;
-    flex-direction: column;
-    //flex: 0 0 25%;
-    justify-content: space-between;
-    .form-fields {
-      flex: none;
-      width: 100px;
-    }
-  }*/
+  flex-direction: row;
+  gap: 10px;
 }
-.tenebris .opponent-main .opponent-caracteristiques,
-.tenebris .opponent-main .opponent-description {
+.tenebris .opponent-main .opponent-gauche {
+  display: flex;
+  flex-direction: column;
+  min-width: 450px;
+}
+.tenebris .opponent-main .opponent-gauche .opponent-caracteristique {
+  display: flex;
+  flex-direction: row;
+  /*
+      fieldset {
+        width: 100%; 
+        height: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+      }*/
+  /*
+      .form-group {
+        margin-bottom: 5px;
+      }
+*/
+}
+.tenebris .opponent-main .opponent-gauche .opponent-caracteristique .form-fields input {
+  max-width: 50px;
+}
+.tenebris .opponent-main .opponent-gauche .opponent-attacks legend a {
+  font-size: calc(var(--font-size-standard) * 1.6);
+}
+.tenebris .opponent-main .opponent-gauche .opponent-attacks .opponent-attack {
+  display: flex;
+  justify-content: space-between;
+}
+.tenebris .opponent-main .opponent-droite .opponent-description {
   flex: 1;
   /* Prend également l'espace disponible */
   min-width: 0;
   /* Pour éviter que le contenu ne déborde */
 }
-.tenebris .opponent-main fieldset {
-  width: 100%;
-  /* Assurez-vous que les fieldsets prennent toute la largeur possible */
-  height: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-}
-.tenebris .opponent-main .form-group {
-  margin-bottom: 5px;
-}
-.tenebris .opponent-main .form-fields {
-  display: flex;
-  justify-content: flex-start;
-}
-.tenebris .opponent-main .opponent-description prose-mirror.inactive {
+.tenebris .opponent-main .opponent-droite .opponent-description prose-mirror.inactive {
   min-height: 40px;
 }
-.tenebris .opponent-main .opponent-description prose-mirror.active {
+.tenebris .opponent-main .opponent-droite .opponent-description prose-mirror.active {
   min-height: 150px;
   height: 100%;
 }
@@ -654,6 +660,54 @@
 .tenebris .spell-content input[name="system.consequenceB"] {
   font-size: calc(var(--font-size-standard) * 1.2);
 }
+.tenebris .attack-content {
+  font-family: var(--font-primary);
+  font-size: calc(var(--font-size-standard) * 1.2);
+  background-image: url("../assets/gabarit.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.tenebris .attack-content input[name="name"] {
+  height: 50px;
+  margin-right: 10px;
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 2.4);
+  font-weight: bold;
+  border: none;
+}
+.tenebris .attack-content fieldset {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.tenebris .attack-content .form-fields input,
+.tenebris .attack-content .form-fields select {
+  text-align: center;
+  font-size: calc(var(--font-size-standard) * 1.6);
+}
+.tenebris .attack-content .form-fields input {
+  padding-top: 10px;
+}
+.tenebris .attack-content .form-fields select {
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 1.8);
+}
+.tenebris .attack-content legend {
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 2);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.tenebris .attack-content .form-fields {
+  padding-top: 5px;
+}
+.tenebris .attack-content label {
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 1.6);
+  flex: 50%;
+}
+.tenebris .attack-content label {
+  flex: 10%;
+}
 .tenebris.chat-message {
   font-family: var(--font-primary);
   background-image: url("../assets/gabarit.webp");
@@ -697,14 +751,17 @@
 .tenebris .dialog-aide-gene {
   display: flex;
 }
-.tenebris .dialog-damage {
+.tenebris .dialog-damage,
+.tenebris .dialog-resource,
+.tenebris .dialog-save {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: calc(var(--font-size-standard) * 1.2);
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 2);
 }
 .tenebris .tenebris.dice-roll {
-  font-family: var(--font-primary);
+  font-family: var(--font-secondary);
 }
 .tenebris .tenebris.dice-roll .dice-total,
 .tenebris .tenebris.dice-roll .dice-formula {

@@ -1,0 +1,9 @@
+<section>
+  {{formInput fields.name value=source.name}}
+  {{formField systemFields.degats value=system.degats}}
+  <fieldset>
+    <legend>{{localize "TENEBRIS.Label.description"}}</legend>
+    {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
+  </fieldset>
+
+</section>

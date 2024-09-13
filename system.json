@@ -40,7 +40,8 @@
       "talent": { "htmlFields": ["description"] },
       "weapon": { "htmlFields": ["description"] },
       "armor": { "htmlFields": ["description"] },
-      "spell": { "htmlFields": ["description"] }
+      "spell": { "htmlFields": ["description"] },
+      "attack": { "htmlFields": ["description"] }
     }
   },
   "grid": {

@@ -245,9 +245,18 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
   }
 
   /**
-   * Roll a save
-   * @param {PointerEvent} event The originating click event
-   * @param {HTMLElement} target the capturing HTML element which defined a [data-action]
+   * Handles the roll action triggered by user interaction.
+   *
+   * @param {PointerEvent} event - The event object representing the user interaction.
+   * @param {HTMLElement} target - The target element that triggered the roll.
+   *
+   * @returns {Promise<void>} A promise that resolves when the roll action is complete.
+   *
+   * @throws {Error} Throws an error if the roll type is not recognized.
+   *
+   * @description This method checks the current mode (edit or not) and determines the type of roll
+   * (save, resource, or damage) based on the target element's data attributes. It retrieves the
+   * corresponding value from the document's system and performs the roll.
    */
   async _onRoll(event, target) {
     if (this.isEditMode) return

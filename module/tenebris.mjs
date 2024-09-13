@@ -32,6 +32,7 @@ Hooks.once("init", function () {
     weapon: models.TenebrisWeapon,
     armor: models.TenebrisArmor,
     spell: models.TenebrisSpell,
+    attack: models.TenebrisAttack,
   }
 
   // Register sheet application classes
@@ -45,6 +46,7 @@ Hooks.once("init", function () {
   Items.registerSheet("tenebris", applications.TenebrisWeaponSheet, { types: ["weapon"], makeDefault: true })
   Items.registerSheet("tenebris", applications.TenebrisSpellSheet, { types: ["spell"], makeDefault: true })
   Items.registerSheet("tenebris", applications.TenebrisArmorSheet, { types: ["armor"], makeDefault: true })
+  Items.registerSheet("tenebris", applications.TenebrisAttackSheet, { types: ["attack"], makeDefault: true })
 
   // Other Document Configuration
   CONFIG.ChatMessage.documentClass = documents.TenebrisChatMessage

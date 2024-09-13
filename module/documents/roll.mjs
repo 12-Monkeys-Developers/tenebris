@@ -8,10 +8,6 @@ export default class TenebrisRoll extends Roll {
    */
   static CHAT_TEMPLATE = "systems/tenebris/templates/standard-roll.hbs"
 
-  /**
-   * The type of this roll.
-   * @type {string}
-   */
   get type() {
     return this.options.type
   }
@@ -76,6 +72,11 @@ export default class TenebrisRoll extends Roll {
     return this.options.resultType
   }
 
+  /**
+   * Generates introductory text based on the roll type.
+   *
+   * @returns {string} The formatted introductory text for the roll.
+   */
   _createIntroText() {
     let text
 
@@ -90,28 +91,41 @@ export default class TenebrisRoll extends Roll {
         text = game.i18n.format("TENEBRIS.Roll.resource", { resource: resourceLabel })
         break
       case ROLL_TYPE.DAMAGE:
-        const name = game.actors.get(this.actorId).items.get(this.target).name
-        text = game.i18n.format("TENEBRIS.Roll.damage", { item: name })
+        const damageLabel = game.actors.get(this.actorId).items.get(this.target).name
+        text = game.i18n.format("TENEBRIS.Roll.damage", { item: damageLabel })
+        break
+      case ROLL_TYPE.ATTACK:
+        const attackLabel = this.target
+        text = game.i18n.format("TENEBRIS.Roll.attack", { item: attackLabel })
         break
     }
     return text
   }
 
+  /**
+   * Generates an introductory text tooltip with characteristics and modifiers.
+   *
+   * @returns {string} A formatted string containing the value, help, hindrance, and modifier.
+   */
   _createIntroTextTooltip() {
-    return `Caractéristique : ${this.value} <br> Aide : ${this.aide} <br> Gêne : ${this.gene} <br> Modificateur : ${this.modificateur}`
+    return game.i18n.format("TENEBRIS.Tooltip.saveIntroTextTooltip", { value: this.value, aide: this.aide, gene: this.gene, modificateur: this.modificateur })
   }
 
   /**
    * Asynchronously prompts the user with a dialog to perform a roll.
-   * @param {Object} options - The options for the prompt.
+   * @param {Object} options The options for the prompt.
    * @returns {Promise} - A promise that resolves with the result of the roll.
    */
   static async prompt(options = {}) {
-    let formula
+    let formula = options.rollValue
 
+    // Formula for a resource roll
     if (options.rollType === ROLL_TYPE.RESOURCE) {
-      formula = options.rollValue
-      if (formula === "0") return ui.notifications.warn("Vous n'avez plus de ressource")
+      let ressource = game.i18n.localize(`TENEBRIS.Character.FIELDS.ressources.${options.rollTarget}.valeur.label`)
+      if (formula === "0" || formula === "") {
+        ui.notifications.warn(game.i18n.format("TENEBRIS.Warnings.plusDeRessource", { ressource: ressource }))
+        return null
+      }
     }
 
     const rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value)]))
@@ -154,6 +168,7 @@ export default class TenebrisRoll extends Roll {
     let damageDiceMax
     let damageDiceFinal
     let damageDiceLowered
+
     // Damage roll : check the roll is not above the maximum damage
     if (options.rollType === ROLL_TYPE.DAMAGE) {
       damageDice = options.rollValue
@@ -162,10 +177,15 @@ export default class TenebrisRoll extends Roll {
       damageDiceLowered = damageDiceFinal !== damageDice
     }
 
+    if (options.rollType === ROLL_TYPE.ATTACK) {
+      damageDice = options.rollValue
+    }
+
     let dialogContext = {
-      isSave: options.rollType === "save",
-      isResource: options.rollType === "resource",
-      isDamage: options.rollType === "damage",
+      isSave: options.rollType === ROLL_TYPE.SAVE,
+      isResource: options.rollType === ROLL_TYPE.RESOURCE,
+      isDamage: options.rollType === ROLL_TYPE.DAMAGE,
+      isAttack: options.rollType === ROLL_TYPE.ATTACK,
       rollModes,
       fieldRollMode,
       choiceAide,
@@ -176,16 +196,18 @@ export default class TenebrisRoll extends Roll {
       damageDiceMax,
       damageDiceFinal,
       damageDiceLowered,
+      formula,
     }
     const content = await renderTemplate("systems/tenebris/templates/roll-dialog.hbs", dialogContext)
 
     const title = TenebrisRoll.createTitle(options.rollType)
+    const label = game.i18n.localize("TENEBRIS.Label.roll")
     const rollContext = await foundry.applications.api.DialogV2.prompt({
       window: { title: title },
       classes: ["tenebris"],
       content,
       ok: {
-        label: "Lancer",
+        label: label,
         callback: (event, button, dialog) => {
           const output = Array.from(button.form.elements).reduce((obj, input) => {
             if (input.name) obj[input.name] = input.value
@@ -219,34 +241,44 @@ export default class TenebrisRoll extends Roll {
     // If the user cancels the dialog, exit
     if (rollContext === null) return
 
-    const aide = rollContext.aide === "" ? 0 : parseInt(rollContext.aide, 10)
-    const gene = rollContext.gene === "" ? 0 : parseInt(rollContext.gene, 10)
-    const modificateur = rollContext.modificateur === "" ? 0 : parseInt(rollContext.modificateur, 10)
+    let treshold
 
     if (options.rollType === ROLL_TYPE.SAVE) {
-      let dice = "1d20"
-      switch (rollContext.avantages) {
-        case "avantage":
-          dice = "2d20kl"
-          break
-        case "desavantage":
-          dice = "2d20kh"
-          break
-        case "doubleAvantage":
-          dice = "3d20kl"
-          break
-        case "doubleDesavantage":
-          dice = "3d20kh"
-          break
+      const aide = rollContext.aide === "" ? 0 : parseInt(rollContext.aide, 10)
+      const gene = rollContext.gene === "" ? 0 : parseInt(rollContext.gene, 10)
+      const modificateur = rollContext.modificateur === "" ? 0 : parseInt(rollContext.modificateur, 10)
+
+      if (options.rollType === ROLL_TYPE.SAVE) {
+        let dice = "1d20"
+        switch (rollContext.avantages) {
+          case "avantage":
+            dice = "2d20kl"
+            break
+          case "desavantage":
+            dice = "2d20kh"
+            break
+          case "doubleAvantage":
+            dice = "3d20kl"
+            break
+          case "doubleDesavantage":
+            dice = "3d20kh"
+            break
+        }
+        formula = `${dice}`
       }
-      formula = `${dice}`
+
+      treshold = options.rollValue + aide + gene + modificateur
     }
 
+    // Formula for a damage roll
     if (options.rollType === ROLL_TYPE.DAMAGE) {
       formula = damageDiceFinal
     }
 
-    let treshold = options.rollValue + aide + gene + modificateur
+    // Formula for an attack roll
+    if (options.rollType === ROLL_TYPE.ATTACK) {
+      formula = damageDice
+    }
 
     const roll = new this(formula, options.data, {
       type: options.rollType,
@@ -280,14 +312,18 @@ export default class TenebrisRoll extends Roll {
    * @returns {string} The generated title.
    */
   static createTitle(type) {
-    if (type === ROLL_TYPE.SAVE) {
-      return "Jet de sauvegarde"
-    } else if (type === ROLL_TYPE.RESOURCE) {
-      return "Jet de ressource"
-    } else if (type === ROLL_TYPE.DAMAGE) {
-      return "Jet de dégâts"
+    switch (type) {
+      case ROLL_TYPE.SAVE:
+        return game.i18n.localize("TENEBRIS.Dialog.titleSave")
+      case ROLL_TYPE.RESOURCE:
+        return game.i18n.localize("TENEBRIS.Dialog.titleResource")
+      case ROLL_TYPE.DAMAGE:
+        return game.i18n.localize("TENEBRIS.Dialog.titleDamage")
+      case ROLL_TYPE.ATTACK:
+        return game.i18n.localize("TENEBRIS.Dialog.titleAttack")
+      default:
+        return game.i18n.localize("TENEBRIS.Dialog.titleStandard")
     }
-    return "Jet standard"
   }
 
   async toMessage(messageData = {}, { rollMode, create = true } = {}) {

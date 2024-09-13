@@ -9,7 +9,8 @@
       "talent": "Talent",
       "weapon": "Arme",
       "armor": "Armure",
-      "spell": "Sortilège"
+      "spell": "Sortilège",
+      "attack": "Attaque"
     }
   },
 
@@ -115,7 +116,8 @@
         "details": "Détails",
         "biography": "Biographie",
         "biens": "Biens",
-        "talents": "Talents"
+        "talents": "Talents",
+        "attaques": "Attaques"
       }
     },
     "Opponent": {
@@ -314,6 +316,13 @@
         "distant": "Distant"
       }
     },
+    "Attack": {
+      "FIELDS": {
+        "degats": {
+          "label": "Dégâts"
+        }
+      }
+    },
     "Label": {
       "description": "Description",
       "biens": "Biens",
@@ -323,7 +332,16 @@
       "talents": "Talents",
       "progressionPossible": "Progression possible",
       "equipement": "Equipement",
-      "level": "Niveau"
+      "level": "Niveau",
+      "roll": "Lancer",
+      "aide": "Aide",
+      "gene": "Gêne",
+      "modificateur": "Modificateur",
+      "avantagesDesavantages": "Avantages et Désavantages",
+      "degats": "Dégâts",
+      "ressource": "Ressource",
+      "sauvegarde": "Sauvegarde",
+      "visibilite": "Visibilité du lancer"
     },
     "Edit": "Editer",
     "Delete": "Supprimer",
@@ -334,17 +352,24 @@
       "voieMajeureAjoutee": "Voie majeure ajoutée",
       "voieMineureAjoutee": "Voie mineure ajoutée",
       "voieMajeureSupprimee": "Voie majeure supprimée",
-      "voieMineureSupprimee": "Voie mineure supprimée"
+      "voieMineureSupprimee": "Voie mineure supprimée",
+      "plusDeRessource": "Vous n'avez plus de ressource {ressource}"
     },
     "Dialog": {
       "ajoutVoieMajeure": "Ajouter une voie majeure va automatiquement remplacer les caractéristiques et les ressources. Continuer ?",
       "suppressionTalents": "Supprimer cette voie va supprimer les talents associés. Continuer ?",
-      "talentDansVoie": "Ce talent est présent dans la voie {path}. Voulez-vous vraiment le supprimer ?"
+      "talentDansVoie": "Ce talent est présent dans la voie {path}. Voulez-vous vraiment le supprimer ?",
+      "titleSave": "Jet de sauvegarde",
+      "titleResource": "Jet de ressource",
+      "titleDamage": "Jet de dégâts",
+      "titleAttack": "Jet d'attaque",
+      "titleStandard": "Jet standard"
     },
     "Roll": {
       "save": "Jet de sauvegarde <br> {save}",
       "resource": "Jet de ressource <br> {resource}",
       "damage": "Jet de dégâts <br> {item}",
+      "attack": "Jet d'attaque <br> {item}",
       "avantage": "Avec avantage",
       "desavantage": "Avec désavantage",
       "doubleAvantage": "Avec double avantage",
@@ -353,7 +378,9 @@
       "failure": "Echec"
     },
     "Tooltip": {
-      "learnedTalents": "Les talents appris sont en gras"
+      "learnedTalents": "Les talents appris sont en gras",
+      "saveIntroTextTooltip": "Caractéristique : {value} <br> Aide : {aide} <br> Gêne : {gene} <br> Modificateur : {modificateur}",
+      "addAttack": "Ajouter une attaque"
     }
   }
 }

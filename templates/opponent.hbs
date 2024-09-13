@@ -1,25 +1,47 @@
 <section>
-  {{log "opponent" this}}
+  {{log "opponent sheet" this}}
   <div class="opponent-header">
     <img class="opponent-img" src="{{actor.img}}" data-edit="img" data-action="editImage" data-tooltip="{{actor.name}}" />
     {{formInput fields.name value=source.name}}
     <a class="control" data-action="toggleSheet" data-tooltip="TENEBRIS.ToggleSheet" data-tooltip-direction="UP">
-        <i class="fa-solid fa-user-{{ifThen isPlayMode 'lock' 'pen'}}"></i>
+      <i class="fa-solid fa-user-{{ifThen isPlayMode 'lock' 'pen'}}"></i>
     </a>
   </div>
   <div class="opponent-main">
-    <fieldset class="opponent-caracteristiques">
-        <legend>Caractéristiques</legend>    
+    <div class="opponent-gauche">
+      <fieldset class="opponent-caracteristiques">
+        <legend>{{localize "TENEBRIS.Character.Label.caracteristiques"}}</legend>
         {{formField systemFields.dv value=system.dv disabled=isPlayMode}}
         {{formField systemFields.pv.fields.value value=system.pv.value}}
         {{formField systemFields.pv.fields.max value=system.pv.max disabled=isPlayMode}}
         {{formField systemFields.armure value=system.armure disabled=isPlayMode}}
         {{formField systemFields.malus value=system.malus disabled=isPlayMode}}
-        {{formField systemFields.actions value=system.actions disabled=isPlayMode}}  
-    </fieldset>
-    <fieldset class="opponent-description">
-        <legend>Description</legend>
+        {{formField systemFields.actions value=system.actions disabled=isPlayMode}}
+      </fieldset>
+
+      <fieldset class="opponent-attacks">
+        <legend>{{localize "TENEBRIS.Character.Label.attaques"}} {{#if isEditMode}}<a class="action" data-tooltip="{{localize "TENEBRIS.Tooltip.addAttack"}}" data-tooltip-direction="UP"><i class="fas fa-plus" data-action="createAttack"></i></a>{{/if}}</legend>
+        {{#each attacks as |attack|}}
+            <div class="opponent-attack">
+                <div class="attack-name">
+                    <a class="rollable" data-item-id="{{attack.id}}" data-item-name="{{attack.name}}" data-action="roll" data-roll-type="attack" data-roll-value="{{attack.system.degats}}">{{attack.system.degats}}</a> ({{attack.name}})
+                </div>
+                {{#if @root.isEditMode}}
+                    <div class="controls">
+                    <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{attack.id}}" data-item-uuid="{{attack.uuid}}"><i class="fas fa-edit"></i></a>
+                    <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{attack.id}}" data-item-uuid="{{attack.uuid}}"><i class="fas fa-trash"></i></a>
+                    </div>
+                {{/if}}
+            </div>
+        {{/each}}
+      </fieldset>
+    </div>
+    <div class="opponent-droite">
+      <fieldset class="opponent-description">
+        <legend>{{localize "TENEBRIS.Label.description"}}</legend>
         {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true compact=true}}
-    </fieldset>
+      </fieldset>
+    </div>
   </div>
+
 </section>

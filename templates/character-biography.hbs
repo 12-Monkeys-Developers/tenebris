@@ -1,32 +1,14 @@
 <section class="tab character-{{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
   <fieldset>
     <legend>{{localize "TENEBRIS.Character.Label.description"}}</legend>
-    {{formInput
-      systemFields.description
-      enriched=enrichedDescription
-      value=system.description
-      name="system.description"
-      toggled="true"
-    }}
+    {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}
   </fieldset>
-    <fieldset>
+  <fieldset>
     <legend>{{localize "TENEBRIS.Character.Label.langues"}}</legend>
-    {{formInput
-      systemFields.langues
-      enriched=enrichedLangues
-      value=system.langues
-      name="system.langues"
-      toggled="true"
-    }}
+    {{formInput systemFields.langues enriched=enrichedLangues value=system.langues name="system.langues" toggled=true}}
   </fieldset>
-    <fieldset>
+  <fieldset>
     <legend>{{localize "TENEBRIS.Character.Label.notes"}}</legend>
-    {{formInput
-      systemFields.notes
-      enriched=enrichedNotes
-      value=system.notes
-      name="system.notes"
-      toggled="true"
-    }}
+    {{formInput systemFields.notes enriched=enrichedNotes value=system.notes name="system.notes" toggled=true}}
   </fieldset>
 </section>

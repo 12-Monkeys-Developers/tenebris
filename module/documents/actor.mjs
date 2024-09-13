@@ -103,10 +103,12 @@ export default class TenebrisActor extends Actor {
   }
 
   /**
-   * Delete a path from the character
-   * @param {*} path
-   * @param {*} isMajor
-   * @returns
+   * Deletes a specified path and its associated talents.
+   *
+   * @param {Object} path The path object to be deleted.
+   * @param {boolean} isMajor Indicates if the path is a major path, elswise it is a minor path.
+   * @returns {Promise<void>} A promise that resolves when the deletion is complete.
+   * @throws {Error} Throws an error if the type is not "character".
    */
   async deletePath(path, isMajor) {
     if (this.type !== "character") return
@@ -127,5 +129,17 @@ export default class TenebrisActor extends Actor {
       await this.update({ "system.voies.mineure.nom": "", "system.voies.mineure.id": null })
       ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMineureSupprimee"))
     }
+  }
+
+  /**
+   * Adds an attack to the actor if the actor type is "opponent".
+   *
+   * @param {Object} attack The attack object to be added.
+   * @returns {Promise<void>} A promise that resolves when the attack has been added.
+   */
+  async addAttack(attack) {
+    if (this.type !== "opponent") return
+
+    await this.createEmbeddedDocuments("Item", [attack])
   }
 }
