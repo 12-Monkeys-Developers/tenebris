@@ -95,7 +95,7 @@ export default class TenebrisActor extends Actor {
         "system.ressources.bourse": item.system.ressources.bourse,
         "system.ressources.magie": item.system.ressources.magie,
         "system.dv": item.system.dv,
-        "system.dmax.valeur": item.system.dmax.valeur,
+        "system.dmax.valeur": item.system.dmax,
         "system.langues": item.system.langues,
       })
       return ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMajeureAjoutee"))
