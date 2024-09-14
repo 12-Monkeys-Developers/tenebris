@@ -375,7 +375,8 @@
       "doubleAvantage": "Avec double avantage",
       "doubleDesavantage": "Avec double désavantage",
       "success": "Réussite",
-      "failure": "Echec"
+      "failure": "Echec",
+      "resourceLost": "Ressource perdue"
     },
     "Tooltip": {
       "learnedTalents": "Les talents appris sont en gras",

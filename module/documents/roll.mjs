@@ -20,6 +20,10 @@ export default class TenebrisRoll extends Roll {
     return this.type === ROLL_TYPE.RESOURCE
   }
 
+  get isDamage() {
+    return this.type === ROLL_TYPE.DAMAGE
+  }
+
   get target() {
     return this.options.target
   }
@@ -70,6 +74,10 @@ export default class TenebrisRoll extends Roll {
 
   get resultType() {
     return this.options.resultType
+  }
+
+  get isFailure() {
+    return this.resultType === "failure"
   }
 
   /**
@@ -291,13 +299,16 @@ export default class TenebrisRoll extends Roll {
       rollMode: rollContext.visibility,
       ...rollContext,
     })
+
     await roll.evaluate()
+
     let resultType
     if (options.rollType === ROLL_TYPE.SAVE) {
       resultType = roll.total <= treshold ? "success" : "failure"
     } else if (options.rollType === ROLL_TYPE.RESOURCE) {
       resultType = roll.total === 1 || roll.total === 2 ? "failure" : "success"
     }
+
     roll.options.resultType = resultType
     roll.options.treshold = treshold
     roll.options.introText = roll._createIntroText()
@@ -332,6 +343,7 @@ export default class TenebrisRoll extends Roll {
         isSave: this.isSave,
         isResource: this.isResource,
         isDamage: this.isDamage,
+        isFailure: this.resultType === "failure",
         avantages: this.avantages,
         introText: this.introText,
         introTextTooltip: this.introTextTooltip,

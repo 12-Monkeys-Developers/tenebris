@@ -41,7 +41,7 @@
             {{#if (eq resultType "success")}}
                 {{#if visible}}{{localize "TENEBRIS.Roll.success"}}{{else}}?{{/if}}
             {{else}}
-                {{#if visible}}{{localize "TENEBRIS.Roll.failure"}}{{else}}?{{/if}}
+                {{#if visible}}{{localize "TENEBRIS.Roll.failure"}}{{#if isFailure}} ({{localize "TENEBRIS.Roll.resourceLost"}}){{/if}}{{else}}?{{/if}}
             {{/if}}
         </div>
      {{/if}}

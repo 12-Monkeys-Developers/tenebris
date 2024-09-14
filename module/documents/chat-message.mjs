@@ -5,6 +5,9 @@ export default class TenebrisChatMessage extends ChatMessage {
     if (this.rolls[0] instanceof TenebrisRoll) {
       const roll = this.rolls[0]
       messageData.isSave = roll.isSave
+      messageData.isResource = roll.isResource
+      messageData.isDamage = roll.isDamage
+      messageData.isFailure = roll.isFailure
       messageData.avantages = roll.avantages
       messageData.actorId = roll.actorId
       messageData.actingCharName = roll.actorName

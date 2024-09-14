@@ -1,4 +1,4 @@
-import { DICE_VALUE } from "./config/system.mjs"
+import { DICE_VALUES } from "./config/system.mjs"
 
 export default class TenebrisUtils {
   // Return the maximum damage limited by the maximum damage of the character
@@ -15,5 +15,10 @@ export default class TenebrisUtils {
 
     // Otherwise, return damage (as it is less than or equal to damageMax)
     return damage
+  }
+
+  static findLowerDice(dice) {
+    let index = DICE_VALUES.indexOf(dice)
+    return DICE_VALUES[index - 1]
   }
 }

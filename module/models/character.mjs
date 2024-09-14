@@ -1,5 +1,6 @@
-import { SYSTEM } from "../config/system.mjs"
+import { ROLL_TYPE, SYSTEM } from "../config/system.mjs"
 import TenebrisRoll from "../documents/roll.mjs"
+import TenebrisUtils from "../utils.mjs"
 
 export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
   static defineSchema() {
@@ -117,8 +118,15 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
   async roll(rollType, rollTarget, rollValue) {
-    let roll = await TenebrisRoll.prompt({ rollType, rollTarget, rollValue, actorId: this.parent.id, actorName: this.parent.name, actorImage: this.parent.img })
+    let roll = await TenebrisRoll.prompt({ rollType, rollTarget, rollValue, actorId: this.parent.id, actorName: this.parent.name, actorImage: this.parent.img })   
     if (!roll) return null
+
+    // Perte de ressouces
+    if (rollType === ROLL_TYPE.RESOURCE && roll.resultType === "failure") {
+      const value = this.ressources[rollTarget].valeur
+      const newValue = TenebrisUtils.findLowerDice(value)
+      await this.parent.update({ [`system.ressources.${rollTarget}.valeur`]: newValue })
+    }
     await roll.toMessage({}, { rollMode: roll.options.rollMode })
   }
 }

@@ -22,6 +22,8 @@ export const DICE_VALUE = Object.freeze({
   D12: "d12",
 })
 
+export const DICE_VALUES = ["0", "d4", "d6", "d8", "d10", "d12"]
+
 export const ROLL_TYPE = Object.freeze({
   SAVE: "save",
   RESOURCE: "resource",
