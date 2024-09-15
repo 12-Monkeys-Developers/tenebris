@@ -88,10 +88,12 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
     schema.voies = new fields.SchemaField({
       majeure: new fields.SchemaField({
         id: new fields.DocumentIdField(),
+        key: new fields.StringField({ required: true }),
         nom: new fields.StringField({ required: true }),
       }),
       mineure: new fields.SchemaField({
         id: new fields.DocumentIdField(),
+        key: new fields.StringField({ required: true }),
         nom: new fields.StringField({ required: true }),
       }),
     })

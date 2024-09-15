@@ -31,6 +31,49 @@ export const ROLL_TYPE = Object.freeze({
   ATTACK: "attack",
 })
 
+export const MINOR_PATH = Object.freeze({
+  epee: {
+    onze: "rob",
+    neuf: {
+      main: "per",
+      plume: "vol",
+      livre: "int",
+    },
+  },
+  main: {
+    onze: "dex",
+    neuf: {
+      chene: "rob",
+      plume: "vol",
+      livre: "int",
+    },
+  },
+  plume: {
+    onze: "int",
+    neuf: {
+      chene: "rob",
+      main: "per",
+      epee: "dex",
+    },
+  },
+  chene: {
+    onze: "per",
+    neuf: {
+      plume: "int",
+      livre: "int",
+      epee: "dex",
+    },
+  },
+  livre: {
+    onze: "vol",
+    neuf: {
+      chene: "rob",
+      main: "per",
+      epee: "dex",
+    },
+  },
+})
+
 export const ASCII = `
  ██████ ████████ ██   ██ ██    ██ ██      ██   ██ ██    ██     ████████ ███████ ███    ██ ███████ ██████  ██████  ██ ███████ 
 ██         ██    ██   ██ ██    ██ ██      ██   ██ ██    ██        ██    ██      ████   ██ ██      ██   ██ ██   ██ ██ ██      

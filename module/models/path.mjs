@@ -4,6 +4,8 @@ export default class TenebrisPath extends foundry.abstract.TypeDataModel {
     const fields = foundry.data.fields
     const schema = {}
 
+    schema.key = new fields.StringField({ required: true, nullable: false, initial: "" })
+
     // Caractéristiques
     const characteristicField = (label) => {
       const schema = {
