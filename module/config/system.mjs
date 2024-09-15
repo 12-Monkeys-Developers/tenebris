@@ -31,6 +31,13 @@ export const ROLL_TYPE = Object.freeze({
   ATTACK: "attack",
 })
 
+export const ASCII = `
+ ██████ ████████ ██   ██ ██    ██ ██      ██   ██ ██    ██     ████████ ███████ ███    ██ ███████ ██████  ██████  ██ ███████ 
+██         ██    ██   ██ ██    ██ ██      ██   ██ ██    ██        ██    ██      ████   ██ ██      ██   ██ ██   ██ ██ ██      
+██         ██    ███████ ██    ██ ██      ███████ ██    ██        ██    █████   ██ ██  ██ █████   ██████  ██████  ██ ███████ 
+██         ██    ██   ██ ██    ██ ██      ██   ██ ██    ██        ██    ██      ██  ██ ██ ██      ██   ██ ██   ██ ██      ██ 
+ ██████    ██    ██   ██  ██████  ███████ ██   ██  ██████         ██    ███████ ██   ████ ███████ ██████  ██   ██ ██ ███████ `
+
 /**
  * Include all constant definitions within the SYSTEM global export
  * @type {Object}
@@ -44,4 +51,5 @@ export const SYSTEM = {
   WEAPON_DAMAGE: WEAPON.DAMAGE,
   ARMOR_CATEGORY: ARMOR.CATEGORY,
   SPELL_RANGE: SPELL.RANGE,
+  ASCII,
 }

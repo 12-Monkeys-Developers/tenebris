@@ -14,7 +14,8 @@ import * as documents from "./documents/_module.mjs"
 import * as applications from "./applications/_module.mjs"
 
 Hooks.once("init", function () {
-  console.log("Initializing Cthulhu Tenebris System")
+  console.info("CTHULHU TENEBRIS | Initializing Cthulhu Tenebris System")
+  console.info(SYSTEM.ASCII)
 
   globalThis.tenebris = game.system
   game.system.CONST = SYSTEM
