@@ -1,7 +1,7 @@
 <section class="tab path-{{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
-  {{log "path-talents" this}}
+  {{!log "path-talents" this}}
   {{#each talents as |item|}}
-    {{log "path-talent" this}}
+    {{!log "path-talent" this}}
     <div class="talent" data-item-uuid="{{item.uuid}}">
       <div class="header">
         <div class="name">{{item.name}} {{#if item.system.canProgress}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}

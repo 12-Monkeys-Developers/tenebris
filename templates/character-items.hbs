@@ -5,7 +5,7 @@
     <div class="talents">
       {{#if @root.isEditMode}}
         {{#each talents as |item|}}
-          {{log "path-talent" this}}
+          {{!log "path-talent" this}}
           <div class="talent {{#if item.appris}}appris{{/if}}" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
             <div class="name" data-tooltip="{{{item.description}}}" data-tooltip-direction="UP">{{item.name}}
               {{#if item.progression}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}
@@ -19,7 +19,7 @@
         {{/each}}
       {{else}}
         {{#each talentsAppris as |item|}}
-          {{log "path-talent appris" this}}
+          {{!log "path-talent appris" this}}
           <div class="talent" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-tooltip="{{{item.description}}}">{{item.name}}
             {{#if item.progression}}
               Niveau
@@ -34,7 +34,7 @@
   <fieldset>
     <legend>{{localize "TENEBRIS.Label.equipement"}}</legend>
     {{#each weapons as |item|}}
-      {{log 'weapon' this}}
+      {{!log 'weapon' this}}
       <div class="weapon" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
         <div class="name" data-tooltip="{{{item.description}}}">{{item.name}}
           ({{item.system.weaponCategory}})          
@@ -49,7 +49,7 @@
       </div>
     {{/each}}
     {{#each armors as |item|}}
-      {{log 'armor' this}}
+      {{!log 'armor' this}}
       <div class="armor" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
         <div class="name" data-tooltip="{{{item.description}}}">{{item.name}}
           ({{item.system.armorCategory}})          
