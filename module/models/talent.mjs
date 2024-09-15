@@ -25,6 +25,6 @@ export default class TenebrisTalent extends foundry.abstract.TypeDataModel {
   }
 
   get details() {
-    return this.description
+    return this.description.replace(/#niveau\b/g, this.niveau)
   }
 }

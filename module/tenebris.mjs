@@ -60,7 +60,7 @@ Hooks.once("init", function () {
 
   // Pre-localize configuration objects
   // TODO : encore d'actualité ?
-  preLocalizeConfig()
+  //preLocalizeConfig()
 })
 
 /**

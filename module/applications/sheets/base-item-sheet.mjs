@@ -64,7 +64,7 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
       item: this.document,
       system: this.document.system,
       source: this.document.toObject(),
-      enrichedDescription: await TextEditor.enrichHTML(this.document.system.description, { async: true }),
+      enrichedDescription: await TextEditor.enrichHTML(this.document.system.details, { async: true }),
       isEditMode: this.isEditMode,
       isPlayMode: this.isPlayMode,
       isEditable: this.isEditable,

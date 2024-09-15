@@ -7,9 +7,9 @@
         {{#each talents as |item|}}
           {{log "path-talent" this}}
           <div class="talent {{#if item.appris}}appris{{/if}}" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
-            <div class="name" data-tooltip="{{{item.description}}}">{{item.name}}
+            <div class="name" data-tooltip="{{{item.description}}}" data-tooltip-direction="UP">{{item.name}}
               {{#if item.progression}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}
-              {{#if (and item.progression (gt item.niveau 0))}}{{localize 'TENEBRIS.Label.level'}} {{item.niveau}}{{/if}}            
+              {{#if (and item.progression (gt item.niveau 1))}}{{localize 'TENEBRIS.Label.level'}} {{item.niveau}}{{/if}}            
             </div>
             <div class="controls">
               <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
@@ -40,6 +40,21 @@
           ({{item.system.weaponCategory}})          
         </div>
         <a {{#if (ne item.system.degats "1")}}class="rollable" data-item-id="{{item.id}}" data-action="roll" data-roll-type="damage" data-roll-value="{{item.system.degats}}"{{/if}}>{{item.system.degats}}</a>
+        {{#if @root.isEditMode}}
+        <div class="controls">
+          <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
+          <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-trash"></i></a>
+        </div>
+        {{/if}}
+      </div>
+    {{/each}}
+    {{#each armors as |item|}}
+      {{log 'armor' this}}
+      <div class="armor" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+        <div class="name" data-tooltip="{{{item.description}}}">{{item.name}}
+          ({{item.system.armorCategory}})          
+        </div>
+        Valeur : {{item.system.valeur}} - Malus : {{item.system.malus}}
         {{#if @root.isEditMode}}
         <div class="controls">
           <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>

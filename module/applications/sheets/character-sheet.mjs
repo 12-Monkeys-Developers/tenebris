@@ -147,6 +147,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         context.talents = talents
         context.talentsAppris = talents.filter((talent) => talent.appris)
         context.weapons = doc.itemTypes.weapon
+        context.armors = doc.itemTypes.armor
         break
       case "biography":
         context.tab = context.tabs.biography
@@ -170,7 +171,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
           id: talent.id,
           uuid: talent.uuid,
           name: talent.name,
-          description: talent.system.description,
+          description: talent.system.details,
           progression: talent.system.progression,
           niveau: talent.system.niveau,
           appris: talent.system.appris,

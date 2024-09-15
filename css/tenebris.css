@@ -223,6 +223,10 @@
   display: flex;
   gap: 10px;
 }
+.tenebris .tab.character-items .armor {
+  display: flex;
+  gap: 10px;
+}
 .tenebris .tab.character-items .appris {
   font-weight: bold;
 }

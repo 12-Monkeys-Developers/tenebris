@@ -1,4 +1,5 @@
 import { SYSTEM } from "../config/system.mjs"
+import { CATEGORY } from "../config/armor.mjs"
 
 export default class TenebrisArmor extends foundry.abstract.TypeDataModel {
   static defineSchema() {
@@ -19,4 +20,8 @@ export default class TenebrisArmor extends foundry.abstract.TypeDataModel {
 
   /** @override */
   static LOCALIZATION_PREFIXES = ["TENEBRIS.Armor"]
+
+  get armorCategory() {
+    return game.i18n.localize(CATEGORY[this.categorie].label)
+  }
 }
