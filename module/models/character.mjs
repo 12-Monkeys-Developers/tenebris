@@ -49,7 +49,7 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
           choices: Object.fromEntries(Object.entries(SYSTEM.RESOURCE_VALUE).map(([key, value]) => [value, { label: `${value}` }])),
           blank: true,
         }),
-        experience: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
+        experience: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }
       return new fields.SchemaField(schema, { label })
     }
@@ -118,7 +118,7 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
   async roll(rollType, rollTarget, rollValue) {
-    let roll = await TenebrisRoll.prompt({ rollType, rollTarget, rollValue, actorId: this.parent.id, actorName: this.parent.name, actorImage: this.parent.img })   
+    let roll = await TenebrisRoll.prompt({ rollType, rollTarget, rollValue, actorId: this.parent.id, actorName: this.parent.name, actorImage: this.parent.img })
     if (!roll) return null
 
     // Perte de ressouces

@@ -185,9 +185,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  gap: 5px;
 }
-.tenebris .character-main .character-caracteristiques input {
-  width: 20px;
+.tenebris .character-main .character-caracteristiques .character-caracteristique {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.tenebris .character-main .character-caracteristiques .character-caracteristique .experience {
+  display: flex;
+}
+.tenebris .character-main .character-caracteristiques .character-caracteristique .experience input {
+  font-size: calc(var(--font-size-standard) * 1.6);
 }
 .tenebris .character-main .character-ressources {
   width: 20%;

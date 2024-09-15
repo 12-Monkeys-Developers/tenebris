@@ -5,10 +5,10 @@
 }
 
 .character-biography {
-  prose-mirror.inactive{
+  prose-mirror.inactive {
     min-height: 40px;
   }
-  prose-mirror.active{
+  prose-mirror.active {
     min-height: 150px;
   }
 }
@@ -124,9 +124,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-
-    input {
-      width: 20px;
+    gap: 5px;
+    
+    .character-caracteristique {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+      .experience {
+        display: flex;
+        input {
+          font-size: calc(var(--font-size-standard) * 1.6);
+        }
+      }
     }
   }
 
@@ -173,10 +182,10 @@
   .appris {
     font-weight: bold;
   }
-  prose-mirror.inactive{
+  prose-mirror.inactive {
     min-height: 40px;
   }
-  prose-mirror.active{
+  prose-mirror.active {
     min-height: 150px;
   }
 }

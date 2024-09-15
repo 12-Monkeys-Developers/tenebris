@@ -60,6 +60,19 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
     const context = await super._prepareContext()
     context.tabs = this.#getTabs()
 
+    context.experience = {
+      rob: this._generateTooltip("save", "rob"),
+      dex: this._generateTooltip("save", "dex"),
+      int: this._generateTooltip("save", "int"),
+      per: this._generateTooltip("save", "per"),
+      vol: this._generateTooltip("save", "vol"),
+      san: this._generateTooltip("resource", "san"),
+      oeil: this._generateTooltip("resource", "oeil"),
+      verbe: this._generateTooltip("resource", "verbe"),
+      bourse: this._generateTooltip("resource", "bourse"),
+      magie: this._generateTooltip("resource", "magie"),
+    }
+
     context.rollType = {
       saveRob: {
         action: "roll",
@@ -128,9 +141,10 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
 
   _generateTooltip(type, target) {
     if (type === ROLL_TYPE.SAVE) {
-      return `Experience: ${this.document.system.caracteristiques[target].progression.experience}`
+      const progres = this.document.system.caracteristiques[target].progression.progres ? "A progressé" : "Pas de progrès"
+      return `Experience : ${this.document.system.caracteristiques[target].progression.experience} <br> ${progres}`
     } else if (type === ROLL_TYPE.RESOURCE) {
-      return `Experience: ${this.document.system.ressources[target].experience}`
+      return `Experience : ${this.document.system.ressources[target].experience}`
     }
   }
 
