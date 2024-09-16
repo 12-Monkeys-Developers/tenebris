@@ -356,7 +356,9 @@
       "plusDeRessource": "Vous n'avez plus de ressource {ressource}"
     },
     "Dialog": {
-      "ajoutVoieMajeure": "Ajouter une voie majeure va automatiquement remplacer les caractéristiques et les ressources. Continuer ?",
+      "ajoutVoieMajeure": "Ajouter une voie majeure va automatiquement remplacer les caractéristiques, les ressources, les langues et les biens. Continuer ?",
+      "ajoutVoieMajeureTitre": "Ajout d'une voie majeure",
+      "ajoutVoieMineureTitre": "Ajout d'une voie mineure",
       "suppressionTalents": "Supprimer cette voie va supprimer les talents associés. Continuer ?",
       "talentDansVoie": "Ce talent est présent dans la voie {path}. Voulez-vous vraiment le supprimer ?",
       "titleSave": "Jet de sauvegarde",

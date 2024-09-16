@@ -48,9 +48,12 @@ export default class TenebrisActor extends Actor {
         dropNotification = `La valeur de ${labelOnze} va être modifiée pour 11`
         const neuf = MINOR_PATH[itemData.system.key].neuf[this.system.voies.majeure.key]
         const labelNeuf = game.i18n.localize(`TENEBRIS.Character.FIELDS.caracteristiques.${neuf}.valeur.label`)
-        dropNotification += ` <br> La valeur de ${labelNeuf} va être modifiée pour 9`
+        dropNotification += `<br> La valeur de ${labelNeuf} va être modifiée pour 9`
+        dropNotification += `<br> Vous pouvez renoncer à des biens de la voie majeure pour ceux de la voie mineure`
+        dropNotification += `<br> Vous pouvez renoncer à des langues de la voie majeure pour celles de la voie mineure`
 
         const proceed = await foundry.applications.api.DialogV2.confirm({
+          window: { title: game.i18n.localize("TENEBRIS.Dialog.ajoutVoieMineureTitre") },
           content: dropNotification,
           rejectClose: false,
           modal: true,
@@ -60,12 +63,15 @@ export default class TenebrisActor extends Actor {
         // Création de la voie
         voie = await this.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
 
+        // TODO : ajouter les biens et langues de la voie mineure en plus (Voie mineure : ... )
         await this.update({
           "system.voies.mineure.nom": item.name,
           "system.voies.mineure.id": voie[0].id,
           "system.voies.mineure.key": item.system.key,
           [`system.caracteristiques.${onze}.valeur`]: 11,
           [`system.caracteristiques.${neuf}.valeur`]: 9,
+          "system.langues": `${this.system.langues} <br>Voie mineure : ${item.system.langues}`,
+          "system.biens": `${this.system.biens} <br>Voie mineure : ${item.system.biens}`,
         })
       }
 
@@ -87,6 +93,7 @@ export default class TenebrisActor extends Actor {
     // Voie majeure
     else {
       const proceed = await foundry.applications.api.DialogV2.confirm({
+        window: { title: game.i18n.localize("TENEBRIS.Dialog.ajoutVoieMajeureTitre") },
         content: game.i18n.localize("TENEBRIS.Dialog.ajoutVoieMajeure"),
         rejectClose: false,
         modal: true,
