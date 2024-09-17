@@ -16,6 +16,9 @@ export default class TenebrisChatMessage extends ChatMessage {
       messageData.introTextTooltip = roll.introTextTooltip
       messageData.resultType = roll.resultType
       messageData.visible = this.isContentVisible
+      messageData.hasTarget = roll.hasTarget
+      messageData.targetName = roll.targetName
+      messageData.targetArmor = roll.targetArmor
     }
     return super._renderRollContent(messageData)
   }

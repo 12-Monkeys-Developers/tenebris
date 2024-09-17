@@ -88,6 +88,10 @@ export default class TenebrisRoll extends Roll {
     return this.options.targetName
   }
 
+  get targetArmor() {
+    return this.options.targetArmor
+  }
+
   /**
    * Generates introductory text based on the roll type.
    *
@@ -203,9 +207,15 @@ export default class TenebrisRoll extends Roll {
 
     let malus = "0"
     let targetName
-    if (options.rollType === ROLL_TYPE.SAVE && options.hasTarget) {
-      malus = options.target.actor.system.malus.toString()
+    let targetArmor
+    if (options.rollType === ROLL_TYPE.SAVE && options.hasTarget && options.target.actor.type === "opponent") {
       targetName = options.target.actor.name
+      malus = options.target.actor.system.malus.toString()
+    }
+
+    if (options.rollType === ROLL_TYPE.DAMAGE && options.hasTarget && options.target.actor.type === "opponent") {
+      targetName = options.target.actor.name
+      targetArmor = options.target.actor.system.armure.toString()
     }
 
     let dialogContext = {
@@ -227,6 +237,7 @@ export default class TenebrisRoll extends Roll {
       hasTarget: options.hasTarget,
       malus,
       targetName,
+      targetArmor,
     }
     const content = await renderTemplate("systems/tenebris/templates/roll-dialog.hbs", dialogContext)
 
@@ -320,7 +331,8 @@ export default class TenebrisRoll extends Roll {
       actorImage: options.actorImage,
       rollMode: rollContext.visibility,
       hasTarget: options.hasTarget,
-      targetName: targetName,
+      targetName,
+      targetArmor,
       ...rollContext,
     })
 
@@ -373,6 +385,9 @@ export default class TenebrisRoll extends Roll {
         introTextTooltip: this.introTextTooltip,
         actingCharName: this.actorName,
         actingCharImg: this.actorImage,
+        hasTarget: this.hasTarget,
+        targetName: this.targetName,
+        targetArmor: this.targetArmor,
         ...messageData,
       },
       { rollMode: rollMode },

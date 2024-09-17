@@ -740,7 +740,6 @@
   border-radius: 20px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
 }
 .tenebris.chat-message .intro-chat .intro-img {
   padding: 5px;
@@ -754,7 +753,7 @@
 .tenebris.chat-message .intro-chat .intro-right .introText {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.1);
-  /* width: 210px; */
+  width: 210px;
   text-align: center;
 }
 .tenebris.chat-message .result {
@@ -763,6 +762,7 @@
   justify-content: center;
   align-items: center;
   font-size: calc(var(--font-size-standard) * 1.2);
+  text-shadow: 0 0 10px var(--color-shadow-primary);
 }
 .tenebris .dialog-aide-gene {
   display: flex;

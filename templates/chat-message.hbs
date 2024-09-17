@@ -1,4 +1,4 @@
-{{!log 'chat-message' this}}
+{{log 'chat-message' this}}
 <li class="tenebris chat-message message flexcol {{cssClass}}" data-message-id="{{message._id}}" {{#if borderColor}}style="border-color:{{borderColor}}"{{/if}}>
     <header class="message-header flexrow">
         <h4 class="message-sender">{{alias}}</h4>
@@ -55,6 +55,9 @@
                 {{#if visible}}{{localize "TENEBRIS.Roll.failure"}}{{#if isFailure}} ({{localize "TENEBRIS.Roll.resourceLost"}}){{/if}}{{else}}?{{/if}}
             {{/if}}
         </div>
+     {{/if}}
+     {{#if (and user.isGM isDamage hasTarget)}}
+        {{targetName}} a une armure de {{targetArmor}}
      {{/if}}
     <div class="message-content">
         {{{message.content}}}

@@ -1,4 +1,4 @@
-import { DICE_VALUES } from "./config/system.mjs"
+import { DICE_VALUE } from "./config/system.mjs"
 
 export default class TenebrisUtils {
   // Return the maximum damage limited by the maximum damage of the character

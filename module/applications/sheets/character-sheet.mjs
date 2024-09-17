@@ -298,6 +298,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
       case ROLL_TYPE.DAMAGE:
         rollTarget = elt.dataset.itemId
         rollValue = elt.dataset.rollValue
+        opponentTarget = game.user.targets.first()
         break
       default:
         // Handle other cases or do nothing
