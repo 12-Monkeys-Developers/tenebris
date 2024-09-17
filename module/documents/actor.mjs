@@ -39,37 +39,52 @@ export default class TenebrisActor extends Actor {
         return
       }
 
-      let dropNotification
-      let onze = MINOR_PATH[itemData.system.key].onze
+      const isBasePath = itemData.system.key !== "" && system.voies.majeure.key !== ""
 
-      let voie
-      if (onze) {
+      let dropNotification
+
+      if (isBasePath) {
+        let onze = game.system.CONST.MINOR_PATH[itemData.system.key].onze
         const labelOnze = game.i18n.localize(`TENEBRIS.Character.FIELDS.caracteristiques.${onze}.valeur.label`)
         dropNotification = `La valeur de ${labelOnze} va être modifiée pour 11`
-        const neuf = MINOR_PATH[itemData.system.key].neuf[this.system.voies.majeure.key]
+        const neuf = game.system.CONST.MINOR_PATH[itemData.system.key].neuf[this.system.voies.majeure.key]
         const labelNeuf = game.i18n.localize(`TENEBRIS.Character.FIELDS.caracteristiques.${neuf}.valeur.label`)
-        dropNotification += `<br> La valeur de ${labelNeuf} va être modifiée pour 9`
-        dropNotification += `<br> Vous pouvez renoncer à des biens de la voie majeure pour ceux de la voie mineure`
-        dropNotification += `<br> Vous pouvez renoncer à des langues de la voie majeure pour celles de la voie mineure`
+        dropNotification += `<br> La valeur de ${labelNeuf} va être modifiée pour 9 <br> `
+      } else {
+        dropNotification = ""
+      }
 
-        const proceed = await foundry.applications.api.DialogV2.confirm({
-          window: { title: game.i18n.localize("TENEBRIS.Dialog.ajoutVoieMineureTitre") },
-          content: dropNotification,
-          rejectClose: false,
-          modal: true,
-        })
-        if (!proceed) return
+      dropNotification += `Vous pouvez renoncer à des biens de la voie majeure pour ceux de la voie mineure`
+      dropNotification += `<br> Vous pouvez renoncer à des langues de la voie majeure pour celles de la voie mineure`
 
-        // Création de la voie
-        voie = await this.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
+      const proceed = await foundry.applications.api.DialogV2.confirm({
+        window: { title: game.i18n.localize("TENEBRIS.Dialog.ajoutVoieMineureTitre") },
+        content: dropNotification,
+        rejectClose: false,
+        modal: true,
+      })
+      if (!proceed) return
 
-        // TODO : ajouter les biens et langues de la voie mineure en plus (Voie mineure : ... )
+      let voie
+
+      // Création de la voie
+      voie = await this.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
+
+      if (isBasePath) {
         await this.update({
           "system.voies.mineure.nom": item.name,
           "system.voies.mineure.id": voie[0].id,
           "system.voies.mineure.key": item.system.key,
           [`system.caracteristiques.${onze}.valeur`]: 11,
           [`system.caracteristiques.${neuf}.valeur`]: 9,
+          "system.langues": `${this.system.langues} <br>Voie mineure : ${item.system.langues}`,
+          "system.biens": `${this.system.biens} <br>Voie mineure : ${item.system.biens}`,
+        })
+      } else {
+        await this.update({
+          "system.voies.mineure.nom": item.name,
+          "system.voies.mineure.id": voie[0].id,
+          "system.voies.mineure.key": item.system.key,
           "system.langues": `${this.system.langues} <br>Voie mineure : ${item.system.langues}`,
           "system.biens": `${this.system.biens} <br>Voie mineure : ${item.system.biens}`,
         })

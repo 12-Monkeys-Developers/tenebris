@@ -51,8 +51,11 @@
     }
 
     .description {
-      prose-mirror {
-        min-height: 100%;
+      prose-mirror.inactive {
+        min-height: 40px;
+      }
+      prose-mirror.active {
+        min-height: 150px;
       }
       grid-column: span 3;
     }

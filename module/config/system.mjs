@@ -59,7 +59,7 @@ export const MINOR_PATH = Object.freeze({
   chene: {
     onze: "per",
     neuf: {
-      plume: "int",
+      plume: "vol",
       livre: "int",
       epee: "dex",
     },
@@ -95,4 +95,5 @@ export const SYSTEM = {
   ARMOR_CATEGORY: ARMOR.CATEGORY,
   SPELL_RANGE: SPELL.RANGE,
   ASCII,
+  MINOR_PATH,
 }

@@ -437,8 +437,11 @@
 .tenebris .path-content .path-main .description {
   grid-column: span 3;
 }
-.tenebris .path-content .path-main .description prose-mirror {
-  min-height: 100%;
+.tenebris .path-content .path-main .description prose-mirror.inactive {
+  min-height: 40px;
+}
+.tenebris .path-content .path-main .description prose-mirror.active {
+  min-height: 150px;
 }
 .tenebris .path-content .path-talents {
   display: grid;
