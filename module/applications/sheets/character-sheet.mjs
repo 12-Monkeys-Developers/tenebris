@@ -284,10 +284,12 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
     const rollType = elt.dataset.rollType
     let rollTarget
     let rollValue
+    let opponentTarget
     switch (rollType) {
       case ROLL_TYPE.SAVE:
         rollTarget = elt.dataset.rollTarget
         rollValue = this.document.system.caracteristiques[rollTarget].valeur
+        opponentTarget = game.user.targets.first()
         break
       case ROLL_TYPE.RESOURCE:
         rollTarget = elt.dataset.rollTarget
@@ -301,7 +303,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         // Handle other cases or do nothing
         break
     }
-    await this.document.system.roll(rollType, rollTarget, rollValue)
+    await this.document.system.roll(rollType, rollTarget, rollValue, opponentTarget)
   }
 
   // #endregion

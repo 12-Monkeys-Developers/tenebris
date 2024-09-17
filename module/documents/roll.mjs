@@ -80,6 +80,14 @@ export default class TenebrisRoll extends Roll {
     return this.resultType === "failure"
   }
 
+  get hasTarget() {
+    return this.options.hasTarget
+  }
+
+  get targetName() {
+    return this.options.targetName
+  }
+
   /**
    * Generates introductory text based on the roll type.
    *
@@ -116,7 +124,11 @@ export default class TenebrisRoll extends Roll {
    * @returns {string} A formatted string containing the value, help, hindrance, and modifier.
    */
   _createIntroTextTooltip() {
-    return game.i18n.format("TENEBRIS.Tooltip.saveIntroTextTooltip", { value: this.value, aide: this.aide, gene: this.gene, modificateur: this.modificateur })
+    let tooltip = game.i18n.format("TENEBRIS.Tooltip.saveIntroTextTooltip", { value: this.value, aide: this.aide, gene: this.gene, modificateur: this.modificateur })
+    if (this.hasTarget) {
+      tooltip = tooltip.concat(`<br>Cible : ${this.targetName}`)
+    }
+    return tooltip
   }
 
   /**
@@ -189,6 +201,13 @@ export default class TenebrisRoll extends Roll {
       damageDice = options.rollValue
     }
 
+    let malus = "0"
+    let targetName
+    if (options.rollType === ROLL_TYPE.SAVE && options.hasTarget) {
+      malus = options.target.actor.system.malus.toString()
+      targetName = options.target.actor.name
+    }
+
     let dialogContext = {
       isSave: options.rollType === ROLL_TYPE.SAVE,
       isResource: options.rollType === ROLL_TYPE.RESOURCE,
@@ -205,6 +224,9 @@ export default class TenebrisRoll extends Roll {
       damageDiceFinal,
       damageDiceLowered,
       formula,
+      hasTarget: options.hasTarget,
+      malus,
+      targetName,
     }
     const content = await renderTemplate("systems/tenebris/templates/roll-dialog.hbs", dialogContext)
 
@@ -297,6 +319,8 @@ export default class TenebrisRoll extends Roll {
       actorName: options.actorName,
       actorImage: options.actorImage,
       rollMode: rollContext.visibility,
+      hasTarget: options.hasTarget,
+      targetName: targetName,
       ...rollContext,
     })
 

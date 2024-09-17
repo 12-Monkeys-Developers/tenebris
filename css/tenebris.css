@@ -754,7 +754,7 @@
 .tenebris.chat-message .intro-chat .intro-right .introText {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.1);
-  width: 210px;
+  /* width: 210px; */
   text-align: center;
 }
 .tenebris.chat-message .result {

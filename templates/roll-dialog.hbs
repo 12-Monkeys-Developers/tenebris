@@ -1,4 +1,4 @@
-{{!log "dialog" this}}
+{{log "dialog" this}}
 {{#if isSave}}
   <fieldSet>
     <legend>{{localize "TENEBRIS.Label.sauvegarde"}}</legend>
@@ -20,8 +20,8 @@
   </div>
   <fieldSet>
     <legend>{{localize "TENEBRIS.Label.modificateur"}}</legend>
-    <select name="modificateur">
-      {{selectOptions choiceModificateur}}
+    <select name="modificateur" {{#if hasTarget}}data-tooltip="Cible : {{targetName}}" data-tooltip-direction="UP"{{/if}}>
+      {{selectOptions choiceModificateur selected=malus}}
     </select>
   </fieldSet>
   <fieldSet>

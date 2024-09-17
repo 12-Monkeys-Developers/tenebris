@@ -24,19 +24,30 @@
         {{/if}}
         <div class="intro-right">
             {{#if visible}}
-                <p class="introText" {{#if isSave}}data-tooltip="{{introTextTooltip}}"{{/if}}>{{{introText}}}</p>
+                <p class="introText" {{#if isSave}}data-tooltip="{{introTextTooltip}}"{{/if}}>{{{introText}}}
                 {{#if isSave}}
-                    {{#if (eq avantages "avantage")}} {{localize "TENEBRIS.Roll.avantage"}}{{/if}}
-                    {{#if (eq avantages "desavantage")}} {{localize "TENEBRIS.Roll.desavantage"}}{{/if}}
-                    {{#if (eq avantages "doubleAvantage")}} {{localize "TENEBRIS.Roll.doubleAvantage"}}{{/if}}
-                    {{#if (eq avantages "doubleDesavantage")}} {{localize "TENEBRIS.Roll.doubleDesavantage"}}{{/if}}
-                {{/if}}
+                        <br>
+                        {{#if (eq avantages "avantage")}} {{localize "TENEBRIS.Roll.avantage"}}{{/if}}
+                        {{#if (eq avantages "desavantage")}} {{localize "TENEBRIS.Roll.desavantage"}}{{/if}}
+                        {{#if (eq avantages "doubleAvantage")}} {{localize "TENEBRIS.Roll.doubleAvantage"}}{{/if}}
+                        {{#if (eq avantages "doubleDesavantage")}} {{localize "TENEBRIS.Roll.doubleDesavantage"}}{{/if}}
+                {{/if}}        
+                </p>        
             {{else}}
                 <p class="introText"></p>
             {{/if}}
         </div>
     </div>
-     {{#if (or isSave isResource)}}
+     {{#if isSave}}
+        <div class="result">
+            {{#if (eq resultType "success")}}
+                {{#if visible}}{{localize "TENEBRIS.Roll.success"}}{{else}}?{{/if}}
+            {{else}}
+                {{#if visible}}{{localize "TENEBRIS.Roll.failure"}}{{else}}?{{/if}}
+            {{/if}}
+        </div>
+     {{/if}}
+     {{#if isResource}}
         <div class="result">
             {{#if (eq resultType "success")}}
                 {{#if visible}}{{localize "TENEBRIS.Roll.success"}}{{else}}?{{/if}}
