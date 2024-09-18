@@ -26,8 +26,8 @@ export default class TenebrisOpponent extends foundry.abstract.TypeDataModel {
 
   /**
    * Rolls a dice attack for an opponent.
-   * @param {number} rollTarget The name of the attack
    * @param {number} rollValue The dice to roll.
+   * @param {number} rollTarget The name of the attack
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
   async roll(rollValue, rollTarget) {

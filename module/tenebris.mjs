@@ -20,6 +20,13 @@ Hooks.once("init", function () {
   globalThis.tenebris = game.system
   game.system.CONST = SYSTEM
 
+  // Expose the system API
+  game.system.api = {
+    applications,
+    models,
+    documents,
+  }
+
   CONFIG.Actor.documentClass = documents.TenebrisActor
   CONFIG.Actor.dataModels = {
     character: models.TenebrisCharacter,
@@ -57,10 +64,18 @@ Hooks.once("init", function () {
   CONFIG.Dice.rolls.push(documents.TenebrisRoll)
 
   // Register system settings
+  game.settings.register("tenebris", "displayOpponentMalus", {
+    name: "TENEBRIS.Setting.displayOpponentMalus",
+    hint: "TENEBRIS.Setting.displayOpponentMalusHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+  })
 
   // Pre-localize configuration objects
   // TODO : encore d'actualité ?
-  //preLocalizeConfig()
+  // preLocalizeConfig()
 })
 
 /**
@@ -75,8 +90,13 @@ function preLocalizeConfig() {
     }
   }
 
-  //CONFIG.Dice.rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value)]))
+  // CONFIG.Dice.rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value)]))
 
-  //localizeConfigObject(SYSTEM.ACTION.TAG_CATEGORIES, ["label"])
-  //localizeConfigObject(CONFIG.Dice.rollModes, ["label"])
+  // localizeConfigObject(SYSTEM.ACTION.TAG_CATEGORIES, ["label"])
+  // localizeConfigObject(CONFIG.Dice.rollModes, ["label"])
 }
+
+Hooks.once("ready", function () {
+  console.info("CTHULHU TENEBRIS | Ready")
+  new applications.TenebrisFortune().render(true)
+})

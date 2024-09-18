@@ -19,12 +19,9 @@
         {{/each}}
       {{else}}
         {{#each talentsAppris as |item|}}
-          {{!log "path-talent appris" this}}
-          <div class="talent" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-tooltip="{{{item.description}}}">{{item.name}}
-            {{#if item.progression}}
-              Niveau
-              {{item.niveau}}
-            {{/if}}
+          {{log "path-talent appris" this}}
+          <div class="talent" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-tooltip="{{{item.description}}}">
+            {{item.name}} {{item.details}}            
           </div>
         {{/each}}
       {{/if}}
@@ -54,7 +51,7 @@
         <div class="name" data-tooltip="{{{item.description}}}">{{item.name}}
           ({{item.system.armorCategory}})          
         </div>
-        Valeur : {{item.system.valeur}} - Malus : {{item.system.malus}}
+        {{item.system.details}}
         {{#if @root.isEditMode}}
         <div class="controls">
           <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>

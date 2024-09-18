@@ -28,14 +28,14 @@ export default class TenebrisActor extends Actor {
     if (this.type !== "character") return
     let itemData = item.toObject()
     if (this.system.hasVoieMajeure && this.system.hasVoieMineure) {
-      ui.notifications.warn(game.i18n.localize("TENEBRIS.Warnings.dejaDeuxVoies"))
+      ui.notifications.warn(game.i18n.localize("TENEBRIS.Warning.dejaDeuxVoies"))
       return
     }
 
     // Voie mineure
     if (this.system.hasVoieMajeure) {
       if (this.system.voies.majeure.nom === item.name) {
-        ui.notifications.warn(game.i18n.localize("TENEBRIS.Warnings.dejaVoieMajeure"))
+        ui.notifications.warn(game.i18n.localize("TENEBRIS.Warning.dejaVoieMajeure"))
         return
       }
 
@@ -102,7 +102,7 @@ export default class TenebrisActor extends Actor {
       // Mise à jour de la voie avec les nouveaux talents
       await voie[0].update({ "system.talents": newTalents })
 
-      return ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMineureAjoutee"))
+      return ui.notifications.info(game.i18n.localize("TENEBRIS.Warning.voieMineureAjoutee"))
     }
 
     // Voie majeure
@@ -149,7 +149,7 @@ export default class TenebrisActor extends Actor {
         "system.langues": item.system.langues,
         "system.biens": item.system.biens,
       })
-      return ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMajeureAjoutee"))
+      return ui.notifications.info(game.i18n.localize("TENEBRIS.Warning.voieMajeureAjoutee"))
     }
   }
 
@@ -172,13 +172,13 @@ export default class TenebrisActor extends Actor {
     // Voie majeure
     if (isMajor) {
       await this.update({ "system.voies.majeure.nom": "", "system.voies.majeure.id": null, "system.voies.majeure.key": "" })
-      ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMajeureSupprimee"))
+      ui.notifications.info(game.i18n.localize("TENEBRIS.Warning.voieMajeureSupprimee"))
     }
 
     // Voie mineure
     else {
       await this.update({ "system.voies.mineure.nom": "", "system.voies.mineure.id": null, "system.voies.mineure.key": "" })
-      ui.notifications.info(game.i18n.localize("TENEBRIS.Warnings.voieMineureSupprimee"))
+      ui.notifications.info(game.i18n.localize("TENEBRIS.Warning.voieMineureSupprimee"))
     }
   }
 

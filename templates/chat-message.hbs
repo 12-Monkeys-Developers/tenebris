@@ -57,7 +57,7 @@
         </div>
      {{/if}}
      {{#if (and user.isGM isDamage hasTarget)}}
-        {{targetName}} a une armure de {{targetArmor}}
+            {{localize "TENEBRIS.Roll.displayArmor" targetName=targetName targetArmor=targetArmor realDamage=realDamage}}
      {{/if}}
     <div class="message-content">
         {{{message.content}}}

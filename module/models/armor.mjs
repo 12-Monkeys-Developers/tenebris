@@ -24,4 +24,11 @@ export default class TenebrisArmor extends foundry.abstract.TypeDataModel {
   get armorCategory() {
     return game.i18n.localize(CATEGORY[this.categorie].label)
   }
+
+  get details() {
+    return game.i18n.format("TENEBRIS.Armor.details", {
+      valeur: this.valeur,
+      malus: this.malus,
+    })
+  }
 }

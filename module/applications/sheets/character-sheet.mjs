@@ -185,10 +185,11 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
           id: talent.id,
           uuid: talent.uuid,
           name: talent.name,
-          description: talent.system.details,
+          description: talent.system.improvedDescription,
           progression: talent.system.progression,
           niveau: talent.system.niveau,
           appris: talent.system.appris,
+          details: talent.system.details,
         }
       })
       .sort((a, b) => b.appris - a.appris || a.name.localeCompare(b.name, game.i18n.lang))
@@ -262,8 +263,8 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
   /**
    * Handles the roll action triggered by user interaction.
    *
-   * @param {PointerEvent} event - The event object representing the user interaction.
-   * @param {HTMLElement} target - The target element that triggered the roll.
+   * @param {PointerEvent} event The event object representing the user interaction.
+   * @param {HTMLElement} target The target element that triggered the roll.
    *
    * @returns {Promise<void>} A promise that resolves when the roll action is complete.
    *

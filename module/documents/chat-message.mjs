@@ -19,6 +19,7 @@ export default class TenebrisChatMessage extends ChatMessage {
       messageData.hasTarget = roll.hasTarget
       messageData.targetName = roll.targetName
       messageData.targetArmor = roll.targetArmor
+      messageData.realDamage = roll.realDamage
     }
     return super._renderRollContent(messageData)
   }

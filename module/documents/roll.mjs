@@ -92,6 +92,14 @@ export default class TenebrisRoll extends Roll {
     return this.options.targetArmor
   }
 
+  get targetMalus() {
+    return this.options.targetMalus
+  }
+
+  get realDamage() {
+    return this.options.realDamage
+  }
+
   /**
    * Generates introductory text based on the roll type.
    *
@@ -147,7 +155,7 @@ export default class TenebrisRoll extends Roll {
     if (options.rollType === ROLL_TYPE.RESOURCE) {
       let ressource = game.i18n.localize(`TENEBRIS.Character.FIELDS.ressources.${options.rollTarget}.valeur.label`)
       if (formula === "0" || formula === "") {
-        ui.notifications.warn(game.i18n.format("TENEBRIS.Warnings.plusDeRessource", { ressource: ressource }))
+        ui.notifications.warn(game.i18n.format("TENEBRIS.Warning.plusDeRessource", { ressource: ressource }))
         return null
       }
     }
@@ -206,11 +214,15 @@ export default class TenebrisRoll extends Roll {
     }
 
     let malus = "0"
+    let targetMalus = "0"
     let targetName
     let targetArmor
+    const displayOpponentMalus = game.settings.get("tenebris", "displayOpponentMalus")
+
     if (options.rollType === ROLL_TYPE.SAVE && options.hasTarget && options.target.actor.type === "opponent") {
       targetName = options.target.actor.name
-      malus = options.target.actor.system.malus.toString()
+      if (displayOpponentMalus) malus = options.target.actor.system.malus.toString()
+      else targetMalus = options.target.actor.system.malus.toString()
     }
 
     if (options.rollType === ROLL_TYPE.DAMAGE && options.hasTarget && options.target.actor.type === "opponent") {
@@ -333,6 +345,7 @@ export default class TenebrisRoll extends Roll {
       hasTarget: options.hasTarget,
       targetName,
       targetArmor,
+      targetMalus,
       ...rollContext,
     })
 
@@ -345,17 +358,23 @@ export default class TenebrisRoll extends Roll {
       resultType = roll.total === 1 || roll.total === 2 ? "failure" : "success"
     }
 
+    let realDamage
+    if (options.rollType === ROLL_TYPE.DAMAGE) {
+      realDamage = Math.max(0, roll.total - parseInt(targetArmor, 10))
+    }
+
     roll.options.resultType = resultType
     roll.options.treshold = treshold
     roll.options.introText = roll._createIntroText()
     roll.options.introTextTooltip = roll._createIntroTextTooltip()
+    roll.options.realDamage = realDamage
     return roll
   }
 
   /**
    * Creates a title based on the given type.
    *
-   * @param {string} type - The type of the roll.
+   * @param {string} type The type of the roll.
    * @returns {string} The generated title.
    */
   static createTitle(type) {
@@ -388,6 +407,8 @@ export default class TenebrisRoll extends Roll {
         hasTarget: this.hasTarget,
         targetName: this.targetName,
         targetArmor: this.targetArmor,
+        targetMalus: this.targetMalus,
+        realDamage: this.realDamage,
         ...messageData,
       },
       { rollMode: rollMode },

@@ -24,7 +24,15 @@ export default class TenebrisTalent extends foundry.abstract.TypeDataModel {
     return this.appris
   }
 
-  get details() {
+  get improvedDescription() {
     return this.description.replace(/#niveau\b/g, this.niveau)
+  }
+
+  get details() {
+    if (this.progression)
+      return game.i18n.format("TENEBRIS.Talent.details", {
+        niveau: this.niveau,
+      })
+    return ""
   }
 }

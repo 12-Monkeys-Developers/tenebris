@@ -42,7 +42,6 @@
     </div>
   </fieldset>
 
-  <!-- <div class="character-details"> </div> -->
   <fieldset class="character-caracteristiques">
     <legend data-tooltip="Expérience">{{localize "TENEBRIS.Character.Label.caracteristiques"}}</legend>
     <div class="character-caracteristique" data-tooltip="{{experience.rob}}">{{formField systemFields.caracteristiques.fields.rob.fields.valeur value=system.caracteristiques.rob.valeur rootId=partId readonly=isPlayMode classes="rollable" dataset=rollType.saveRob}} {{#if isEditMode}}<div class="experience">{{formInput systemFields.caracteristiques.fields.rob.fields.progression.fields.experience value=system.caracteristiques.rob.progression.experience}} {{formInput systemFields.caracteristiques.fields.rob.fields.progression.fields.progres value=system.caracteristiques.rob.progression.progres}}</div>{{/if}}</div>

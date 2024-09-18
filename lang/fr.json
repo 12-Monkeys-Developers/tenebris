@@ -158,7 +158,8 @@
         "niveau": {
           "label": "Niveau"
         }
-      }
+      },
+      "details": "(Niveau {niveau})"
     },
     "Path": {
       "FIELDS": {
@@ -282,7 +283,8 @@
         "sommaire": "Armures sommaires",
         "legere": "Armures légères",
         "guerre": "Armures de guerre"
-      }
+      },
+      "details": "Valeur : {valeur} - Malus : {malus}"
     },
     "Spell": {
       "FIELDS": {
@@ -346,7 +348,7 @@
     "Edit": "Editer",
     "Delete": "Supprimer",
     "ToggleSheet": "Changer de mode",
-    "Warnings": {
+    "Warning": {
       "dejaDeuxVoies": "Vous avez déjà choisi deux voies",
       "dejaVoieMajeure": "Vous avez déjà choisi cette voie comme voie majeure",
       "voieMajeureAjoutee": "Voie majeure ajoutée",
@@ -378,12 +380,17 @@
       "doubleDesavantage": "Avec double désavantage",
       "success": "Réussite",
       "failure": "Echec",
-      "resourceLost": "Ressource perdue"
+      "resourceLost": "Ressource perdue",
+      "displayArmor": "{targetName} a une armure de {targetArmor}. Dégâts réels : {realDamage}"
     },
     "Tooltip": {
       "learnedTalents": "Les talents appris sont en gras",
       "saveIntroTextTooltip": "Caractéristique : {value} <br> Aide : {aide} <br> Gêne : {gene} <br> Modificateur : {modificateur}",
       "addAttack": "Ajouter une attaque"
+    },
+    "Setting": {
+      "displayOpponentMalus": "Afficher le malus d'adversité",
+      "displayOpponentMalusHint": "Affiche le malus d'adversité pour les joueurs"
     }
   }
 }
