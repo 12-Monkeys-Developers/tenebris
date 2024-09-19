@@ -49,6 +49,7 @@
     "units": "m"
   },
   "primaryTokenAttribute": "pv",
+  "socket": true,
   "flags": {
     "hotReload": {
       "extensions": ["css", "hbs", "json"],

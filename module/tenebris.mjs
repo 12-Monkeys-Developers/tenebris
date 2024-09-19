@@ -13,6 +13,8 @@ import * as models from "./models/_module.mjs"
 import * as documents from "./documents/_module.mjs"
 import * as applications from "./applications/_module.mjs"
 
+import { handleSocketEvent } from "./socket.mjs"
+
 Hooks.once("init", function () {
   console.info("CTHULHU TENEBRIS | Initializing Cthulhu Tenebris System")
   console.info(SYSTEM.ASCII)
@@ -73,6 +75,18 @@ Hooks.once("init", function () {
     default: true,
   })
 
+  game.settings.register("tenebris", "fortune", {
+    name: "TENEBRIS.Setting.fortune",
+    hint: "TENEBRIS.Setting.fortuneHint",
+    scope: "world",
+    config: true,
+    type: Number,
+    default: 0,
+  })
+
+  // Activate socket handler
+  game.socket.on(`system.${SYSTEM.id}`, handleSocketEvent)
+
   // Pre-localize configuration objects
   // TODO : encore d'actualité ?
   // preLocalizeConfig()
@@ -99,4 +113,11 @@ function preLocalizeConfig() {
 Hooks.once("ready", function () {
   console.info("CTHULHU TENEBRIS | Ready")
   new applications.TenebrisFortune().render(true)
+})
+
+Hooks.on("renderChatMessage", (message, html, data) => {
+  const typeMessage = data.message.flags.tenebris?.typeMessage
+  if (typeMessage === "fortune") {
+    console.log("fortune message !")
+  }
 })

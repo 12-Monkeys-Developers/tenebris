@@ -390,7 +390,9 @@
     },
     "Setting": {
       "displayOpponentMalus": "Afficher le malus d'adversité",
-      "displayOpponentMalusHint": "Affiche le malus d'adversité pour les joueurs"
+      "displayOpponentMalusHint": "Affiche le malus d'adversité pour les joueurs.",
+      "fortune": "Roue de Fortune",
+      "fortuneHint": "Valeur de la roue de Fortune. Nombre de joueurs + 1 en début de partie."
     }
   }
 }
