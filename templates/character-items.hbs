@@ -19,7 +19,7 @@
         {{/each}}
       {{else}}
         {{#each talentsAppris as |item|}}
-          {{log "path-talent appris" this}}
+          {{!log "path-talent appris" this}}
           <div class="talent" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-tooltip="{{{item.description}}}">
             {{item.name}} {{item.details}}            
           </div>

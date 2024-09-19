@@ -6,7 +6,7 @@ export default class TenebrisRoll extends Roll {
    * The HTML template path used to render dice checks of this type
    * @type {string}
    */
-  static CHAT_TEMPLATE = "systems/tenebris/templates/standard-roll.hbs"
+  static CHAT_TEMPLATE = "systems/tenebris/templates/chat-message.hbs"
 
   get type() {
     return this.options.type
@@ -392,6 +392,81 @@ export default class TenebrisRoll extends Roll {
     }
   }
 
+  /** @override */
+  async render(chatOptions = {}) {
+    let chatData = await this._getChatCardData(chatOptions.isPrivate)
+    return await renderTemplate(this.constructor.CHAT_TEMPLATE, chatData)
+  }
+
+  /**
+   * Generates the data required for rendering a chat card.
+   *
+   * @param {boolean} isPrivate - Indicates if the chat card is private.
+   * @returns {Promise<Object>} A promise that resolves to an object containing the chat card data.
+   * @property {Array<string>} css - CSS classes for the chat card.
+   * @property {Object} data - The data associated with the roll.
+   * @property {number} diceTotal - The total value of the dice rolled.
+   * @property {boolean} isGM - Indicates if the user is a Game Master.
+   * @property {string} formula - The formula used for the roll.
+   * @property {number} total - The total result of the roll.
+   * @property {boolean} isSave - Indicates if the roll is a saving throw.
+   * @property {boolean} isResource - Indicates if the roll is related to a resource.
+   * @property {boolean} isDamage - Indicates if the roll is for damage.
+   * @property {boolean} isFailure - Indicates if the roll is a failure.
+   * @property {Array} avantages - Advantages associated with the roll.
+   * @property {string} actorId - The ID of the actor performing the roll.
+   * @property {string} actingCharName - The name of the character performing the roll.
+   * @property {string} actingCharImg - The image of the character performing the roll.
+   * @property {string} introText - Introductory text for the roll.
+   * @property {string} introTextTooltip - Tooltip for the introductory text.
+   * @property {string} resultType - The type of result (e.g., success, failure).
+   * @property {boolean} hasTarget - Indicates if the roll has a target.
+   * @property {string} targetName - The name of the target.
+   * @property {number} targetArmor - The armor value of the target.
+   * @property {number} realDamage - The real damage dealt.
+   * @property {boolean} isPrivate - Indicates if the chat card is private.
+   * @property {string} cssClass - The combined CSS classes as a single string.
+   * @property {string} tooltip - The tooltip text for the chat card.
+   */
+  async _getChatCardData(isPrivate) {
+    const cardData = {
+      css: [SYSTEM.id, "dice-roll"],
+      data: this.data,
+      diceTotal: this.dice.reduce((t, d) => t + d.total, 0),
+      isGM: game.user.isGM,
+      formula: this.formula,
+      total: this.total,
+      isSave: this.isSave,
+      isResource: this.isResource,
+      isDamage: this.isDamage,
+      isFailure: this.isFailure,
+      avantages: this.avantages,
+      actorId: this.actorId,
+      actingCharName: this.actorName,
+      actingCharImg: this.actorImage,
+      introText: this.introText,
+      introTextTooltip: this.introTextTooltip,
+      resultType: this.resultType,
+      hasTarget: this.hasTarget,
+      targetName: this.targetName,
+      targetArmor: this.targetArmor,
+      realDamage: this.realDamage,
+      isPrivate: isPrivate,
+    }
+    cardData.cssClass = cardData.css.join(" ")
+    cardData.tooltip = isPrivate ? "" : await this.getTooltip()
+    return cardData
+  }
+
+  /**
+   * Converts the roll result to a chat message.
+   *
+   * @param {Object} [messageData={}] - Additional data to include in the message.
+   * @param {Object} options - Options for message creation.
+   * @param {string} options.rollMode - The mode of the roll (e.g., public, private).
+   * @param {boolean} [options.create=true] - Whether to create the message.
+   * @returns {Promise} - A promise that resolves when the message is created.
+   */
   async toMessage(messageData = {}, { rollMode, create = true } = {}) {
     super.toMessage(
       {

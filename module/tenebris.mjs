@@ -60,7 +60,6 @@ Hooks.once("init", function () {
 
   // Other Document Configuration
   CONFIG.ChatMessage.documentClass = documents.TenebrisChatMessage
-  CONFIG.ChatMessage.template = "systems/tenebris/templates/chat-message.hbs"
 
   // Dice system configuration
   CONFIG.Dice.rolls.push(documents.TenebrisRoll)

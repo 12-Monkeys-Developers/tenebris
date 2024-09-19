@@ -1,65 +1,49 @@
 {{log 'chat-message' this}}
-<li class="tenebris chat-message message flexcol {{cssClass}}" data-message-id="{{message._id}}" {{#if borderColor}}style="border-color:{{borderColor}}"{{/if}}>
-    <header class="message-header flexrow">
-        <h4 class="message-sender">{{alias}}</h4>
-        <span class="message-metadata">
-            <time class="message-timestamp">{{timeSince message.timestamp}}</time>
-            {{#if canDelete}}
-            <a aria-label="{{localize 'Delete'}}" class="message-delete"><i class="fas fa-trash"></i></a>
-            {{/if}}
-        </span>
-
-        {{#if isWhisper}}
-        <span class="whisper-to">{{localize 'CHAT.To'}}: {{whisperTo}}</span>
-        {{/if}}
-        {{#if message.flavor}}
-        <span class="flavor-text">{{{message.flavor}}}</span>
-        {{/if}}
-    </header>
+<div class="{{cssClass}}">
     <div class="intro-chat">
         {{#if (ne actingCharImg "icons/svg/mystery-man.svg")}}
         <div class="intro-img">
             <img src="{{actingCharImg}}" data-tooltip="{{actingCharName}}" />
         </div>
         {{/if}}
-        <div class="intro-right">
-            {{#if visible}}
-                <p class="introText" {{#if isSave}}data-tooltip="{{introTextTooltip}}"{{/if}}>{{{introText}}}
-                {{#if isSave}}
-                        <br>
-                        {{#if (eq avantages "avantage")}} {{localize "TENEBRIS.Roll.avantage"}}{{/if}}
-                        {{#if (eq avantages "desavantage")}} {{localize "TENEBRIS.Roll.desavantage"}}{{/if}}
-                        {{#if (eq avantages "doubleAvantage")}} {{localize "TENEBRIS.Roll.doubleAvantage"}}{{/if}}
-                        {{#if (eq avantages "doubleDesavantage")}} {{localize "TENEBRIS.Roll.doubleDesavantage"}}{{/if}}
-                {{/if}}        
-                </p>        
-            {{else}}
-                <p class="introText"></p>
-            {{/if}}
+        <div class="intro-right">                
+            <p class="introText" {{#if isSave}}data-tooltip="{{introTextTooltip}}"{{/if}}>{{{introText}}}
+            {{#if isSave}}
+                    <br>
+                    {{#if (eq avantages "avantage")}} {{localize "TENEBRIS.Roll.avantage"}}{{/if}}
+                    {{#if (eq avantages "desavantage")}} {{localize "TENEBRIS.Roll.desavantage"}}{{/if}}
+                    {{#if (eq avantages "doubleAvantage")}} {{localize "TENEBRIS.Roll.doubleAvantage"}}{{/if}}
+                    {{#if (eq avantages "doubleDesavantage")}} {{localize "TENEBRIS.Roll.doubleDesavantage"}}{{/if}}
+            {{/if}}        
+            </p>                 
         </div>
     </div>
      {{#if isSave}}
         <div class="result">
             {{#if (eq resultType "success")}}
-                {{#if visible}}{{localize "TENEBRIS.Roll.success"}}{{else}}?{{/if}}
+                {{#if isPrivate}}?{{else}}{{localize "TENEBRIS.Roll.success"}}{{/if}}
             {{else}}
-                {{#if visible}}{{localize "TENEBRIS.Roll.failure"}}{{else}}?{{/if}}
+                {{#if isPrivate}}?{{else}}{{localize "TENEBRIS.Roll.failure"}}{{/if}}
             {{/if}}
         </div>
      {{/if}}
      {{#if isResource}}
         <div class="result">
             {{#if (eq resultType "success")}}
-                {{#if visible}}{{localize "TENEBRIS.Roll.success"}}{{else}}?{{/if}}
+                {{#if isPrivate}}?{{else}}{{localize "TENEBRIS.Roll.success"}}{{/if}}
             {{else}}
-                {{#if visible}}{{localize "TENEBRIS.Roll.failure"}}{{#if isFailure}} ({{localize "TENEBRIS.Roll.resourceLost"}}){{/if}}{{else}}?{{/if}}
+                {{#if isPrivate}}?{{else}}{{localize "TENEBRIS.Roll.failure"}}{{#if isFailure}} ({{localize "TENEBRIS.Roll.resourceLost"}}){{/if}}{{/if}}
             {{/if}}
         </div>
      {{/if}}
-     {{#if (and user.isGM isDamage hasTarget)}}
+     {{#if (and isGM isDamage hasTarget)}}
             {{localize "TENEBRIS.Roll.displayArmor" targetName=targetName targetArmor=targetArmor realDamage=realDamage}}
      {{/if}}
-    <div class="message-content">
-        {{{message.content}}}
-    </div>
-</li>
+    {{#unless isPrivate}}
+        <div class="dice-result">
+            <h4 class="dice-total">{{total}}</h4>
+            <div class="dice-formula">{{formula}}</div>
+            {{{tooltip}}}        
+        </div>
+    {{/unless}}
+</div>

@@ -2,25 +2,20 @@ import TenebrisRoll from "./roll.mjs"
 
 export default class TenebrisChatMessage extends ChatMessage {
   async _renderRollContent(messageData) {
+    const data = messageData.message
     if (this.rolls[0] instanceof TenebrisRoll) {
-      const roll = this.rolls[0]
-      messageData.isSave = roll.isSave
-      messageData.isResource = roll.isResource
-      messageData.isDamage = roll.isDamage
-      messageData.isFailure = roll.isFailure
-      messageData.avantages = roll.avantages
-      messageData.actorId = roll.actorId
-      messageData.actingCharName = roll.actorName
-      messageData.actingCharImg = roll.actorImage
-      messageData.introText = roll.introText
-      messageData.introTextTooltip = roll.introTextTooltip
-      messageData.resultType = roll.resultType
-      messageData.visible = this.isContentVisible
-      messageData.hasTarget = roll.hasTarget
-      messageData.targetName = roll.targetName
-      messageData.targetArmor = roll.targetArmor
-      messageData.realDamage = roll.realDamage
+      const isPrivate = !this.isContentVisible
+      // _renderRollHTML va appeler render sur tous les rolls
+      const rollHTML = await this._renderRollHTML(isPrivate)
+      if (isPrivate) {
+        data.flavor = game.i18n.format("CHAT.PrivateRollContent", { user: this.user.name })
+        messageData.isWhisper = false
+        messageData.alias = this.user.name
+      }
+      data.content = `<section class="dice-rolls">${rollHTML}</section>`
+      return
     }
+
     return super._renderRollContent(messageData)
   }
 }

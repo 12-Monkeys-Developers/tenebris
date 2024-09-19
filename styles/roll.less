@@ -1,8 +1,24 @@
-&.chat-message {
-  font-family: var(--font-primary);
-  background-image: url("../assets/gabarit.webp");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+.dialog-aide-gene {
+  display: flex;
+}
+
+.dialog-damage, .dialog-resource, .dialog-save {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 2);
+}
+
+&.dice-roll {
+  //font-family: var(--font-secondary);
+  .dice-total,
+  .dice-formula {
+    padding-top: 5px;
+  }
+  .dice-total {
+    margin-bottom: 5px;
+  }
   .message-header {
     font-family: var(--font-primary);
   }
@@ -22,8 +38,8 @@
       display: flex;
       flex-direction: column;
       .introText {
-        font-family: var(--font-primary);
-        font-size: calc(var(--font-size-standard) * 1.1);
+        font-family: var(--font-secondary);
+        font-size: calc(var(--font-size-standard) * 1.5);
         width: 210px;
         text-align: center;
       }
@@ -36,28 +52,5 @@
     align-items: center;
     font-size: calc(var(--font-size-standard) * 1.2);   
     text-shadow: 0 0 10px var(--color-shadow-primary); 
-  }
-}
-
-.dialog-aide-gene {
-  display: flex;
-}
-
-.dialog-damage, .dialog-resource, .dialog-save {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2);
-}
-
-.tenebris.dice-roll {
-  font-family: var(--font-secondary);
-  .dice-total,
-  .dice-formula {
-    padding-top: 5px;
-  }
-  .dice-total {
-    margin-bottom: 5px;
   }
 }

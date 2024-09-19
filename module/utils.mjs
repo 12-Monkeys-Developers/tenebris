@@ -1,12 +1,10 @@
-import { DICE_VALUE } from "./config/system.mjs"
+import { DICE_VALUES } from "./config/system.mjs"
 
 export default class TenebrisUtils {
   // Return the maximum damage limited by the maximum damage of the character
   static maxDamage(damage, damageMax) {
-    const diceOrder = [DICE_VALUE.D4, DICE_VALUE.D6, DICE_VALUE.D8, DICE_VALUE.D10, DICE_VALUE.D12]
-
-    const damageIndex = diceOrder.indexOf(damage)
-    const damageMaxIndex = diceOrder.indexOf(damageMax)
+    const damageIndex = DICE_VALUES.indexOf(damage)
+    const damageMaxIndex = DICE_VALUES.indexOf(damageMax)
 
     // If damage exceeds damageMax, return damageMax
     if (damageIndex > damageMaxIndex) {
