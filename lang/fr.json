@@ -393,6 +393,12 @@
       "displayOpponentMalusHint": "Affiche le malus d'adversité pour les joueurs.",
       "fortune": "Roue de Fortune",
       "fortuneHint": "Valeur de la roue de Fortune. Nombre de joueurs + 1 en début de partie."
+    },
+    "Chat": {
+      "askFortune": "{name} veut utiliser un point de Fortune !"
+    },
+    "Fortune": {
+      "title": "Roue de Fortune"
     }
   }
 }

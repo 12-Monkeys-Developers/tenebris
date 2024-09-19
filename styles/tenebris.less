@@ -11,7 +11,9 @@
   @import "spell.less";
   @import "attack.less";
   @import "roll.less";
+  @import "chat.less";
 }
+@import "application-fortune.less";
 
 .application.dialog.tenebris {
   font-family: var(--font-primary);
@@ -27,7 +29,7 @@
   text-align: left;
 }
 
-.chat-message {
+.chat-message, .chat-message.whisper {
   font-family: var(--font-primary);
   background-image: url("../assets/gabarit.webp");
   background-repeat: no-repeat;

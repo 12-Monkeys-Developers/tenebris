@@ -777,6 +777,49 @@
   font-size: calc(var(--font-size-standard) * 1.2);
   text-shadow: 0 0 10px var(--color-shadow-primary);
 }
+.tenebris.fortune img {
+  border: 0px;
+}
+.tenebris.fortune .intro-chat {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.tenebris.fortune .intro-chat .intro-img {
+  padding: 5px;
+  width: 80px;
+  align-self: center;
+}
+.tenebris.fortune .intro-chat .intro-right {
+  display: flex;
+  flex-direction: column;
+}
+.tenebris.fortune .intro-chat .intro-right .introText {
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 1.5);
+  width: 210px;
+  text-align: center;
+}
+.tenebris.fortune .button.control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--font-size-standard) * 1.5);
+}
+#tenebris-application-fortune {
+  font-family: var(--font-primary);
+  font-size: calc(var(--font-size-standard) * 1.2);
+  background-image: url("../assets/gabarit.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+#tenebris-application-fortune section.application-fortune {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--font-size-standard) * 2);
+}
 .application.dialog.tenebris {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
@@ -789,7 +832,8 @@
   max-width: 550px;
   text-align: left;
 }
-.chat-message {
+.chat-message,
+.chat-message.whisper {
   font-family: var(--font-primary);
   background-image: url("../assets/gabarit.webp");
   background-repeat: no-repeat;

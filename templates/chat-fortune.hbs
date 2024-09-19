@@ -1,0 +1,14 @@
+{{log 'chat-fortune' this}}
+<div class="tenebris fortune">
+    <div class="intro-chat">
+        {{#if (ne actingCharImg "icons/svg/mystery-man.svg")}}
+        <div class="intro-img">
+            <img src="{{actingCharImg}}" data-tooltip="{{name}}" />
+        </div>
+        {{/if}}
+        <div class="intro-right">                
+            <p class="introText">{{localize "TENEBRIS.Chat.askFortune" name=name}}</p>                 
+        </div>
+    </div> 
+    {{#if isGM}}<a class="button control" data-action="accept-fortune" data-tooltip="Accepter"><i class="fa-solid fa-check"></i></a>{{/if}}
+</div>

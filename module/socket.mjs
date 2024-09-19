@@ -12,6 +12,6 @@ export function handleSocketEvent({ action = null, data = {} } = {}) {
   console.log("handleSocketEvent", action, data)
   switch (action) {
     case "fortune":
-      return TenebrisFortune.handle(data)
+      return TenebrisFortune.handleSocketEvent(data)
   }
 }

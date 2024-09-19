@@ -117,6 +117,12 @@ Hooks.once("ready", function () {
 Hooks.on("renderChatMessage", (message, html, data) => {
   const typeMessage = data.message.flags.tenebris?.typeMessage
   if (typeMessage === "fortune") {
-    console.log("fortune message !")
+    if (game.user.isGM) {
+      html.find(".button").click((event) => applications.TenebrisFortune.acceptRequest(event, html, data))
+    } else {
+      html.find(".button").each((i, btn) => {
+        btn.style.display = "none"
+      })
+    }
   }
 })
