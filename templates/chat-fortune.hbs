@@ -10,5 +10,8 @@
             <p class="introText">{{localize "TENEBRIS.Chat.askFortune" name=name}}</p>                 
         </div>
     </div> 
-    {{#if isGM}}<a class="button control" data-action="accept-fortune" data-tooltip="Accepter"><i class="fa-solid fa-check"></i></a>{{/if}}
+    {{#if isGM}}
+    <a class="button control" data-action="accept-fortune" data-tooltip="Accepter"><i class="fa-solid fa-check"></i></a>
+    <div class="fortune-accepted" style="display: none;">Accepté !</div>
+    {{/if}}
 </div>

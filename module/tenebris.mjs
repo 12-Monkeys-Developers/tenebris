@@ -111,18 +111,28 @@ function preLocalizeConfig() {
 
 Hooks.once("ready", function () {
   console.info("CTHULHU TENEBRIS | Ready")
-  new applications.TenebrisFortune().render(true)
+  game.system.applicationFortune = new applications.TenebrisFortune()
+  game.system.applicationFortune.render(true)
 })
 
 Hooks.on("renderChatMessage", (message, html, data) => {
   const typeMessage = data.message.flags.tenebris?.typeMessage
   if (typeMessage === "fortune") {
-    if (game.user.isGM) {
+    if (game.user.isGM && !data.message.flags.tenebris?.accepted) {
       html.find(".button").click((event) => applications.TenebrisFortune.acceptRequest(event, html, data))
     } else {
       html.find(".button").each((i, btn) => {
         btn.style.display = "none"
       })
+      if (game.user.isGM) {
+        html.find(".fortune-accepted").each((i, btn) => (btn.style.display = "flex"))
+      }
     }
+  }
+})
+
+Hooks.on("updateSetting", async (setting, update, options, id) => {
+  if (setting.key === "tenebris.fortune") {
+    game.system.applicationFortune.render(true)
   }
 })

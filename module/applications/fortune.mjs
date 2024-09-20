@@ -66,7 +66,6 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
     })
   }
 
-
   /**
    * Handles the fortune spcket event for a given user.
    *
@@ -75,7 +74,7 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
    * @returns {Promise<ChatMessage>} - The created chat message.
    */
   static async handleSocketEvent({ userId } = {}) {
-    console.log(`handle Fortune from ${userId} !`)
+    console.log(`handleSocketEvent Fortune from ${userId} !`)
     const origin = game.users.get(userId)
     const chatData = {
       name: origin.name,
@@ -90,12 +89,11 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
       user: origin,
       speaker: { user: origin },
       content: content,
-      flags: { tenebris: { typeMessage: "fortune" } },
+      flags: { tenebris: { typeMessage: "fortune", accepted: false } },
     }
     ChatMessage.applyRollMode(messageData, CONST.DICE_ROLL_MODES.PRIVATE)
     return ChatMessage.implementation.create(messageData)
   }
-
 
   /**
    * Handles the acceptance of a request event in the chat message by the GM
@@ -106,11 +104,13 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
    * @returns {Promise<void>} A promise that resolves when the request has been processed.
    */
   static async acceptRequest(event, html, data) {
-    console.log("accept Fortune !")
+    console.log("acceptRequest Fortune !", event, html, data)
     const currentValue = game.settings.get("tenebris", "fortune")
     if (currentValue > 0) {
       const newValue = currentValue - 1
       await game.settings.set("tenebris", "fortune", newValue)
     }
+    let message = game.messages.get(data.message._id)
+    message.update({ "flags.tenebris.accepted": true })
   }
 }
