@@ -39,22 +39,27 @@ export default class TenebrisActor extends Actor {
         return
       }
 
-      const isBasePath = itemData.system.key !== "" && system.voies.majeure.key !== ""
+      const isBasePath = itemData.system.key !== "" && this.system.voies.majeure.key !== ""
 
       let dropNotification
-
+      let neufModifie
+      let onze
+      let neuf
       if (isBasePath) {
-        let onze = game.system.CONST.MINOR_PATH[itemData.system.key].onze
+        onze = game.system.CONST.MINOR_PATH[itemData.system.key].onze
         const labelOnze = game.i18n.localize(`TENEBRIS.Character.FIELDS.caracteristiques.${onze}.valeur.label`)
         dropNotification = `La valeur de ${labelOnze} va être modifiée pour 11`
-        const neuf = game.system.CONST.MINOR_PATH[itemData.system.key].neuf[this.system.voies.majeure.key]
-        const labelNeuf = game.i18n.localize(`TENEBRIS.Character.FIELDS.caracteristiques.${neuf}.valeur.label`)
-        dropNotification += `<br> La valeur de ${labelNeuf} va être modifiée pour 9 <br> `
+        neuf = game.system.CONST.MINOR_PATH[itemData.system.key].neuf[this.system.voies.majeure.key]
+        if (neuf) {
+          neufModifie = true
+          const labelNeuf = game.i18n.localize(`TENEBRIS.Character.FIELDS.caracteristiques.${neuf}.valeur.label`)
+          dropNotification += `<br> La valeur de ${labelNeuf} va être modifiée pour 9`
+        }
       } else {
         dropNotification = ""
       }
 
-      dropNotification += `Vous pouvez renoncer à des biens de la voie majeure pour ceux de la voie mineure`
+      dropNotification += `<br>Vous pouvez renoncer à des biens de la voie majeure pour ceux de la voie mineure`
       dropNotification += `<br> Vous pouvez renoncer à des langues de la voie majeure pour celles de la voie mineure`
 
       const proceed = await foundry.applications.api.DialogV2.confirm({
@@ -76,10 +81,14 @@ export default class TenebrisActor extends Actor {
           "system.voies.mineure.id": voie[0].id,
           "system.voies.mineure.key": item.system.key,
           [`system.caracteristiques.${onze}.valeur`]: 11,
-          [`system.caracteristiques.${neuf}.valeur`]: 9,
           "system.langues": `${this.system.langues} <br>Voie mineure : ${item.system.langues}`,
           "system.biens": `${this.system.biens} <br>Voie mineure : ${item.system.biens}`,
         })
+        if (neufModifie) {
+          await this.update({
+            [`system.caracteristiques.${neuf}.valeur`]: 9,
+          })
+        }
       } else {
         await this.update({
           "system.voies.mineure.nom": item.name,

@@ -251,6 +251,7 @@
   background-image: url("../assets/gabarit.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  overflow: scroll;
 }
 .tenebris .opponent-content input[name="name"] {
   height: 50px;
