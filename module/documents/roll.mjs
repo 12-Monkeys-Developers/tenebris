@@ -148,6 +148,22 @@ export default class TenebrisRoll extends Roll {
    * @param {Object} options The options for the prompt.
    * @returns {Promise} - A promise that resolves with the result of the roll.
    */
+  /**
+   * Prompt the user with a dialog to configure and execute a roll.
+   *
+   * @param {Object} options - Configuration options for the roll.
+   * @param {string} options.rollType - The type of roll being performed (e.g., RESOURCE, DAMAGE, ATTACK, SAVE).
+   * @param {string} options.rollValue - The initial value or formula for the roll.
+   * @param {string} options.rollTarget - The target of the roll.
+   * @param {string} options.actorId - The ID of the actor performing the roll.
+   * @param {string} options.actorName - The name of the actor performing the roll.
+   * @param {string} options.actorImage - The image of the actor performing the roll.
+   * @param {boolean} options.hasTarget - Whether the roll has a target.
+   * @param {Object} options.target - The target of the roll, if any.
+   * @param {Object} options.data - Additional data for the roll.
+   *
+   * @returns {Promise<Object|null>} The roll result or null if the dialog was cancelled.
+   */
   static async prompt(options = {}) {
     let formula = options.rollValue
 
@@ -333,7 +349,7 @@ export default class TenebrisRoll extends Roll {
       formula = damageDice
     }
 
-    const roll = new this(formula, options.data, {
+    const rollData = {
       type: options.rollType,
       target: options.rollTarget,
       value: options.rollValue,
@@ -347,7 +363,19 @@ export default class TenebrisRoll extends Roll {
       targetArmor,
       targetMalus,
       ...rollContext,
-    })
+    }
+
+    /**
+     * A hook event that fires before the roll is made.
+     * @function tenebris.preRoll
+     * @memberof hookEvents
+     * @param {Object} options          Options for the roll.
+     * @param {Object} rollData         All data related to the roll.
+     * @returns {boolean}               Explicitly return `false` to prevent roll to be made.
+     */
+    if (Hooks.call("tenebris.preRoll", options, rollData) === false) return
+
+    const roll = new this(formula, options.data, rollData)
 
     await roll.evaluate()
 
@@ -368,6 +396,18 @@ export default class TenebrisRoll extends Roll {
     roll.options.introText = roll._createIntroText()
     roll.options.introTextTooltip = roll._createIntroTextTooltip()
     roll.options.realDamage = realDamage
+
+    /**
+     * A hook event that fires after the roll has been made.
+     * @function tenebris.Roll
+     * @memberof hookEvents
+     * @param {Object} options          Options for the roll.
+     * @param {Object} rollData         All data related to the roll.
+      @param {TenebrisRoll} roll        The resulting roll.
+     * @returns {boolean}               Explicitly return `false` to prevent roll to be made.
+     */
+    if (Hooks.call("tenebris.Roll", options, rollData, roll) === false) return
+
     return roll
   }
 
@@ -399,7 +439,7 @@ export default class TenebrisRoll extends Roll {
   }
 
   /**
-   * Generates the data required for rendering a chat card.
+   * Generates the data required for rendering a roll chat card.
    *
    * @param {boolean} isPrivate - Indicates if the chat card is private.
    * @returns {Promise<Object>} A promise that resolves to an object containing the chat card data.
