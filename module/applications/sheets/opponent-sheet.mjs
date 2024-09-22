@@ -62,6 +62,17 @@ export default class TenebrisOpponentSheet extends TenebrisActorSheet {
   }
 
   /**
+   * Creates a new attack item directly from the sheet and embeds it into the document.
+   * @param event
+   * @param target
+   * @static
+   */
+  static #onCreateAttack(event, target) {
+    console.log("Create attack", event, target)
+    const item = this.document.createEmbeddedDocuments("Item", [{ name: "Nouvelle attaque", type: "attack" }])
+  }
+
+  /**
    * Roll a damage roll.
    * @param {PointerEvent} event The originating click event
    * @param {HTMLElement} target the capturing HTML element which defined a [data-action]
@@ -73,13 +84,5 @@ export default class TenebrisOpponentSheet extends TenebrisActorSheet {
     const rollTarget = elt.dataset.itemName
 
     await this.document.system.roll(rollValue, rollTarget)
-  }
-
-  /**
-   * Creates a new attack item directly from the sheet and embeds it into the document.
-   * @static
-   */
-  static #onCreateAttack() {
-    const item = this.document.createEmbeddedDocuments("Item", [{ name: "Nouvelle attaque", type: "attack" }])
   }
 }

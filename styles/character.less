@@ -90,12 +90,11 @@
               }
             }
             .pv-separator {
-              font-size: calc(var(--font-size-standard)* 1.4);
+              font-size: calc(var(--font-size-standard) * 1.4);
               display: flex;
               align-items: center;
               justify-content: center;
-          }
-          
+            }
           }
           .character-dv {
             .form-fields {
@@ -128,6 +127,7 @@
         //display: flex;
         //justify-content: space-between;
         flex: 1;
+        padding-left: 5px;
         .form-fields {
           flex: none;
           width: 70px;
@@ -152,10 +152,6 @@
         }
       }
     }
-
-    .rollable:hover {
-      text-shadow: 0 0 8px var(--color-shadow-primary);
-    }
   }
 
   .character-ressources {
@@ -169,6 +165,14 @@
       flex: none;
       width: 70px;
     }
+  }
+
+  .rollable:hover,
+  .rollable:focus {
+    text-shadow: 0 0 8px var(--color-shadow-primary);
+    cursor:
+      url("../assets/dice/d20-red.svg") 32 24,
+      pointer;
   }
 }
 
@@ -184,6 +188,12 @@
 .tab.character-items {
   display: grid;
   grid-template-columns: 1fr;
+  legend {
+    a {
+      font-size: calc(var(--font-size-standard) * 1.6);
+      padding-left: 5px;
+    }
+  }
   .talents {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

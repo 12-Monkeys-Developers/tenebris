@@ -343,7 +343,9 @@
       "degats": "Dégâts",
       "ressource": "Ressource",
       "sauvegarde": "Sauvegarde",
-      "visibilite": "Visibilité du lancer"
+      "visibilite": "Visibilité du lancer",
+      "newArmor": "Nouvelle armure",
+      "newWeapon": "Nouvelle arme"
     },
     "Edit": "Editer",
     "Delete": "Supprimer",
@@ -386,7 +388,8 @@
     "Tooltip": {
       "learnedTalents": "Les talents appris sont en gras",
       "saveIntroTextTooltip": "Caractéristique : {value} <br> Aide : {aide} <br> Gêne : {gene} <br> Modificateur : {modificateur}",
-      "addAttack": "Ajouter une attaque"
+      "addAttack": "Ajouter une attaque",
+      "addEquipment": "Ajouter une arme, Shift + Click pour ajouter une armure"
     },
     "Setting": {
       "displayOpponentMalus": "Afficher le malus d'adversité",

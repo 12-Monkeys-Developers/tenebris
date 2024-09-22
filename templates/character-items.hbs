@@ -29,7 +29,7 @@
   </fieldset>
 
   <fieldset>
-    <legend>{{localize "TENEBRIS.Label.equipement"}}</legend>
+    <legend>{{localize "TENEBRIS.Label.equipement"}}{{#if isEditMode}}<a class="action" data-tooltip="{{localize "TENEBRIS.Tooltip.addEquipment"}}" data-tooltip-direction="UP"><i class="fas fa-plus" data-action="createEquipment"></i></a>{{/if}}</legend>
     {{#each weapons as |item|}}
       {{!log 'weapon' this}}
       <div class="weapon" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">

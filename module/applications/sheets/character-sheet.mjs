@@ -15,6 +15,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
     actions: {
       deleteVoieMajeure: TenebrisCharacterSheet.#onDeleteVoieMajeure,
       deleteVoieMineure: TenebrisCharacterSheet.#onDeleteVoieMineure,
+      createEquipment: TenebrisCharacterSheet.#onCreateEquipment,
     },
   }
 
@@ -261,6 +262,24 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
   }
 
   /**
+   * Creates a new attack item directly from the sheet and embeds it into the document.
+   * @param {Event} event             The initiating click event.
+   * @param {HTMLElement} target      The current target of the event listener.
+   */
+  static #onCreateEquipment(event, target) {
+    console.log("create equipment", event, target)
+    // Création d'une armure
+    if (event.shiftKey) {
+      this.document.createEmbeddedDocuments("Item", [{ name: game.i18n.localize("TENEBRIS.Label.newArmor"), type: "armor" }])
+    }
+    // Création d'une arme
+    else {
+      this.document.createEmbeddedDocuments("Item", [{ name: game.i18n.localize("TENEBRIS.Label.newWeapon"), type: "weapon" }])
+    }
+  }
+
+
+    /**
    * Handles the roll action triggered by user interaction.
    *
    * @param {PointerEvent} event The event object representing the user interaction.
@@ -274,39 +293,38 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
    * (save, resource, or damage) based on the target element's data attributes. It retrieves the
    * corresponding value from the document's system and performs the roll.
    */
-  async _onRoll(event, target) {
-    if (this.isEditMode) return
-    // Jet de sauvegarde
-    let elt = event.currentTarget.querySelector("input")
-    // Jet de ressource
-    if (!elt) elt = event.currentTarget.querySelector("select")
-    // Jet de dégâts
-    if (!elt) elt = event.currentTarget
-    const rollType = elt.dataset.rollType
-    let rollTarget
-    let rollValue
-    let opponentTarget
-    switch (rollType) {
-      case ROLL_TYPE.SAVE:
-        rollTarget = elt.dataset.rollTarget
-        rollValue = this.document.system.caracteristiques[rollTarget].valeur
-        opponentTarget = game.user.targets.first()
-        break
-      case ROLL_TYPE.RESOURCE:
-        rollTarget = elt.dataset.rollTarget
-        rollValue = this.document.system.ressources[rollTarget].valeur
-        break
-      case ROLL_TYPE.DAMAGE:
-        rollTarget = elt.dataset.itemId
-        rollValue = elt.dataset.rollValue
-        opponentTarget = game.user.targets.first()
-        break
-      default:
-        // Handle other cases or do nothing
-        break
+    async _onRoll(event, target) {
+      if (this.isEditMode) return
+      // Jet de sauvegarde
+      let elt = event.currentTarget.querySelector("input")
+      // Jet de ressource
+      if (!elt) elt = event.currentTarget.querySelector("select")
+      // Jet de dégâts
+      if (!elt) elt = event.currentTarget
+      const rollType = elt.dataset.rollType
+      let rollTarget
+      let rollValue
+      let opponentTarget
+      switch (rollType) {
+        case ROLL_TYPE.SAVE:
+          rollTarget = elt.dataset.rollTarget
+          rollValue = this.document.system.caracteristiques[rollTarget].valeur
+          opponentTarget = game.user.targets.first()
+          break
+        case ROLL_TYPE.RESOURCE:
+          rollTarget = elt.dataset.rollTarget
+          rollValue = this.document.system.ressources[rollTarget].valeur
+          break
+        case ROLL_TYPE.DAMAGE:
+          rollTarget = elt.dataset.itemId
+          rollValue = elt.dataset.rollValue
+          opponentTarget = game.user.targets.first()
+          break
+        default:
+          // Handle other cases or do nothing
+          break
+      }
+      await this.document.system.roll(rollType, rollTarget, rollValue, opponentTarget)
     }
-    await this.document.system.roll(rollType, rollTarget, rollValue, opponentTarget)
-  }
-
   // #endregion
 }

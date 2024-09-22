@@ -156,7 +156,7 @@
   padding-top: 10px;
 }
 .tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-droite .character-pv .pv-separator {
-  font-size: calc(var(--font-size-standard)*1.4);
+  font-size: calc(var(--font-size-standard) * 1.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -180,6 +180,7 @@
 }
 .tenebris .character-main .character-caracteristiques .character-caracteristique .form-group {
   flex: 1;
+  padding-left: 5px;
 }
 .tenebris .character-main .character-caracteristiques .character-caracteristique .form-group .form-fields {
   flex: none;
@@ -203,9 +204,6 @@
   text-align: center;
   padding-top: 10px;
 }
-.tenebris .character-main .character-caracteristiques .rollable:hover {
-  text-shadow: 0 0 8px var(--color-shadow-primary);
-}
 .tenebris .character-main .character-ressources {
   display: flex;
   flex-direction: column;
@@ -217,6 +215,11 @@
   flex: none;
   width: 70px;
 }
+.tenebris .character-main .rollable:hover,
+.tenebris .character-main .rollable:focus {
+  text-shadow: 0 0 8px var(--color-shadow-primary);
+  cursor: url("../assets/dice/d20-red.svg") 32 24, pointer;
+}
 .tenebris .character-biography prose-mirror.inactive {
   min-height: 40px;
 }
@@ -226,6 +229,10 @@
 .tenebris .tab.character-items {
   display: grid;
   grid-template-columns: 1fr;
+}
+.tenebris .tab.character-items legend a {
+  font-size: calc(var(--font-size-standard) * 1.6);
+  padding-left: 5px;
 }
 .tenebris .tab.character-items .talents {
   display: grid;

@@ -14,6 +14,7 @@ import * as documents from "./documents/_module.mjs"
 import * as applications from "./applications/_module.mjs"
 
 import { handleSocketEvent } from "./socket.mjs"
+import { configureDiceSoNice } from "./dice.mjs"
 
 Hooks.once("init", function () {
   console.info("CTHULHU TENEBRIS | Initializing Cthulhu Tenebris System")
@@ -135,4 +136,9 @@ Hooks.on("updateSetting", async (setting, update, options, id) => {
   if (setting.key === "tenebris.fortune") {
     game.system.applicationFortune.render(true)
   }
+})
+
+// Dice-so-nice Ready
+Hooks.once("diceSoNiceReady", (dice3d) => {
+  configureDiceSoNice(dice3d)
 })
