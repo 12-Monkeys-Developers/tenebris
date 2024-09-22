@@ -27,7 +27,6 @@
 .tenebris .character-sheet-common label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
 }
 .tenebris .item-sheet-common .form-fields {
   padding-top: 5px;
@@ -78,141 +77,151 @@
 .tenebris .character-content label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
+}
+.tenebris .character-main {
+  display: flex;
+}
+.tenebris .character-main .character-personnage {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+.tenebris .character-main .character-personnage .character-img {
+  height: 200px;
+  width: auto;
+  border: none;
+}
+.tenebris .character-main .character-personnage .character-contenu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-name {
+  display: flex;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos {
+  display: flex;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-gauche {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-gauche label {
+  min-width: 160px;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-gauche .character-voie-majeure {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 5px;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-gauche .character-voie-mineure {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 5px;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-gauche .character-commanditaire {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 5px;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-droite {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-droite .character-pv {
+  display: flex;
+  gap: 2px;
+  justify-content: center;
+  align-items: center;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-droite .character-pv .character-pv-value .form-fields {
+  flex: none;
+  width: 50px;
+  margin-left: 10px;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-droite .character-pv .character-pv-max {
+  clear: both;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 3px 0;
+  align-items: center;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-droite .character-pv .character-pv-max input {
+  width: 50px;
+  text-align: center;
+  font-size: calc(var(--font-size-standard) * 1.6);
+  padding-top: 10px;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-droite .character-pv .pv-separator {
+  font-size: calc(var(--font-size-standard)*1.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-droite .character-dv .form-fields {
+  flex: none;
+}
+.tenebris .character-main .character-personnage .character-contenu .character-infos .character-infos-droite .character-dmax .form-fields {
+  flex: none;
+}
+.tenebris .character-main .character-caracteristiques {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  justify-content: space-between;
+}
+.tenebris .character-main .character-caracteristiques .character-caracteristique {
+  display: flex;
+  align-items: center;
+}
+.tenebris .character-main .character-caracteristiques .character-caracteristique .form-group {
+  flex: 1;
+}
+.tenebris .character-main .character-caracteristiques .character-caracteristique .form-group .form-fields {
+  flex: none;
+  width: 70px;
+}
+.tenebris .character-main .character-caracteristiques .character-caracteristique .experience {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+}
+.tenebris .character-main .character-caracteristiques .character-caracteristique .experience input {
+  display: flex;
+  width: 70px;
+  font-size: calc(var(--font-size-standard) * 1.6);
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px 0 5px;
+}
+.tenebris .character-main .character-caracteristiques .character-caracteristique .experience input[type="number"] {
+  text-align: center;
+  padding-top: 10px;
+}
+.tenebris .character-main .character-caracteristiques .rollable:hover {
+  text-shadow: 0 0 8px var(--color-shadow-primary);
+}
+.tenebris .character-main .character-ressources {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  justify-content: space-between;
+}
+.tenebris .character-main .character-ressources .form-fields {
+  flex: none;
+  width: 70px;
 }
 .tenebris .character-biography prose-mirror.inactive {
   min-height: 40px;
 }
 .tenebris .character-biography prose-mirror.active {
   min-height: 150px;
-}
-.tenebris .character-main {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.tenebris .character-main .character-personnage {
-  flex: 0 0 60%;
-}
-.tenebris .character-main .character-personnage input[name="name"] {
-  height: 50px;
-}
-.tenebris .character-main .character-personnage label {
-  flex: 20%;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 5px;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-img {
-  grid-column: 1 / 2;
-  grid-row: 1 / 5;
-  width: 200px;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-name {
-  display: flex;
-  grid-column: 2 / 4;
-  grid-row: 1 / 2;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-voie-majeure {
-  grid-column: 2 / 4;
-  grid-row: 2 / 3;
-  display: flex;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-voie-majeure .controls {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  margin-left: 10px;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-voie-majeure .control {
-  height: 30px;
-  width: 30px;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-voie-mineure {
-  grid-column: 2 / 4;
-  grid-row: 3 / 4;
-  display: flex;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-voie-mineure .controls {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  margin-left: 10px;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-voie-mineure .control {
-  height: 30px;
-  width: 30px;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-commanditaire {
-  grid-column: 2 / 4;
-  grid-row: 4 / 5;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-pv {
-  grid-column: 1 / 2;
-  grid-row: 5 / 6;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-pv input[name="system.pv.value"] {
-  padding-top: 10px;
-  text-align: center;
-  font-size: calc(var(--font-size-standard) * 1.6);
-  width: 50px;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-pv input[name="system.pv.max"] {
-  padding-top: 10px;
-  text-align: center;
-  font-size: calc(var(--font-size-standard) * 1.6);
-  width: 50px;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-dv {
-  grid-column: 2 / 3;
-  grid-row: 5 / 6;
-}
-.tenebris .character-main .character-personnage .character-personnage-contenu .character-dmax {
-  grid-column: 3 / 4;
-  grid-row: 5 / 6;
-}
-.tenebris .character-main .character-personnage .character-img {
-  border: none;
-}
-.tenebris .character-main .character-caracteristiques {
-  width: 15%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  gap: 5px;
-}
-.tenebris .character-main .character-caracteristiques .character-caracteristique {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-}
-.tenebris .character-main .character-caracteristiques .character-caracteristique .experience {
-  display: flex;
-}
-.tenebris .character-main .character-caracteristiques .character-caracteristique .experience input {
-  font-size: calc(var(--font-size-standard) * 1.6);
-}
-.tenebris .character-main .character-ressources {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-.tenebris .character-main .rollable:hover,
-.tenebris .character-main .rollable:focus {
-  text-shadow: 0 0 10px #eea3a3;
-  cursor: pointer;
-}
-.tenebris .character-main input[readonly],
-.tenebris .character-main input[disabled] {
-  pointer-events: none;
-  /* Permet aux clics de "passer à travers" l'input */
 }
 .tenebris .tab.character-items {
   display: grid;
