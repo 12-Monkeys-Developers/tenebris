@@ -1,6 +1,9 @@
+{{log "fortune" this}}
 <section class="application-fortune">
        <div class="application-fortune-value">{{fortune}}</div>
-       <button type="button" class="action-button frame-brown" data-action="fortune" data-user-id={{userId}}>
-            <label>Dépenser</label>
-        </button>
+       {{#unless isGM}}
+            <button type="button" class="action-button frame-brown" data-action="fortune" data-user-id={{userId}}>
+                    <label>Dépenser</label>
+            </button>
+        {{/unless}}
 </section>

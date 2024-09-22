@@ -46,6 +46,7 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
     return {
       fortune: game.settings.get("tenebris", "fortune"),
       userId: game.user.id,
+      isGM: game.user.isGM,
     }
   }
 
