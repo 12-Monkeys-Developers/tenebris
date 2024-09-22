@@ -120,7 +120,7 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
    * @param {Token} opponentTarget The target of the roll : used for save rolls to get the oppponent's malus.
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
-  async roll(rollType, rollTarget, rollValue, opponentTarget) {
+  async roll(rollType, rollTarget, rollValue, opponentTarget = undefined) {
     const hasTarget = opponentTarget !== undefined
     let roll = await TenebrisRoll.prompt({
       rollType,

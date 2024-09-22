@@ -1,4 +1,4 @@
-import { MINOR_PATH } from "../config/system.mjs"
+import { ROLL_TYPE } from "../config/system.mjs"
 export default class TenebrisActor extends Actor {
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user)
@@ -201,5 +201,17 @@ export default class TenebrisActor extends Actor {
     if (this.type !== "opponent") return
 
     await this.createEmbeddedDocuments("Item", [attack])
+  }
+
+  async rollResource(resource) {
+    if (this.type !== "character") return
+    const rollValue = this.system.ressources[resource].valeur
+    await this.system.roll(ROLL_TYPE.RESOURCE, resource, rollValue)
+  }
+
+  async rollSave(save) {
+    if (this.type !== "character") return
+    const rollValue = this.system.caracteristiques[save].valeur
+    await this.system.roll(ROLL_TYPE.SAVE, save, rollValue)
   }
 }

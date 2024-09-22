@@ -96,4 +96,5 @@ export const SYSTEM = {
   SPELL_RANGE: SPELL.RANGE,
   ASCII,
   MINOR_PATH,
+  ROLL_TYPE,
 }

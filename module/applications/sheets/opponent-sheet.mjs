@@ -62,9 +62,11 @@ export default class TenebrisOpponentSheet extends TenebrisActorSheet {
   }
 
   /**
-   * Creates a new attack item directly from the sheet and embeds it into the document.
-   * @param event
-   * @param target
+   * Handles the creation of a new attack item.
+   *
+   * @param {Event} event The event that triggered the creation of the attack.
+   * @param {Object} target The target object where the attack will be created.
+   * @private
    * @static
    */
   static #onCreateAttack(event, target) {

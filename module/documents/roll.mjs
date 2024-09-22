@@ -151,16 +151,16 @@ export default class TenebrisRoll extends Roll {
   /**
    * Prompt the user with a dialog to configure and execute a roll.
    *
-   * @param {Object} options - Configuration options for the roll.
-   * @param {string} options.rollType - The type of roll being performed (e.g., RESOURCE, DAMAGE, ATTACK, SAVE).
-   * @param {string} options.rollValue - The initial value or formula for the roll.
-   * @param {string} options.rollTarget - The target of the roll.
-   * @param {string} options.actorId - The ID of the actor performing the roll.
-   * @param {string} options.actorName - The name of the actor performing the roll.
-   * @param {string} options.actorImage - The image of the actor performing the roll.
-   * @param {boolean} options.hasTarget - Whether the roll has a target.
-   * @param {Object} options.target - The target of the roll, if any.
-   * @param {Object} options.data - Additional data for the roll.
+   * @param {Object} options Configuration options for the roll.
+   * @param {string} options.rollType The type of roll being performed (e.g., RESOURCE, DAMAGE, ATTACK, SAVE).
+   * @param {string} options.rollValue The initial value or formula for the roll.
+   * @param {string} options.rollTarget The target of the roll.
+   * @param {string} options.actorId The ID of the actor performing the roll.
+   * @param {string} options.actorName The name of the actor performing the roll.
+   * @param {string} options.actorImage The image of the actor performing the roll.
+   * @param {boolean} options.hasTarget Whether the roll has a target.
+   * @param {Object} options.target The target of the roll, if any.
+   * @param {Object} options.data Additional data for the roll.
    *
    * @returns {Promise<Object|null>} The roll result or null if the dialog was cancelled.
    */
@@ -441,7 +441,7 @@ export default class TenebrisRoll extends Roll {
   /**
    * Generates the data required for rendering a roll chat card.
    *
-   * @param {boolean} isPrivate - Indicates if the chat card is private.
+   * @param {boolean} isPrivate Indicates if the chat card is private.
    * @returns {Promise<Object>} A promise that resolves to an object containing the chat card data.
    * @property {Array<string>} css - CSS classes for the chat card.
    * @property {Object} data - The data associated with the roll.
@@ -501,10 +501,10 @@ export default class TenebrisRoll extends Roll {
   /**
    * Converts the roll result to a chat message.
    *
-   * @param {Object} [messageData={}] - Additional data to include in the message.
-   * @param {Object} options - Options for message creation.
-   * @param {string} options.rollMode - The mode of the roll (e.g., public, private).
-   * @param {boolean} [options.create=true] - Whether to create the message.
+   * @param {Object} [messageData={}] Additional data to include in the message.
+   * @param {Object} options Options for message creation.
+   * @param {string} options.rollMode The mode of the roll (e.g., public, private).
+   * @param {boolean} [options.create=true] Whether to create the message.
    * @returns {Promise} - A promise that resolves when the message is created.
    */
   async toMessage(messageData = {}, { rollMode, create = true } = {}) {

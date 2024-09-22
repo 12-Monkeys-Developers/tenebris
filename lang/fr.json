@@ -398,10 +398,29 @@
       "fortuneHint": "Valeur de la roue de Fortune. Nombre de joueurs + 1 en début de partie."
     },
     "Chat": {
-      "askFortune": "{name} veut utiliser un point de Fortune !"
+      "askFortune": "{name} veut utiliser un point de Fortune !",
+      "askRollForAll": "Jet de {value} pour tous !",
+      "askRollForOne": "Jet de {value} pour {name}"
     },
     "Fortune": {
       "title": "Roue de Fortune"
+    },
+    "Manager": {
+      "title": "Gestionnaire de Personnages",
+      "player": "Utilisateur",
+      "character": "Personnnage",
+      "rob": "Robustesse",
+      "dex": "Dextérité",
+      "int": "Intelligence",
+      "per": "Perception",
+      "vol": "Volonté",
+      "pv": "Points de Vie",
+      "san": "Santé Mentale",
+      "oeil": "Œil",
+      "verbe": "Verbe",
+      "bourse": "Bourse",
+      "magie": "Magie",
+      "roll": "Faire le jet"
     }
   }
 }

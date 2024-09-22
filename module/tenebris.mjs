@@ -114,6 +114,10 @@ Hooks.once("ready", function () {
   console.info("CTHULHU TENEBRIS | Ready")
   game.system.applicationFortune = new applications.TenebrisFortune()
   game.system.applicationFortune.render(true)
+  game.system.applicationManager = new applications.TenebrisManager()
+  if (game.user.isGM) {
+    game.system.applicationManager.render(true)
+  }
 })
 
 Hooks.on("renderChatMessage", (message, html, data) => {
@@ -128,6 +132,21 @@ Hooks.on("renderChatMessage", (message, html, data) => {
       if (game.user.isGM) {
         html.find(".fortune-accepted").each((i, btn) => (btn.style.display = "flex"))
       }
+    }
+  } else if (typeMessage === "askRoll") {
+    if (game.user.isGM) {
+      html.find(".ask-roll-dice").each((i, btn) => {
+        btn.style.display = "none"
+      })
+    } else {
+      html.find(".ask-roll-dice").click((event) => {
+        const btn = $(event.currentTarget)
+        const type = btn.data("type")
+        const value = btn.data("value")
+        const character = game.user.character
+        if (type === SYSTEM.ROLL_TYPE.RESOURCE) character.rollResource(value)
+        else if (type === SYSTEM.ROLL_TYPE.SAVE) character.rollSave(value)
+      })
     }
   }
 })

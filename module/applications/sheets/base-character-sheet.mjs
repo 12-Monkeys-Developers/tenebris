@@ -78,6 +78,7 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
   /** @override */
   _onRender(context, options) {
     this.#dragDrop.forEach((d) => d.bind(this.element))
+    // Add listeners to rollable elements
     const rollables = this.element.querySelectorAll(".rollable")
     rollables.forEach((d) => d.addEventListener("click", this._onRoll.bind(this)))
   }

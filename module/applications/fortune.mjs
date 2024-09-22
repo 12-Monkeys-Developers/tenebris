@@ -14,7 +14,7 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
     tag: "form",
     window: {
       contentClasses: ["tenebris-fortune"],
-      title: "Roue de Fortune",
+      title: "TENEBRIS.Fortune.title",
     },
     position: {
       width: 50,
@@ -53,8 +53,8 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
   /**
    * Handles the request for a fortune.
    *
-   * @param {Event} event - The event that triggered the request.
-   * @param {Object} target - The target object for the request.
+   * @param {Event} event The event that triggered the request.
+   * @param {Object} target The target object for the request.
    * @private
    */
   static #requestFortune(event, target) {
@@ -70,8 +70,8 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
   /**
    * Handles the fortune spcket event for a given user.
    *
-   * @param {Object} [options] - The options object.
-   * @param {string} [options.userId] - The ID of the user.
+   * @param {Object} [options] The options object.
+   * @param {string} [options.userId] The ID of the user.
    * @returns {Promise<ChatMessage>} - The created chat message.
    */
   static async handleSocketEvent({ userId } = {}) {
@@ -99,9 +99,9 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
   /**
    * Handles the acceptance of a request event in the chat message by the GM
    *
-   * @param {Event} event - The event object that triggered the request.
-   * @param {HTMLElement} html - The HTML element associated with the event.
-   * @param {Object} data - Additional data related to the event.
+   * @param {Event} event The event object that triggered the request.
+   * @param {HTMLElement} html The HTML element associated with the event.
+   * @param {Object} data Additional data related to the event.
    * @returns {Promise<void>} A promise that resolves when the request has been processed.
    */
   static async acceptRequest(event, html, data) {

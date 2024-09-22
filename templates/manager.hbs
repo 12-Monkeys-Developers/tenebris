@@ -1,0 +1,39 @@
+<table class="tenebris-table">
+  <thead>
+    <tr>
+      <th>{{localize "TENEBRIS.Manager.player"}}</th>
+      <th>{{localize "TENEBRIS.Manager.character"}}</th>
+      <th>{{localize "TENEBRIS.Manager.pv"}}</th>
+      <td data-action="saveAll" data-save="rob">{{localize "TENEBRIS.Manager.rob"}}</td>
+      <td data-action="saveAll" data-save="dex">{{localize "TENEBRIS.Manager.dex"}}</td>
+      <td data-action="saveAll" data-save="int">{{localize "TENEBRIS.Manager.int"}}</td>
+      <td data-action="saveAll" data-save="per">{{localize "TENEBRIS.Manager.per"}}</td>
+      <td data-action="saveAll" data-save="vol">{{localize "TENEBRIS.Manager.vol"}}</td>
+      <td data-action="resourceAll" data-resource="san">{{localize "TENEBRIS.Manager.san"}}</td>
+      <td data-action="resourceAll" data-resource="oeil">{{localize "TENEBRIS.Manager.oeil"}}</td>
+      <td data-action="resourceAll" data-resource="verbe">{{localize "TENEBRIS.Manager.verbe"}}</td>
+      <td data-action="resourceAll" data-resource="bourse">{{localize "TENEBRIS.Manager.bourse"}}</td>
+      <td data-action="resourceAll" data-resource="magie">{{localize "TENEBRIS.Manager.magie"}}</td>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each players as |player|}}
+      {{log "player" this}}
+      <tr class="player" data-user-id="{{player.id}}" data-character-name="{{player.character.name}}" data-character-id="{{player.character.id}}">
+        <td>{{player.name}}</td>
+        <td data-action="openSheet" data-character-id="{{player.character.id}}">{{player.character.name}}</td>
+        <td>{{player.character.system.pv.value}}</td>
+        <td data-action="saveOne" data-save="rob">{{player.character.system.caracteristiques.rob.valeur}}</td>
+        <td data-action="saveOne" data-save="dex">{{player.character.system.caracteristiques.dex.valeur}}</td>
+        <td data-action="saveOne" data-save="int">{{player.character.system.caracteristiques.int.valeur}}</td>
+        <td data-action="saveOne" data-save="per">{{player.character.system.caracteristiques.per.valeur}}</td>
+        <td data-action="saveOne" data-save="vol">{{player.character.system.caracteristiques.vol.valeur}}</td>
+        <td data-action="resourceOne" data-resource="san">{{player.character.system.ressources.san.valeur}}</td>
+        <td data-action="resourceOne" data-resource="oeil">{{player.character.system.ressources.oeil.valeur}}</td>
+        <td data-action="resourceOne" data-resource="verbe">{{player.character.system.ressources.verbe.valeur}}</td>
+        <td data-action="resourceOne" data-resource="bourse">{{player.character.system.ressources.bourse.valeur}}</td>
+        <td data-action="resourceOne" data-resource="magie">{{player.character.system.ressources.magie.valeur}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

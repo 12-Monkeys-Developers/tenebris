@@ -824,6 +824,14 @@
   align-items: center;
   font-size: calc(var(--font-size-standard) * 1.3);
 }
+.tenebris.ask-roll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 1.3);
+}
 #tenebris-application-fortune {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
@@ -837,6 +845,23 @@
   justify-content: center;
   align-items: center;
   font-size: calc(var(--font-size-standard) * 2);
+}
+#tenebris-application-manager {
+  display: flex;
+  font-family: var(--font-primary);
+  background-image: url("../assets/gabarit.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+#tenebris-application-manager .tenebris-table {
+  margin: 1rem;
+  background: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+#tenebris-application-manager .tenebris-table .player {
+  font-size: calc(var(--font-size-standard) * 1.2);
 }
 .application.dialog.tenebris {
   font-family: var(--font-primary);
