@@ -31,7 +31,7 @@ export class Macros {
     // Creates a macro for roll
     else if (dropData.type === "roll") {
       const command = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}', '${dropData.value}');`
-      const name = game.i18n.localize("TENEBRIS.Label.jet") + " " + game.i18n.localize(`TENEBRIS.Manager.${dropData.rollTarget}`)
+      const name = `${game.i18n.localize("TENEBRIS.Label.jet")} ${game.i18n.localize(`TENEBRIS.Manager.${dropData.rollTarget}`)}`
       this.createMacro(slot, name, command, "icons/svg/d20-grey.svg")
     }
   }

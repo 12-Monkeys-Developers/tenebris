@@ -144,11 +144,6 @@ export default class TenebrisRoll extends Roll {
   }
 
   /**
-   * Asynchronously prompts the user with a dialog to perform a roll.
-   * @param {Object} options The options for the prompt.
-   * @returns {Promise} - A promise that resolves with the result of the roll.
-   */
-  /**
    * Prompt the user with a dialog to configure and execute a roll.
    *
    * @param {Object} options Configuration options for the roll.
@@ -427,7 +422,7 @@ export default class TenebrisRoll extends Roll {
       case ROLL_TYPE.DAMAGE:
         return `${game.i18n.localize("TENEBRIS.Dialog.titleDamage")} : ${game.i18n.localize(`TENEBRIS.Manager.${target}`)}`
       case ROLL_TYPE.ATTACK:
-        return `${game.i18n.localize("TENEBRIS.Dialog.titleAttack")} : ${game.i18n.localize(`TENEBRIS.Manager.${target}`)}`
+        return `${game.i18n.localize("TENEBRIS.Dialog.titleAttack")} : ${target}`
       default:
         return game.i18n.localize("TENEBRIS.Dialog.titleStandard")
     }
