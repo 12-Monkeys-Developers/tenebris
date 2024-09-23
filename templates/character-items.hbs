@@ -30,36 +30,40 @@
 
   <fieldset>
     <legend>{{localize "TENEBRIS.Label.equipement"}}{{#if isEditMode}}<a class="action" data-tooltip="{{localize "TENEBRIS.Tooltip.addEquipment"}}" data-tooltip-direction="UP"><i class="fas fa-plus" data-action="createEquipment"></i></a>{{/if}}</legend>
-    {{#each weapons as |item|}}
-      {{!log 'weapon' this}}
-      <div class="weapon" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
-        <div class="name" data-tooltip="{{{item.description}}}">{{item.name}}
-          ({{item.system.weaponCategory}})          
+    <div class="weapons">
+      {{#each weapons as |item|}}
+        {{!log 'weapon' this}}
+        <div class="weapon" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+          <div class="name" data-tooltip="{{{item.description}}}">
+            {{item.name}}
+          </div>
+          <a {{#if (ne item.system.degats "1")}}class="rollable" data-item-id="{{item.id}}" data-action="roll" data-roll-type="damage" data-roll-value="{{item.system.degats}}"{{/if}}>{{localize "TENEBRIS.Label.degats"}} : {{item.system.degats}}</a>
+          {{#if @root.isEditMode}}
+          <div class="controls">
+            <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
+            <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-trash"></i></a>
+          </div>
+          {{/if}}
         </div>
-        <a {{#if (ne item.system.degats "1")}}class="rollable" data-item-id="{{item.id}}" data-action="roll" data-roll-type="damage" data-roll-value="{{item.system.degats}}"{{/if}}>{{item.system.degats}}</a>
-        {{#if @root.isEditMode}}
-        <div class="controls">
-          <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
-          <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-trash"></i></a>
+      {{/each}}
+    </div>
+    <div class="armors">
+      {{#each armors as |item|}}
+        {{!log 'armor' this}}
+        <div class="armor" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+          <div class="name" data-tooltip="{{{item.description}}}">
+            {{item.name}}
+          </div>
+          {{localize "TENEBRIS.Label.armor"}} : {{item.system.valeur}} {{localize "TENEBRIS.Label.malus"}} : {{item.system.malus}}
+          {{#if @root.isEditMode}}
+          <div class="controls">
+            <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
+            <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-trash"></i></a>
+          </div>
+          {{/if}}
         </div>
-        {{/if}}
-      </div>
-    {{/each}}
-    {{#each armors as |item|}}
-      {{!log 'armor' this}}
-      <div class="armor" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
-        <div class="name" data-tooltip="{{{item.description}}}">{{item.name}}
-          ({{item.system.armorCategory}})          
-        </div>
-        {{item.system.details}}
-        {{#if @root.isEditMode}}
-        <div class="controls">
-          <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
-          <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-trash"></i></a>
-        </div>
-        {{/if}}
-      </div>
-    {{/each}}
+      {{/each}}
+    </div>
   </fieldset>
 
   <fieldset>

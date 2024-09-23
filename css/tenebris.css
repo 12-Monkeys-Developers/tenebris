@@ -244,11 +244,21 @@
   gap: 10px;
   justify-content: space-between;
 }
-.tenebris .tab.character-items .weapon {
+.tenebris .tab.character-items .weapons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.tenebris .tab.character-items .weapons .weapon {
   display: flex;
   gap: 10px;
 }
-.tenebris .tab.character-items .armor {
+.tenebris .tab.character-items .armors {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.tenebris .tab.character-items .armors .armor {
   display: flex;
   gap: 10px;
 }

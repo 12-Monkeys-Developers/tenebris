@@ -204,14 +204,25 @@
       justify-content: space-between;
     }
   }
-  .weapon {
-    display: flex;
+  .weapons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    .weapon {
+      display: flex;
+      gap: 10px;
+    }
   }
-  .armor {
-    display: flex;
+  .armors {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    .armor {
+      display: flex;
+      gap: 10px;
+    }
   }
+
   .appris {
     font-weight: bold;
   }

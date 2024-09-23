@@ -345,7 +345,9 @@
       "sauvegarde": "Sauvegarde",
       "visibilite": "Visibilité du lancer",
       "newArmor": "Nouvelle armure",
-      "newWeapon": "Nouvelle arme"
+      "newWeapon": "Nouvelle arme",
+      "armor":"Armure",
+      "malus": "Malus"
     },
     "Edit": "Editer",
     "Delete": "Supprimer",
