@@ -27,7 +27,7 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
     window: {
       resizable: true,
     },
-    dragDrop: [{ dragSelector: "[data-drag]", dropSelector: null }],
+    dragDrop: [{ dragSelector: "[data-drag], .rollable", dropSelector: null }],
     actions: {
       editImage: TenebrisActorSheet.#onEditImage,
       toggleSheet: TenebrisActorSheet.#onToggleSheet,
@@ -138,10 +138,18 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
    */
   _onDragStart(event) {
     const el = event.currentTarget
+    let target = el.querySelector("input")
+    if (!target) target = el.querySelector("select")
     if ("link" in event.target.dataset) return
 
     // Extract the data you need
-    let dragData = null
+    let dragData = {
+      actorId: this.document.id,
+      type: "roll",
+      rollType: target.dataset.rollType,
+      rollTarget: target.dataset.rollTarget,
+      value: target.value,
+    }
 
     if (!dragData) return
 

@@ -346,8 +346,9 @@
       "visibilite": "Visibilité du lancer",
       "newArmor": "Nouvelle armure",
       "newWeapon": "Nouvelle arme",
-      "armor":"Armure",
-      "malus": "Malus"
+      "armor": "Armure",
+      "malus": "Malus",
+      "jet": "Jet de "
     },
     "Edit": "Editer",
     "Delete": "Supprimer",

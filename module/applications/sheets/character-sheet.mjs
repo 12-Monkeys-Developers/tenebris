@@ -110,6 +110,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         rollType: "resource",
         rollTarget: "san",
         tooltip: this._generateTooltip("resource", "san"),
+        drag: true,
       },
       resourceOeil: {
         action: "roll",

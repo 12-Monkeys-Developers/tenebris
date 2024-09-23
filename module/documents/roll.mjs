@@ -269,7 +269,7 @@ export default class TenebrisRoll extends Roll {
     }
     const content = await renderTemplate("systems/tenebris/templates/roll-dialog.hbs", dialogContext)
 
-    const title = TenebrisRoll.createTitle(options.rollType)
+    const title = TenebrisRoll.createTitle(options.rollType, options.rollTarget)
     const label = game.i18n.localize("TENEBRIS.Label.roll")
     const rollContext = await foundry.applications.api.DialogV2.prompt({
       window: { title: title },
@@ -415,18 +415,19 @@ export default class TenebrisRoll extends Roll {
    * Creates a title based on the given type.
    *
    * @param {string} type The type of the roll.
+   * @param {string} target The target of the roll.
    * @returns {string} The generated title.
    */
-  static createTitle(type) {
+  static createTitle(type, target) {
     switch (type) {
       case ROLL_TYPE.SAVE:
-        return game.i18n.localize("TENEBRIS.Dialog.titleSave")
+        return `${game.i18n.localize("TENEBRIS.Dialog.titleSave")} : ${game.i18n.localize(`TENEBRIS.Manager.${target}`)}`
       case ROLL_TYPE.RESOURCE:
-        return game.i18n.localize("TENEBRIS.Dialog.titleResource")
+        return `${game.i18n.localize("TENEBRIS.Dialog.titleResource")} : ${game.i18n.localize(`TENEBRIS.Manager.${target}`)}`
       case ROLL_TYPE.DAMAGE:
-        return game.i18n.localize("TENEBRIS.Dialog.titleDamage")
+        return `${game.i18n.localize("TENEBRIS.Dialog.titleDamage")} : ${game.i18n.localize(`TENEBRIS.Manager.${target}`)}`
       case ROLL_TYPE.ATTACK:
-        return game.i18n.localize("TENEBRIS.Dialog.titleAttack")
+        return `${game.i18n.localize("TENEBRIS.Dialog.titleAttack")} : ${game.i18n.localize(`TENEBRIS.Manager.${target}`)}`
       default:
         return game.i18n.localize("TENEBRIS.Dialog.titleStandard")
     }

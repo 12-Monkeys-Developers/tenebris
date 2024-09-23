@@ -15,6 +15,7 @@ import * as applications from "./applications/_module.mjs"
 
 import { handleSocketEvent } from "./socket.mjs"
 import { configureDiceSoNice } from "./dice.mjs"
+import { Macros } from "./macros.mjs"
 
 Hooks.once("init", function () {
   console.info("CTHULHU TENEBRIS | Initializing Cthulhu Tenebris System")
@@ -160,4 +161,17 @@ Hooks.on("updateSetting", async (setting, update, options, id) => {
 // Dice-so-nice Ready
 Hooks.once("diceSoNiceReady", (dice3d) => {
   configureDiceSoNice(dice3d)
+})
+
+/**
+ * Create a macro when dropping an entity on the hotbar
+ * Item      - open roll dialog
+ * Actor     - open actor sheet
+ * Journal   - open journal sheet
+ */
+Hooks.on("hotbarDrop", (bar, data, slot) => {
+  if (["Actor", "Item", "JournalEntry", "roll"].includes(data.type)) {
+    Macros.createTenebrisMacro(data, slot)
+    return false
+  }
 })
