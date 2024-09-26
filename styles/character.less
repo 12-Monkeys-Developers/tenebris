@@ -12,13 +12,32 @@
     gap: 10px;
     flex: 1;
 
-    .character-img {
-      height: 200px;
-      width: auto;
-      border: none;
+    .character-gauche {
+      min-width: 180px;
+      display: flex;
+      flex-direction: column;
+
+      .character-gauche-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 20px;
+        .character-img {
+          height: 140px;
+          width: auto;
+          border: none;
+        }
+      }
+
+      .character-dv,
+      .character-dmax {
+        .form-fields {
+          flex: none;
+        }
+      }
     }
 
-    .character-contenu {
+    .character-droite {
       display: flex;
       flex-direction: column;
       gap: 5px;
@@ -29,87 +48,63 @@
 
       .character-infos {
         display: flex;
+        flex-direction: column;
+        gap: 10px;
 
-        .character-infos-gauche {
+        label {
+          min-width: 120px;
+        }
+
+        .character-voie-majeure,
+        .character-voie-mineure {
           display: flex;
-          flex-direction: column;
-          gap: 10px;
-
-          label {
-            min-width: 160px;
-          }
-
-          .character-voie-majeure {
-            display: flex;
-            justify-content: space-between;
-            margin-right: 5px;
-          }
-
-          .character-voie-mineure {
-            display: flex;
-            justify-content: space-between;
-            margin-right: 5px;
-          }
-
-          .character-commanditaire {
-            display: flex;
-            justify-content: space-between;
-            margin-right: 5px;
+          .controls {
+            padding-left: 5px;
           }
         }
 
-        .character-infos-droite {
+        .character-pv {
           display: flex;
-          flex-direction: column;
-          gap: 10px;
-
-          .character-pv {
+          gap: 2px;
+          align-items: center;
+          .character-pv-value {
+            .form-fields {
+              flex: none;
+              width: 50px;
+              margin-left: 10px;
+            }
+          }
+          .character-pv-max {
+            clear: both;
             display: flex;
-            gap: 2px;
-            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 3px 0;
             align-items: center;
-            .character-pv-value {
-              .form-fields {
-                flex: none;
-                width: 50px;
-                margin-left: 10px;
-              }
-            }
-            .character-pv-max {
-              clear: both;
-              display: flex;
-              flex-direction: row;
-              flex-wrap: wrap;
-              margin: 3px 0;
-              align-items: center;
-              input {
-                width: 50px;
-                text-align: center;
-                font-size: calc(var(--font-size-standard) * 1.6);
-                padding-top: 10px;
-              }
-            }
-            .pv-separator {
-              font-size: calc(var(--font-size-standard) * 1.4);
-              display: flex;
-              align-items: center;
-              justify-content: center;
+            input {
+              width: 50px;
+              text-align: center;
+              font-size: calc(var(--font-size-standard) * 1.6);
+              padding-top: 10px;
             }
           }
-          .character-dv {
-            .form-fields {
-              flex: none;
-            }
-          }
-
-          .character-dmax {
-            .form-fields {
-              flex: none;
-            }
+          .pv-separator {
+            font-size: calc(var(--font-size-standard) * 1.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
         }
       }
     }
+  }
+
+  .character-personnage-play {
+    min-width: 600px;
+  }
+
+  .character-personnage-edit {
+    min-width: 650px;
   }
 
   .character-caracteristiques {
@@ -117,15 +112,11 @@
     flex-direction: column;
     gap: 5px;
     flex: 1;
-    justify-content: space-between;
 
     .character-caracteristique {
       display: flex;
-      //justify-content: space-between;
       align-items: center;
       .form-group {
-        //display: flex;
-        //justify-content: space-between;
         flex: 1;
         padding-left: 5px;
         .form-fields {
@@ -154,12 +145,21 @@
     }
   }
 
+  .character-caracteristiques-play {
+    min-width: 225px;
+  }
+
+  .character-caracteristiques-edit {
+    min-width: 400px;
+  }
+
   .character-ressources {
     display: flex;
     flex-direction: column;
     gap: 5px;
     flex: 1;
-    justify-content: space-between;
+    //justify-content: space-between;
+    min-width: 235px;
 
     .form-fields {
       flex: none;

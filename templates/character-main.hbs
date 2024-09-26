@@ -1,20 +1,28 @@
 <section class="character-main">
-  {{!log "character-main" this}}
+  {{log "character-main" this}}
 
   <fieldset>
     <legend>{{localize "TENEBRIS.Character.Label.personnage"}}</legend>
-    <div class="character-personnage">
-      <img class="character-img" src="{{actor.img}}" data-edit="img" data-action="editImage" data-tooltip="{{actor.name}}" />
-
-      <div class="character-contenu">
-        <div class="character-name">
-          {{formInput fields.name value=source.name rootId=partId disabled=isPlayMode}}
-          <a class="control" data-action="toggleSheet" data-tooltip="TENEBRIS.ToggleSheet" data-tooltip-direction="UP">
-            <i class="fa-solid fa-user-{{ifThen isPlayMode 'lock' 'pen'}}"></i>
-          </a>
+    <div class="character-personnage character-personnage-{{ifThen isPlayMode 'play' 'edit'}}">
+      <div class="character-gauche">
+        <div class="character-gauche-image">
+          <img class="character-img" src="{{actor.img}}" data-edit="img" data-action="editImage" data-tooltip="{{actor.name}}" />
+        </div>        
+        <div class="character-dv">
+            {{formField systemFields.dv value=system.dv rootId=partId disabled=isPlayMode classes="character-dv"}}
+        </div>
+        <div class="character-dmax">
+          {{formField systemFields.dmax.fields.valeur value=system.dmax.valeur rootId=partId disabled=isPlayMode classes="character-dmax"}}
+        </div>        
+      </div>
+      <div class="character-droite">
+          <div class="character-name">
+            {{formInput fields.name value=source.name rootId=partId disabled=isPlayMode}}
+            <a class="control" data-action="toggleSheet" data-tooltip="TENEBRIS.ToggleSheet" data-tooltip-direction="UP">
+              <i class="fa-solid fa-user-{{ifThen isPlayMode 'lock' 'pen'}}"></i>
+            </a>
         </div>
         <div class="character-infos">
-          <div class="character-infos-gauche">
               {{#if isEditMode}}
                   <div class="character-voie-majeure">
                     {{formField systemFields.voies.fields.majeure.fields.nom value=system.voies.majeure.nom rootId=partId disabled=true}}     
@@ -49,8 +57,6 @@
             <div class="character-commanditaire">
               {{formField systemFields.commanditaire value=system.commanditaire rootId=partId disabled=isPlayMode classes="character-commanditaire"}}
             </div>
-          </div>
-          <div class="character-infos-droite">
             <div class="character-pv">
                 <div class="character-pv-value">
                     {{formField systemFields.pv.fields.value value=system.pv.value}}
@@ -60,18 +66,13 @@
                     {{formInput systemFields.pv.fields.max value=system.pv.max rootId=partId disabled=isPlayMode}}
                 </div>
             </div>
-            <div class="character-dv">
-                {{formField systemFields.dv value=system.dv rootId=partId disabled=isPlayMode classes="character-dv"}}
-            </div>
-            <div class="character-dmax">
-              {{formField systemFields.dmax.fields.valeur value=system.dmax.valeur rootId=partId disabled=isPlayMode classes="character-dmax"}}
-            </div>
-          </div>
         </div> 
-    </div>
+      </div>
+      
+
   </fieldset>
 
-  <fieldset class="character-caracteristiques">
+  <fieldset class="character-caracteristiques character-caracteristiques-{{ifThen isPlayMode 'play' 'edit'}}">
     <legend>{{localize "TENEBRIS.Character.Label.caracteristiques"}}</legend>
     <div class="character-caracteristique" data-drag><i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{experience.rob}}" style="font-size: small;"></i>{{formField systemFields.caracteristiques.fields.rob.fields.valeur value=system.caracteristiques.rob.valeur rootId=partId readonly=isPlayMode classes="rollable" dataset=rollType.saveRob}} {{#if isEditMode}}<div class="experience">{{formInput systemFields.caracteristiques.fields.rob.fields.progression.fields.experience value=system.caracteristiques.rob.progression.experience}} {{formInput systemFields.caracteristiques.fields.rob.fields.progression.fields.progres value=system.caracteristiques.rob.progression.progres}}</div>{{/if}}</div>
     <div class="character-caracteristique" ><i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{experience.dex}}" style="font-size: small;"></i>{{formField systemFields.caracteristiques.fields.dex.fields.valeur value=system.caracteristiques.dex.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveDex}} {{#if isEditMode}}<div class="experience">{{formInput systemFields.caracteristiques.fields.dex.fields.progression.fields.experience value=system.caracteristiques.dex.progression.experience}} {{formInput systemFields.caracteristiques.fields.dex.fields.progression.fields.progres value=system.caracteristiques.dex.progression.progres}}</div>{{/if}}</div>
