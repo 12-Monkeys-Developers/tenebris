@@ -42,4 +42,8 @@ export default class TenebrisOpponent extends foundry.abstract.TypeDataModel {
     if (!roll) return null
     await roll.toMessage({}, { rollMode: roll.options.rollMode })
   }
+
+  get toolTip() {
+    return this.description || ""
+  }
 }

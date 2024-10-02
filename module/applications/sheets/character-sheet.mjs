@@ -1,4 +1,4 @@
-import TenebrisActorSheet from "./base-character-sheet.mjs"
+import TenebrisActorSheet from "./base-actor-sheet.mjs"
 import { ROLL_TYPE } from "../../config/system.mjs"
 
 export default class TenebrisCharacterSheet extends TenebrisActorSheet {

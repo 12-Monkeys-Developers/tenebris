@@ -24,7 +24,7 @@
         {{#each attacks as |attack|}}
             <div class="opponent-attack">
                 <div class="attack-name">
-                    <a class="rollable" data-item-id="{{attack.id}}" data-item-name="{{attack.name}}" data-action="roll" data-roll-type="attack" data-roll-value="{{attack.system.degats}}">{{attack.system.degats}}</a> ({{attack.name}})
+                    <a class="rollable" data-item-id="{{attack.id}}" data-item-name="{{attack.name}}" data-action="roll" data-roll-type="attack" data-roll-value="{{attack.system.degats}}">{{attack.system.degats}}</a> (<span data-tooltip="{{attack.system.toolTip}}">{{attack.name}}</span>)
                 </div>
                 {{#if @root.isEditMode}}
                     <div class="controls">

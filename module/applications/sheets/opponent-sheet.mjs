@@ -1,4 +1,4 @@
-import TenebrisActorSheet from "./base-character-sheet.mjs"
+import TenebrisActorSheet from "./base-actor-sheet.mjs"
 
 export default class TenebrisOpponentSheet extends TenebrisActorSheet {
   /** @override */
