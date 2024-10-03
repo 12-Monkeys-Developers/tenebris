@@ -170,7 +170,7 @@ Hooks.once("diceSoNiceReady", (dice3d) => {
  * Journal   - open journal sheet
  */
 Hooks.on("hotbarDrop", (bar, data, slot) => {
-  if (["Actor", "Item", "JournalEntry", "roll"].includes(data.type)) {
+  if (["Actor", "Item", "JournalEntry", "roll", "rollAttack"].includes(data.type)) {
     Macros.createTenebrisMacro(data, slot)
     return false
   }

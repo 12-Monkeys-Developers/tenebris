@@ -22,7 +22,7 @@
       <fieldset class="opponent-attacks">
         <legend>{{localize "TENEBRIS.Character.Label.attaques"}} {{#if isEditMode}}<a class="action" data-tooltip="{{localize "TENEBRIS.Tooltip.addAttack"}}" data-tooltip-direction="UP"><i class="fas fa-plus" data-action="createAttack"></i></a>{{/if}}</legend>
         {{#each attacks as |attack|}}
-            <div class="opponent-attack">
+            <div class="opponent-attack" data-drag="true" data-drag-type="attack" data-roll-value="{{attack.system.degats}}" data-roll-target="{{attack.name}}">
                 <div class="attack-name">
                     <a class="rollable" data-item-id="{{attack.id}}" data-item-name="{{attack.name}}" data-action="roll" data-roll-type="attack" data-roll-value="{{attack.system.degats}}">{{attack.system.degats}}</a> (<span data-tooltip="{{attack.system.toolTip}}">{{attack.name}}</span>)
                 </div>

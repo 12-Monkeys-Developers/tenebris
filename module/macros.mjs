@@ -28,10 +28,17 @@ export class Macros {
       this.createMacro(slot, journal.name, command, journal.img ? journal.img : "icons/svg/book.svg")
     }
 
-    // Creates a macro for roll
+    // Creates a macro for a roll (save or resource of a character)
     else if (dropData.type === "roll") {
       const command = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}', '${dropData.value}');`
       const name = `${game.i18n.localize("TENEBRIS.Label.jet")} ${game.i18n.localize(`TENEBRIS.Manager.${dropData.rollTarget}`)}`
+      this.createMacro(slot, name, command, "icons/svg/d20-grey.svg")
+    }
+
+    // Creates a macro for a roll of an opponent's attack
+    else if (dropData.type === "rollAttack") {
+      const command = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollValue}', '${dropData.rollTarget}' );`
+      const name = `${game.i18n.localize("TENEBRIS.Label.jet")} ${dropData.rollTarget}`
       this.createMacro(slot, name, command, "icons/svg/d20-grey.svg")
     }
   }

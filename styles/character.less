@@ -158,13 +158,52 @@
     flex-direction: column;
     gap: 5px;
     flex: 1;
-    //justify-content: space-between;
-    min-width: 235px;
 
-    .form-fields {
-      flex: none;
-      width: 70px;
+    .character-ressource {
+      display: flex;
+      align-items: center;
+      .form-group {
+        flex: 1;
+        padding-left: 5px;
+        .form-fields {
+          flex: none;
+          width: 70px;
+        }
+      }
+      .character-ressource-edit {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: 10px;        
+        input {
+          display: flex;
+          width: 70px;
+          font-size: calc(var(--font-size-standard) * 1.6);
+          align-items: center;
+          justify-content: center;
+          padding: 0 5px 0 5px;
+        }
+        input[type="number"] {
+          text-align: center;
+          padding-top: 10px;
+        }
+        select {
+          font-family: var(--font-secondary);
+          font-size: calc(var(--font-size-standard)* 1.8);
+          text-align: center;
+          width: 70px;
+        }
+      }
     }
+
+  }
+
+  .character-ressources-play {
+    min-width: 235px;
+  }
+
+  .character-caracteristiques-edit {
+    min-width: 400px;
   }
 
   .rollable:hover,

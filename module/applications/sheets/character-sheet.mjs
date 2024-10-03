@@ -61,12 +61,20 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
     const context = await super._prepareContext()
     context.tabs = this.#getTabs()
 
-    context.experience = {
+    context.tooltipsCaracteristiques = {
       rob: this._generateTooltip("save", "rob"),
       dex: this._generateTooltip("save", "dex"),
       int: this._generateTooltip("save", "int"),
       per: this._generateTooltip("save", "per"),
       vol: this._generateTooltip("save", "vol"),
+      san: this._generateTooltip("resource", "san"),
+      oeil: this._generateTooltip("resource", "oeil"),
+      verbe: this._generateTooltip("resource", "verbe"),
+      bourse: this._generateTooltip("resource", "bourse"),
+      magie: this._generateTooltip("resource", "magie"),
+    }
+
+    context.tooltipsRessources = {
       san: this._generateTooltip("resource", "san"),
       oeil: this._generateTooltip("resource", "oeil"),
       verbe: this._generateTooltip("resource", "verbe"),
@@ -98,12 +106,14 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         rollType: "save",
         rollTarget: "per",
         tooltip: this._generateTooltip("save", "per"),
+        drag: true,
       },
       saveVol: {
         action: "roll",
         rollType: "save",
         rollTarget: "vol",
         tooltip: this._generateTooltip("save", "vol"),
+        drag: true,
       },
       resourceSan: {
         action: "roll",
@@ -117,24 +127,28 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         rollType: "resource",
         rollTarget: "oeil",
         tooltip: this._generateTooltip("resource", "oeil"),
+        drag: true,
       },
       resourceVerbe: {
         action: "roll",
         rollType: "resource",
         rollTarget: "verbe",
         tooltip: this._generateTooltip("resource", "verbe"),
+        drag: true,
       },
       resourceBourse: {
         action: "roll",
         rollType: "resource",
         rollTarget: "bourse",
         tooltip: this._generateTooltip("resource", "bourse"),
+        drag: true,
       },
       resourceMagie: {
         action: "roll",
         rollType: "resource",
         rollTarget: "magie",
         tooltip: this._generateTooltip("resource", "magie"),
+        drag: true,
       },
     }
     console.log("character context", context)
@@ -143,10 +157,12 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
 
   _generateTooltip(type, target) {
     if (type === ROLL_TYPE.SAVE) {
-      const progres = this.document.system.caracteristiques[target].progression.progres ? "A progressé" : "Pas de progrès"
-      return `Experience : ${this.document.system.caracteristiques[target].progression.experience} <br> ${progres}`
+      const progres = this.document.system.caracteristiques[target].progression.progres
+        ? game.i18n.localize("TENEBRIS.Label.progress")
+        : game.i18n.localize("TENEBRIS.Label.noProgress")
+      return `${game.i18n.localize("TENEBRIS.Label.experience")} : ${this.document.system.caracteristiques[target].progression.experience} <br> ${progres}`
     } else if (type === ROLL_TYPE.RESOURCE) {
-      return `Experience : ${this.document.system.ressources[target].experience}`
+      return `${game.i18n.localize("TENEBRIS.Label.maximum")} : ${this.document.system.ressources[target].max} <br> ${game.i18n.localize("TENEBRIS.Label.experience")} : ${this.document.system.ressources[target].experience}`
     }
   }
 

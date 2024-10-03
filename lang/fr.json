@@ -348,7 +348,11 @@
       "newWeapon": "Nouvelle arme",
       "armor": "Armure",
       "malus": "Malus",
-      "jet": "Jet de "
+      "jet": "Jet de ",
+      "progress": "A progressé dans la voie",
+      "noProgress": "N'a pas progressé dans la voie",
+      "experience": "Expérience",
+      "maximum": "Maximum"
     },
     "Edit": "Editer",
     "Delete": "Supprimer",

@@ -27,7 +27,7 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
     window: {
       resizable: true,
     },
-    dragDrop: [{ dragSelector: "[data-drag], .rollable", dropSelector: null }],
+    dragDrop: [{ dragSelector: '[data-drag="true"], .rollable', dropSelector: null }],
     actions: {
       editImage: TenebrisActorSheet.#onEditImage,
       toggleSheet: TenebrisActorSheet.#onToggleSheet,
@@ -137,19 +137,43 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
    * @protected
    */
   _onDragStart(event) {
-    const el = event.currentTarget
-    let target = el.querySelector("input")
-    if (!target) target = el.querySelector("select")
     if ("link" in event.target.dataset) return
 
-    // Extract the data you need
-    let dragData = {
-      actorId: this.document.id,
-      type: "roll",
-      rollType: target.dataset.rollType,
-      rollTarget: target.dataset.rollTarget,
-      value: target.value,
+    const el = event.currentTarget.closest('[data-drag="true"]')
+    const dragType = el.dataset.dragType
+
+    let dragData = {}
+
+    if (dragType === "save") {
+      const target = event.currentTarget.querySelector("input")
+      dragData = {
+        actorId: this.document.id,
+        type: "roll",
+        rollType: target.dataset.rollType,
+        rollTarget: target.dataset.rollTarget,
+        value: target.value,
+      }
     }
+    if (dragType === "resource") {
+      const target = event.currentTarget.querySelector("select")
+      dragData = {
+        actorId: this.document.id,
+        type: "roll",
+        rollType: target.dataset.rollType,
+        rollTarget: target.dataset.rollTarget,
+        value: target.value,
+      }
+    }
+    if (dragType === "attack") {
+      dragData = {
+        actorId: this.document.id,
+        type: "rollAttack",
+        rollValue: el.dataset.rollValue,
+        rollTarget: el.dataset.rollTarget,
+      }
+    }
+
+    // Extract the data you need
 
     if (!dragData) return
 
