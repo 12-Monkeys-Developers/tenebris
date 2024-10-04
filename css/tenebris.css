@@ -1,28 +1,9 @@
 :root {
-  --font-primary: 'Caslon', sans-serif;
-  --font-secondary: 'Cat Franken', sans-serif;
-  --font-size-base: var(--font-size-16);
-  --color-shadow-primary: #524e4e;
-}
-@font-face {
-  font-family: "Cat Franken";
-  src: url("../fonts/catfranken-deutsch.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Caslon";
-  src: url("../fonts/caslonpro-regular.otf") format("truetype");
-}
-@font-face {
-  font-family: "Caslon Bold";
-  src: url("../fonts/caslonpro-bold.otf") format("truetype");
-}
-@font-face {
-  font-family: "Caslon Bold Italic";
-  src: url("../fonts/caslonpro-bolditalic.otf") format("truetype");
-}
-@font-face {
-  font-family: "Caslon Italic";
-  src: url("../fonts/caslonpro-italic.otf") format("truetype");
+  --font-size-13: 0.8125rem;
+  --font-size-16: 1rem;
+  --font-size-standard: var(--font-size-13);
+  --background-image-base: url("../assets/parchment.jpg");
+  --font-secondary: "Amiri", serif;
 }
 .tenebris .character-sheet-common label {
   font-family: var(--font-secondary);
@@ -39,7 +20,7 @@
 .tenebris .character-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   overflow: scroll;
@@ -315,7 +296,7 @@
 .tenebris .opponent-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   overflow: scroll;
@@ -420,7 +401,7 @@
 .tenebris .path-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -544,7 +525,7 @@
 .tenebris .talent-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -599,7 +580,7 @@
 .tenebris .weapon-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -647,7 +628,7 @@
 .tenebris .armor-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -695,7 +676,7 @@
 .tenebris .spell-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -747,7 +728,7 @@
 .tenebris .attack-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -886,7 +867,7 @@
 #tenebris-application-fortune {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -900,7 +881,7 @@
 #tenebris-application-manager {
   display: flex;
   font-family: var(--font-primary);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -917,7 +898,7 @@
 .application.dialog.tenebris {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
 }
 .application.dialog.tenebris .legend {
   font-family: var(--font-primary);
@@ -929,7 +910,7 @@
 .chat-message,
 .chat-message.whisper {
   font-family: var(--font-primary);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }

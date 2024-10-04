@@ -1,6 +1,5 @@
 @import "global.less";
 .tenebris {
-  @import "fonts.less";
   @import "mixins.less";
   @import "character.less";
   @import "opponent.less";
@@ -19,7 +18,7 @@
 .application.dialog.tenebris {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
   .legend {
     font-family: var(--font-primary);
   }
@@ -32,7 +31,7 @@
 
 .chat-message, .chat-message.whisper {
   font-family: var(--font-primary);
-  background-image: url("../assets/gabarit.webp");
+  background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
