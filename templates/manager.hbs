@@ -18,7 +18,7 @@
   </thead>
   <tbody>
     {{#each players as |player|}}
-      {{log "player" this}}
+      {{!log "player" this}}
       <tr class="player" data-user-id="{{player.id}}" data-character-name="{{player.character.name}}" data-character-id="{{player.character.id}}">
         <td>{{player.name}}</td>
         <td data-action="openSheet" data-character-id="{{player.character.id}}">{{player.character.name}}</td>

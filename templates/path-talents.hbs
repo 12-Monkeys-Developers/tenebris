@@ -18,11 +18,11 @@
       </div>
       {{#if item.system.isLearned}}
         <div class="progression">
-          <div>Appris</div>
-          <div>Niveau {{item.system.niveau}}</div>
+          <div>{{localize "TENEBRIS.Label.appris"}}</div>
+          <div>{{localize "TENEBRIS.Label.niveau"}} {{item.system.niveau}}</div>
         </div>
       {{/if}}
-      <div class="description">{{{item.system.description}}}</div>
+      <div class="description">{{{item.system.improvedDescription}}}</div>
     </div>
   {{/each}}
 </section>
