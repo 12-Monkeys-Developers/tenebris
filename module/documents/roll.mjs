@@ -218,6 +218,8 @@ export default class TenebrisRoll extends Roll {
       damageDiceMax = game.actors.get(options.actorId).system.dmax.valeur
       damageDiceFinal = TenebrisUtils.maxDamage(damageDice, damageDiceMax)
       damageDiceLowered = damageDiceFinal !== damageDice
+      // Récupération du nom de l'objet
+      options.rollTarget = game.actors.get(options.actorId).items.get(options.rollTarget).name
     }
 
     if (options.rollType === ROLL_TYPE.ATTACK) {
@@ -420,7 +422,7 @@ export default class TenebrisRoll extends Roll {
       case ROLL_TYPE.RESOURCE:
         return `${game.i18n.localize("TENEBRIS.Dialog.titleResource")} : ${game.i18n.localize(`TENEBRIS.Manager.${target}`)}`
       case ROLL_TYPE.DAMAGE:
-        return `${game.i18n.localize("TENEBRIS.Dialog.titleDamage")} : ${game.i18n.localize(`TENEBRIS.Manager.${target}`)}`
+        return `${game.i18n.localize("TENEBRIS.Dialog.titleDamage")} : ${target}`
       case ROLL_TYPE.ATTACK:
         return `${game.i18n.localize("TENEBRIS.Dialog.titleAttack")} : ${target}`
       default:
