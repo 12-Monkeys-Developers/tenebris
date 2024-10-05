@@ -14,8 +14,8 @@ export function initControlButtons() {
       title: game.i18n.localize("TENEBRIS.Fortune.title"),
       icon: "fa-solid fa-clover",
       button: true,
-      onClick: async () => {
-        await new TenebrisFortune().render(true)
+      onClick: () => {
+        game.system.applicationFortune.render(true)
       },
     })
 
@@ -25,8 +25,8 @@ export function initControlButtons() {
         title: game.i18n.localize("TENEBRIS.Manager.title"),
         icon: "fa-solid fa-users",
         button: true,
-        onClick: async () => {
-          await new TenebrisManager().render(true)
+        onClick: () => {
+          game.system.applicationManager.render(true)
         },
       })
     }
