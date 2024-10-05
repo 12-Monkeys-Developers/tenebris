@@ -16,9 +16,10 @@ import * as applications from "./applications/_module.mjs"
 import { handleSocketEvent } from "./socket.mjs"
 import { configureDiceSoNice } from "./dice.mjs"
 import { Macros } from "./macros.mjs"
+import { initControlButtons } from "./control-buttons.mjs"
 
 Hooks.once("init", function () {
-  console.info("CTHULHU TENEBRIS | Initializing Cthulhu Tenebris System")
+  console.info("CTHULHU TENEBRIS | Initializing System")
   console.info(SYSTEM.ASCII)
 
   globalThis.tenebris = game.system
@@ -91,6 +92,9 @@ Hooks.once("init", function () {
   // Pre-localize configuration objects
   // TODO : encore d'actualité ?
   // preLocalizeConfig()
+
+  initControlButtons()
+  console.info("CTHULHU TENEBRIS | System Initialized")
 })
 
 /**

@@ -4,4 +4,32 @@
   --font-size-standard: var(--font-size-13);
   --background-image-base: url("../assets/parchment.jpg");
   --font-secondary: "Amiri", serif;
+  --logo-standard: url('../assets/tenebris-logo.webp');
+}
+
+#logo {
+  content: var(--logo-standard);
+  width: 50px;
+  height: 50px;
+  margin-left: 15px;
+}
+#pause > img {
+  content: var(--logo-standard);
+  height: 192px;
+  width: 192px;
+  top: -45px;
+  left: calc(50% - 96px);
+}
+
+i.tenebris {
+  width: 36px;
+  height: 36px;
+  background-image: var(--logo-standard);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  position: relative;
+  filter: grayscale(1);
+  transition: 0.3s;
 }
