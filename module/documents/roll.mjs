@@ -119,7 +119,7 @@ export default class TenebrisRoll extends Roll {
         text = game.i18n.format("TENEBRIS.Roll.resource", { resource: resourceLabel })
         break
       case ROLL_TYPE.DAMAGE:
-        const damageLabel = game.actors.get(this.actorId).items.get(this.target).name
+        const damageLabel = this.target
         text = game.i18n.format("TENEBRIS.Roll.damage", { item: damageLabel })
         break
       case ROLL_TYPE.ATTACK:
@@ -232,15 +232,15 @@ export default class TenebrisRoll extends Roll {
     let targetArmor
     const displayOpponentMalus = game.settings.get("tenebris", "displayOpponentMalus")
 
-    if (options.rollType === ROLL_TYPE.SAVE && options.hasTarget && options.target.actor.type === "opponent") {
-      targetName = options.target.actor.name
-      if (displayOpponentMalus) malus = options.target.actor.system.malus.toString()
-      else targetMalus = options.target.actor.system.malus.toString()
+    if (options.rollType === ROLL_TYPE.SAVE && options.hasTarget && options.target.document.actor.type === "opponent") {
+      targetName = options.target.document.actor.name
+      if (displayOpponentMalus) malus = options.target.document.actor.system.malus.toString()
+      else targetMalus = options.target.document.actor.system.malus.toString()
     }
 
-    if (options.rollType === ROLL_TYPE.DAMAGE && options.hasTarget && options.target.actor.type === "opponent") {
-      targetName = options.target.actor.name
-      targetArmor = options.target.actor.system.armure.toString()
+    if (options.rollType === ROLL_TYPE.DAMAGE && options.hasTarget && options.target.document.actor.type === "opponent") {
+      targetName = options.target.document.actor.name
+      targetArmor = options.target.document.actor.system.armure.toString()
     }
 
     let dialogContext = {
@@ -279,7 +279,6 @@ export default class TenebrisRoll extends Roll {
             if (input.name) obj[input.name] = input.value
             return obj
           }, {})
-          console.log("output", output)
           // Avantages
           switch (output.avantages) {
             case "1":

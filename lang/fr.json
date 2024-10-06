@@ -415,7 +415,7 @@
     "Manager": {
       "title": "Gestionnaire de Personnages",
       "player": "Utilisateur",
-      "character": "Personnnage",
+      "character": "Personnage",
       "rob": "Robustesse",
       "dex": "Dextérité",
       "int": "Intelligence",
