@@ -33,7 +33,7 @@
     <div class="weapons">
       {{#each weapons as |item|}}
         {{!log 'weapon' this}}
-        <div class="weapon" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+        <div class="weapon" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-drag="true" data-drag-type="damage">
           <div class="name" data-tooltip="{{{item.description}}}">
             {{item.name}}
           </div>

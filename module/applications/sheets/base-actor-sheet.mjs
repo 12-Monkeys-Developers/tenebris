@@ -144,33 +144,47 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
 
     let dragData = {}
 
-    if (dragType === "save") {
-      const target = event.currentTarget.querySelector("input")
-      dragData = {
-        actorId: this.document.id,
-        type: "roll",
-        rollType: target.dataset.rollType,
-        rollTarget: target.dataset.rollTarget,
-        value: target.value,
-      }
-    }
-    if (dragType === "resource") {
-      const target = event.currentTarget.querySelector("select")
-      dragData = {
-        actorId: this.document.id,
-        type: "roll",
-        rollType: target.dataset.rollType,
-        rollTarget: target.dataset.rollTarget,
-        value: target.value,
-      }
-    }
-    if (dragType === "attack") {
-      dragData = {
-        actorId: this.document.id,
-        type: "rollAttack",
-        rollValue: el.dataset.rollValue,
-        rollTarget: el.dataset.rollTarget,
-      }
+    let target
+    switch (dragType) {
+      case "save":
+        target = event.currentTarget.querySelector("input")
+        dragData = {
+          actorId: this.document.id,
+          type: "roll",
+          rollType: target.dataset.rollType,
+          rollTarget: target.dataset.rollTarget,
+          value: target.value,
+        }
+        break
+      case "resource":
+        target = event.currentTarget.querySelector("select")
+        dragData = {
+          actorId: this.document.id,
+          type: "roll",
+          rollType: target.dataset.rollType,
+          rollTarget: target.dataset.rollTarget,
+          value: target.value,
+        }
+        break
+      case "damage":
+        dragData = {
+          actorId: this.document.id,
+          type: "rollDamage",
+          rollType: el.dataset.dragType,
+          rollTarget: el.dataset.itemId,
+        }
+        break
+      case "attack":
+        dragData = {
+          actorId: this.document.id,
+          type: "rollAttack",
+          rollValue: el.dataset.rollValue,
+          rollTarget: el.dataset.rollTarget,
+        }
+        break
+      default:
+        // Handle other cases or do nothing
+        break
     }
 
     // Extract the data you need

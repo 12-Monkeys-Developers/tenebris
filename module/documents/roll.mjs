@@ -218,7 +218,8 @@ export default class TenebrisRoll extends Roll {
       damageDiceMax = game.actors.get(options.actorId).system.dmax.valeur
       damageDiceFinal = TenebrisUtils.maxDamage(damageDice, damageDiceMax)
       damageDiceLowered = damageDiceFinal !== damageDice
-      // Récupération du nom de l'objet
+      // Récupération du nom de l'objet si c'est un jet depuis la fiche de l'acteur
+      // Si c'est via une macro le nom est connu
       options.rollTarget = game.actors.get(options.actorId).items.get(options.rollTarget).name
     }
 

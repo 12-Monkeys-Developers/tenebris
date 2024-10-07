@@ -116,11 +116,39 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
    * Rolls a dice for a character.
    * @param {("save"|"resource|damage")} rollType The type of the roll.
    * @param {number} rollTarget The target value for the roll. Which caracteristic or resource. If the roll is a damage roll, this is the id of the item.
+   * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
+   */
+  async roll(rollType, rollTarget) {
+    let rollValue
+    let opponentTarget
+    switch (rollType) {
+      case ROLL_TYPE.SAVE:
+        rollValue = this.caracteristiques[rollTarget].valeur
+        opponentTarget = game.user.targets.first()
+        break
+      case ROLL_TYPE.RESOURCE:
+        rollValue = this.ressources[rollTarget].valeur
+        break
+      case ROLL_TYPE.DAMAGE:
+        rollValue = this.parent.items.get(rollTarget).system.degats
+        opponentTarget = game.user.targets.first()
+        break
+      default:
+        // Handle other cases or do nothing
+        break
+    }
+    await this._roll(rollType, rollTarget, rollValue, opponentTarget)
+  }
+
+  /**
+   * Rolls a dice for a character.
+   * @param {("save"|"resource|damage")} rollType The type of the roll.
+   * @param {number} rollTarget The target value for the roll. Which caracteristic or resource. If the roll is a damage roll, this is the id of the item.
    * @param {number} rollValue The value of the roll. If the roll is a damage roll, this is the dice to roll.
    * @param {Token} opponentTarget The target of the roll : used for save rolls to get the oppponent's malus.
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
-  async roll(rollType, rollTarget, rollValue, opponentTarget = undefined) {
+  async _roll(rollType, rollTarget, rollValue, opponentTarget = undefined) {
     const hasTarget = opponentTarget !== undefined
     let roll = await TenebrisRoll.prompt({
       rollType,

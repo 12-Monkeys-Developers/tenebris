@@ -14,32 +14,40 @@ export class Macros {
    * @returns {Promise<void>} A promise that resolves when the macro is created.
    */
   static createTenebrisMacro = async function (dropData, slot) {
-    // Creates a macro to open the actor sheet of the actor dropped on the hotbar
-    if (dropData.type === "Actor") {
-      const actor = await fromUuid(dropData.uuid)
-      const command = `game.actors.get("${actor.id}").sheet.render(true)`
-      this.createMacro(slot, actor.name, command, actor.img)
-    }
+    switch (dropData.type) {
+      case "Actor":
+        const actor = await fromUuid(dropData.uuid)
+        const actorCommand = `game.actors.get("${actor.id}").sheet.render(true)`
+        this.createMacro(slot, actor.name, actorCommand, actor.img)
+        break
 
-    // Creates a macro to open the journal sheet of the journal dropped on the hotbar
-    else if (dropData.type === "JournalEntry") {
-      const journal = await fromUuid(dropData.uuid)
-      const command = `game.journal.get("${journal.id}").sheet.render(true)`
-      this.createMacro(slot, journal.name, command, journal.img ? journal.img : "icons/svg/book.svg")
-    }
+      case "JournalEntry":
+        const journal = await fromUuid(dropData.uuid)
+        const journalCommand = `game.journal.get("${journal.id}").sheet.render(true)`
+        this.createMacro(slot, journal.name, journalCommand, journal.img ? journal.img : "icons/svg/book.svg")
+        break
 
-    // Creates a macro for a roll (save or resource of a character)
-    else if (dropData.type === "roll") {
-      const command = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}', '${dropData.value}');`
-      const name = `${game.i18n.localize("TENEBRIS.Label.jet")} ${game.i18n.localize(`TENEBRIS.Manager.${dropData.rollTarget}`)}`
-      this.createMacro(slot, name, command, "icons/svg/d20-grey.svg")
-    }
+      case "roll":
+        const rollCommand = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}');`
+        const rollName = `${game.i18n.localize("TENEBRIS.Label.jet")} ${game.i18n.localize(`TENEBRIS.Manager.${dropData.rollTarget}`)}`
+        this.createMacro(slot, rollName, rollCommand, "icons/svg/d20-grey.svg")
+        break
 
-    // Creates a macro for a roll of an opponent's attack
-    else if (dropData.type === "rollAttack") {
-      const command = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollValue}', '${dropData.rollTarget}' );`
-      const name = `${game.i18n.localize("TENEBRIS.Label.jet")} ${dropData.rollTarget}`
-      this.createMacro(slot, name, command, "icons/svg/d20-grey.svg")
+      case "rollDamage":
+        const rollDamageCommand = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}');`
+        const rollDamageName = `${game.i18n.localize("TENEBRIS.Label.jet")} ${dropData.rollTarget}`
+        this.createMacro(slot, rollDamageName, rollDamageCommand, "icons/svg/d20-grey.svg")
+        break
+
+      case "rollAttack":
+        const rollAttackCommand = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollValue}', '${dropData.rollTarget}');`
+        const rollAttackName = `${game.i18n.localize("TENEBRIS.Label.jet")} ${dropData.rollTarget}`
+        this.createMacro(slot, rollAttackName, rollAttackCommand, "icons/svg/d20-grey.svg")
+        break
+
+      default:
+        // Handle other cases or do nothing
+        break
     }
   }
 

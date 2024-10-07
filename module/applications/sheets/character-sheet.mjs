@@ -229,10 +229,11 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
     switch (data.type) {
       case "Item":
         const item = await fromUuid(data.uuid)
-        if (!["path", "weapon", "armor"].includes(item.type)) return
+        if (!["path", "weapon", "armor", "spell"].includes(item.type)) return
         if (item.type === "path") return this.#onDropPathItem(item)
         if (item.type === "weapon") return super._onDropItem(item)
         if (item.type === "armor") return this._onDropItem(item)
+        if (item.type === "spell") return this._onDropItem(item)
     }
   }
 
@@ -319,28 +320,20 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
     if (!elt) elt = event.currentTarget
     const rollType = elt.dataset.rollType
     let rollTarget
-    let rollValue
-    let opponentTarget
     switch (rollType) {
       case ROLL_TYPE.SAVE:
         rollTarget = elt.dataset.rollTarget
-        rollValue = this.document.system.caracteristiques[rollTarget].valeur
-        opponentTarget = game.user.targets.first()
         break
       case ROLL_TYPE.RESOURCE:
         rollTarget = elt.dataset.rollTarget
-        rollValue = this.document.system.ressources[rollTarget].valeur
         break
       case ROLL_TYPE.DAMAGE:
         rollTarget = elt.dataset.itemId
-        rollValue = elt.dataset.rollValue
-        opponentTarget = game.user.targets.first()
         break
       default:
-        // Handle other cases or do nothing
         break
     }
-    await this.document.system.roll(rollType, rollTarget, rollValue, opponentTarget)
+    await this.document.system.roll(rollType, rollTarget)
   }
   // #endregion
 }
