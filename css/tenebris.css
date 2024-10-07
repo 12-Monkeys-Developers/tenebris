@@ -310,6 +310,15 @@ i.tenebris {
   display: flex;
   gap: 10px;
 }
+.tenebris .tab.character-items .spells {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.tenebris .tab.character-items .spells .spell {
+  display: flex;
+  gap: 10px;
+}
 .tenebris .tab.character-items .appris {
   font-weight: bold;
 }
@@ -408,6 +417,13 @@ i.tenebris {
   font-size: calc(var(--font-size-standard) * 1.6);
 }
 .tenebris .opponent-main .opponent-gauche .opponent-attacks .opponent-attack {
+  display: flex;
+  justify-content: space-between;
+}
+.tenebris .opponent-main .opponent-gauche .opponent-spells legend a {
+  font-size: calc(var(--font-size-standard) * 1.6);
+}
+.tenebris .opponent-main .opponent-gauche .opponent-spells .opponent-spell {
   display: flex;
   justify-content: space-between;
 }

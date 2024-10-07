@@ -334,6 +334,7 @@
       "talents": "Talents",
       "progressionPossible": "Progression possible",
       "equipement": "Equipement",
+      "spells" : "Sortilèges",
       "level": "Niveau",
       "roll": "Lancer",
       "aide": "Aide",
@@ -396,7 +397,8 @@
       "learnedTalents": "Les talents appris sont en gras",
       "saveIntroTextTooltip": "Caractéristique : {value} <br> Aide : {aide} <br> Gêne : {gene} <br> Modificateur : {modificateur}",
       "addAttack": "Ajouter une attaque",
-      "addEquipment": "Ajouter une arme, Shift + Click pour ajouter une armure"
+      "addEquipment": "Ajouter une arme, Shift + Click pour ajouter une armure",
+      "addSpell": "Ajouter un sortilège"
     },
     "Setting": {
       "displayOpponentMalus": "Afficher le malus d'adversité",

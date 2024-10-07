@@ -180,6 +180,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         context.talentsAppris = talents.filter((talent) => talent.appris)
         context.weapons = doc.itemTypes.weapon
         context.armors = doc.itemTypes.armor
+        context.spells = doc.itemTypes.spell
         break
       case "biography":
         context.tab = context.tabs.biography

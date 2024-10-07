@@ -34,7 +34,7 @@
       {{#each weapons as |item|}}
         {{!log 'weapon' this}}
         <div class="weapon" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-drag="true" data-drag-type="damage">
-          <div class="name" data-tooltip="{{{item.description}}}">
+          <div class="name" data-tooltip="{{{item.system.description}}}">
             {{item.name}}
           </div>
           <a {{#if (ne item.system.degats "1")}}class="rollable" data-item-id="{{item.id}}" data-action="roll" data-roll-type="damage" data-roll-value="{{item.system.degats}}"{{/if}}>{{localize "TENEBRIS.Label.degats"}} : {{item.system.degats}}</a>
@@ -49,9 +49,9 @@
     </div>
     <div class="armors">
       {{#each armors as |item|}}
-        {{!log 'armor' this}}
+        {{log 'armor' this}}
         <div class="armor" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
-          <div class="name" data-tooltip="{{{item.description}}}">
+          <div class="name" data-tooltip="{{{item.system.description}}}">
             {{item.name}}
           </div>
           {{localize "TENEBRIS.Label.armor"}} : {{item.system.valeur}} {{localize "TENEBRIS.Label.malus"}} : {{item.system.malus}}
@@ -70,4 +70,24 @@
     <legend>{{localize "TENEBRIS.Label.biens"}}</legend>
     {{formInput systemFields.biens enriched=enrichedBiens value=system.biens name="system.biens" toggled=true }}
   </fieldset>
+
+  <fieldset>
+    <legend>{{localize "TENEBRIS.Label.spells"}}{{#if isEditMode}}<a class="action" data-tooltip="{{localize "TENEBRIS.Tooltip.addSpell"}}" data-tooltip-direction="UP"><i class="fas fa-plus" data-action="createSpell"></i></a>{{/if}}</legend>
+    <div class="spells">
+      {{#each spells as |item|}}
+        {{!log 'weapon' this}}
+        <div class="spell" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-drag="true" data-drag-type="spell">
+          <div class="name" data-tooltip="{{{item.system.description}}}">
+            {{item.name}}
+          </div>
+          {{#if @root.isEditMode}}
+          <div class="controls">
+            <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-edit"></i></a>
+            <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}"><i class="fas fa-trash"></i></a>
+          </div>
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+  </fieldset>  
 </section>

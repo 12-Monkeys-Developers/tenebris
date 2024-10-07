@@ -20,19 +20,54 @@
       </fieldset>
 
       <fieldset class="opponent-attacks">
-        <legend>{{localize "TENEBRIS.Character.Label.attaques"}} {{#if isEditMode}}<a class="action" data-tooltip="{{localize "TENEBRIS.Tooltip.addAttack"}}" data-tooltip-direction="UP"><i class="fas fa-plus" data-action="createAttack"></i></a>{{/if}}</legend>
+        <legend>{{localize "TENEBRIS.Character.Label.attaques"}}
+          {{#if isEditMode}}<a class="action" data-tooltip="{{localize 'TENEBRIS.Tooltip.addAttack'}}" data-tooltip-direction="UP"><i
+                class="fas fa-plus"
+                data-action="createAttack"
+              ></i></a>{{/if}}</legend>
         {{#each attacks as |attack|}}
-            <div class="opponent-attack" data-drag="true" data-drag-type="attack" data-roll-value="{{attack.system.degats}}" data-roll-target="{{attack.name}}">
-                <div class="attack-name">
-                    <a class="rollable" data-item-id="{{attack.id}}" data-item-name="{{attack.name}}" data-action="roll" data-roll-type="attack" data-roll-value="{{attack.system.degats}}">{{attack.system.degats}}</a> (<span data-tooltip="{{attack.system.toolTip}}">{{attack.name}}</span>)
-                </div>
-                {{#if @root.isEditMode}}
-                    <div class="controls">
-                    <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{attack.id}}" data-item-uuid="{{attack.uuid}}"><i class="fas fa-edit"></i></a>
-                    <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{attack.id}}" data-item-uuid="{{attack.uuid}}"><i class="fas fa-trash"></i></a>
-                    </div>
-                {{/if}}
+          <div class="opponent-attack" data-drag="true" data-drag-type="attack" data-roll-value="{{attack.system.degats}}" data-roll-target="{{attack.name}}">
+            <div class="attack-name">
+              <a
+                class="rollable"
+                data-item-id="{{attack.id}}"
+                data-item-name="{{attack.name}}"
+                data-action="roll"
+                data-roll-type="attack"
+                data-roll-value="{{attack.system.degats}}"
+              >{{attack.system.degats}}</a>
+              (<span data-tooltip="{{attack.system.toolTip}}">{{attack.name}}</span>)
             </div>
+            {{#if @root.isEditMode}}
+              <div class="controls">
+                <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{attack.id}}" data-item-uuid="{{attack.uuid}}"><i class="fas fa-edit"></i></a>
+                <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{attack.id}}" data-item-uuid="{{attack.uuid}}"><i class="fas fa-trash"></i></a>
+              </div>
+            {{/if}}
+          </div>
+        {{/each}}
+      </fieldset>
+
+      <fieldset class="opponent-spells">
+        <legend>{{localize "TENEBRIS.Label.spells"}}
+          {{#if isEditMode}}<a class="action" data-tooltip="{{localize 'TENEBRIS.Tooltip.addSpell'}}" data-tooltip-direction="UP"><i
+                class="fas fa-plus"
+                data-action="createSpell"
+              ></i></a>
+          {{/if}}
+        </legend>
+        {{#each spells as |spell|}}
+          <div class="opponent-spell">
+            <div class="name" data-tooltip="{{{spell.system.description}}}">
+              {{spell.name}}
+            </div>
+            {{#if @root.isEditMode}}
+              <div class="controls">
+                <a data-tooltip="{{localize 'TENEBRIS.Edit'}}" data-action="edit" data-item-id="{{spell.id}}" data-item-uuid="{{spell.uuid}}"><i class="fas fa-edit"></i></a>
+                <a data-tooltip="{{localize 'TENEBRIS.Delete'}}" data-action="delete" data-item-id="{{spell.id}}" data-item-uuid="{{spell.uuid}}"><i class="fas fa-trash"></i></a>
+              </div>
+            {{/if}}
+          </div>
         {{/each}}
       </fieldset>
     </div>

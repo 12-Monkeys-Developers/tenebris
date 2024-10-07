@@ -33,6 +33,7 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
       toggleSheet: TenebrisActorSheet.#onToggleSheet,
       edit: TenebrisActorSheet.#onItemEdit,
       delete: TenebrisActorSheet.#onItemDelete,
+      createSpell: TenebrisActorSheet.#onCreateSpell,
     },
   }
 
@@ -274,6 +275,19 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
     const itemUuid = target.getAttribute("data-item-uuid")
     const talent = await fromUuid(itemUuid)
     await talent.deleteDialog()
+  }
+
+  /**
+   * Handles the creation of a new attack item.
+   *
+   * @param {Event} event The event that triggered the creation of the attack.
+   * @param {Object} target The target object where the attack will be created.
+   * @private
+   * @static
+   */
+  static #onCreateSpell(event, target) {
+    console.log("Create spell", event, target)
+    const item = this.document.createEmbeddedDocuments("Item", [{ name: "Nouveau sortilège", type: "spell" }])
   }
 
   // #endregion

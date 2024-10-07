@@ -26,9 +26,8 @@ export default class TenebrisOpponentSheet extends TenebrisActorSheet {
   /** @override */
   async _prepareContext() {
     const context = await super._prepareContext()
-
-    const attacks = this.document.itemTypes.attack
-    context.attacks = attacks
+    context.attacks = context.actor.itemTypes.attack
+    context.spells = context.actor.itemTypes.spell
     console.log("Opponent sheet context", context)
     return context
   }
@@ -47,6 +46,7 @@ export default class TenebrisOpponentSheet extends TenebrisActorSheet {
       case "Item":
         const item = await fromUuid(data.uuid)
         if (item.type === "attack") return this.#onDropAttackItem(item)
+        if (item.type === "spell") return this._onDropItem(item)
     }
   }
 
