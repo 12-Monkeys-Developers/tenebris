@@ -18,12 +18,4 @@ export default class TenebrisSpellSheet extends TenebrisItemSheet {
       template: "systems/tenebris/templates/spell.hbs",
     },
   }
-
-  /** @override */
-  async _prepareContext() {
-    const context = await super._prepareContext()
-
-    console.log("Spell sheet context", context)
-    return context
-  }
 }

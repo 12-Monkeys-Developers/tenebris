@@ -151,7 +151,6 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         drag: true,
       },
     }
-    console.log("character context", context)
     return context
   }
 
@@ -286,7 +285,6 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
    * @param {HTMLElement} target      The current target of the event listener.
    */
   static #onCreateEquipment(event, target) {
-    console.log("create equipment", event, target)
     // Création d'une armure
     if (event.shiftKey) {
       this.document.createEmbeddedDocuments("Item", [{ name: game.i18n.localize("TENEBRIS.Label.newArmor"), type: "armor" }])

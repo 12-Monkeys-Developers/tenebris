@@ -9,7 +9,7 @@ import TenebrisFortune from "./applications/fortune.mjs"
  * @returns {*} The result of the action handler, if applicable.
  */
 export function handleSocketEvent({ action = null, data = {} } = {}) {
-  console.log("handleSocketEvent", action, data)
+  console.debug("handleSocketEvent", action, data)
   switch (action) {
     case "fortune":
       return TenebrisFortune.handleSocketEvent(data)
@@ -25,7 +25,7 @@ export function handleSocketEvent({ action = null, data = {} } = {}) {
  * @param {string} [options.userId] The ID of the user who initiated the roll.
  */
 export function _askRoll({ userId } = {}) {
-  console.log(`handleSocketEvent _askRoll from ${userId} !`)
+  console.debug(`handleSocketEvent _askRoll from ${userId} !`)
   const currentUser = game.user._id
   if (userId === currentUser) {
     foundry.audio.AudioHelper.play({ src: "/systems/tenebris/sounds/drums.wav", volume: 0.8, autoplay: true, loop: false }, false)

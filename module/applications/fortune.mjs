@@ -58,7 +58,7 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
    * @private
    */
   static #requestFortune(event, target) {
-    console.log("request Fortune !")
+    console.debug("request Fortune, event, target")
     game.socket.emit(`system.${SYSTEM.id}`, {
       action: "fortune",
       data: {
@@ -75,7 +75,7 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
    * @returns {Promise<ChatMessage>} - The created chat message.
    */
   static async handleSocketEvent({ userId } = {}) {
-    console.log(`handleSocketEvent Fortune from ${userId} !`)
+    console.debug(`handleSocketEvent Fortune from ${userId} !`)
     const origin = game.users.get(userId)
     const chatData = {
       name: origin.name,
@@ -105,7 +105,7 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
    * @returns {Promise<void>} A promise that resolves when the request has been processed.
    */
   static async acceptRequest(event, html, data) {
-    console.log("acceptRequest Fortune !", event, html, data)
+    console.debug("acceptRequest Fortune", event, html, data)
     const currentValue = game.settings.get("tenebris", "fortune")
     if (currentValue > 0) {
       const newValue = currentValue - 1

@@ -22,8 +22,6 @@ export default class TenebrisArmorSheet extends TenebrisItemSheet {
   /** @override */
   async _prepareContext() {
     const context = await super._prepareContext()
-
-    console.log("Armor sheet context", context)
     return context
   }
 }

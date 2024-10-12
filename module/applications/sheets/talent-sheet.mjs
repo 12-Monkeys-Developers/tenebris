@@ -24,7 +24,6 @@ export default class TenebrisTalentSheet extends TenebrisItemSheet {
     const context = await super._prepareContext()
     context.enrichedDescription = await TextEditor.enrichHTML(this.document.system.improvedDescription, { async: true })
     context.canProgress = this.document.system.canProgress
-    console.log("talent context", context)
     return context
   }
 }

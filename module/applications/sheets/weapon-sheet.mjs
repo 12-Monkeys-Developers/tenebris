@@ -18,12 +18,4 @@ export default class TenebrisWeaponSheet extends TenebrisItemSheet {
       template: "systems/tenebris/templates/weapon.hbs",
     },
   }
-
-  /** @override */
-  async _prepareContext() {
-    const context = await super._prepareContext()
-
-    console.log("Weapon sheet context", context)
-    return context
-  }
 }

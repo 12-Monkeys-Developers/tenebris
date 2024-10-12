@@ -53,19 +53,16 @@ export default class TenebrisManager extends HandlebarsApplicationMixin(Applicat
   }
 
   static async #onResourceAll(event, target) {
-    console.log("onResourceAll", event, target)
     const value = event.target.dataset.resource
     TenebrisManager.askRollForAll("resource", value)
   }
 
   static async #onSaveAll(event, target) {
-    console.log("onResourceAll", event, target)
     const value = event.target.dataset.save
     TenebrisManager.askRollForAll("save", value)
   }
 
   static #onResourceOne(event, target) {
-    console.log("onResourceOne", event, target)
     const value = event.target.dataset.resource
     const recipient = event.target.parentElement.dataset.userId
     const name = event.target.parentElement.dataset.characterName
@@ -73,7 +70,6 @@ export default class TenebrisManager extends HandlebarsApplicationMixin(Applicat
   }
 
   static async #onSaveOne(event, target) {
-    console.log("onSaveOne", event, target)
     const value = event.target.dataset.save
     const recipient = event.target.parentElement.dataset.userId
     const name = event.target.parentElement.dataset.characterName

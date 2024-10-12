@@ -28,7 +28,6 @@ export default class TenebrisOpponentSheet extends TenebrisActorSheet {
     const context = await super._prepareContext()
     context.attacks = context.actor.itemTypes.attack
     context.spells = context.actor.itemTypes.spell
-    console.log("Opponent sheet context", context)
     return context
   }
 
@@ -70,7 +69,6 @@ export default class TenebrisOpponentSheet extends TenebrisActorSheet {
    * @static
    */
   static #onCreateAttack(event, target) {
-    console.log("Create attack", event, target)
     const item = this.document.createEmbeddedDocuments("Item", [{ name: "Nouvelle attaque", type: "attack" }])
   }
 

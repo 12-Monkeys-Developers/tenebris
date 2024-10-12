@@ -22,7 +22,6 @@ export default class TenebrisAttackSheet extends TenebrisItemSheet {
   /** @override */
   async _prepareContext() {
     const context = await super._prepareContext()
-    console.log("attack context", context)
     return context
   }
 }

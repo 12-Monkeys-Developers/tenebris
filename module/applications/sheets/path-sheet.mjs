@@ -58,8 +58,6 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
   async _prepareContext() {
     const context = await super._prepareContext()
     context.tabs = this.#getTabs()
-
-    console.log("path context", context)
     return context
   }
 
@@ -102,7 +100,7 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
         const item = await fromUuid(data.uuid)
         if (item.type !== "talent") return
 
-        console.log("dropped item", item)
+        console.debug("dropped item", item)
         const talents = this.item.toObject().system.talents
         talents.push(item.uuid)
         this.item.update({ "system.talents": talents })

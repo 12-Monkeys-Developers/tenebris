@@ -69,7 +69,6 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
       isPlayMode: this.isPlayMode,
       isEditable: this.isEditable,
     }
-    console.log("item context", context)
     return context
   }
 

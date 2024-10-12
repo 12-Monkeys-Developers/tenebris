@@ -72,7 +72,6 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
       isPlayMode: this.isPlayMode,
       isEditable: this.isEditable,
     }
-    console.log("actor context", context)
     return context
   }
 
@@ -286,7 +285,6 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
    * @static
    */
   static #onCreateSpell(event, target) {
-    console.log("Create spell", event, target)
     const item = this.document.createEmbeddedDocuments("Item", [{ name: "Nouveau sortilège", type: "spell" }])
   }
 
