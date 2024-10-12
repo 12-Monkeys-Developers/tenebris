@@ -2,7 +2,7 @@
   "id": "tenebris",
   "title": "Cthulhu Tenebris",
   "description": "",
-  "version": "1.0.0",
+  "version": "0.8.0",
   "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",
   "url": "#{URL}#",
@@ -49,11 +49,5 @@
     "units": "m"
   },
   "primaryTokenAttribute": "pv",
-  "socket": true,
-  "flags": {
-    "hotReload": {
-      "extensions": ["css", "hbs", "json"],
-      "paths": ["lang/en.json", "lang/fr.json", "css/*.css", "templates/**/*.hbs"]
-    }
-  }
+  "socket": true
 }
