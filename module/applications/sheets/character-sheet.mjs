@@ -180,6 +180,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         context.weapons = doc.itemTypes.weapon
         context.armors = doc.itemTypes.armor
         context.spells = doc.itemTypes.spell
+        context.hasSpells = context.spells.length > 0
         break
       case "biography":
         context.tab = context.tabs.biography
