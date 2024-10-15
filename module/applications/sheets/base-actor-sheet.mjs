@@ -1,6 +1,6 @@
 const { HandlebarsApplicationMixin } = foundry.applications.api
 
-export default class TenebrisActorSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2) {
+export default class TenebrisActorSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ActorSheetV2) {
   /**
    * Different sheet modes.
    * @enum {number}
