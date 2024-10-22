@@ -440,18 +440,6 @@ i.tenebris {
 .tenebris .opponent-main .opponent-gauche .opponent-caracteristique {
   display: flex;
   flex-direction: row;
-  /*
-      fieldset {
-        width: 100%; 
-        height: 100%;
-        padding: 10px;
-        box-sizing: border-box;
-      }*/
-  /*
-      .form-group {
-        margin-bottom: 5px;
-      }
-*/
 }
 .tenebris .opponent-main .opponent-gauche .opponent-caracteristique .form-fields input {
   max-width: 50px;
@@ -480,7 +468,7 @@ i.tenebris {
   min-height: 40px;
 }
 .tenebris .opponent-main .opponent-droite .opponent-description prose-mirror.active {
-  min-height: 150px;
+  min-height: 450px;
   height: 100%;
 }
 .tenebris .path-content {
