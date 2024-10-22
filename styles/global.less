@@ -1,10 +1,10 @@
 :root {
-  --font-size-13: 0.8125rem;
-  --font-size-16: 1rem;
-  --font-size-standard: var(--font-size-13);
+  //--font-size-13: 0.8125rem;
+  //--font-size-16: 1rem;
+  --font-size-standard: 0.8125rem;
   --background-image-base: url("../assets/parchment.jpg");
   --font-secondary: "Amiri", serif;
-  --logo-standard: url('../assets/tenebris-logo.webp');
+  --logo-standard: url("../assets/tenebris-logo.webp");
 }
 
 #logo {
@@ -13,6 +13,7 @@
   height: 50px;
   margin-left: 15px;
 }
+
 #pause > img {
   content: var(--logo-standard);
   height: 192px;
@@ -32,4 +33,26 @@ i.tenebris {
   position: relative;
   filter: grayscale(1);
   transition: 0.3s;
+}
+
+.application.dialog.tenebris {
+  font-family: var(--font-primary);
+  font-size: calc(var(--font-size-standard) * 1.2);
+  background-image: var(--background-image-base);
+  .legend {
+    font-family: var(--font-primary);
+  }
+}
+
+#tooltip.tooltip-avantages {
+  max-width: 550px;
+  text-align: left;
+}
+
+.chat-message,
+.chat-message.whisper {
+  font-family: var(--font-primary);
+  background-image: var(--background-image-base);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }

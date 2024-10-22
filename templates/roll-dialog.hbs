@@ -1,57 +1,59 @@
 {{!log "dialog" this}}
-{{#if isSave}}
-  <fieldSet>
-    <legend>{{localize "TENEBRIS.Label.sauvegarde"}}</legend>
-    <div class="dialog-save">{{formula}}</div>
-  </fieldSet>
-  <div class="dialog-aide-gene">
+<div class="tenebris-roll-dialog">
+  {{#if isSave}}
     <fieldSet>
-      <legend>{{localize "TENEBRIS.Label.aide"}}</legend>
-      <select name="aide">
-        {{selectOptions choiceAide}}
+      <legend>{{localize "TENEBRIS.Label.sauvegarde"}}</legend>
+      <div class="dialog-save">{{formula}}</div>
+    </fieldSet>
+    <div class="dialog-aide-gene">
+      <fieldSet>
+        <legend>{{localize "TENEBRIS.Label.aide"}}</legend>
+        <select name="aide">
+          {{selectOptions choiceAide}}
+        </select>
+      </fieldSet>
+      <fieldSet>
+        <legend>{{localize "TENEBRIS.Label.gene"}}</legend>
+        <select name="gene">
+          {{selectOptions choiceGene}}
+        </select>
+      </fieldSet>
+    </div>
+    <fieldSet>
+      <legend>{{localize "TENEBRIS.Label.modificateur"}}</legend>
+      <select name="modificateur" {{#if hasTarget}}data-tooltip="Cible : {{targetName}}" data-tooltip-direction="UP"{{/if}}>
+        {{selectOptions choiceModificateur selected=malus}}
       </select>
     </fieldSet>
     <fieldSet>
-      <legend>{{localize "TENEBRIS.Label.gene"}}</legend>
-      <select name="gene">
-        {{selectOptions choiceGene}}
-      </select>
+      <legend>{{localize "TENEBRIS.Label.avantagesDesavantages"}}</legend>
+      <input
+        type="range"
+        name="avantages"
+        min="1"
+        max="5"
+        data-tooltip="Double désavantage - Désavantage - Normal - Avantage - Double avantage"
+        data-tooltip-direction="UP"
+        data-tooltip-class="tooltip-avantages"
+      />
     </fieldSet>
-  </div>
+  {{/if}}
+  {{#if (or isDamage isAttack)}}
+    <fieldSet>
+      <legend>{{localize "TENEBRIS.Label.degats"}}</legend>
+      <div class="dialog-damage">{{damageDice}} {{#if damageDiceLowered}}limités par les dégâts max à {{damageDiceFinal}} {{/if}}</div>
+    </fieldSet>
+  {{/if}}
+  {{#if isResource}}
+    <fieldSet>
+      <legend>{{localize "TENEBRIS.Label.ressource"}}</legend>
+      <div class="dialog-resource">{{formula}}</div>
+    </fieldSet>
+  {{/if}}
   <fieldSet>
-    <legend>{{localize "TENEBRIS.Label.modificateur"}}</legend>
-    <select name="modificateur" {{#if hasTarget}}data-tooltip="Cible : {{targetName}}" data-tooltip-direction="UP"{{/if}}>
-      {{selectOptions choiceModificateur selected=malus}}
+    <legend>{{localize "TENEBRIS.Label.visibilite"}}</legend>
+    <select name="visibility">
+      {{selectOptions rollModes selected=visibility}}
     </select>
   </fieldSet>
-  <fieldSet>
-    <legend>{{localize "TENEBRIS.Label.avantagesDesavantages"}}</legend>
-    <input
-      type="range"
-      name="avantages"
-      min="1"
-      max="5"
-      data-tooltip="Double désavantage - Désavantage - Normal - Avantage - Double avantage"
-      data-tooltip-direction="UP"
-      data-tooltip-class="tooltip-avantages"
-    />
-  </fieldSet>
-{{/if}}
-{{#if (or isDamage isAttack)}}
-  <fieldSet>
-    <legend>{{localize "TENEBRIS.Label.degats"}}</legend>
-    <div class="dialog-damage">{{damageDice}} {{#if damageDiceLowered}}limités par les dégâts max à {{damageDiceFinal}} {{/if}}</div>
-  </fieldSet>
-{{/if}}
-{{#if isResource}}
-  <fieldSet>
-    <legend>{{localize "TENEBRIS.Label.ressource"}}</legend>
-    <div class="dialog-resource">{{formula}}</div>
-  </fieldSet>
-{{/if}}
-<fieldSet>
-  <legend>{{localize "TENEBRIS.Label.visibilite"}}</legend>
-  <select name="visibility">
-    {{selectOptions rollModes selected=visibility}}
-  </select>
-</fieldSet>
+</div>

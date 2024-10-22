@@ -1,9 +1,24 @@
 .sheet-common() {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
+  color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+
+  input:disabled,
+  select:disabled {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: transparent;
+    color: var(--color-dark-3);
+  }
+
+  input,
+  select {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: var(--color-dark-6);
+    color: var(--color-dark-2);
+  }
 
   input[name="name"] {
     height: 50px;

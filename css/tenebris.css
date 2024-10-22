@@ -1,10 +1,8 @@
 :root {
-  --font-size-13: 0.8125rem;
-  --font-size-16: 1rem;
-  --font-size-standard: var(--font-size-13);
+  --font-size-standard: 0.8125rem;
   --background-image-base: url("../assets/parchment.jpg");
   --font-secondary: "Amiri", serif;
-  --logo-standard: url('../assets/tenebris-logo.webp');
+  --logo-standard: url("../assets/tenebris-logo.webp");
 }
 #logo {
   content: var(--logo-standard);
@@ -31,6 +29,25 @@ i.tenebris {
   filter: grayscale(1);
   transition: 0.3s;
 }
+.application.dialog.tenebris {
+  font-family: var(--font-primary);
+  font-size: calc(var(--font-size-standard) * 1.2);
+  background-image: var(--background-image-base);
+}
+.application.dialog.tenebris .legend {
+  font-family: var(--font-primary);
+}
+#tooltip.tooltip-avantages {
+  max-width: 550px;
+  text-align: left;
+}
+.chat-message,
+.chat-message.whisper {
+  font-family: var(--font-primary);
+  background-image: var(--background-image-base);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 .tenebris .character-sheet-common label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
@@ -46,10 +63,23 @@ i.tenebris {
 .tenebris .character-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
+  color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   overflow: scroll;
+}
+.tenebris .character-content input:disabled,
+.tenebris .character-content select:disabled {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: transparent;
+  color: var(--color-dark-3);
+}
+.tenebris .character-content input,
+.tenebris .character-content select {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: var(--color-dark-6);
+  color: var(--color-dark-2);
 }
 .tenebris .character-content input[name="name"] {
   height: 50px;
@@ -331,10 +361,23 @@ i.tenebris {
 .tenebris .opponent-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
+  color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   overflow: scroll;
+}
+.tenebris .opponent-content input:disabled,
+.tenebris .opponent-content select:disabled {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: transparent;
+  color: var(--color-dark-3);
+}
+.tenebris .opponent-content input,
+.tenebris .opponent-content select {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: var(--color-dark-6);
+  color: var(--color-dark-2);
 }
 .tenebris .opponent-content input[name="name"] {
   height: 50px;
@@ -443,9 +486,22 @@ i.tenebris {
 .tenebris .path-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
+  color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+.tenebris .path-content input:disabled,
+.tenebris .path-content select:disabled {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: transparent;
+  color: var(--color-dark-3);
+}
+.tenebris .path-content input,
+.tenebris .path-content select {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: var(--color-dark-6);
+  color: var(--color-dark-2);
 }
 .tenebris .path-content input[name="name"] {
   height: 50px;
@@ -567,9 +623,22 @@ i.tenebris {
 .tenebris .talent-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
+  color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+.tenebris .talent-content input:disabled,
+.tenebris .talent-content select:disabled {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: transparent;
+  color: var(--color-dark-3);
+}
+.tenebris .talent-content input,
+.tenebris .talent-content select {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: var(--color-dark-6);
+  color: var(--color-dark-2);
 }
 .tenebris .talent-content input[name="name"] {
   height: 50px;
@@ -622,9 +691,22 @@ i.tenebris {
 .tenebris .weapon-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
+  color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+.tenebris .weapon-content input:disabled,
+.tenebris .weapon-content select:disabled {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: transparent;
+  color: var(--color-dark-3);
+}
+.tenebris .weapon-content input,
+.tenebris .weapon-content select {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: var(--color-dark-6);
+  color: var(--color-dark-2);
 }
 .tenebris .weapon-content input[name="name"] {
   height: 50px;
@@ -670,9 +752,22 @@ i.tenebris {
 .tenebris .armor-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
+  color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+.tenebris .armor-content input:disabled,
+.tenebris .armor-content select:disabled {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: transparent;
+  color: var(--color-dark-3);
+}
+.tenebris .armor-content input,
+.tenebris .armor-content select {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: var(--color-dark-6);
+  color: var(--color-dark-2);
 }
 .tenebris .armor-content input[name="name"] {
   height: 50px;
@@ -718,9 +813,22 @@ i.tenebris {
 .tenebris .spell-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
+  color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+.tenebris .spell-content input:disabled,
+.tenebris .spell-content select:disabled {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: transparent;
+  color: var(--color-dark-3);
+}
+.tenebris .spell-content input,
+.tenebris .spell-content select {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: var(--color-dark-6);
+  color: var(--color-dark-2);
 }
 .tenebris .spell-content input[name="name"] {
   height: 50px;
@@ -770,9 +878,22 @@ i.tenebris {
 .tenebris .attack-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
+  color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+.tenebris .attack-content input:disabled,
+.tenebris .attack-content select:disabled {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: transparent;
+  color: var(--color-dark-3);
+}
+.tenebris .attack-content input,
+.tenebris .attack-content select {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: var(--color-dark-6);
+  color: var(--color-dark-2);
 }
 .tenebris .attack-content input[name="name"] {
   height: 50px;
@@ -815,59 +936,6 @@ i.tenebris {
 .tenebris .attack-content label {
   flex: 10%;
 }
-.tenebris .dialog-aide-gene {
-  display: flex;
-}
-.tenebris .dialog-damage,
-.tenebris .dialog-resource,
-.tenebris .dialog-save {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2);
-}
-.tenebris.dice-roll .dice-total,
-.tenebris.dice-roll .dice-formula {
-  padding-top: 5px;
-}
-.tenebris.dice-roll .dice-total {
-  margin-bottom: 5px;
-}
-.tenebris.dice-roll .message-header {
-  font-family: var(--font-primary);
-}
-.tenebris.dice-roll img {
-  border: 0px;
-}
-.tenebris.dice-roll .intro-chat {
-  border-radius: 20px;
-  display: flex;
-  flex-direction: row;
-}
-.tenebris.dice-roll .intro-chat .intro-img {
-  padding: 5px;
-  width: 80px;
-  align-self: center;
-}
-.tenebris.dice-roll .intro-chat .intro-right {
-  display: flex;
-  flex-direction: column;
-}
-.tenebris.dice-roll .intro-chat .intro-right .introText {
-  font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.5);
-  width: 210px;
-  text-align: center;
-}
-.tenebris.dice-roll .result {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: calc(var(--font-size-standard) * 1.2);
-  text-shadow: 0 0 10px var(--color-shadow-primary);
-}
 .tenebris.fortune img {
   border: 0px;
 }
@@ -906,14 +974,78 @@ i.tenebris {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.3);
 }
+.application.dialog.tenebris {
+  color: var(--color-dark-1);
+}
+.application.dialog.tenebris input,
+.application.dialog.tenebris select {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: var(--color-dark-6);
+  color: var(--color-dark-2);
+}
+.dialog-aide-gene {
+  display: flex;
+}
+.dialog-damage,
+.dialog-resource,
+.dialog-save {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 2);
+  color: var(--color-dark-1);
+}
+.dice-roll .dice-total,
+.dice-roll .dice-formula {
+  padding-top: 5px;
+}
+.dice-roll .dice-total {
+  margin-bottom: 5px;
+}
+.dice-roll .message-header {
+  font-family: var(--font-primary);
+}
+.dice-roll img {
+  border: 0px;
+}
+.dice-roll .intro-chat {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.dice-roll .intro-chat .intro-img {
+  padding: 5px;
+  width: 80px;
+  align-self: center;
+}
+.dice-roll .intro-chat .intro-right {
+  display: flex;
+  flex-direction: column;
+}
+.dice-roll .intro-chat .intro-right .introText {
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 1.5);
+  width: 210px;
+  text-align: center;
+}
+.dice-roll .result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--font-size-standard) * 1.2);
+  text-shadow: 0 0 10px var(--color-shadow-primary);
+}
 #tenebris-application-fortune {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1.2);
+  color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-#tenebris-application-fortune section.application-fortune {
+#tenebris-application-fortune .application-fortune {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -923,6 +1055,8 @@ i.tenebris {
 #tenebris-application-manager {
   display: flex;
   font-family: var(--font-primary);
+  font-size: calc(var(--font-size-standard) * 1.2);
+  color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -936,23 +1070,4 @@ i.tenebris {
 }
 #tenebris-application-manager .tenebris-table .player {
   font-size: calc(var(--font-size-standard) * 1.2);
-}
-.application.dialog.tenebris {
-  font-family: var(--font-primary);
-  font-size: calc(var(--font-size-standard) * 1.2);
-  background-image: var(--background-image-base);
-}
-.application.dialog.tenebris .legend {
-  font-family: var(--font-primary);
-}
-#tooltip.tooltip-avantages {
-  max-width: 550px;
-  text-align: left;
-}
-.chat-message,
-.chat-message.whisper {
-  font-family: var(--font-primary);
-  background-image: var(--background-image-base);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
 }

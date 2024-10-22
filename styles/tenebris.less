@@ -1,4 +1,5 @@
 @import "global.less";
+
 .tenebris {
   @import "mixins.less";
   @import "character.less";
@@ -8,30 +9,10 @@
   @import "weapon.less";
   @import "armor.less";
   @import "spell.less";
-  @import "attack.less";
-  @import "roll.less";
+  @import "attack.less";  
   @import "chat.less";
 }
+
+@import "roll.less";
 @import "application-fortune.less";
 @import "application-manager.less";
-
-.application.dialog.tenebris {
-  font-family: var(--font-primary);
-  font-size: calc(var(--font-size-standard) * 1.2);
-  background-image: var(--background-image-base);
-  .legend {
-    font-family: var(--font-primary);
-  }
-}
-
-#tooltip.tooltip-avantages {
-  max-width: 550px;
-  text-align: left;
-}
-
-.chat-message, .chat-message.whisper {
-  font-family: var(--font-primary);
-  background-image: var(--background-image-base);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
