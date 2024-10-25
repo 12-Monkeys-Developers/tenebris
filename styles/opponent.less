@@ -3,7 +3,7 @@
   overflow: scroll;
   label {
     font-family: var(--font-secondary);
-    font-size: calc(var(--font-size-standard) * 1.6);
+    font-size: calc(var(--font-size-standard) * 1.4);
   }
 }
 
@@ -30,13 +30,16 @@
   .opponent-gauche {
     display: flex;
     flex-direction: column;
-    min-width: 450px;
+    min-width: 250px;
 
-    .opponent-caracteristique {
+    .opponent-caracteristiques {
       display: flex;
-      flex-direction: row;
-      .form-fields input {
-        max-width: 50px;
+      flex-direction: column;
+      .form-fields {
+        flex: none;
+        input {
+          width: 50px;
+        }
       }
     }
 
@@ -68,13 +71,15 @@
   .opponent-droite {
     .opponent-description {
       flex: 1; /* Prend également l'espace disponible */
-      min-width: 0; /* Pour éviter que le contenu ne déborde */
+      min-width: 200px; /* Pour éviter que le contenu ne déborde */
       prose-mirror.inactive {
         min-height: 40px;
       }
       prose-mirror.active {
         min-height: 450px;
         height: 100%;
+        min-width: 200px;
+        width: 100%;
       }
     }
   }

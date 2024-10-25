@@ -50,7 +50,7 @@ i.tenebris {
 }
 .tenebris .character-sheet-common label {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.4);
 }
 .tenebris .item-sheet-common .form-fields {
   padding-top: 5px;
@@ -62,7 +62,7 @@ i.tenebris {
 }
 .tenebris .character-content {
   font-family: var(--font-primary);
-  font-size: calc(var(--font-size-standard) * 1.2);
+  font-size: calc(var(--font-size-standard) * 1);
   color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
@@ -85,7 +85,7 @@ i.tenebris {
   height: 50px;
   margin-right: 10px;
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2.4);
+  font-size: calc(var(--font-size-standard) * 2);
   font-weight: bold;
   border: none;
 }
@@ -96,24 +96,24 @@ i.tenebris {
 .tenebris .character-content .form-fields input,
 .tenebris .character-content .form-fields select {
   text-align: center;
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.2);
 }
 .tenebris .character-content .form-fields input {
   padding-top: 10px;
 }
 .tenebris .character-content .form-fields select {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.8);
+  font-size: calc(var(--font-size-standard) * 1.4);
 }
 .tenebris .character-content legend {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2);
+  font-size: calc(var(--font-size-standard) * 1.6);
   font-weight: bold;
   letter-spacing: 1px;
 }
 .tenebris .character-content label {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.4);
 }
 .tenebris .character-main {
   display: flex;
@@ -188,17 +188,17 @@ i.tenebris {
 .tenebris .character-main .character-personnage .character-droite .character-infos .character-pv .character-pv-max input {
   width: 50px;
   text-align: center;
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.4);
   padding-top: 10px;
 }
 .tenebris .character-main .character-personnage .character-droite .character-infos .character-pv .pv-separator {
-  font-size: calc(var(--font-size-standard) * 1.4);
+  font-size: calc(var(--font-size-standard) * 1.2);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .tenebris .character-main .character-personnage-play {
-  min-width: 600px;
+  min-width: 500px;
 }
 .tenebris .character-main .character-personnage-edit {
   min-width: 650px;
@@ -230,7 +230,7 @@ i.tenebris {
 .tenebris .character-main .character-caracteristiques .character-caracteristique .experience input {
   display: flex;
   width: 70px;
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.4);
   align-items: center;
   justify-content: center;
   padding: 0 5px 0 5px;
@@ -272,7 +272,7 @@ i.tenebris {
 .tenebris .character-main .character-ressources .character-ressource .character-ressource-edit input {
   display: flex;
   width: 70px;
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.4);
   align-items: center;
   justify-content: center;
   padding: 0 5px 0 5px;
@@ -283,7 +283,7 @@ i.tenebris {
 }
 .tenebris .character-main .character-ressources .character-ressource .character-ressource-edit select {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard)*1.8);
+  font-size: calc(var(--font-size-standard)*1.5);
   text-align: center;
   width: 70px;
 }
@@ -309,7 +309,7 @@ i.tenebris {
   grid-template-columns: 1fr;
 }
 .tenebris .tab.character-items legend a {
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.4);
   padding-left: 5px;
 }
 .tenebris .tab.character-items .talents {
@@ -360,7 +360,7 @@ i.tenebris {
 }
 .tenebris .opponent-content {
   font-family: var(--font-primary);
-  font-size: calc(var(--font-size-standard) * 1.2);
+  font-size: calc(var(--font-size-standard) * 1);
   color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
@@ -383,7 +383,7 @@ i.tenebris {
   height: 50px;
   margin-right: 10px;
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2.4);
+  font-size: calc(var(--font-size-standard) * 2);
   font-weight: bold;
   border: none;
 }
@@ -394,24 +394,24 @@ i.tenebris {
 .tenebris .opponent-content .form-fields input,
 .tenebris .opponent-content .form-fields select {
   text-align: center;
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.2);
 }
 .tenebris .opponent-content .form-fields input {
   padding-top: 10px;
 }
 .tenebris .opponent-content .form-fields select {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.8);
+  font-size: calc(var(--font-size-standard) * 1.4);
 }
 .tenebris .opponent-content legend {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2);
+  font-size: calc(var(--font-size-standard) * 1.6);
   font-weight: bold;
   letter-spacing: 1px;
 }
 .tenebris .opponent-content label {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.4);
 }
 .tenebris .opponent-header {
   display: flex;
@@ -435,14 +435,17 @@ i.tenebris {
 .tenebris .opponent-main .opponent-gauche {
   display: flex;
   flex-direction: column;
-  min-width: 450px;
+  min-width: 250px;
 }
-.tenebris .opponent-main .opponent-gauche .opponent-caracteristique {
+.tenebris .opponent-main .opponent-gauche .opponent-caracteristiques {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
-.tenebris .opponent-main .opponent-gauche .opponent-caracteristique .form-fields input {
-  max-width: 50px;
+.tenebris .opponent-main .opponent-gauche .opponent-caracteristiques .form-fields {
+  flex: none;
+}
+.tenebris .opponent-main .opponent-gauche .opponent-caracteristiques .form-fields input {
+  width: 50px;
 }
 .tenebris .opponent-main .opponent-gauche .opponent-attacks legend a {
   font-size: calc(var(--font-size-standard) * 1.6);
@@ -461,7 +464,7 @@ i.tenebris {
 .tenebris .opponent-main .opponent-droite .opponent-description {
   flex: 1;
   /* Prend également l'espace disponible */
-  min-width: 0;
+  min-width: 200px;
   /* Pour éviter que le contenu ne déborde */
 }
 .tenebris .opponent-main .opponent-droite .opponent-description prose-mirror.inactive {
@@ -470,10 +473,12 @@ i.tenebris {
 .tenebris .opponent-main .opponent-droite .opponent-description prose-mirror.active {
   min-height: 450px;
   height: 100%;
+  min-width: 200px;
+  width: 100%;
 }
 .tenebris .path-content {
   font-family: var(--font-primary);
-  font-size: calc(var(--font-size-standard) * 1.2);
+  font-size: calc(var(--font-size-standard) * 1);
   color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
@@ -495,7 +500,7 @@ i.tenebris {
   height: 50px;
   margin-right: 10px;
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2.4);
+  font-size: calc(var(--font-size-standard) * 2);
   font-weight: bold;
   border: none;
 }
@@ -506,18 +511,18 @@ i.tenebris {
 .tenebris .path-content .form-fields input,
 .tenebris .path-content .form-fields select {
   text-align: center;
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.2);
 }
 .tenebris .path-content .form-fields input {
   padding-top: 10px;
 }
 .tenebris .path-content .form-fields select {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.8);
+  font-size: calc(var(--font-size-standard) * 1.4);
 }
 .tenebris .path-content legend {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2);
+  font-size: calc(var(--font-size-standard) * 1.6);
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -610,7 +615,7 @@ i.tenebris {
 }
 .tenebris .talent-content {
   font-family: var(--font-primary);
-  font-size: calc(var(--font-size-standard) * 1.2);
+  font-size: calc(var(--font-size-standard) * 1);
   color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
@@ -632,7 +637,7 @@ i.tenebris {
   height: 50px;
   margin-right: 10px;
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2.4);
+  font-size: calc(var(--font-size-standard) * 2);
   font-weight: bold;
   border: none;
 }
@@ -643,18 +648,18 @@ i.tenebris {
 .tenebris .talent-content .form-fields input,
 .tenebris .talent-content .form-fields select {
   text-align: center;
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.2);
 }
 .tenebris .talent-content .form-fields input {
   padding-top: 10px;
 }
 .tenebris .talent-content .form-fields select {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.8);
+  font-size: calc(var(--font-size-standard) * 1.4);
 }
 .tenebris .talent-content legend {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2);
+  font-size: calc(var(--font-size-standard) * 1.6);
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -678,7 +683,7 @@ i.tenebris {
 }
 .tenebris .weapon-content {
   font-family: var(--font-primary);
-  font-size: calc(var(--font-size-standard) * 1.2);
+  font-size: calc(var(--font-size-standard) * 1);
   color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
@@ -700,7 +705,7 @@ i.tenebris {
   height: 50px;
   margin-right: 10px;
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2.4);
+  font-size: calc(var(--font-size-standard) * 2);
   font-weight: bold;
   border: none;
 }
@@ -711,18 +716,18 @@ i.tenebris {
 .tenebris .weapon-content .form-fields input,
 .tenebris .weapon-content .form-fields select {
   text-align: center;
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.2);
 }
 .tenebris .weapon-content .form-fields input {
   padding-top: 10px;
 }
 .tenebris .weapon-content .form-fields select {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.8);
+  font-size: calc(var(--font-size-standard) * 1.4);
 }
 .tenebris .weapon-content legend {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2);
+  font-size: calc(var(--font-size-standard) * 1.6);
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -739,7 +744,7 @@ i.tenebris {
 }
 .tenebris .armor-content {
   font-family: var(--font-primary);
-  font-size: calc(var(--font-size-standard) * 1.2);
+  font-size: calc(var(--font-size-standard) * 1);
   color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
@@ -761,7 +766,7 @@ i.tenebris {
   height: 50px;
   margin-right: 10px;
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2.4);
+  font-size: calc(var(--font-size-standard) * 2);
   font-weight: bold;
   border: none;
 }
@@ -772,18 +777,18 @@ i.tenebris {
 .tenebris .armor-content .form-fields input,
 .tenebris .armor-content .form-fields select {
   text-align: center;
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.2);
 }
 .tenebris .armor-content .form-fields input {
   padding-top: 10px;
 }
 .tenebris .armor-content .form-fields select {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.8);
+  font-size: calc(var(--font-size-standard) * 1.4);
 }
 .tenebris .armor-content legend {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2);
+  font-size: calc(var(--font-size-standard) * 1.6);
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -800,7 +805,7 @@ i.tenebris {
 }
 .tenebris .spell-content {
   font-family: var(--font-primary);
-  font-size: calc(var(--font-size-standard) * 1.2);
+  font-size: calc(var(--font-size-standard) * 1);
   color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
@@ -822,7 +827,7 @@ i.tenebris {
   height: 50px;
   margin-right: 10px;
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2.4);
+  font-size: calc(var(--font-size-standard) * 2);
   font-weight: bold;
   border: none;
 }
@@ -833,18 +838,18 @@ i.tenebris {
 .tenebris .spell-content .form-fields input,
 .tenebris .spell-content .form-fields select {
   text-align: center;
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.2);
 }
 .tenebris .spell-content .form-fields input {
   padding-top: 10px;
 }
 .tenebris .spell-content .form-fields select {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.8);
+  font-size: calc(var(--font-size-standard) * 1.4);
 }
 .tenebris .spell-content legend {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2);
+  font-size: calc(var(--font-size-standard) * 1.6);
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -865,7 +870,7 @@ i.tenebris {
 }
 .tenebris .attack-content {
   font-family: var(--font-primary);
-  font-size: calc(var(--font-size-standard) * 1.2);
+  font-size: calc(var(--font-size-standard) * 1);
   color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
@@ -887,7 +892,7 @@ i.tenebris {
   height: 50px;
   margin-right: 10px;
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2.4);
+  font-size: calc(var(--font-size-standard) * 2);
   font-weight: bold;
   border: none;
 }
@@ -898,18 +903,18 @@ i.tenebris {
 .tenebris .attack-content .form-fields input,
 .tenebris .attack-content .form-fields select {
   text-align: center;
-  font-size: calc(var(--font-size-standard) * 1.6);
+  font-size: calc(var(--font-size-standard) * 1.2);
 }
 .tenebris .attack-content .form-fields input {
   padding-top: 10px;
 }
 .tenebris .attack-content .form-fields select {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.8);
+  font-size: calc(var(--font-size-standard) * 1.4);
 }
 .tenebris .attack-content legend {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 2);
+  font-size: calc(var(--font-size-standard) * 1.6);
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -943,7 +948,7 @@ i.tenebris {
 }
 .tenebris.fortune .intro-chat .intro-right .introText {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.5);
+  font-size: calc(var(--font-size-standard) * 1.2);
   width: 210px;
   text-align: center;
 }
@@ -960,7 +965,7 @@ i.tenebris {
   align-items: center;
   justify-content: center;
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.3);
+  font-size: calc(var(--font-size-standard) * 1.2);
 }
 .application.dialog.tenebris {
   color: var(--color-dark-1);
@@ -1013,7 +1018,7 @@ i.tenebris {
 }
 .dice-roll .intro-chat .intro-right .introText {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard) * 1.5);
+  font-size: calc(var(--font-size-standard) * 1.2);
   width: 210px;
   text-align: center;
 }
@@ -1043,7 +1048,7 @@ i.tenebris {
 #tenebris-application-manager {
   display: flex;
   font-family: var(--font-primary);
-  font-size: calc(var(--font-size-standard) * 1.2);
+  font-size: calc(var(--font-size-standard) * 1);
   color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
@@ -1057,5 +1062,5 @@ i.tenebris {
   text-align: center;
 }
 #tenebris-application-manager .tenebris-table .player {
-  font-size: calc(var(--font-size-standard) * 1.2);
+  font-size: calc(var(--font-size-standard) * 1);
 }
