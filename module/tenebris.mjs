@@ -100,14 +100,15 @@ Hooks.once("init", function () {
 
   // Gestion des jets de dés depuis les journaux
   document.addEventListener("click", (event) => {
-    console.log("click")
     const anchor = event.target.closest("a.ask-roll-journal")
     if (!anchor) return
     event.preventDefault()
     event.stopPropagation()
     const type = anchor.dataset.rollType
     const target = anchor.dataset.rollTarget
-    applications.TenebrisManager.askRollForAll(type, target)
+    const title = anchor.dataset.rollTitle
+    const avantage = anchor.dataset.rollAvantage
+    applications.TenebrisManager.askRollForAll(type, target, title, avantage)
   })
 
   console.info("CTHULHU TENEBRIS | System Initialized")

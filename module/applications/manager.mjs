@@ -81,13 +81,33 @@ export default class TenebrisManager extends HandlebarsApplicationMixin(Applicat
     game.actors.get(characterId).sheet.render(true)
   }
 
-  static async askRollForAll(type, value) {
+  static async askRollForAll(type, value, title = null, avantage = null) {
     let label = game.i18n.localize(`TENEBRIS.Manager.${value}`)
-    const text = game.i18n.format("TENEBRIS.Chat.askRollForAll", { value: label })
+    let text = game.i18n.format("TENEBRIS.Chat.askRollForAll", { value: label })
+
+    if (avantage) {
+      switch (avantage) { 
+        case "++":
+          text += ` ${game.i18n.localize("TENEBRIS.Roll.doubleAvantage")}`
+          break
+        case "+":
+          text += ` ${game.i18n.localize("TENEBRIS.Roll.avantage")}`
+          break
+        case "-":
+          text += ` ${game.i18n.localize("TENEBRIS.Roll.desavantage")}`
+          break
+        case "--":
+          text += ` ${game.i18n.localize("TENEBRIS.Roll.doubleDesavantage")}`
+          break
+        default:
+          break
+      }
+    }
 
     ChatMessage.create({
       user: game.user.id,
       content: await renderTemplate(`systems/tenebris/templates/chat-ask-roll.hbs`, {
+        title: title !== null ? title : "",
         text: text,
         rollType: type,
         value: value,
