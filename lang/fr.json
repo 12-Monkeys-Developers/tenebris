@@ -408,7 +408,7 @@
     },
     "Chat": {
       "askFortune": "{name} veut utiliser un point de Fortune !",
-      "askRollForAll": "Jet de {value} pour tous !",
+      "askRollForAll": "Jet de {value}",
       "askRollForOne": "Jet de {value} pour {name}"
     },
     "Fortune": {

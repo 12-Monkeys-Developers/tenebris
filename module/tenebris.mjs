@@ -17,6 +17,7 @@ import { handleSocketEvent } from "./socket.mjs"
 import { configureDiceSoNice } from "./dice.mjs"
 import { Macros } from "./macros.mjs"
 import { initControlButtons } from "./control-buttons.mjs"
+import { setupTextEnrichers } from "./enrichers.mjs"
 
 Hooks.once("init", function () {
   console.info("CTHULHU TENEBRIS | Initializing System")
@@ -94,6 +95,21 @@ Hooks.once("init", function () {
   // preLocalizeConfig()
 
   initControlButtons()
+
+  setupTextEnrichers()
+
+  // Gestion des jets de dés depuis les journaux
+  document.addEventListener("click", (event) => {
+    console.log("click")
+    const anchor = event.target.closest("a.ask-roll-journal")
+    if (!anchor) return
+    event.preventDefault()
+    event.stopPropagation()
+    const type = anchor.dataset.rollType
+    const target = anchor.dataset.rollTarget
+    applications.TenebrisManager.askRollForAll(type, target)
+  })
+
   console.info("CTHULHU TENEBRIS | System Initialized")
 })
 
@@ -127,6 +143,7 @@ Hooks.once("ready", function () {
 
 Hooks.on("renderChatMessage", (message, html, data) => {
   const typeMessage = data.message.flags.tenebris?.typeMessage
+  // Message de fortune
   if (typeMessage === "fortune") {
     if (game.user.isGM && !data.message.flags.tenebris?.accepted) {
       html.find(".button").click((event) => applications.TenebrisFortune.acceptRequest(event, html, data))
@@ -138,7 +155,10 @@ Hooks.on("renderChatMessage", (message, html, data) => {
         html.find(".fortune-accepted").each((i, btn) => (btn.style.display = "flex"))
       }
     }
-  } else if (typeMessage === "askRoll") {
+  }
+  // Message de demande de jet de dés
+  else if (typeMessage === "askRoll") {
+    // Affichage des boutons de jet de dés uniquement pour les joueurs
     if (game.user.isGM) {
       html.find(".ask-roll-dice").each((i, btn) => {
         btn.style.display = "none"
