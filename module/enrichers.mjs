@@ -1,6 +1,15 @@
+/**
+ * Enricher qui permet de transformer un texte en un lien de lancer de dés
+ * Pour une syntaxe de type @jet[x]{y}(z) avec x la caractéristique, y le titre et z l'avantage
+ * x de type rob, dex, int, per, vol pour les caractéristiques
+ * et de type oeil, verbe, san, bourse, magie pour les ressources
+ * y est le titre du jet et permet de décrire l'action
+ * z est l'avantage du jet, avec pour valeurs possibles : --, -, +, ++
+ */
 export function setupTextEnrichers() {
   CONFIG.TextEditor.enrichers = CONFIG.TextEditor.enrichers.concat([
     {
+      // eslint-disable-next-line no-useless-escape
       pattern: /\@jet\[(.+?)\]{(.*?)}\((.*?)\)/gm,
       enricher: async (match, options) => {
         const a = document.createElement("a")
@@ -59,6 +68,10 @@ const mapLibelles = {
   magie: "MAGIE",
 }
 
+/**
+ * Retourne le libellé associé à la valeur qui sera affiché dans le journal
+ * @param {string} value
+ */
 function getLibelle(value) {
   if (mapLibelles[value]) {
     return mapLibelles[value]

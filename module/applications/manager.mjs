@@ -86,7 +86,7 @@ export default class TenebrisManager extends HandlebarsApplicationMixin(Applicat
     let text = game.i18n.format("TENEBRIS.Chat.askRollForAll", { value: label })
 
     if (avantage) {
-      switch (avantage) { 
+      switch (avantage) {
         case "++":
           text += ` ${game.i18n.localize("TENEBRIS.Roll.doubleAvantage")}`
           break

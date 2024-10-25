@@ -1,6 +1,6 @@
 /**
- *
- * @param dice3d
+ * Configure the Dice So Nice module with the Tenebris dice presets.
+ * @param {Object} dice3d
  */
 export function configureDiceSoNice(dice3d) {
   dice3d.addSystem({ id: "tenebris", name: "Cthulhu Tenebris" }, "preferred")
