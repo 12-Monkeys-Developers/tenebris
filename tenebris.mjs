@@ -5,19 +5,19 @@
  * Repository:
  */
 
-import { SYSTEM } from "./config/system.mjs"
+import { SYSTEM } from "./module/config/system.mjs"
 globalThis.SYSTEM = SYSTEM // Expose the SYSTEM object to the global scope
 
 // Import modules
-import * as models from "./models/_module.mjs"
-import * as documents from "./documents/_module.mjs"
-import * as applications from "./applications/_module.mjs"
+import * as models from "./module/models/_module.mjs"
+import * as documents from "./module/documents/_module.mjs"
+import * as applications from "./module/applications/_module.mjs"
 
-import { handleSocketEvent } from "./socket.mjs"
-import { configureDiceSoNice } from "./dice.mjs"
-import { Macros } from "./macros.mjs"
-import { initControlButtons } from "./control-buttons.mjs"
-import { setupTextEnrichers } from "./enrichers.mjs"
+import { handleSocketEvent } from "./module/socket.mjs"
+import { configureDiceSoNice } from "./module/dice.mjs"
+import { Macros } from "./module/macros.mjs"
+import { initControlButtons } from "./module/control-buttons.mjs"
+import { setupTextEnrichers } from "./module/enrichers.mjs"
 
 Hooks.once("init", function () {
   console.info("CTHULHU TENEBRIS | Initializing System")
@@ -87,6 +87,14 @@ Hooks.once("init", function () {
     default: 0,
   })
 
+  game.settings.register("tenebris", "worldKey", {
+    name: "Unique world key",
+    scope: "world",
+    config: false,
+    type: String,
+    default: "",
+  })
+
   // Activate socket handler
   game.socket.on(`system.${SYSTEM.id}`, handleSocketEvent)
 
@@ -139,6 +147,10 @@ Hooks.once("ready", function () {
   game.system.applicationManager = new applications.TenebrisManager()
   if (game.user.isGM) {
     game.system.applicationManager.render(true)
+  }
+
+  if (!SYSTEM.DEV_MODE) {
+    registerWorldCount("tenebris")
   }
 })
 
@@ -200,3 +212,36 @@ Hooks.on("hotbarDrop", (bar, data, slot) => {
     return false
   }
 })
+
+/**
+ * Register world usage statistics
+ * @param {string} registerKey
+ */
+function registerWorldCount(registerKey) {
+  if (game.user.isGM) {
+    let worldKey = game.settings.get(registerKey, "worldKey")
+    if (worldKey === undefined || worldKey === "") {
+      worldKey = foundry.utils.randomID(32)
+      game.settings.set(registerKey, "worldKey", worldKey)
+    }
+
+    // Simple API counter
+    const worldData = {
+      register_key: registerKey,
+      world_key: worldKey,
+      foundry_version: `${game.release.generation}.${game.release.build}`,
+      system_name: game.system.id,
+      system_version: game.system.version,
+    }
+
+    let apiURL = "https://worlds.qawstats.info/worlds-counter"
+    $.ajax({
+      url: apiURL,
+      type: "POST",
+      data: JSON.stringify(worldData),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      async: false,
+    })
+  }
+}

@@ -4,6 +4,7 @@ import * as ARMOR from "./armor.mjs"
 import * as SPELL from "./spell.mjs"
 
 export const SYSTEM_ID = "tenebris"
+export const DEV_MODE = false
 
 export const RESOURCE_VALUE = Object.freeze({
   ZERO: "0",
@@ -97,4 +98,5 @@ export const SYSTEM = {
   ASCII,
   MINOR_PATH,
   ROLL_TYPE,
+  DEV_MODE,
 }

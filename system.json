@@ -16,7 +16,7 @@
     "minimum": "12",
     "verified": "12"
   },
-  "esmodules": ["module/tenebris.mjs"],
+  "esmodules": ["tenebris.mjs"],
   "styles": ["css/tenebris.css"],
   "languages": [
     {
@@ -49,5 +49,6 @@
     "units": "m"
   },
   "primaryTokenAttribute": "pv",
-  "socket": true
+  "socket": true,
+  "background": "systems/tenebris/assets/background.webp"
 }
