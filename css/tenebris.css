@@ -989,6 +989,9 @@ i.tenebris {
   font-size: calc(var(--font-size-standard) * 2);
   color: var(--color-dark-1);
 }
+.dice-roll {
+  flex-direction: column;
+}
 .dice-roll .dice-total,
 .dice-roll .dice-formula {
   padding-top: 5px;

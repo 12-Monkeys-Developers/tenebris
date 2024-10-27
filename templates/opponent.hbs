@@ -48,14 +48,9 @@
         {{/each}}
       </fieldset>
 
+    {{#if (or isEditMode (and isPlayMode hasSpells))}}
       <fieldset class="opponent-spells">
-        <legend>{{localize "TENEBRIS.Label.spells"}}
-          {{#if isEditMode}}<a class="action" data-tooltip="{{localize 'TENEBRIS.Tooltip.addSpell'}}" data-tooltip-direction="UP"><i
-                class="fas fa-plus"
-                data-action="createSpell"
-              ></i></a>
-          {{/if}}
-        </legend>
+        <legend>{{localize "TENEBRIS.Label.spells"}}{{#if isEditMode}}<a class="action" data-tooltip="{{localize "TENEBRIS.Tooltip.addSpell"}}" data-tooltip-direction="UP"><i class="fas fa-plus" data-action="createSpell"></i></a>{{/if}}</legend>
         {{#each spells as |spell|}}
           <div class="opponent-spell">
             <div class="name" data-tooltip="{{{spell.system.description}}}">
@@ -70,7 +65,9 @@
           </div>
         {{/each}}
       </fieldset>
+    {{/if}}
     </div>
+
     <div class="opponent-droite">
       <fieldset class="opponent-description">
         <legend>{{localize "TENEBRIS.Label.description"}}</legend>

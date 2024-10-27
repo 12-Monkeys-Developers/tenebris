@@ -28,6 +28,7 @@ export default class TenebrisOpponentSheet extends TenebrisActorSheet {
     const context = await super._prepareContext()
     context.attacks = context.actor.itemTypes.attack
     context.spells = context.actor.itemTypes.spell
+    context.hasSpells = context.spells.length > 0
     return context
   }
 
