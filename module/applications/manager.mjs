@@ -19,8 +19,8 @@ export default class TenebrisManager extends HandlebarsApplicationMixin(Applicat
     position: {
       width: "auto",
       height: "auto",
-      top: 200,
-      left: 500,
+      top: 80,
+      left: 400,
     },
     form: {
       closeOnSubmit: true,

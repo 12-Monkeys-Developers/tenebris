@@ -19,8 +19,8 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
     position: {
       width: 200,
       height: 200,
-      top: 200,
-      left: 200,
+      top: 80,
+      left: 150,
     },
     form: {
       closeOnSubmit: true,

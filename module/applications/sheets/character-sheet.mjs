@@ -67,11 +67,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
       int: this._generateTooltip("save", "int"),
       per: this._generateTooltip("save", "per"),
       vol: this._generateTooltip("save", "vol"),
-      san: this._generateTooltip("resource", "san"),
-      oeil: this._generateTooltip("resource", "oeil"),
-      verbe: this._generateTooltip("resource", "verbe"),
-      bourse: this._generateTooltip("resource", "bourse"),
-      magie: this._generateTooltip("resource", "magie"),
+      dmax: this._generateTooltip("other", "dmax"),
     }
 
     context.tooltipsRessources = {
@@ -162,6 +158,8 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
       return `${game.i18n.localize("TENEBRIS.Label.experience")} : ${this.document.system.caracteristiques[target].progression.experience} <br> ${progres}`
     } else if (type === ROLL_TYPE.RESOURCE) {
       return `${game.i18n.localize("TENEBRIS.Label.maximum")} : ${this.document.system.ressources[target].max} <br> ${game.i18n.localize("TENEBRIS.Label.experience")} : ${this.document.system.ressources[target].experience}`
+    } else if (type === "other") {
+      return `${game.i18n.localize("TENEBRIS.Label.experience")} : ${this.document.system.dmax.experience}`
     }
   }
 

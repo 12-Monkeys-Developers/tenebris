@@ -348,6 +348,7 @@
       "hasProgressed": "A progressé dans la caractéristique",
       "noProgress": "N'a pas progressé dans la caractéristique",
       "experience": "Expérience",
+      "experienceDetail": "Expérience {detail}",
       "maximum": "Maximum"
     },
     "Edit": "Editer",

@@ -11,8 +11,13 @@
         <div class="character-dv">
             {{formField systemFields.dv value=system.dv rootId=partId disabled=isPlayMode classes="character-dv"}}
         </div>
-        <div class="character-dmax">
+        <div class="character-dmax" data-tooltip="{{tooltipsCaracteristiques.dmax}}">
           {{formField systemFields.dmax.fields.valeur value=system.dmax.valeur rootId=partId disabled=isPlayMode classes="character-dmax"}}
+          {{#if isEditMode}}
+            <div class="character-dmax-edit">
+              <div data-tooltip="{{localize "TENEBRIS.Label.experienceDetail" detail='Dégâts max'}}">{{formInput systemFields.dmax.fields.experience value=system.dmax.experience}}</div>
+            </div>
+          {{/if}}
         </div>        
       </div>
       <div class="character-droite">
