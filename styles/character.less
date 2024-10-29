@@ -7,6 +7,14 @@
 .character-main {
   display: flex;
 
+  &.character-main-play {
+    min-width: 1030px;
+  }
+
+  &.character-main-edit {
+    min-width: 1410px;
+  }
+
   .character-personnage {
     display: flex;
     gap: 10px;
@@ -140,6 +148,15 @@
         input[type="number"] {
           text-align: center;
           padding-top: 10px;
+        }
+        input[type="checkbox"] {
+          width: 20px;
+        }
+        input[type="checkbox"]:checked{
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+        input[type="checkbox"]:checked::after{
+          color: rgba(0, 0, 0, 0.1);
         }
       }
     }

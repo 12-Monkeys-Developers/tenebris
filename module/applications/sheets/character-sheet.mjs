@@ -157,7 +157,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
   _generateTooltip(type, target) {
     if (type === ROLL_TYPE.SAVE) {
       const progres = this.document.system.caracteristiques[target].progression.progres
-        ? game.i18n.localize("TENEBRIS.Label.progress")
+        ? game.i18n.localize("TENEBRIS.Label.hasProgressed")
         : game.i18n.localize("TENEBRIS.Label.noProgress")
       return `${game.i18n.localize("TENEBRIS.Label.experience")} : ${this.document.system.caracteristiques[target].progression.experience} <br> ${progres}`
     } else if (type === ROLL_TYPE.RESOURCE) {

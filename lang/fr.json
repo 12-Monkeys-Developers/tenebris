@@ -344,8 +344,9 @@
       "armor": "Armure",
       "malus": "Malus",
       "jet": "Jet de ",
-      "progress": "A progressé dans la voie",
-      "noProgress": "N'a pas progressé dans la voie",
+      "progress": "Progression",
+      "hasProgressed": "A progressé dans la caractéristique",
+      "noProgress": "N'a pas progressé dans la caractéristique",
       "experience": "Expérience",
       "maximum": "Maximum"
     },

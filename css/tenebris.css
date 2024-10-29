@@ -118,6 +118,12 @@ i.tenebris {
 .tenebris .character-main {
   display: flex;
 }
+.tenebris .character-main.character-main-play {
+  min-width: 1030px;
+}
+.tenebris .character-main.character-main-edit {
+  min-width: 1410px;
+}
 .tenebris .character-main .character-personnage {
   display: flex;
   gap: 10px;
@@ -238,6 +244,15 @@ i.tenebris {
 .tenebris .character-main .character-caracteristiques .character-caracteristique .experience input[type="number"] {
   text-align: center;
   padding-top: 10px;
+}
+.tenebris .character-main .character-caracteristiques .character-caracteristique .experience input[type="checkbox"] {
+  width: 20px;
+}
+.tenebris .character-main .character-caracteristiques .character-caracteristique .experience input[type="checkbox"]:checked {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.tenebris .character-main .character-caracteristiques .character-caracteristique .experience input[type="checkbox"]:checked::after {
+  color: rgba(0, 0, 0, 0.1);
 }
 .tenebris .character-main .character-caracteristiques-play {
   min-width: 225px;
