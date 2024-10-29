@@ -67,27 +67,61 @@
                 </div>
             </div>
         </div> 
-      </div>
-      
-
+      </div> 
   </fieldset>
 
   <fieldset class="character-caracteristiques character-caracteristiques-{{ifThen isPlayMode 'play' 'edit'}}">
     <legend>{{localize "TENEBRIS.Character.Label.caracteristiques"}}</legend>
     <div class="character-caracteristique" data-drag="true" data-drag-type="save">
       <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.rob}}" style="font-size: small;"></i>
-      {{formField systemFields.caracteristiques.fields.rob.fields.valeur value=system.caracteristiques.rob.valeur rootId=partId readonly=isPlayMode classes="rollable" dataset=rollType.saveRob}}
-      {{#if isEditMode}}
-        <div class="experience">
-          {{formInput systemFields.caracteristiques.fields.rob.fields.progression.fields.experience value=system.caracteristiques.rob.progression.experience}}
-          {{formInput systemFields.caracteristiques.fields.rob.fields.progression.fields.progres value=system.caracteristiques.rob.progression.progres}}
-        </div>
-      {{/if}}
+        {{formField systemFields.caracteristiques.fields.rob.fields.valeur value=system.caracteristiques.rob.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveRob}}
+        {{#if isEditMode}}
+          <div class="experience">
+            {{formInput systemFields.caracteristiques.fields.rob.fields.progression.fields.experience value=system.caracteristiques.rob.progression.experience}}
+            {{formInput systemFields.caracteristiques.fields.rob.fields.progression.fields.progres value=system.caracteristiques.rob.progression.progres}}
+          </div>
+        {{/if}}
     </div>
-    <div class="character-caracteristique" data-drag="true" data-drag-type="save"><i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.dex}}" style="font-size: small;"></i>{{formField systemFields.caracteristiques.fields.dex.fields.valeur value=system.caracteristiques.dex.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveDex}} {{#if isEditMode}}<div class="experience">{{formInput systemFields.caracteristiques.fields.dex.fields.progression.fields.experience value=system.caracteristiques.dex.progression.experience}} {{formInput systemFields.caracteristiques.fields.dex.fields.progression.fields.progres value=system.caracteristiques.dex.progression.progres}}</div>{{/if}}</div>
-    <div class="character-caracteristique" data-drag="true" data-drag-type="save"><i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.int}}" style="font-size: small;"></i>{{formField systemFields.caracteristiques.fields.int.fields.valeur value=system.caracteristiques.int.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveInt}} {{#if isEditMode}}<div class="experience">{{formInput systemFields.caracteristiques.fields.int.fields.progression.fields.experience value=system.caracteristiques.int.progression.experience}} {{formInput systemFields.caracteristiques.fields.int.fields.progression.fields.progres value=system.caracteristiques.int.progression.progres}}</div>{{/if}}</div>
-    <div class="character-caracteristique" data-drag="true" data-drag-type="save"><i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.per}}" style="font-size: small;"></i>{{formField systemFields.caracteristiques.fields.per.fields.valeur value=system.caracteristiques.per.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.savePer}} {{#if isEditMode}}<div class="experience">{{formInput systemFields.caracteristiques.fields.per.fields.progression.fields.experience value=system.caracteristiques.per.progression.experience}} {{formInput systemFields.caracteristiques.fields.per.fields.progression.fields.progres value=system.caracteristiques.per.progression.progres}}</div>{{/if}}</div>
-    <div class="character-caracteristique" data-drag="true" data-drag-type="save"><i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.vol}}" style="font-size: small;"></i>{{formField systemFields.caracteristiques.fields.vol.fields.valeur value=system.caracteristiques.vol.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveVol}} {{#if isEditMode}}<div class="experience">{{formInput systemFields.caracteristiques.fields.vol.fields.progression.fields.experience value=system.caracteristiques.vol.progression.experience}} {{formInput systemFields.caracteristiques.fields.vol.fields.progression.fields.progres value=system.caracteristiques.vol.progression.progres}}</div>{{/if}}</div>
+    <div class="character-caracteristique" data-drag="true" data-drag-type="save">
+        <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.dex}}" style="font-size: small;"></i>
+        {{formField systemFields.caracteristiques.fields.dex.fields.valeur value=system.caracteristiques.dex.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveDex}}
+        {{#if isEditMode}}
+          <div class="experience">
+              {{formInput systemFields.caracteristiques.fields.dex.fields.progression.fields.experience value=system.caracteristiques.dex.progression.experience}}
+              {{formInput systemFields.caracteristiques.fields.dex.fields.progression.fields.progres value=system.caracteristiques.dex.progression.progres}}
+          </div>
+        {{/if}}
+    </div>
+    <div class="character-caracteristique" data-drag="true" data-drag-type="save">
+      <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.int}}" style="font-size: small;"></i>
+        {{formField systemFields.caracteristiques.fields.int.fields.valeur value=system.caracteristiques.int.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveInt}} 
+        {{#if isEditMode}}
+          <div class="experience">
+            {{formInput systemFields.caracteristiques.fields.int.fields.progression.fields.experience value=system.caracteristiques.int.progression.experience}}
+            {{formInput systemFields.caracteristiques.fields.int.fields.progression.fields.progres value=system.caracteristiques.int.progression.progres}}
+          </div>
+        {{/if}}
+    </div>
+    <div class="character-caracteristique" data-drag="true" data-drag-type="save">
+      <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.per}}" style="font-size: small;"></i>
+        {{formField systemFields.caracteristiques.fields.per.fields.valeur value=system.caracteristiques.per.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.savePer}}
+        {{#if isEditMode}}
+          <div class="experience">
+              {{formInput systemFields.caracteristiques.fields.per.fields.progression.fields.experience value=system.caracteristiques.per.progression.experience}}
+              {{formInput systemFields.caracteristiques.fields.per.fields.progression.fields.progres value=system.caracteristiques.per.progression.progres}}
+          </div>
+        {{/if}}
+    </div>
+    <div class="character-caracteristique" data-drag="true" data-drag-type="save">
+      <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.vol}}" style="font-size: small;"></i>
+        {{formField systemFields.caracteristiques.fields.vol.fields.valeur value=system.caracteristiques.vol.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveVol}}
+        {{#if isEditMode}}
+          <div class="experience">
+            {{formInput systemFields.caracteristiques.fields.vol.fields.progression.fields.experience value=system.caracteristiques.vol.progression.experience}}
+            {{formInput systemFields.caracteristiques.fields.vol.fields.progression.fields.progres value=system.caracteristiques.vol.progression.progres}}
+          </div>
+        {{/if}}
+    </div>
   </fieldset>
 
   <fieldset class="character-ressources character-ressources-{{ifThen isPlayMode 'play' 'edit'}}">
