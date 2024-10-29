@@ -17,8 +17,8 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
       title: "TENEBRIS.Fortune.title",
     },
     position: {
-      width: 50,
-      height: "auto",
+      width: 200,
+      height: 200,
       top: 200,
       left: 200,
     },
