@@ -983,8 +983,41 @@ i.tenebris {
   border-color: var(--color-dark-6);
   color: var(--color-dark-2);
 }
+.tenebris-roll-dialog fieldset {
+  padding: 10px;
+}
+input[name="selectAvantages"] {
+  border: none;
+}
 .dialog-aide-gene {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dialog-aide-gene select {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--color-dark-2);
+  width: 60px;
+  text-align: center;
+}
+.dialog-modificateur {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dialog-modificateur select {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--color-dark-2);
+  width: 60px;
+  text-align: center;
+}
+.dialog-avantages #selectAvantages {
+  background-color: inherit;
+  text-align: center;
+  font-family: var(--font-secondary);
+  font-size: calc(var(--font-size-standard) * 1.2);
 }
 .dialog-damage,
 .dialog-resource,

@@ -268,40 +268,55 @@ export default class TenebrisRoll extends Roll {
     const content = await renderTemplate("systems/tenebris/templates/roll-dialog.hbs", dialogContext)
 
     const title = TenebrisRoll.createTitle(options.rollType, options.rollTarget)
-    const label = game.i18n.localize("TENEBRIS.Label.roll")
-    const rollContext = await foundry.applications.api.DialogV2.prompt({
+    const label = game.i18n.localize("TENEBRIS.Roll.roll")
+    const rollContext = await foundry.applications.api.DialogV2.wait({
       window: { title: title },
       classes: ["tenebris"],
       content,
-      ok: {
-        label: label,
-        callback: (event, button, dialog) => {
-          const output = Array.from(button.form.elements).reduce((obj, input) => {
-            if (input.name) obj[input.name] = input.value
-            return obj
-          }, {})
-          // Avantages
-          switch (output.avantages) {
-            case "1":
-              output.avantages = "doubleDesavantage"
-              break
-            case "2":
-              output.avantages = "desavantage"
-              break
-            case "3":
-              output.avantages = "normal"
-              break
-            case "4":
-              output.avantages = "avantage"
-              break
-            case "5":
-              output.avantages = "doubleAvantage"
-              break
-          }
-          return output
+      buttons: [
+        {
+          label: label,
+          callback: (event, button, dialog) => {
+            const output = Array.from(button.form.elements).reduce((obj, input) => {
+              if (input.name) obj[input.name] = input.value
+              return obj
+            }, {})
+            // Avantages
+            switch (output.avantages) {
+              case "1":
+                output.avantages = "doubleDesavantage"
+                break
+              case "2":
+                output.avantages = "desavantage"
+                break
+              case "3":
+                output.avantages = "normal"
+                break
+              case "4":
+                output.avantages = "avantage"
+                break
+              case "5":
+                output.avantages = "doubleAvantage"
+                break
+            }
+            return output
+          },
         },
-      },
+      ],
       rejectClose: false, // Click on Close button will not launch an error
+      render: (event, dialog) => {
+        console.log("render", event, dialog)
+        const rangeInput = dialog.querySelector('input[name="avantages"]')
+        if (rangeInput) {
+          rangeInput.addEventListener("change", (event) => {
+            console.log("Roll Dialog Input Change", event.target.value) // Affiche la valeur actuelle de l'input range
+            event.preventDefault()
+            event.stopPropagation()
+            const readOnly = dialog.querySelector('input[name="selectAvantages"]')
+            readOnly.value = this._convertAvantages(event.target.value)
+          })
+        }
+      },
     })
 
     // If the user cancels the dialog, exit
@@ -526,5 +541,21 @@ export default class TenebrisRoll extends Roll {
       },
       { rollMode: rollMode },
     )
+  }
+
+  // Used in the avantages select : convert the selected value to the corresponding string
+  static _convertAvantages(value) {
+    switch (value) {
+      case "1":
+        return game.i18n.localize("TENEBRIS.Roll.doubleDesavantage")
+      case "2":
+        return game.i18n.localize("TENEBRIS.Roll.desavantage")
+      case "3":
+        return game.i18n.localize("TENEBRIS.Roll.normal")
+      case "4":
+        return game.i18n.localize("TENEBRIS.Roll.avantage")
+      case "5":
+        return game.i18n.localize("TENEBRIS.Roll.doubleAvantage")
+    }
   }
 }

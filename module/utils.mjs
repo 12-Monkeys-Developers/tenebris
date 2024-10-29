@@ -15,6 +15,7 @@ export default class TenebrisUtils {
     return damage
   }
 
+  // Used when a ressource is lost to find the next lower dice
   static findLowerDice(dice) {
     let index = DICE_VALUES.indexOf(dice)
     return DICE_VALUES[index - 1]

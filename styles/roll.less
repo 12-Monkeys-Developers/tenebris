@@ -9,11 +9,54 @@
   }
 }
 
-.dialog-aide-gene {
-  display: flex;
+.tenebris-roll-dialog {
+  fieldset {
+    padding: 10px;
+  }
 }
 
-.dialog-damage, .dialog-resource, .dialog-save {
+input[name="selectAvantages"] {
+  border: none;
+}
+
+.dialog-aide-gene {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  select {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--color-dark-2);
+    width: 60px;
+    text-align: center;
+  }
+}
+
+.dialog-modificateur {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  select {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--color-dark-2);
+    width: 60px;
+    text-align: center;
+  }
+}
+
+.dialog-avantages {
+  #selectAvantages {
+    background-color: inherit;
+    text-align: center;
+    font-family: var(--font-secondary);
+    font-size: calc(var(--font-size-standard) * 1.2);
+  }
+}
+
+.dialog-damage,
+.dialog-resource,
+.dialog-save {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,7 +106,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: calc(var(--font-size-standard) * 1.2);   
-    text-shadow: 0 0 10px var(--color-shadow-primary); 
+    font-size: calc(var(--font-size-standard) * 1.2);
+    text-shadow: 0 0 10px var(--color-shadow-primary);
   }
 }
