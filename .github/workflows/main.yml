@@ -115,6 +115,7 @@ jobs:
              ./system.zip                        \
             `# The files that will be included.` \
             system.json                          \
+            tenebris.mjs                         \
             README.md                            \
             CHANGELOG.md                         \
             LICENSE                              \
