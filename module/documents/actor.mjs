@@ -56,7 +56,7 @@ export default class TenebrisActor extends Actor {
           dropNotification += `<br> La valeur de ${labelNeuf} va être modifiée pour 9`
         }
       } else {
-        dropNotification = ""
+        dropNotification = "Vous devez modifier manuellement les caractéristiques selon la voie ajoutée"
       }
 
       dropNotification += `<br>Vous pouvez renoncer à des biens de la voie majeure pour ceux de la voie mineure`
@@ -81,8 +81,8 @@ export default class TenebrisActor extends Actor {
           "system.voies.mineure.id": voie[0].id,
           "system.voies.mineure.key": item.system.key,
           [`system.caracteristiques.${onze}.valeur`]: 11,
-          "system.langues": `${this.system.langues} <br>Voie mineure : ${item.system.langues}`,
-          "system.biens": `${this.system.biens} <br>Voie mineure : ${item.system.biens}`,
+          "system.langues": `${this.system.langues} <br>${item.name} : ${item.system.langues}`,
+          "system.biens": `${this.system.biens} <br>${item.name} : ${item.system.biens}`,
         })
         if (neufModifie) {
           await this.update({
@@ -94,8 +94,8 @@ export default class TenebrisActor extends Actor {
           "system.voies.mineure.nom": item.name,
           "system.voies.mineure.id": voie[0].id,
           "system.voies.mineure.key": item.system.key,
-          "system.langues": `${this.system.langues} <br>Voie mineure : ${item.system.langues}`,
-          "system.biens": `${this.system.biens} <br>Voie mineure : ${item.system.biens}`,
+          "system.langues": `${this.system.langues} <br>${item.name} : ${item.system.langues}`,
+          "system.biens": `${this.system.biens} <br>${item.name} : ${item.system.biens}`,
         })
       }
 
@@ -155,8 +155,8 @@ export default class TenebrisActor extends Actor {
         "system.ressources.magie": item.system.ressources.magie,
         "system.dv": item.system.dv,
         "system.dmax.valeur": item.system.dmax,
-        "system.langues": item.system.langues,
-        "system.biens": item.system.biens,
+        "system.langues": `${item.name} : ${item.system.langues}`,
+        "system.biens": `${item.name} : ${item.system.biens}`,
       })
       return ui.notifications.info(game.i18n.localize("TENEBRIS.Warning.voieMajeureAjoutee"))
     }
