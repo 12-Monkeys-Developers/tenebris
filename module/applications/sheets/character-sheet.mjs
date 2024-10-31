@@ -203,6 +203,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
           id: talent.id,
           uuid: talent.uuid,
           name: talent.name,
+          img: talent.img,
           path: `Obtenu par ${pathName}`,
           description: talent.system.improvedDescription,
           progression: talent.system.progression,

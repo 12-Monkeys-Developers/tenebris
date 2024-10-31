@@ -7,6 +7,7 @@
         {{#each talents as |item|}}
           {{log "path-talent" this}}
           <div class="talent {{#if item.appris}}appris{{/if}}" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+            <img class="item-img" src="{{item.img}}" data-tooltip="{{item.name}}" />
             <div class="name" data-tooltip="{{{item.description}}}<br><br>{{item.path}}" data-tooltip-direction="UP">{{item.name}}
               {{#if item.progression}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}
               {{#if (and item.progression (gt item.niveau 1))}}{{localize 'TENEBRIS.Label.level'}} {{item.niveau}}{{/if}}            
@@ -21,6 +22,9 @@
         {{#each talentsAppris as |item|}}
           {{!log "path-talent appris" this}}
           <div class="talent" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-tooltip="{{{item.description}}}<br><br>{{item.path}}">
+            {{#if (ne item.img "icons/svg/item-bag.svg")}}
+              <img class="item-img" src="{{item.img}}" data-tooltip="{{item.name}}" />
+            {{/if}}
             {{item.name}} {{item.details}}            
           </div>
         {{/each}}
@@ -32,8 +36,11 @@
     <legend>{{localize "TENEBRIS.Label.equipement"}}{{#if isEditMode}}<a class="action" data-tooltip="{{localize "TENEBRIS.Tooltip.addEquipment"}}" data-tooltip-direction="UP"><i class="fas fa-plus" data-action="createEquipment"></i></a>{{/if}}</legend>
     <div class="weapons">
       {{#each weapons as |item|}}
-        {{!log 'weapon' this}}
+        {{log 'weapon' this}}
         <div class="weapon" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-drag="true" data-drag-type="damage">
+          {{#if (ne item.img "icons/svg/item-bag.svg")}}
+            <img class="item-img" src="{{item.img}}" data-tooltip="{{item.name}}" />
+          {{/if}}
           <div class="name" data-tooltip="{{{item.system.description}}}">
             {{item.name}}
           </div>
@@ -51,6 +58,7 @@
       {{#each armors as |item|}}
         {{log 'armor' this}}
         <div class="armor" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
+          <img class="item-img" src="{{item.img}}" data-tooltip="{{item.name}}" />
           <div class="name" data-tooltip="{{{item.system.description}}}">
             {{item.name}}
           </div>
