@@ -721,6 +721,14 @@ i.tenebris {
 }
 .tenebris .talent-content input[type="checkbox"] {
   font-size: var(--font-size-14);
+  width: 20px;
+  padding-top: 0;
+}
+.tenebris .talent-content input[type="checkbox"]:checked {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.tenebris .talent-content input[type="checkbox"]:checked::after {
+  color: rgba(0, 0, 0, 0.1);
 }
 .tenebris .weapon-content {
   font-family: var(--font-primary);
