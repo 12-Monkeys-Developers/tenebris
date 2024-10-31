@@ -1,5 +1,8 @@
 <section>
-  {{formInput fields.name value=source.name}}
+  <div class="header">
+    <img class="item-img" src="{{item.img}}" data-edit="img" data-action="editImage" data-tooltip="{{item.name}}" />
+    {{formInput fields.name value=source.name}}
+  </div> 
 
   {{formField systemFields.categorie value=system.categorie localize=true}}
   {{formField systemFields.degats value=system.degats}}
