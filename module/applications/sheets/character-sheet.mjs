@@ -172,7 +172,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         break
       case "items":
         context.tab = context.tabs.items
-        const talents = this._prepareTalents()
+        const talents = await this._prepareTalents()
         context.talents = talents
         context.talentsAppris = talents.filter((talent) => talent.appris)
         context.weapons = doc.itemTypes.weapon
@@ -195,21 +195,24 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
    *
    * @returns {Array} An array of talents with their properties.
    */
-  _prepareTalents() {
-    const talents = this.document.itemTypes.talent
-      .map((talent) => {
+  async _prepareTalents() {
+    const talents = await Promise.all(
+      this.document.itemTypes.talent.map(async (talent) => {
+        const pathName = await talent.system.getPathName()
         return {
           id: talent.id,
           uuid: talent.uuid,
           name: talent.name,
+          path: `Obtenu par ${pathName}`,
           description: talent.system.improvedDescription,
           progression: talent.system.progression,
           niveau: talent.system.niveau,
           appris: talent.system.appris,
           details: talent.system.details,
         }
-      })
-      .sort((a, b) => b.appris - a.appris || a.name.localeCompare(b.name, game.i18n.lang))
+      }),
+    )
+    talents.sort((a, b) => b.appris - a.appris || a.name.localeCompare(b.name, game.i18n.lang))
     return talents
   }
 

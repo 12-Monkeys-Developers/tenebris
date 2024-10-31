@@ -39,6 +39,7 @@ export default class TenebrisActor extends Actor {
         return
       }
 
+      // Voie de base
       const isBasePath = itemData.system.key !== "" && this.system.voies.majeure.key !== ""
 
       let dropNotification
@@ -105,6 +106,8 @@ export default class TenebrisActor extends Actor {
         const talentItem = await fromUuid(talent)
         if (talentItem) {
           const newTalent = await this.createEmbeddedDocuments("Item", [talentItem.toObject()])
+          // Modification de la voie du talent
+          await newTalent[0].update({ "system.path": voie[0].uuid })
           newTalents.push(newTalent[0].uuid)
         }
       }
@@ -133,6 +136,8 @@ export default class TenebrisActor extends Actor {
         const talentItem = await fromUuid(talent)
         if (talentItem) {
           const newTalent = await this.createEmbeddedDocuments("Item", [talentItem.toObject()])
+          // Modification de la voie du talent
+          await newTalent[0].update({ "system.path": voie[0].uuid })
           newTalents.push(newTalent[0].uuid)
         }
       }

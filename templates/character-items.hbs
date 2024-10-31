@@ -5,9 +5,9 @@
     <div class="talents">
       {{#if @root.isEditMode}}
         {{#each talents as |item|}}
-          {{!log "path-talent" this}}
+          {{log "path-talent" this}}
           <div class="talent {{#if item.appris}}appris{{/if}}" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}">
-            <div class="name" data-tooltip="{{{item.description}}}" data-tooltip-direction="UP">{{item.name}}
+            <div class="name" data-tooltip="{{{item.description}}}<br><br>{{item.path}}" data-tooltip-direction="UP">{{item.name}}
               {{#if item.progression}}<span data-tooltip="{{localize 'TENEBRIS.Label.progressionPossible'}}"> (P)</span>{{/if}}
               {{#if (and item.progression (gt item.niveau 1))}}{{localize 'TENEBRIS.Label.level'}} {{item.niveau}}{{/if}}            
             </div>
@@ -20,7 +20,7 @@
       {{else}}
         {{#each talentsAppris as |item|}}
           {{!log "path-talent appris" this}}
-          <div class="talent" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-tooltip="{{{item.description}}}">
+          <div class="talent" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-tooltip="{{{item.description}}}<br><br>{{item.path}}">
             {{item.name}} {{item.details}}            
           </div>
         {{/each}}

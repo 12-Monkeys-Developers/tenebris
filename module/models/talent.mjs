@@ -9,6 +9,7 @@ export default class TenebrisTalent extends foundry.abstract.TypeDataModel {
     schema.appris = new fields.BooleanField()
     schema.progression = new fields.BooleanField()
     schema.niveau = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 3 })
+    schema.path = new fields.DocumentUUIDField()
 
     return schema
   }
@@ -34,5 +35,10 @@ export default class TenebrisTalent extends foundry.abstract.TypeDataModel {
         niveau: this.niveau,
       })
     return ""
+  }
+
+  async getPathName() {
+    const path = await fromUuid(this.path)
+    return path ? path.name : ""
   }
 }

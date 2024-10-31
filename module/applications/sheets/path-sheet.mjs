@@ -88,6 +88,7 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
 
   /**
    * Callback actions which occur when a dragged element is dropped on a target.
+   * Seul un item de type Talent peut être déposé sur une voie.
    * @param {DragEvent} event       The originating DragEvent
    * @protected
    */
