@@ -100,6 +100,15 @@ jobs:
           URL: ${{ env.project_url }}
           MANIFEST: ${{ env.latest_manifest_url }}
           DOWNLOAD: ${{ env.release_module_url }}
+
+      # `npm ci` is recommended:
+      # https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+      - name: Install Dependencies
+        run: npm ci
+      
+      # Pull YAML to LDB packs
+      - name: Build Packs
+        run: npm run pullYAMLtoLDB          
           
       # Create a "system.zip" archive containing all the module's required files.
       # If you have other directories or files that will need to be added to
@@ -121,6 +130,7 @@ jobs:
             LICENSE                              \
             assets/                              \
             css/                                 \
+            packs/                               \
             fonts/                               \
             lang/                                \
             module/                              \

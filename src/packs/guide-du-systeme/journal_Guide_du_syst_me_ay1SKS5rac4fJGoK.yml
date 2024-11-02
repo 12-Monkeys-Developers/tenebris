@@ -1,0 +1,459 @@
+name: Guide du système
+pages:
+  - sort: 100000
+    name: Introduction
+    type: text
+    _id: 7v25so1ZqZ0EvwkV
+    system: {}
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Bienvenue dans le système Cthulhu Tenebris.</p><p>Vous trouverez une
+        description des options, des différents types d'acteurs et d'objets.,
+        ainsi que les fonctionnalités du menu dédié
+        :</p><ul><li><p>@UUID[.vfLYzlMNrj0JZbkv]{Options}</p></li><li><p>@UUID[.PO8XO7Gy9Cc1nyli]{Menu
+        Cthulhu
+        Tenebris}</p></li><li><p>@UUID[.boo9pJHjU1HiEMd6]{Acteurs}</p></li><li><p>@UUID[.Qaf4o20TZxBIHvIW]{Objets}</p></li><li><p>@UUID[.0K3jY1Dg4GzQkEbH]{Jets
+        de dés}</p></li><li><p>@UUID[.XR7olUjb6GtbWFYr]{Barre
+        d'outils}</p></li><li><p>@UUID[.1jfmPSQQ1zlqLMMy]{Hooks}</p></li></ul><p></p><p>Le
+        design du système est basique et permet de jouer en créant soi-même les
+        acteurs et objets.</p><p><br />Pour une expérience de jeu améliorée,
+        vous pouvez acheter le module Livres de base.</p><p>Ce module améliore
+        le design du ssytème et contient déjà l'ensemble des Voies, Talents et
+        Sortilèges du Livre de base.</p><p>Il contient de plus l'intégralité
+        :</p><ul><li><p>du livre de base Cthulhu Tenebris</p></li><li><p>du
+        livret Cthulhu Tenebris Initiative !</p></li><li><p>du livre
+        Hibernie</p></li><li><p>des aides de jeu proposées dans l'écran de
+        jeu</p></li></ul><p></p><p>Vous pouvez l'acheter <a
+        href="https://www.les12singes.com/foundry-vtt/578-cthulhu-tenebris-livres-de-base-module-foundry-vtt.html">sur
+        le site des XII Singes</a> !</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    ownership:
+      default: -1
+      8rFrVWaArC4PsPeC: 3
+    flags: {}
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: tenebris
+      systemVersion: 0.8.0
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+    _key: '!journal.pages!ay1SKS5rac4fJGoK.7v25so1ZqZ0EvwkV'
+  - sort: 200000
+    name: Options
+    type: text
+    _id: vfLYzlMNrj0JZbkv
+    system: {}
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Deux options sont disponibles.</p><h2>Afficher le malus
+        d'adversité</h2><p>Lors d'un jet de Sauvegarde, si une cible est
+        sélectionnée et que cette option est activée, les joueurs verront le
+        malus d'adversité s'afficher dans la fenêtre de jet.<br />Si l'option
+        n'est pas activée, aucune information ne sera affichée dans la
+        fenêtre.</p><p></p><h2>Roue de Fortune</h2><p>Cette option permet au MJ
+        de modifier le nombre de points de Fortune disponible et affiché dans la
+        fenêtre Roue de Fortune.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    ownership:
+      default: -1
+      8rFrVWaArC4PsPeC: 3
+    flags: {}
+    _stats:
+      compendiumSource: JournalEntry.ohQ9TGZFmSXMLIEY.JournalEntryPage.vfLYzlMNrj0JZbkv
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: tenebris
+      systemVersion: 0.8.0
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+    _key: '!journal.pages!ay1SKS5rac4fJGoK.vfLYzlMNrj0JZbkv'
+  - sort: 300000
+    name: Acteurs
+    type: text
+    _id: boo9pJHjU1HiEMd6
+    system: {}
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <h2>Personnage</h2><p>Le personnage est l'acteur utilisé pour les
+        joueurs.</p><p>Il a un mode Edition et Lecture seule : l'icône à droite
+        du nom permet de changer de mode.</p><p>En mode Lecture seule, seuls les
+        points de vie courants peuvent être modifiés. Tous les autres éléments
+        de la fiche sont en lecture seule.</p><p>D'une manière générale, les
+        boutons Editer et Supprimer des objets ne sont affichés qu'en mode
+        Edition.</p><h3>Bloc Personnage</h3><p>La gestion de la voie majeure et
+        de la voie mineure est implémentée.</p><p>Pour ajouter une voie, il faut
+        glisser-déposer un objet de type Voie sur la fiche de personnage en mode
+        Edition.</p><p>Les caractéristiques, les ressources, les langues et les
+        biens sont automatiquement recopiés sur la fiche lors de l'ajout de la
+        voie principale.</p><p>Lors de l'ajout d'une voie mineure, un message
+        d'avertissement explique les changements qui vont avoir lieu au niveau
+        des caractéristiques. Pour les langues et les biens, ceux-ci sont copiés
+        sur la fiche à la suite de l'existant. C'est ensuite au joueur de faire
+        le tri.</p><h3>Bloc Caractéristiques</h3><p>En mode Lecture seule, la
+        valeur courante est affichée. Le point d'interrogation affiche une
+        info-bulle indiquant l'expérience, c'est-à-dire le nombre de cases qui
+        correspond aux barres dans la case rectangulaire, ainsi que si la case a
+        été cochée ou non.</p><p>En mode Edition, il est possible de saisir les
+        informations sur l'expérience : le nombre de barres et la case à
+        cocher.</p><h3>Bloc Ressources</h3><p>En mode Lecture seule, la valeur
+        courante est affichée. Le point d'interrogation affiche une info-bulle
+        indiquant la valeur maximum de la ressource ainsi que
+        l'expérience.</p><h3>Onglet Détails</h3><h4>Talents</h4><p>En mode
+        Lecture seule, seuls les talents appris sont affichés.</p><p>En mode
+        Edition, tous les talents sont affichés. Il faut donc passer dans ce
+        mode, puis cliquer sur le bouton Editer pour cocher la case
+        Appris.</p><h4>Equipement</h4><p>Affiche les objets de type Arme et
+        Armure.</p><p>En mode Edition, le bouton d'ajout permet de créer
+        directement une arme en cliquant dessus, et de créer une armure avec
+        SHIFT + clic.</p><p>Il est bien sûr possible de glisser-déposer des
+        armes et armures depuis l'onglet Objets ou depuis un
+        compendium.</p><h4>Biens</h4><p>C'est un champ de type Editeur de texte,
+        avec une saisie libre.</p><h4>Sortilèges</h4><p>En mode Lecture seule,
+        affiche tous les objets de type Sortilège. la section ne s'affiche que
+        si le personnage a des sortilèges.<br />En mode Edition, affiche
+        toujours la section Sortilèges et permet d'en créer un directement
+        depuis la fiche. Il est bien sûr possible de glisser-déposer un
+        sortilège depuis l'onglet Objets ou depuis un compendium.</p><h3>Onglet
+        Biographie</h3><h4>Description</h4><p>C'est un champ de type Editeur de
+        texte, avec une saisie libre.</p><h4>Langues</h4><p>C'est un champ de
+        type Editeur de texte, avec une saisie libre.</p><h4>Notes</h4><p>C'est
+        un champ de type Editeur de texte, avec une saisie
+        libre.</p><p></p><h2>Adversaire</h2><p>Globalement, c'est le même
+        fonctionnement que pour un Personnage.</p><p>A noter que le malus
+        d'adversité doit être saisi sous la forme -X.<br />Un adversaire ne
+        prend en charge que deux types d'objet : Sortilège et
+        Attaque.</p><h3>Attaques</h3><p>Affiche tous les objets de type Attaque
+        sous la forme formule (nom) avec une infobulle contenant la
+        description.<br />La formule de dégâts est cliquable et ouvre la fenêtre
+        de jet d'attaque.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    ownership:
+      default: -1
+      8rFrVWaArC4PsPeC: 3
+    flags: {}
+    _stats:
+      compendiumSource: JournalEntry.ohQ9TGZFmSXMLIEY.JournalEntryPage.boo9pJHjU1HiEMd6
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: tenebris
+      systemVersion: 0.8.0
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+    _key: '!journal.pages!ay1SKS5rac4fJGoK.boo9pJHjU1HiEMd6'
+  - sort: 400000
+    name: Objets
+    type: text
+    _id: Qaf4o20TZxBIHvIW
+    system: {}
+    title:
+      show: false
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <h2>Arme</h2><p>Il faut glisser-déposer une arme sur un Personnage en
+        mode Edition.</p><p>La catégorie et les dégâts ne sont pas liés, et
+        doivent être saisis.</p><h2>Armure</h2><p>Il faut glisser-déposer une
+        armure sur un Personnage en mode Edition.</p><p>La catégorie et les
+        dégâts ne sont pas liés, et doivent être
+        saisis.</p><h2>Attaque</h2><p>Il faut glisser-déposer une armure sur un
+        Adversaire en mode Edition.</p><p>La formule des dégâts doit être valide
+        : 1d6 ou 2d4+2 par exemple</p><h2>Sortilège</h2><p>Il faut
+        glisser-déposer une armure sur un Personnage en mode
+        Edition.</p><h2>Talent</h2><p>Il faut glisser-déposer un talent sur un
+        objet de type Voie en mode Edition.</p><p>Un talent ne peut pas être
+        attribué seul à un personnage, il faut passer par une voie.</p><p>Appris
+        : indique si le talent a été appris et apparait ainsi dans la partie
+        Détails de la fiche de personnage.</p><p>Progression : indique si le
+        talent peut progressé par expérience. Cela fait apparaitre l'attribut
+        Niveau.</p><p>Niveau : uniquement si la progression est possible.
+        Indique le niveau dans le talent.</p><p>Description : la description
+        d'un talent supporte une syntaxe spéciale à utiliser pour indiquer un
+        texte qui va changer selon le niveau. Il suffit d'écrire #niveau. Ce
+        sera automatiquement remplacé par le niveau dans le talent lors de
+        l'affichage.</p><h2>Voie</h2><p>Il faut glisser-déposer une voie sur un
+        Personnage en mode Edition.</p><p>Profil : affiche les caractéristiques
+        et ressources qui seront recopiées sur la personnage lors de
+        l'attribution de la voie.</p><p>Biens et Langues seront aussi copiés sur
+        le personnage.</p><p>Talents : affiche les talents inclus dans la voie.
+        Ces talents peuvent venir du monde ou d'un compendium. A noter que si un
+        talent est supprimé du monde ou du compendium, il ne sera plus affiché
+        dans l'onglet Talents de la voie.</p><p>Lorsque une voie est attribuée à
+        un personnage, la voie et tous les talents sont copiés dans le
+        personnage.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    ownership:
+      default: -1
+      8rFrVWaArC4PsPeC: 3
+    flags: {}
+    _stats:
+      compendiumSource: JournalEntry.ohQ9TGZFmSXMLIEY.JournalEntryPage.Qaf4o20TZxBIHvIW
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: tenebris
+      systemVersion: 0.8.0
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+    _key: '!journal.pages!ay1SKS5rac4fJGoK.Qaf4o20TZxBIHvIW'
+  - sort: 250000
+    name: Menu Cthulhu Tenebris
+    type: text
+    _id: PO8XO7Gy9Cc1nyli
+    system: {}
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Il faut qu'une scène existe dans le monde pour que le menu apparaisse
+        dans la partie gauche de Foundry, à la fin.</p><p>Ce menu propose deux
+        actions :</p><ul><li><p>Roue de Fortune</p></li><li><p>Gestionnaire de
+        personnages</p></li></ul><h2><br />Roue de Fortune</h2><p><span
+        style="font-family:Caslon, sans-serif">Un clic sur le menu permet
+        d'ouvrir la fenêtre Roue de Fortune.</span></p><p
+        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
+        var(--color-scrollbar-track);margin:0.5em 0px;color:rgb(25, 24,
+        19);font-family:Caslon,
+        sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"><span
+        style="font-family:Caslon, sans-serif">Cette roue apparait pour les
+        joueuses et le MJ.</span></p><p
+        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
+        var(--color-scrollbar-track);margin:0.5em 0px;color:rgb(25, 24,
+        19);font-family:Caslon,
+        sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"><span
+        style="font-family:Caslon, sans-serif">Elle affiche le nombre de points
+        de Fortune restant.</span></p><p
+        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
+        var(--color-scrollbar-track);margin:0.5em 0px;color:rgb(25, 24,
+        19);font-family:Caslon,
+        sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"><span
+        style="font-family:Caslon, sans-serif">Pour les joueurs, un bouton
+        Dépenser apparait aussi. En cliquant sur ce bouton, un message privé est
+        envoyé au MJ indiquant que le joueur souhaite utiliser un point de
+        Fortune.</span></p><p
+        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
+        var(--color-scrollbar-track);margin:0.5em 0px;color:rgb(25, 24,
+        19);font-family:Caslon,
+        sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"><span
+        style="font-family:Caslon, sans-serif">Le MJ peut valider cette dépense
+        via un bouton présent dans le message : le nombre de points total
+        diminue alors de 1.</span></p><p></p><h2>Gestionnaire de
+        Personnages</h2><p>Cette fenêtre affiche les personnages des joueurs
+        connectés.</p><p>Il faut que le joueur ait sélectionné un personnage
+        lors de la connexion pour qu'il apparaisse dans le tableau.</p><p>Un
+        clic sur l'entête d'une colonne demandera à tous les joueurs un jet de
+        sauvegarde ou de ressource. Le joueur a un bouton dans le message pour
+        faire le jet de dés.</p><p>Un clic sur une caractéristique ou une
+        sauvegarde d'un joueur enverra le même message mais uniquement au joueur
+        concerné.</p><p></p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    ownership:
+      default: -1
+      8rFrVWaArC4PsPeC: 3
+    flags: {}
+    _stats:
+      compendiumSource: JournalEntry.ohQ9TGZFmSXMLIEY.JournalEntryPage.PO8XO7Gy9Cc1nyli
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: tenebris
+      systemVersion: 0.8.0
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+    _key: '!journal.pages!ay1SKS5rac4fJGoK.PO8XO7Gy9Cc1nyli'
+  - sort: 450000
+    name: Jets de dés
+    type: text
+    _id: 0K3jY1Dg4GzQkEbH
+    system: {}
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Pour tous les jets, il est possibilité de changer la visibilité du
+        lancer de dés dans le chat.</p><h2>Jet de sauvegarde</h2><p>En cliquant
+        sur une caractéristique de la fiche de personnage, la fenêtre de jet de
+        Sauvegarde s'ouvre.</p><p>Elle affiche dans l'ordre :</p><ul><li><p>La
+        valeur de la caractéristique</p></li><li><p>La possibilité de choisir le
+        niveau d'avantages ou de désavantages : Avantage, Double Avantage,
+        Désavantage et Double Désavantage. Par défaut, c'est
+        Normal.</p></li><li><p>La sélection du bonus en cas d'Aide avec la prise
+        en compte de la limite selon la valeur de la
+        caractéristique.</p></li><li><p>La sélection du bonus en cas de
+        gêne</p></li><li><p>Le malus d'adversité. Si l'option Afficher le malus
+        d'adversité est activée et qu'un adversaire est ciblé, le malus
+        d'adversité sera préselectionné.</p></li></ul><p>Le message dans le chat
+        affiche le type de jet, la caractéristique, le seuil et le résultat du
+        jet ainsi que la réussite ou l'échec.</p><p>Une infobulle sur le message
+        de chat indique le calcul du seuil avec les différents éléments
+        sélectionnés dans la fenêtre de jet.</p><h2>Jet de ressource</h2><p>Elle
+        affiche la valeur de la ressource.</p><p>En cas d'échec sur 1 ou 2, la
+        ressource est automatiquement diminuée de 1.</p><h2>Jet de
+        dégâts</h2><p>En cliquant sur les Dégâts d'une arme dans la section
+        Equipement d'un personnage, une fenêtre de jets de dégâts
+        s'ouvre.</p><p>Elle affiche le dé de dégâts qui sera lancé. Si le dé est
+        limité par les dégâts max du personnage, ce sera affiché dans la fenêtre
+        et pris en compte lors du jet de dé.</p><p>Le message de chat affichera
+        le résultat du jet de dé.<br />Si l'option Afficher le malus d'adversité
+        est activée et qu'un adversaire est ciblé, un message informatif sera
+        affiché uniquement au MJ avec le rappel de l'armure de la cible et les
+        dégâts réels après réduction.</p><h2>Jet d'attaque</h2><p>En cliquant
+        sur les dégâts d'une attaque d'un adversaire, une fenêtre de jets
+        d'attaque s'ouvre.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    ownership:
+      default: -1
+      97IvWPMSm991gl6a: 3
+    flags: {}
+    _stats:
+      compendiumSource: JournalEntry.lGRLvwi6eeaQPqeW.JournalEntryPage.0K3jY1Dg4GzQkEbH
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: tenebris
+      systemVersion: 0.8.0
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+    _key: '!journal.pages!ay1SKS5rac4fJGoK.0K3jY1Dg4GzQkEbH'
+  - sort: 550000
+    name: Barre d'outils
+    type: text
+    _id: XR7olUjb6GtbWFYr
+    system: {}
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Différents glisser-déposer dans la barre d'outils sont
+        supportés.</p><p>Depuis un personnage : Arme, Caractéristique ou
+        Resssource.</p><p>Depuis un adversaire : Attaque</p><h2>Acteur</h2><p>Il
+        est possible de glisser-déposer un personnage ou acteur depuis le
+        répertoire Acteurs.</p><p>Le raccourci ouvre la fiche de
+        l'acteur.</p><h2>Objet</h2><p>Pas de support</p><h2>Page de
+        Journal</h2><p>Le raccourci ouvre le journal et se positionne sur la
+        page</p><h2>Caractéristique d'un personnage</h2><p>Le raccourci ouvre la
+        fenêtre Jet de sauvegarde pour le personnage en
+        question.</p><h2>Ressource d'un personnage</h2><p>Le raccourci ouvre la
+        fenêtre Jet de ressource pour le personnage en question.</p><h2>Arme
+        d'un personnage</h2><p>Le raccourci ouvre la fenêtre de jet de dégâts
+        pour le personnage en question.</p><h2>Attaque d'un adversaire</h2><p>Le
+        raccourci ouvre la fenêtre de jet d'attaque pour l'adversaire en
+        question.</p><p></p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    ownership:
+      default: -1
+      97IvWPMSm991gl6a: 3
+    flags: {}
+    _stats:
+      compendiumSource: JournalEntry.lGRLvwi6eeaQPqeW.JournalEntryPage.XR7olUjb6GtbWFYr
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: tenebris
+      systemVersion: 0.8.0
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+    _key: '!journal.pages!ay1SKS5rac4fJGoK.XR7olUjb6GtbWFYr'
+  - sort: 650000
+    name: Hooks
+    type: text
+    _id: 1jfmPSQQ1zlqLMMy
+    system: {}
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Le système supporte les hooks suivants
+        :</p><ul><li><p>tenebris.preRoll : avant la création et l'évaluation du
+        Roll</p></li><li><p>tenebris.Roll : après l'évaluation du Roll et le
+        calcul des différents éléments post roll</p></li></ul>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    ownership:
+      default: -1
+      97IvWPMSm991gl6a: 3
+    flags: {}
+    _stats:
+      compendiumSource: JournalEntry.lGRLvwi6eeaQPqeW.JournalEntryPage.1jfmPSQQ1zlqLMMy
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: tenebris
+      systemVersion: 0.8.0
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+    _key: '!journal.pages!ay1SKS5rac4fJGoK.1jfmPSQQ1zlqLMMy'
+folder: null
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: tenebris
+  systemVersion: 0.8.0
+  createdTime: 1730566635073
+  modifiedTime: 1730566635073
+  lastModifiedBy: 97IvWPMSm991gl6a
+ownership:
+  default: 0
+  97IvWPMSm991gl6a: 3
+_id: ay1SKS5rac4fJGoK
+sort: 0
+_key: '!journal!ay1SKS5rac4fJGoK'
+
