@@ -23,14 +23,16 @@ pages:
         design du système est basique et permet de jouer en créant soi-même les
         acteurs et objets.</p><p><br />Pour une expérience de jeu améliorée,
         vous pouvez acheter le module Livres de base.</p><p>Ce module améliore
-        le design du ssytème et contient déjà l'ensemble des Voies, Talents et
+        le design du sytème et contient déjà l'ensemble des Voies, Talents et
         Sortilèges du Livre de base.</p><p>Il contient de plus l'intégralité
         :</p><ul><li><p>du livre de base Cthulhu Tenebris</p></li><li><p>du
         livret Cthulhu Tenebris Initiative !</p></li><li><p>du livre
         Hibernie</p></li><li><p>des aides de jeu proposées dans l'écran de
         jeu</p></li></ul><p></p><p>Vous pouvez l'acheter <a
         href="https://www.les12singes.com/foundry-vtt/578-cthulhu-tenebris-livres-de-base-module-foundry-vtt.html">sur
-        le site des XII Singes</a> !</p>
+        le site des XII Singes</a> !</p><p>Le système supporte nativement le
+        module Dice So Nice avec les dés customisés, comme pour le système
+        Cthulhu Hack.</p>
     video:
       controls: true
       volume: 0.5
@@ -46,8 +48,8 @@ pages:
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
-      modifiedTime: null
-      lastModifiedBy: null
+      modifiedTime: 1730567655076
+      lastModifiedBy: 97IvWPMSm991gl6a
     _key: '!journal.pages!ay1SKS5rac4fJGoK.7v25so1ZqZ0EvwkV'
   - sort: 200000
     name: Options
