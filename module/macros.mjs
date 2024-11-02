@@ -34,9 +34,10 @@ export class Macros {
         break
 
       case "rollDamage":
+        const weapon = game.actors.get(dropData.actorId).items.get(dropData.rollTarget)
         const rollDamageCommand = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}');`
-        const rollDamageName = `${game.i18n.localize("TENEBRIS.Label.jet")} ${dropData.rollTarget}`
-        this.createMacro(slot, rollDamageName, rollDamageCommand, "icons/svg/d20-grey.svg")
+        const rollDamageName = `${game.i18n.localize("TENEBRIS.Label.jet")} ${weapon.name}`
+        this.createMacro(slot, rollDamageName, rollDamageCommand, weapon.img)
         break
 
       case "rollAttack":
