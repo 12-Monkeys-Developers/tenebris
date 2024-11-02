@@ -178,7 +178,7 @@ export default class TenebrisRoll extends Roll {
       default: "public",
     })
 
-    const choiceAide = foundry.utils.mergeObject({ 0: "0" }, this.value <= 10 ? { 1: "1" } : { 1: "1", 2: "2" })
+    const choiceAide = foundry.utils.mergeObject({ 0: "0" }, options.rollValue <= 10 ? { 1: "1" } : { 1: "1", 2: "2" })
     const choiceGene = {
       0: "0",
       "-1": "-1",
