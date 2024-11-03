@@ -441,6 +441,75 @@ pages:
       modifiedTime: null
       lastModifiedBy: null
     _key: '!journal.pages!ay1SKS5rac4fJGoK.1jfmPSQQ1zlqLMMy'
+  - sort: 750000
+    name: Spécial
+    type: text
+    _id: g335yg8JYZzOBtvk
+    system: {}
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Une fonctionnalité spéciale est disponible dans les journaux et dans
+        les champs de description des acteurs et des objets.</p><p>Avec une
+        syntaxe particulière, il est possible d'avoir un raccourci cliquable
+        dans le rendu du champs description.</p><p>Ce raccourci permet de
+        demander un jet de sauvegarde ou de ressource à tous les joueurs, comme
+        via le menu Gestionnaire de personnages.</p><p></p><p>Dans la syntaxe
+        suivante, il faut remplacer AROBASE par @ : AROBASE[]{}()</p><p><span
+        style="font-family:Caslon, serif">Il faut toujours mettre les 3 éléments
+        [] {} et () même si seul le premier doit obligatoirement contenir une
+        valeur.<br
+        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
+        var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
+        serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+        /><br
+        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
+        var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
+        serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+        />Entre [], il faut écrire la ressource ou la sauvegarde concernée, à
+        savoir : rob, dex, int, per, vol, oeil, verbe, san, bourse, magie<br
+        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
+        var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
+        serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+        />Entre {}, il est possible d'écrire un texte qui sera affiché dans le
+        titre de la demande dans le chat.<br
+        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
+        var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
+        serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+        />Entre (), il est possible de préciser un avantage ou désavantage : --,
+        - , + ou ++ Ne rien mettre pour un jet normal.<br
+        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
+        var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
+        serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+        /><strong>L'avantage est pour le moment à but uniquement informatif, il
+        faudra quand même sélectionner le bon niveau dans la fenêtre de
+        jet.</strong><br
+        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
+        var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
+        serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
+        /><br /></span></p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    ownership:
+      default: -1
+      J3KckPdRTGJ9xWPw: 3
+    flags: {}
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: tenebris
+      systemVersion: 0.8.0
+      createdTime: 1730639453993
+      modifiedTime: 1730639913169
+      lastModifiedBy: J3KckPdRTGJ9xWPw
+    _key: '!journal.pages!ay1SKS5rac4fJGoK.g335yg8JYZzOBtvk'
 folder: null
 flags: {}
 _stats:
