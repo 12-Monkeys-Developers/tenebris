@@ -1,7 +1,7 @@
 {
   "name": "tenebris",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "devDependencies": {
     "@eslint/js": "^9.8.0",
     "@foundryvtt/foundryvtt-cli": "^1.0.2",
@@ -19,5 +19,9 @@
   "dependencies": {
     "gulp": "^5.0.0",
     "gulp-less": "^5.0.0"
+  },
+  "scripts": {
+    "pushLDBtoYML": "node ./tools/pushLDBtoYML.mjs",
+    "pullYMLtoLDB": "node ./tools/pullYMLtoLDB.mjs"
   }
 }
