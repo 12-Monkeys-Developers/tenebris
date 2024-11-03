@@ -101,7 +101,7 @@
           gap: 2px;
           align-items: center;
           .character-pv-value {
-            .form-fields input{
+            .form-fields input {
               flex: none;
               width: 50px;
               margin-left: 10px;
@@ -149,6 +149,11 @@
     .character-caracteristique {
       display: flex;
       align-items: center;
+      .rollable:hover,
+      .rollable:focus {
+        text-shadow: 0 0 8px var(--color-shadow-primary);
+        cursor: pointer;
+      }
       .form-group {
         flex: 1;
         padding-left: 5px;
@@ -176,10 +181,10 @@
         input[type="checkbox"] {
           width: 20px;
         }
-        input[type="checkbox"]:checked{
+        input[type="checkbox"]:checked {
           background-color: rgba(0, 0, 0, 0.1);
         }
-        input[type="checkbox"]:checked::after{
+        input[type="checkbox"]:checked::after {
           color: rgba(0, 0, 0, 0.1);
         }
       }
@@ -203,6 +208,12 @@
     .character-ressource {
       display: flex;
       align-items: center;
+      .rollable:hover,
+      .rollable:focus {
+        text-shadow: 0 0 8px var(--color-shadow-primary);
+        cursor:
+          pointer;
+      }
       .form-group {
         flex: 1;
         padding-left: 5px;
@@ -215,7 +226,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        margin-left: 10px;        
+        margin-left: 10px;
         input {
           display: flex;
           width: 70px;
@@ -229,13 +240,12 @@
         }
         select {
           font-family: var(--font-secondary);
-          font-size: calc(var(--font-size-standard)* 1.5);
+          font-size: calc(var(--font-size-standard) * 1.5);
           text-align: center;
           width: 70px;
         }
       }
     }
-
   }
 
   .character-ressources-play {
@@ -244,14 +254,6 @@
 
   .character-caracteristiques-edit {
     min-width: 400px;
-  }
-
-  .rollable:hover,
-  .rollable:focus {
-    text-shadow: 0 0 8px var(--color-shadow-primary);
-    cursor:
-      url("../assets/dice/d20-red.svg") 32 24,
-      pointer;
   }
 }
 

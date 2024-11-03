@@ -236,6 +236,11 @@ i.tenebris {
   display: flex;
   align-items: center;
 }
+.tenebris .character-main .character-caracteristiques .character-caracteristique .rollable:hover,
+.tenebris .character-main .character-caracteristiques .character-caracteristique .rollable:focus {
+  text-shadow: 0 0 8px var(--color-shadow-primary);
+  cursor: pointer;
+}
 .tenebris .character-main .character-caracteristiques .character-caracteristique .form-group {
   flex: 1;
   padding-left: 5px;
@@ -286,6 +291,11 @@ i.tenebris {
   display: flex;
   align-items: center;
 }
+.tenebris .character-main .character-ressources .character-ressource .rollable:hover,
+.tenebris .character-main .character-ressources .character-ressource .rollable:focus {
+  text-shadow: 0 0 8px var(--color-shadow-primary);
+  cursor: pointer;
+}
 .tenebris .character-main .character-ressources .character-ressource .form-group {
   flex: 1;
   padding-left: 5px;
@@ -313,7 +323,7 @@ i.tenebris {
 }
 .tenebris .character-main .character-ressources .character-ressource .character-ressource-edit select {
   font-family: var(--font-secondary);
-  font-size: calc(var(--font-size-standard)*1.5);
+  font-size: calc(var(--font-size-standard) * 1.5);
   text-align: center;
   width: 70px;
 }
@@ -322,11 +332,6 @@ i.tenebris {
 }
 .tenebris .character-main .character-caracteristiques-edit {
   min-width: 400px;
-}
-.tenebris .character-main .rollable:hover,
-.tenebris .character-main .rollable:focus {
-  text-shadow: 0 0 8px var(--color-shadow-primary);
-  cursor: url("../assets/dice/d20-red.svg") 32 24, pointer;
 }
 .tenebris .character-biography prose-mirror.inactive {
   min-height: 40px;
