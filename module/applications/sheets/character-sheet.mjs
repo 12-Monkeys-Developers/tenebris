@@ -6,7 +6,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["character"],
     position: {
-      width: 1200,
+      width: "auto",
       height: 780,
     },
     window: {
