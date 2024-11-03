@@ -154,6 +154,9 @@ Hooks.once("ready", function () {
   }
   _showUserGuide()
 
+  /**
+   *
+   */
   async function _showUserGuide() {
     if (game.user.isGM) {
       const newVer = game.system.version
@@ -172,14 +175,14 @@ Hooks.once("ready", function () {
 
       let newReleasePack = game.packs.find((p) => p.metadata.name === userGuideCompendiumLabel)
       if (newReleasePack === null || newReleasePack === undefined) {
-        console.log("CTHULHU TENEBRIS | No compendium found for the system guide")
+        console.info("CTHULHU TENEBRIS | No compendium found for the system guide")
         return
       }
       await newReleasePack.getIndex()
 
       let newUserGuide = newReleasePack.index.find((j) => j.name === userGuideJournalName)
       if (newUserGuide === undefined || newUserGuide === null) {
-        console.log("CTHULHU TENEBRIS | No system guide found in the compendium")
+        console.info("CTHULHU TENEBRIS | No system guide found in the compendium")
         return
       }
 
