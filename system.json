@@ -58,6 +58,7 @@
       "system": "tenebris",
       "path": "packs/guide-du-systeme",
       "type": "JournalEntry",
+      "banner": "systems/tenebris/assets/background-small.webp",
       "ownership": {
         "PLAYER": "NONE",
         "TRUSTED": "OBSERVER",
