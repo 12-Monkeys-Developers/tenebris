@@ -50,5 +50,19 @@
   },
   "primaryTokenAttribute": "pv",
   "socket": true,
-  "background": "systems/tenebris/assets/background.webp"
+  "background": "systems/tenebris/assets/background.webp",
+  "packs": [
+    {
+      "name": "userguide",
+      "label": "Guide du système",
+      "system": "tenebris",
+      "path": "packs/guide-du-systeme",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "NONE",
+        "TRUSTED": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ]
 }
