@@ -1,11 +1,12 @@
 {
   "id": "tenebris",
   "title": "Cthulhu Tenebris",
-  "description": "",
-  "version": "0.8.0",
+  "description": "Le système Cthulhu Tenebris pour Foundry VTT<p>Rejoignez la communauté Discord FR : <a href=\"https://discord.gg/pPSDNJk\">https://discord.gg/pPSDNJk</a></p>",
   "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",
   "url": "#{URL}#",
+  "license": "LICENSE",
+  "version": "#{VERSION}#",
   "authors": [
     {
       "name": "Kristov",

@@ -1,3 +1,6 @@
+1.0.0
+- Release officielle
+
 0.9.0
 - Version beta
 
