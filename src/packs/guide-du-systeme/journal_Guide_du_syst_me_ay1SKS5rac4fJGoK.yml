@@ -19,7 +19,7 @@ pages:
         Cthulhu
         Tenebris}</p></li><li><p>@UUID[.boo9pJHjU1HiEMd6]{Acteurs}</p></li><li><p>@UUID[.Qaf4o20TZxBIHvIW]{Objets}</p></li><li><p>@UUID[.0K3jY1Dg4GzQkEbH]{Jets
         de dés}</p></li><li><p>@UUID[.XR7olUjb6GtbWFYr]{Barre
-        d'outils}</p></li><li><p>@UUID[.1jfmPSQQ1zlqLMMy]{Hooks}</p></li></ul><p></p><p>Le
+        d'outils}</p></li><li><p>@UUID[.1jfmPSQQ1zlqLMMy]{Hooks}</p></li><li><p>@UUID[.g335yg8JYZzOBtvk]{Spécial}</p></li></ul><p></p><p>Le
         design du système est basique et permet de jouer en créant soi-même les
         acteurs et objets.</p><p><br />Pour une expérience de jeu améliorée,
         vous pouvez acheter le module Livres de base.</p><p>Ce module améliore
@@ -188,10 +188,10 @@ pages:
         doivent être saisis.</p><h2>Armure</h2><p>Il faut glisser-déposer une
         armure sur un Personnage en mode Edition.</p><p>La catégorie et les
         dégâts ne sont pas liés, et doivent être
-        saisis.</p><h2>Attaque</h2><p>Il faut glisser-déposer une armure sur un
+        saisis.</p><h2>Attaque</h2><p>Il faut glisser-déposer une attaque sur un
         Adversaire en mode Edition.</p><p>La formule des dégâts doit être valide
         : 1d6 ou 2d4+2 par exemple</p><h2>Sortilège</h2><p>Il faut
-        glisser-déposer une armure sur un Personnage en mode
+        glisser-déposer un sortilège sur un Personnage en mode
         Edition.</p><h2>Talent</h2><p>Il faut glisser-déposer un talent sur un
         objet de type Voie en mode Edition.</p><p>Un talent ne peut pas être
         attribué seul à un personnage, il faut passer par une voie.</p><p>Appris
@@ -275,7 +275,7 @@ pages:
         sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"><span
         style="font-family:Caslon, sans-serif">Le MJ peut valider cette dépense
         via un bouton présent dans le message : le nombre de points total
-        diminue alors de 1.</span></p><p></p><h2>Gestionnaire de
+        diminue alors de 1.</span></p><p>Pour changer la valeur de la roue de Fortune, il faut passer par l'option du système. Voir la partie Options.</p><p></p><h2>Gestionnaire de
         Personnages</h2><p>Cette fenêtre affiche les personnages des joueurs
         connectés.</p><p>Il faut que le joueur ait sélectionné un personnage
         lors de la connexion pour qu'il apparaisse dans le tableau.</p><p>Un
