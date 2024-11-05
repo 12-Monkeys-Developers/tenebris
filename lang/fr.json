@@ -394,7 +394,7 @@
       "success": "Réussite",
       "failure": "Echec",
       "resourceLost": "Ressource perdue",
-      "displayArmor": "{targetName} a une armure de {targetArmor}. Dégâts réels : {realDamage}"
+      "displayArmor": "{targetName} a une armure de {targetArmor}. <br>Dégâts réels : {realDamage}"
     },
     "Tooltip": {
       "learnedTalents": "Les talents appris sont en gras",
