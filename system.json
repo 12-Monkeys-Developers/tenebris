@@ -59,7 +59,7 @@
       "system": "tenebris",
       "path": "packs/guide-du-systeme",
       "type": "JournalEntry",
-      "banner": "systems/tenebris/assets/bannire_cthulhu_tenebris.webp",
+      "banner": "systems/tenebris/assets/banniere_cthulhu_tenebris.webp",
       "ownership": {
         "PLAYER": "NONE",
         "TRUSTED": "OBSERVER",
