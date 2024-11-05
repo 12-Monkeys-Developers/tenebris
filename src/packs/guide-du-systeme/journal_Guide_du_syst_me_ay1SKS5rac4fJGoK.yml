@@ -459,7 +459,7 @@ pages:
         dans le rendu du champs description.</p><p>Ce raccourci permet de
         demander un jet de sauvegarde ou de ressource à tous les joueurs, comme
         via le menu Gestionnaire de personnages.</p><p></p><p>Dans la syntaxe
-        suivante, il faut remplacer AROBASE par @ : AROBASE[]{}()</p><p><span
+        suivante, il faut remplacer AROBASE par @ : AROBASEjet[]{}()</p><p><span
         style="font-family:Caslon, serif">Il faut toujours mettre les 3 éléments
         [] {} et () même si seul le premier doit obligatoirement contenir une
         valeur.<br
