@@ -18,6 +18,7 @@
 
 <h2>Contributeurs</h2>
 <p>Ce système est développé par Kristov, et publié avec l'accord des auteurs et ayants droits.</p>
+<p>La bannière et le tour de token ont été mis à disposition gracieusement par Pretre/</p>
 
 <h2>Communauté</h2>
 
