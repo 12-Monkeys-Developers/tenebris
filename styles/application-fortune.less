@@ -3,26 +3,44 @@
     font-size: calc(var(--font-size-standard) * 1.2);
     color: var(--color-light-1);
 
+    menu {
+        .rollable:hover,
+        .rollable:focus {
+          text-shadow: 0 0 8px var(--color-shadow-primary);
+        }
+    }
+
     section {
         background-image: url("../assets/background-small.webp");
         background-repeat: no-repeat;
         background-size: 100% 100%;
+        padding: 0;
     }
      
     .application-fortune {
         display: flex;
         flex: 1;
         flex-direction: column;
-        justify-content: center;
+        
         align-items: center;
+        //align-items: center;
         font-size: calc(var(--font-size-standard) * 3);
-        padding-bottom: 70px;
         button {
             color: var(--color-light-1);
             font-size: calc(var(--font-size-standard) * 1.2);
-            margin-top: 25px;
+            margin-top: 10px;
             border: none;
             background-color: inherit;
         }
+    }
+
+    .application-fortune-gm {
+        //padding-right: 50px;
+        justify-content: flex-end;
+    }
+
+    .application-fortune-player {
+        //padding-right: 20px;
+        justify-content: space-between
     }
 }

@@ -1138,26 +1138,35 @@ input[name="selectAvantages"] {
   font-size: calc(var(--font-size-standard) * 1.2);
   color: var(--color-light-1);
 }
+#tenebris-application-fortune menu .rollable:hover,
+#tenebris-application-fortune menu .rollable:focus {
+  text-shadow: 0 0 8px var(--color-shadow-primary);
+}
 #tenebris-application-fortune section {
   background-image: url("../assets/background-small.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  padding: 0;
 }
 #tenebris-application-fortune .application-fortune {
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   font-size: calc(var(--font-size-standard) * 3);
-  padding-bottom: 70px;
 }
 #tenebris-application-fortune .application-fortune button {
   color: var(--color-light-1);
   font-size: calc(var(--font-size-standard) * 1.2);
-  margin-top: 25px;
+  margin-top: 10px;
   border: none;
   background-color: inherit;
+}
+#tenebris-application-fortune .application-fortune-gm {
+  justify-content: flex-end;
+}
+#tenebris-application-fortune .application-fortune-player {
+  justify-content: space-between;
 }
 #tenebris-application-manager {
   display: flex;

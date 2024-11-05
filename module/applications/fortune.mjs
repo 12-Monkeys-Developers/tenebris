@@ -15,6 +15,7 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
     window: {
       contentClasses: ["tenebris-fortune"],
       title: "TENEBRIS.Fortune.title",
+      controls: [],
     },
     position: {
       width: 200,
@@ -27,7 +28,29 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
     },
     actions: {
       fortune: TenebrisFortune.#requestFortune,
+      increaseFortune: TenebrisFortune.#increaseFortune,
+      decreaseFortune: TenebrisFortune.#decreaseFortune,
     },
+  }
+
+  /** @override */
+  _getHeaderControls() {
+    const controls = super._getHeaderControls()
+    if (game.user.isGM) {
+      controls.push(
+        {
+          action: "increaseFortune",
+          icon: "fa fa-plus",
+          label: "Augmenter",
+        },
+        {
+          action: "decreaseFortune",
+          icon: "fa fa-minus",
+          label: "Diminuer",
+        },
+      )
+    }
+    return controls
   }
 
   /** @override */
@@ -65,6 +88,22 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
         userId: game.user.id,
       },
     })
+  }
+
+  static async #increaseFortune(event, target) {
+    console.log("increase Fortune", event, target)
+    const currentValue = game.settings.get("tenebris", "fortune")
+    const newValue = currentValue + 1
+    await game.settings.set("tenebris", "fortune", newValue)
+  }
+
+  static async #decreaseFortune(event, target) {
+    console.log("decrease Fortune", event, target)
+    const currentValue = game.settings.get("tenebris", "fortune")
+    if (currentValue > 0) {
+      const newValue = currentValue - 1
+      await game.settings.set("tenebris", "fortune", newValue)
+    }
   }
 
   /**

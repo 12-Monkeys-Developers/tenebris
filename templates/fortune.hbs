@@ -1,9 +1,9 @@
 {{!log "fortune" this}}
-<div class="application-fortune">
-       <div class="application-fortune-value">{{fortune}}</div>
-       {{#unless isGM}}
-            <button type="button" class="action-button frame-brown" data-action="fortune" data-user-id={{userId}}>
-                    <label>Dépenser</label>
-            </button>
-        {{/unless}}
+<div class="application-fortune application-fortune-{{ifThen isGM 'gm' 'player'}}">
+  {{#unless isGM}}
+    <button type="button" class="action-button frame-brown" data-action="fortune" data-user-id={{userId}}>
+      <label>Dépenser</label>
+    </button>
+  {{/unless}}
+  <div class="application-fortune-value">{{fortune}}</div>
 </div>
