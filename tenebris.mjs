@@ -85,6 +85,7 @@ Hooks.once("init", function () {
     config: true,
     type: Number,
     default: 0,
+    requiresReload: true,
   })
 
   game.settings.register("tenebris", "worldKey", {
