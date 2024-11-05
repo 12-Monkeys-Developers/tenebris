@@ -1,5 +1,3 @@
-import TenebrisFortune from "./applications/fortune.mjs"
-import TenebrisManager from "./applications/manager.mjs"
 /**
  * Menu spécifique au système
  */
@@ -15,7 +13,9 @@ export function initControlButtons() {
       icon: "fa-solid fa-clover",
       button: true,
       onClick: () => {
-        game.system.applicationFortune.render(true)
+        if (!foundry.applications.instances.has("tenebris-application-fortune")) {
+          game.system.applicationFortune.render(true)
+        } else game.system.applicationFortune.close()
       },
     })
 
@@ -26,7 +26,9 @@ export function initControlButtons() {
         icon: "fa-solid fa-users",
         button: true,
         onClick: () => {
-          game.system.applicationManager.render(true)
+          if (!foundry.applications.instances.has("tenebris-application-manager")) {
+            game.system.applicationManager.render(true)
+          } else game.system.applicationManager.close()
         },
       })
     }

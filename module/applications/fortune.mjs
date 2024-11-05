@@ -35,7 +35,7 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
 
   /** @override */
   _getHeaderControls() {
-    const controls = super._getHeaderControls()
+    const controls = []
     if (game.user.isGM) {
       controls.push(
         {
