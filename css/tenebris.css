@@ -34,6 +34,9 @@ i.tenebris {
   font-size: calc(var(--font-size-standard) * 1.2);
   background-image: var(--background-image-base);
 }
+.application.dialog.tenebris button:hover {
+  background: var(--color-dark-6);
+}
 .application.dialog.tenebris .legend {
   font-family: var(--font-primary);
 }
@@ -325,12 +328,12 @@ i.tenebris {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.5);
   text-align: center;
-  width: 70px;
+  width: 75px;
 }
 .tenebris .character-main .character-ressources-play {
   min-width: 235px;
 }
-.tenebris .character-main .character-caracteristiques-edit {
+.tenebris .character-main .character-ressources-edit {
   min-width: 400px;
 }
 .tenebris .character-biography prose-mirror.inactive {
