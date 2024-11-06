@@ -38,8 +38,12 @@
             {{/if}}
         </div>
      {{/if}}
-     {{#if (and isGM isDamage hasTarget)}}
-            {{localize "TENEBRIS.Roll.displayArmor" targetName=targetName targetArmor=targetArmor realDamage=realDamage}}
+     {{#if isDamage}}
+        <div>
+            {{#if (and isGM hasTarget)}}
+                    {{{localize "TENEBRIS.Roll.displayArmor" targetName=targetName targetArmor=targetArmor realDamage=realDamage}}}
+            {{/if}}
+        </div>
      {{/if}}
     {{#unless isPrivate}}
         <div class="dice-result">
