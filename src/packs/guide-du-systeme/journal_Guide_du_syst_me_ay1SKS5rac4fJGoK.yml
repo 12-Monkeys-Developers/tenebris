@@ -275,15 +275,16 @@ pages:
         sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"><span
         style="font-family:Caslon, sans-serif">Le MJ peut valider cette dépense
         via un bouton présent dans le message : le nombre de points total
-        diminue alors de 1.</span></p><p>Pour changer la valeur de la roue de Fortune, il faut passer par l'option du système. Voir la partie Options.</p><p></p><h2>Gestionnaire de
-        Personnages</h2><p>Cette fenêtre affiche les personnages des joueurs
-        connectés.</p><p>Il faut que le joueur ait sélectionné un personnage
-        lors de la connexion pour qu'il apparaisse dans le tableau.</p><p>Un
-        clic sur l'entête d'une colonne demandera à tous les joueurs un jet de
-        sauvegarde ou de ressource. Le joueur a un bouton dans le message pour
-        faire le jet de dés.</p><p>Un clic sur une caractéristique ou une
-        sauvegarde d'un joueur enverra le même message mais uniquement au joueur
-        concerné.</p><p></p>
+        diminue alors de 1.</span></p><p>Pour changer la valeur de la roue de
+        Fortune, il faut passer par l'option du système. Voir la partie
+        Options.</p><p></p><h2>Gestionnaire de Personnages</h2><p>Cette fenêtre
+        affiche les personnages des joueurs connectés.</p><p>Il faut que le
+        joueur ait sélectionné un personnage lors de la connexion pour qu'il
+        apparaisse dans le tableau.</p><p>Un clic sur l'entête d'une colonne
+        demandera à tous les joueurs un jet de sauvegarde ou de ressource. Le
+        joueur a un bouton dans le message pour faire le jet de dés.</p><p>Un
+        clic sur une caractéristique ou une sauvegarde d'un joueur enverra le
+        même message mais uniquement au joueur concerné.</p><p></p>
     video:
       controls: true
       volume: 0.5
@@ -382,13 +383,17 @@ pages:
         l'acteur.</p><h2>Objet</h2><p>Pas de support</p><h2>Page de
         Journal</h2><p>Le raccourci ouvre le journal et se positionne sur la
         page</p><h2>Caractéristique d'un personnage</h2><p>Le raccourci ouvre la
-        fenêtre Jet de sauvegarde pour le personnage en
-        question.</p><h2>Ressource d'un personnage</h2><p>Le raccourci ouvre la
-        fenêtre Jet de ressource pour le personnage en question.</p><h2>Arme
-        d'un personnage</h2><p>Le raccourci ouvre la fenêtre de jet de dégâts
-        pour le personnage en question.</p><h2>Attaque d'un adversaire</h2><p>Le
-        raccourci ouvre la fenêtre de jet d'attaque pour l'adversaire en
-        question.</p><p></p>
+        fenêtre Jet de sauvegarde pour le personnage en question.<br />Par
+        défaut la macro créée est de type
+        game.actors.get('ID_DU_PERSONNAGE').system.roll('save', 'rob', '=');<br
+        />Il est possible de remplacer = par --, -, + ou ++ pour avoir une
+        valeur déjà positionnée dans la fenêtre de jet pour le champ Avantages
+        et désavantages.</p><h2>Ressource d'un personnage</h2><p>Le raccourci
+        ouvre la fenêtre Jet de ressource pour le personnage en
+        question.</p><h2>Arme d'un personnage</h2><p>Le raccourci ouvre la
+        fenêtre de jet de dégâts pour le personnage en question.</p><h2>Attaque
+        d'un adversaire</h2><p>Le raccourci ouvre la fenêtre de jet d'attaque
+        pour l'adversaire en question.</p><p></p>
     video:
       controls: true
       volume: 0.5
@@ -404,8 +409,8 @@ pages:
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
-      modifiedTime: null
-      lastModifiedBy: null
+      modifiedTime: 1730929939143
+      lastModifiedBy: nHVglo5sRJirKK9h
     _key: '!journal.pages!ay1SKS5rac4fJGoK.XR7olUjb6GtbWFYr'
   - sort: 650000
     name: Hooks
@@ -481,17 +486,9 @@ pages:
         var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
         serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
         />Entre (), il est possible de préciser un avantage ou désavantage : --,
-        - , + ou ++ Ne rien mettre pour un jet normal.<br
-        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
-        var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
-        serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
-        /><strong>L'avantage est pour le moment à but uniquement informatif, il
-        faudra quand même sélectionner le bon niveau dans la fenêtre de
-        jet.</strong><br
-        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
-        var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
-        serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
-        /><br /></span></p>
+        - , + ou ++ Ne rien mettre pour un jet normal.</span></p><p><span
+        style="font-family:Caslon, serif">L'avantage ou désavantage sera
+        prépositionné dans la fenêtre de jet.<br /></span></p><p></p>
     video:
       controls: true
       volume: 0.5
@@ -507,8 +504,8 @@ pages:
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: 1730639453993
-      modifiedTime: 1730639913169
-      lastModifiedBy: J3KckPdRTGJ9xWPw
+      modifiedTime: 1730929632350
+      lastModifiedBy: nHVglo5sRJirKK9h
     _key: '!journal.pages!ay1SKS5rac4fJGoK.g335yg8JYZzOBtvk'
 folder: null
 flags: {}
