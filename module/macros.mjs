@@ -28,7 +28,10 @@ export class Macros {
         break
 
       case "roll":
-        const rollCommand = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}');`
+        const rollCommand =
+          dropData.rollType === "save"
+            ? `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}', '=');`
+            : `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}');`
         const rollName = `${game.i18n.localize("TENEBRIS.Label.jet")} ${game.i18n.localize(`TENEBRIS.Manager.${dropData.rollTarget}`)}`
         this.createMacro(slot, rollName, rollCommand, "icons/svg/d20-grey.svg")
         break

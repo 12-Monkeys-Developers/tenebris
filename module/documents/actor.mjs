@@ -210,13 +210,11 @@ export default class TenebrisActor extends Actor {
 
   async rollResource(resource) {
     if (this.type !== "character") return
-    const rollValue = this.system.ressources[resource].valeur
-    await this.system.roll(ROLL_TYPE.RESOURCE, resource, rollValue)
+    await this.system.roll(ROLL_TYPE.RESOURCE, resource)
   }
 
-  async rollSave(save) {
+  async rollSave(save, avantage) {
     if (this.type !== "character") return
-    const rollValue = this.system.caracteristiques[save].valeur
-    await this.system.roll(ROLL_TYPE.SAVE, save, rollValue)
+    await this.system.roll(ROLL_TYPE.SAVE, save, avantage)
   }
 }

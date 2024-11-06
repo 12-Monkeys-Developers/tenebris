@@ -116,9 +116,10 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
    * Rolls a dice for a character.
    * @param {("save"|"resource|damage")} rollType The type of the roll.
    * @param {number} rollTarget The target value for the roll. Which caracteristic or resource. If the roll is a damage roll, this is the id of the item.
+   * @param {"="|"+"|"++"|"-"|"--"} rollAdvantage If there is an avantage (+), a disadvantage (-), a double advantage (++), a double disadvantage (--) or a normal roll (=).
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
-  async roll(rollType, rollTarget) {
+  async roll(rollType, rollTarget, rollAdvantage = "=") {
     let rollValue
     let opponentTarget
     switch (rollType) {
@@ -137,7 +138,7 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
         // Handle other cases or do nothing
         break
     }
-    await this._roll(rollType, rollTarget, rollValue, opponentTarget)
+    await this._roll(rollType, rollTarget, rollValue, opponentTarget, rollAdvantage)
   }
 
   /**
@@ -146,9 +147,10 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
    * @param {number} rollTarget The target value for the roll. Which caracteristic or resource. If the roll is a damage roll, this is the id of the item.
    * @param {number} rollValue The value of the roll. If the roll is a damage roll, this is the dice to roll.
    * @param {Token} opponentTarget The target of the roll : used for save rolls to get the oppponent's malus.
+   * @param {"="|"+"|"++"|"-"|"--"} rollAdvantage If there is an avantage (+), a disadvantage (-), a double advantage (++), a double disadvantage (--) or a normal roll (=).
    * @returns {Promise<null>} - A promise that resolves to null if the roll is cancelled.
    */
-  async _roll(rollType, rollTarget, rollValue, opponentTarget = undefined) {
+  async _roll(rollType, rollTarget, rollValue, opponentTarget = undefined, rollAdvantage = "=") {
     const hasTarget = opponentTarget !== undefined
     let roll = await TenebrisRoll.prompt({
       rollType,
@@ -159,6 +161,7 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
       actorImage: this.parent.img,
       hasTarget,
       target: opponentTarget,
+      rollAdvantage,
     })
     if (!roll) return null
 

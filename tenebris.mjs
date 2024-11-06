@@ -230,9 +230,10 @@ Hooks.on("renderChatMessage", (message, html, data) => {
         const btn = $(event.currentTarget)
         const type = btn.data("type")
         const value = btn.data("value")
+        const avantage = btn.data("avantage") ?? "="
         const character = game.user.character
         if (type === SYSTEM.ROLL_TYPE.RESOURCE) character.rollResource(value)
-        else if (type === SYSTEM.ROLL_TYPE.SAVE) character.rollSave(value)
+        else if (type === SYSTEM.ROLL_TYPE.SAVE) character.rollSave(value, avantage)
       })
     }
   }

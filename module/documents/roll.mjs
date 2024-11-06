@@ -100,6 +100,10 @@ export default class TenebrisRoll extends Roll {
     return this.options.realDamage
   }
 
+  get rollAdvantage() {
+    return this.options.rollAdvantage
+  }
+
   /**
    * Generates introductory text based on the roll type.
    *
@@ -150,6 +154,7 @@ export default class TenebrisRoll extends Roll {
    * @param {string} options.rollType The type of roll being performed (e.g., RESOURCE, DAMAGE, ATTACK, SAVE).
    * @param {string} options.rollValue The initial value or formula for the roll.
    * @param {string} options.rollTarget The target of the roll.
+   * @param {"="|"+"|"++"|"-"|"--"} options.rollAdvantage If there is an avantage (+), a disadvantage (-), a double advantage (++), a double disadvantage (--) or a normal roll (=).
    * @param {string} options.actorId The ID of the actor performing the roll.
    * @param {string} options.actorName The name of the actor performing the roll.
    * @param {string} options.actorImage The image of the actor performing the roll.
@@ -264,6 +269,8 @@ export default class TenebrisRoll extends Roll {
       malus,
       targetName,
       targetArmor,
+      rollAdvantage: this._convertAvantages(options.rollAdvantage),
+      rangeAdvantage: this._convertRollAdvantageToRange(options.rollAdvantage),
     }
     const content = await renderTemplate("systems/tenebris/templates/roll-dialog.hbs", dialogContext)
 
@@ -541,7 +548,7 @@ export default class TenebrisRoll extends Roll {
     )
   }
 
-  // Used in the avantages select : convert the selected value to the corresponding string
+  // Used in the avantages select and with the rollAdvantage parameter: convert the selected value to the corresponding string
   static _convertAvantages(value) {
     switch (value) {
       case "1":
@@ -554,6 +561,32 @@ export default class TenebrisRoll extends Roll {
         return game.i18n.localize("TENEBRIS.Roll.avantage")
       case "5":
         return game.i18n.localize("TENEBRIS.Roll.doubleAvantage")
+      case "--":
+        return game.i18n.localize("TENEBRIS.Roll.doubleDesavantage")
+      case "-":
+        return game.i18n.localize("TENEBRIS.Roll.desavantage")
+      case "=":
+        return game.i18n.localize("TENEBRIS.Roll.normal")
+      case "+":
+        return game.i18n.localize("TENEBRIS.Roll.avantage")
+      case "++":
+        return game.i18n.localize("TENEBRIS.Roll.doubleAvantage")
+    }
+  }
+
+  // Used in the rollAdvantage parameter: convert the selected value to the corresponding range value
+  static _convertRollAdvantageToRange(value) {
+    switch (value) {
+      case "--":
+        return 1
+      case "-":
+        return 2
+      case "=":
+        return 3
+      case "+":
+        return 4
+      case "++":
+        return 5
     }
   }
 }

@@ -111,6 +111,7 @@ export default class TenebrisManager extends HandlebarsApplicationMixin(Applicat
         text: text,
         rollType: type,
         value: value,
+        avantage: avantage,
       }),
       flags: { tenebris: { typeMessage: "askRoll" } },
     })
