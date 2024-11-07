@@ -48,8 +48,8 @@ pages:
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
-      modifiedTime: 1730567655076
-      lastModifiedBy: 97IvWPMSm991gl6a
+      modifiedTime: 1730969313655
+      lastModifiedBy: BQoYE3oKXr0TK52W
     _key: '!journal.pages!ay1SKS5rac4fJGoK.7v25so1ZqZ0EvwkV'
   - sort: 200000
     name: Options
@@ -86,8 +86,8 @@ pages:
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
-      modifiedTime: null
-      lastModifiedBy: null
+      modifiedTime: 1730969320153
+      lastModifiedBy: BQoYE3oKXr0TK52W
     _key: '!journal.pages!ay1SKS5rac4fJGoK.vfLYzlMNrj0JZbkv'
   - sort: 300000
     name: Acteurs
@@ -168,8 +168,8 @@ pages:
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
-      modifiedTime: null
-      lastModifiedBy: null
+      modifiedTime: 1730969415840
+      lastModifiedBy: BQoYE3oKXr0TK52W
     _key: '!journal.pages!ay1SKS5rac4fJGoK.boo9pJHjU1HiEMd6'
   - sort: 400000
     name: Objets
@@ -246,37 +246,16 @@ pages:
         <p>Il faut qu'une scène existe dans le monde pour que le menu apparaisse
         dans la partie gauche de Foundry, à la fin.</p><p>Ce menu propose deux
         actions :</p><ul><li><p>Roue de Fortune</p></li><li><p>Gestionnaire de
-        personnages</p></li></ul><h2><br />Roue de Fortune</h2><p><span
-        style="font-family:Caslon, sans-serif">Un clic sur le menu permet
-        d'ouvrir la fenêtre Roue de Fortune.</span></p><p
-        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
-        var(--color-scrollbar-track);margin:0.5em 0px;color:rgb(25, 24,
-        19);font-family:Caslon,
-        sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"><span
-        style="font-family:Caslon, sans-serif">Cette roue apparait pour les
-        joueuses et le MJ.</span></p><p
-        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
-        var(--color-scrollbar-track);margin:0.5em 0px;color:rgb(25, 24,
-        19);font-family:Caslon,
-        sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"><span
-        style="font-family:Caslon, sans-serif">Elle affiche le nombre de points
-        de Fortune restant.</span></p><p
-        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
-        var(--color-scrollbar-track);margin:0.5em 0px;color:rgb(25, 24,
-        19);font-family:Caslon,
-        sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"><span
-        style="font-family:Caslon, sans-serif">Pour les joueurs, un bouton
-        Dépenser apparait aussi. En cliquant sur ce bouton, un message privé est
-        envoyé au MJ indiquant que le joueur souhaite utiliser un point de
-        Fortune.</span></p><p
-        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
-        var(--color-scrollbar-track);margin:0.5em 0px;color:rgb(25, 24,
-        19);font-family:Caslon,
-        sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"><span
-        style="font-family:Caslon, sans-serif">Le MJ peut valider cette dépense
-        via un bouton présent dans le message : le nombre de points total
-        diminue alors de 1.</span></p><p>Pour changer la valeur de la roue de
-        Fortune, il faut passer par l'option du système. Voir la partie
+        personnages</p></li></ul><h2><br />Roue de Fortune</h2><p>Un clic sur le
+        menu permet d'ouvrir la fenêtre Roue de Fortune.</p><p>Cette roue
+        apparait pour les joueuses et le MJ.</p><p>Elle affiche le nombre de
+        points de Fortune restant.</p><p><span style="font-family:Caslon,
+        sans-serif">Pour les joueurs, un bouton Dépenser apparait aussi. En
+        cliquant sur ce bouton, un message privé est envoyé au MJ indiquant que
+        le joueur souhaite utiliser un point de Fortune.</span></p><p>Le MJ peut
+        valider cette dépense via un bouton présent dans le message : le nombre
+        de points total diminue alors de 1.</p><p>Pour changer la valeur de la
+        roue de Fortune, il faut passer par l'option du système. Voir la partie
         Options.</p><p></p><h2>Gestionnaire de Personnages</h2><p>Cette fenêtre
         affiche les personnages des joueurs connectés.</p><p>Il faut que le
         joueur ait sélectionné un personnage lors de la connexion pour qu'il
@@ -300,8 +279,8 @@ pages:
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
-      modifiedTime: null
-      lastModifiedBy: null
+      modifiedTime: 1730969408672
+      lastModifiedBy: BQoYE3oKXr0TK52W
     _key: '!journal.pages!ay1SKS5rac4fJGoK.PO8XO7Gy9Cc1nyli'
   - sort: 450000
     name: Jets de dés
@@ -360,8 +339,8 @@ pages:
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
-      modifiedTime: null
-      lastModifiedBy: null
+      modifiedTime: 1730969448152
+      lastModifiedBy: BQoYE3oKXr0TK52W
     _key: '!journal.pages!ay1SKS5rac4fJGoK.0K3jY1Dg4GzQkEbH'
   - sort: 550000
     name: Barre d'outils
@@ -384,11 +363,11 @@ pages:
         Journal</h2><p>Le raccourci ouvre le journal et se positionne sur la
         page</p><h2>Caractéristique d'un personnage</h2><p>Le raccourci ouvre la
         fenêtre Jet de sauvegarde pour le personnage en question.<br />Par
-        défaut la macro créée est de type
-        game.actors.get('ID_DU_PERSONNAGE').system.roll('save', 'rob', '=');<br
+        défaut la macro créée a la syntaxe suivante
+        :game.actors.get('ID_DU_PERSONNAGE').system.roll('save', 'rob', '=');<br
         />Il est possible de remplacer = par --, -, + ou ++ pour avoir une
-        valeur déjà positionnée dans la fenêtre de jet pour le champ Avantages
-        et désavantages.</p><h2>Ressource d'un personnage</h2><p>Le raccourci
+        valeur déjà positionné pour le champ Avantages et désavantages dans la
+        fenêtre de jet.</p><h2>Ressource d'un personnage</h2><p>Le raccourci
         ouvre la fenêtre Jet de ressource pour le personnage en
         question.</p><h2>Arme d'un personnage</h2><p>Le raccourci ouvre la
         fenêtre de jet de dégâts pour le personnage en question.</p><h2>Attaque
@@ -409,11 +388,11 @@ pages:
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
-      modifiedTime: 1730929939143
-      lastModifiedBy: nHVglo5sRJirKK9h
+      modifiedTime: 1730969520980
+      lastModifiedBy: BQoYE3oKXr0TK52W
     _key: '!journal.pages!ay1SKS5rac4fJGoK.XR7olUjb6GtbWFYr'
   - sort: 650000
-    name: Hooks
+    name: Hooks (pour les développeurs)
     type: text
     _id: 1jfmPSQQ1zlqLMMy
     system: {}
@@ -424,7 +403,7 @@ pages:
     text:
       format: 1
       content: >-
-        <p>Le système supporte les hooks suivants
+        <p>Le système propose les hooks suivants
         :</p><ul><li><p>tenebris.preRoll : avant la création et l'évaluation du
         Roll</p></li><li><p>tenebris.Roll : après l'évaluation du Roll et le
         calcul des différents éléments post roll</p></li></ul>
@@ -443,11 +422,11 @@ pages:
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
-      modifiedTime: null
-      lastModifiedBy: null
+      modifiedTime: 1730969543004
+      lastModifiedBy: BQoYE3oKXr0TK52W
     _key: '!journal.pages!ay1SKS5rac4fJGoK.1jfmPSQQ1zlqLMMy'
   - sort: 750000
-    name: Spécial
+    name: Syntaxe spéciale
     type: text
     _id: g335yg8JYZzOBtvk
     system: {}
@@ -458,37 +437,36 @@ pages:
     text:
       format: 1
       content: >-
-        <p>Une fonctionnalité spéciale est disponible dans les journaux et dans
-        les champs de description des acteurs et des objets.</p><p>Avec une
-        syntaxe particulière, il est possible d'avoir un raccourci cliquable
-        dans le rendu du champs description.</p><p>Ce raccourci permet de
-        demander un jet de sauvegarde ou de ressource à tous les joueurs, comme
-        via le menu Gestionnaire de personnages.</p><p></p><p>Dans la syntaxe
-        suivante, il faut remplacer AROBASE par @ : AROBASEjet[]{}()</p><p><span
-        style="font-family:Caslon, serif">Il faut toujours mettre les 3 éléments
-        [] {} et () même si seul le premier doit obligatoirement contenir une
-        valeur.<br
+        <p>Une syntaxe spéciale est disponible dans les journaux et dans les
+        champs de description des acteurs et des objets.</p><p>Avec celle-ci, il
+        est possible d'avoir un raccourci cliquable dans le rendu du champs
+        description.</p><p>Ce raccourci permet de demander un jet de sauvegarde
+        ou de ressource à tous les joueurs, comme via le menu Gestionnaire de
+        personnages.</p><p></p><p>Dans la formule qui suit, il faudra remplacer
+        AROBASE par @ lorsque vous l'utiliserez dans vos acteurs ou journaux :
+        AROBASEjet[]{}()</p><p>Il faut <strong>toujours</strong> écrire es 3
+        éléments [] {} et () même si seul le premier doit obligatoirement
+        contenir une valeur.</p><p>Entre [] : il <strong>faut</strong> écrire la
+        ressource ou la sauvegarde concernée, à savoir les mots clés suivants,
+        en minuscule : rob, dex, int, per, vol, oeil, verbe, san, bourse,
+        magie<span style="font-family:Caslon, serif"><br
         style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
         var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
         serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
-        /><br
+        /></span>Entre {} : il est possible d'écrire un texte qui sera affiché
+        dans le titre de la demande dans le chat. <span
+        style="font-family:Caslon, serif"><br
         style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
         var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
         serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
-        />Entre [], il faut écrire la ressource ou la sauvegarde concernée, à
-        savoir : rob, dex, int, per, vol, oeil, verbe, san, bourse, magie<br
-        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
-        var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
-        serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
-        />Entre {}, il est possible d'écrire un texte qui sera affiché dans le
-        titre de la demande dans le chat.<br
-        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
-        var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
-        serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
-        />Entre (), il est possible de préciser un avantage ou désavantage : --,
-        - , + ou ++ Ne rien mettre pour un jet normal.</span></p><p><span
-        style="font-family:Caslon, serif">L'avantage ou désavantage sera
-        prépositionné dans la fenêtre de jet.<br /></span></p><p></p>
+        /></span>Entre () : il est possible de préciser un avantage ou
+        désavantage : --, - , + ou ++ Ne rien mettre pour un jet
+        normal.</p><p>L'avantage ou désavantage sera prépositionné dans la
+        fenêtre de jet. A noter que l'avantage n'est pris en compte que pour les
+        jets de sauvegarde.<br /></p><p>Exemple oour demander un jet de
+        robustesse avec désavantage pour résister à un poison</p><p>La syntaxe
+        sera donc : AROBASESjet[rob]{Résister au poison}(-)</p><p>Le résultat
+        sera : @jet[rob]{Résister au poison}(-)</p><p></p>
     video:
       controls: true
       volume: 0.5
@@ -504,8 +482,8 @@ pages:
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: 1730639453993
-      modifiedTime: 1730929632350
-      lastModifiedBy: nHVglo5sRJirKK9h
+      modifiedTime: 1730970051613
+      lastModifiedBy: BQoYE3oKXr0TK52W
     _key: '!journal.pages!ay1SKS5rac4fJGoK.g335yg8JYZzOBtvk'
 folder: null
 flags: {}
