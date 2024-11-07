@@ -117,10 +117,14 @@ i.tenebris {
 }
 .tenebris .character-main {
   display: flex;
-}
-.tenebris .character-main.character-main-edit {
-  min-width: 1410px;
-  width: 100%;
+  /*&.character-main-play {
+    min-width: 1030px;
+  }
+
+  &.character-main-edit {
+    min-width: 1410px;
+    width: 100%;
+  }*/
 }
 .tenebris .character-main .character-personnage {
   display: flex;
@@ -359,7 +363,6 @@ i.tenebris {
   display: flex;
   align-items: center;
   gap: 10px;
-  justify-content: space-between;
 }
 .tenebris .tab.character-items .talents .talent .item-img {
   width: 50px;
@@ -367,7 +370,7 @@ i.tenebris {
 }
 .tenebris .tab.character-items .weapons {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
 .tenebris .tab.character-items .weapons .weapon {
