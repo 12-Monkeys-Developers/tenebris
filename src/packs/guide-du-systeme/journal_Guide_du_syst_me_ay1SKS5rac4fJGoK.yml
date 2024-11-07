@@ -13,13 +13,12 @@ pages:
       format: 1
       content: >-
         <p>Bienvenue dans le système Cthulhu Tenebris.</p><p>Vous trouverez une
-        description des options, des différents types d'acteurs et d'objets.,
-        ainsi que les fonctionnalités du menu dédié
+        description des différentes fonctionnalités du système
         :</p><ul><li><p>@UUID[.vfLYzlMNrj0JZbkv]{Options}</p></li><li><p>@UUID[.PO8XO7Gy9Cc1nyli]{Menu
         Cthulhu
         Tenebris}</p></li><li><p>@UUID[.boo9pJHjU1HiEMd6]{Acteurs}</p></li><li><p>@UUID[.Qaf4o20TZxBIHvIW]{Objets}</p></li><li><p>@UUID[.0K3jY1Dg4GzQkEbH]{Jets
         de dés}</p></li><li><p>@UUID[.XR7olUjb6GtbWFYr]{Barre
-        d'outils}</p></li><li><p>@UUID[.1jfmPSQQ1zlqLMMy]{Hooks}</p></li><li><p>@UUID[.g335yg8JYZzOBtvk]{Spécial}</p></li></ul><p></p><p>Le
+        d'outils}</p></li><li><p>@UUID[.1jfmPSQQ1zlqLMMy]{Hooks (pour les développeurs)}</p></li><li><p>@UUID[.g335yg8JYZzOBtvk]{Syntaxe spéciale}</p></li></ul><p></p><p>Le
         design du système est basique et permet de jouer en créant soi-même les
         acteurs et objets.</p><p><br />Pour une expérience de jeu améliorée,
         vous pouvez acheter le module Livres de base.</p><p>Ce module améliore
@@ -44,13 +43,13 @@ pages:
     _stats:
       compendiumSource: null
       duplicateSource: null
-      coreVersion: '12.331'
+      coreVersion: "12.331"
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
       modifiedTime: 1730969313655
       lastModifiedBy: BQoYE3oKXr0TK52W
-    _key: '!journal.pages!ay1SKS5rac4fJGoK.7v25so1ZqZ0EvwkV'
+    _key: "!journal.pages!ay1SKS5rac4fJGoK.7v25so1ZqZ0EvwkV"
   - sort: 200000
     name: Options
     type: text
@@ -82,13 +81,13 @@ pages:
     _stats:
       compendiumSource: JournalEntry.ohQ9TGZFmSXMLIEY.JournalEntryPage.vfLYzlMNrj0JZbkv
       duplicateSource: null
-      coreVersion: '12.331'
+      coreVersion: "12.331"
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
       modifiedTime: 1730969320153
       lastModifiedBy: BQoYE3oKXr0TK52W
-    _key: '!journal.pages!ay1SKS5rac4fJGoK.vfLYzlMNrj0JZbkv'
+    _key: "!journal.pages!ay1SKS5rac4fJGoK.vfLYzlMNrj0JZbkv"
   - sort: 300000
     name: Acteurs
     type: text
@@ -164,13 +163,13 @@ pages:
     _stats:
       compendiumSource: JournalEntry.ohQ9TGZFmSXMLIEY.JournalEntryPage.boo9pJHjU1HiEMd6
       duplicateSource: null
-      coreVersion: '12.331'
+      coreVersion: "12.331"
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
       modifiedTime: 1730969415840
       lastModifiedBy: BQoYE3oKXr0TK52W
-    _key: '!journal.pages!ay1SKS5rac4fJGoK.boo9pJHjU1HiEMd6'
+    _key: "!journal.pages!ay1SKS5rac4fJGoK.boo9pJHjU1HiEMd6"
   - sort: 400000
     name: Objets
     type: text
@@ -224,13 +223,13 @@ pages:
     _stats:
       compendiumSource: JournalEntry.ohQ9TGZFmSXMLIEY.JournalEntryPage.Qaf4o20TZxBIHvIW
       duplicateSource: null
-      coreVersion: '12.331'
+      coreVersion: "12.331"
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
       modifiedTime: null
       lastModifiedBy: null
-    _key: '!journal.pages!ay1SKS5rac4fJGoK.Qaf4o20TZxBIHvIW'
+    _key: "!journal.pages!ay1SKS5rac4fJGoK.Qaf4o20TZxBIHvIW"
   - sort: 250000
     name: Menu Cthulhu Tenebris
     type: text
@@ -244,10 +243,9 @@ pages:
       format: 1
       content: >-
         <p>Il faut qu'une scène existe dans le monde pour que le menu apparaisse
-        dans la partie gauche de Foundry, à la fin.</p><p>Ce menu propose deux
-        actions :</p><ul><li><p>Roue de Fortune</p></li><li><p>Gestionnaire de
-        personnages</p></li></ul><h2><br />Roue de Fortune</h2><p>Un clic sur le
-        menu permet d'ouvrir la fenêtre Roue de Fortune.</p><p>Cette roue
+        dans la partie gauche de Foundry, à la fin des menus de Foundry.</p>Cliquer sur un des sous-menus permet de faire apparaitre ou disparaitre la fenêtre concernée.<p>Ce menu propose deux
+        sous-menus :</p><ul><li><p>Roue de Fortune</p></li><li><p>Gestionnaire de
+        personnages</p></li></ul><h2><br />Roue de Fortune</h2><p>Cette roue
         apparait pour les joueuses et le MJ.</p><p>Elle affiche le nombre de
         points de Fortune restant.</p><p><span style="font-family:Caslon,
         sans-serif">Pour les joueurs, un bouton Dépenser apparait aussi. En
@@ -255,8 +253,8 @@ pages:
         le joueur souhaite utiliser un point de Fortune.</span></p><p>Le MJ peut
         valider cette dépense via un bouton présent dans le message : le nombre
         de points total diminue alors de 1.</p><p>Pour changer la valeur de la
-        roue de Fortune, il faut passer par l'option du système. Voir la partie
-        Options.</p><p></p><h2>Gestionnaire de Personnages</h2><p>Cette fenêtre
+        roue de Fortune, vous pouvez passer par le menu dans les options. Voir la partie
+        Options. Mais la façon la plus simple est d'utiliser le menu de la fenêtre Fortune pour augmenter ou diminuer la valeur de 1.</p><p></p><h2>Gestionnaire de Personnages</h2><p>Cette fenêtre
         affiche les personnages des joueurs connectés.</p><p>Il faut que le
         joueur ait sélectionné un personnage lors de la connexion pour qu'il
         apparaisse dans le tableau.</p><p>Un clic sur l'entête d'une colonne
@@ -275,13 +273,13 @@ pages:
     _stats:
       compendiumSource: JournalEntry.ohQ9TGZFmSXMLIEY.JournalEntryPage.PO8XO7Gy9Cc1nyli
       duplicateSource: null
-      coreVersion: '12.331'
+      coreVersion: "12.331"
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
       modifiedTime: 1730969408672
       lastModifiedBy: BQoYE3oKXr0TK52W
-    _key: '!journal.pages!ay1SKS5rac4fJGoK.PO8XO7Gy9Cc1nyli'
+    _key: "!journal.pages!ay1SKS5rac4fJGoK.PO8XO7Gy9Cc1nyli"
   - sort: 450000
     name: Jets de dés
     type: text
@@ -335,13 +333,13 @@ pages:
     _stats:
       compendiumSource: JournalEntry.lGRLvwi6eeaQPqeW.JournalEntryPage.0K3jY1Dg4GzQkEbH
       duplicateSource: null
-      coreVersion: '12.331'
+      coreVersion: "12.331"
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
       modifiedTime: 1730969448152
       lastModifiedBy: BQoYE3oKXr0TK52W
-    _key: '!journal.pages!ay1SKS5rac4fJGoK.0K3jY1Dg4GzQkEbH'
+    _key: "!journal.pages!ay1SKS5rac4fJGoK.0K3jY1Dg4GzQkEbH"
   - sort: 550000
     name: Barre d'outils
     type: text
@@ -384,13 +382,13 @@ pages:
     _stats:
       compendiumSource: JournalEntry.lGRLvwi6eeaQPqeW.JournalEntryPage.XR7olUjb6GtbWFYr
       duplicateSource: null
-      coreVersion: '12.331'
+      coreVersion: "12.331"
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
       modifiedTime: 1730969520980
       lastModifiedBy: BQoYE3oKXr0TK52W
-    _key: '!journal.pages!ay1SKS5rac4fJGoK.XR7olUjb6GtbWFYr'
+    _key: "!journal.pages!ay1SKS5rac4fJGoK.XR7olUjb6GtbWFYr"
   - sort: 650000
     name: Hooks (pour les développeurs)
     type: text
@@ -418,13 +416,13 @@ pages:
     _stats:
       compendiumSource: JournalEntry.lGRLvwi6eeaQPqeW.JournalEntryPage.1jfmPSQQ1zlqLMMy
       duplicateSource: null
-      coreVersion: '12.331'
+      coreVersion: "12.331"
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: null
       modifiedTime: 1730969543004
       lastModifiedBy: BQoYE3oKXr0TK52W
-    _key: '!journal.pages!ay1SKS5rac4fJGoK.1jfmPSQQ1zlqLMMy'
+    _key: "!journal.pages!ay1SKS5rac4fJGoK.1jfmPSQQ1zlqLMMy"
   - sort: 750000
     name: Syntaxe spéciale
     type: text
@@ -444,22 +442,14 @@ pages:
         ou de ressource à tous les joueurs, comme via le menu Gestionnaire de
         personnages.</p><p></p><p>Dans la formule qui suit, il faudra remplacer
         AROBASE par @ lorsque vous l'utiliserez dans vos acteurs ou journaux :
-        AROBASEjet[]{}()</p><p>Il faut <strong>toujours</strong> écrire es 3
-        éléments [] {} et () même si seul le premier doit obligatoirement
+        AROBASEjet[]{}()</p><p>Il faut <strong>toujours</strong> écrire les 3
+        éléments [] {} et (), même si seul le premier doit obligatoirement
         contenir une valeur.</p><p>Entre [] : il <strong>faut</strong> écrire la
         ressource ou la sauvegarde concernée, à savoir les mots clés suivants,
         en minuscule : rob, dex, int, per, vol, oeil, verbe, san, bourse,
-        magie<span style="font-family:Caslon, serif"><br
-        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
-        var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
-        serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
-        /></span>Entre {} : il est possible d'écrire un texte qui sera affiché
+        magie<span style="font-family:Caslon, serif"></span>Entre {} : il est possible d'écrire un texte qui sera affiché
         dans le titre de la demande dans le chat. <span
-        style="font-family:Caslon, serif"><br
-        style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
-        var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Caslon,
-        serif;font-size:16px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:1;text-align:justify;text-indent:0px;text-transform:none;widows:1;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"
-        /></span>Entre () : il est possible de préciser un avantage ou
+        style="font-family:Caslon, serif"></span>Entre () : il est possible de préciser un avantage ou
         désavantage : --, - , + ou ++ Ne rien mettre pour un jet
         normal.</p><p>L'avantage ou désavantage sera prépositionné dans la
         fenêtre de jet. A noter que l'avantage n'est pris en compte que pour les
@@ -478,19 +468,19 @@ pages:
     _stats:
       compendiumSource: null
       duplicateSource: null
-      coreVersion: '12.331'
+      coreVersion: "12.331"
       systemId: tenebris
       systemVersion: 0.8.0
       createdTime: 1730639453993
       modifiedTime: 1730970051613
       lastModifiedBy: BQoYE3oKXr0TK52W
-    _key: '!journal.pages!ay1SKS5rac4fJGoK.g335yg8JYZzOBtvk'
+    _key: "!journal.pages!ay1SKS5rac4fJGoK.g335yg8JYZzOBtvk"
 folder: null
 flags: {}
 _stats:
   compendiumSource: null
   duplicateSource: null
-  coreVersion: '12.331'
+  coreVersion: "12.331"
   systemId: tenebris
   systemVersion: 0.8.0
   createdTime: 1730566635073
@@ -501,5 +491,4 @@ ownership:
   97IvWPMSm991gl6a: 3
 _id: ay1SKS5rac4fJGoK
 sort: 0
-_key: '!journal!ay1SKS5rac4fJGoK'
-
+_key: "!journal!ay1SKS5rac4fJGoK"
