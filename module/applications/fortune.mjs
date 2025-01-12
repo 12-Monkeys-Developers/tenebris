@@ -2,7 +2,7 @@ const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api
 import { SYSTEM } from "../config/system.mjs"
 
 /**
- * An application for configuring the permissions which are available to each User role.
+ * An application for managing the fortune of the game.
  * @extends ApplicationV2
  * @mixes HandlebarsApplication
  * @alias PermissionConfig

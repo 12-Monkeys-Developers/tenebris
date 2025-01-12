@@ -2,12 +2,18 @@ const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api
 import { SYSTEM } from "../config/system.mjs"
 
 /**
- * An application for configuring the permissions which are available to each User role.
+ * An application for managing the players of the game.
  * @extends ApplicationV2
  * @mixes HandlebarsApplication
  * @alias PermissionConfig
  */
 export default class TenebrisManager extends HandlebarsApplicationMixin(ApplicationV2) {
+  constructor(options = {}) {
+    super()
+    Hooks.on("updateActor", () => game.system.applicationManager.render(false))
+    Hooks.on("renderPlayerList", () => game.system.applicationManager.render(false))
+  }
+
   static DEFAULT_OPTIONS = {
     id: "tenebris-application-manager",
     tag: "form",

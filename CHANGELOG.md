@@ -1,3 +1,6 @@
+1.1.1
+- Gestionnaire de Personnages : un changement sur un acteur ou un joueur rafraichit les informations
+
 1.1.0
 Améliorations
 - Ajout d'une bannière et d'un contour de token dans le répertoire asset (gracieusement offert par Pretre)
