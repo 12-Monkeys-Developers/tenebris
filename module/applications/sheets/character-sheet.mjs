@@ -168,7 +168,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
     const doc = this.document
     switch (partId) {
       case "main":
-        context.enrichedBiens = await TextEditor.enrichHTML(doc.system.biens, { async: true })
+        context.enrichedBiens = await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.biens, { async: true })
         break
       case "items":
         context.tab = context.tabs.items
@@ -182,9 +182,9 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         break
       case "biography":
         context.tab = context.tabs.biography
-        context.enrichedDescription = await TextEditor.enrichHTML(doc.system.description, { async: true })
-        context.enrichedLangues = await TextEditor.enrichHTML(doc.system.langues, { async: true })
-        context.enrichedNotes = await TextEditor.enrichHTML(doc.system.notes, { async: true })
+        context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.description, { async: true })
+        context.enrichedLangues = await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.langues, { async: true })
+        context.enrichedNotes = await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.notes, { async: true })
         break
     }
     return context
@@ -226,7 +226,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
    */
   async _onDrop(event) {
     if (!this.isEditable || !this.isEditMode) return
-    const data = TextEditor.getDragEventData(event)
+    const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event)
 
     // Handle different data types
     switch (data.type) {

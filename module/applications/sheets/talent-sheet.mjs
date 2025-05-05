@@ -22,7 +22,7 @@ export default class TenebrisTalentSheet extends TenebrisItemSheet {
   /** @override */
   async _prepareContext() {
     const context = await super._prepareContext()
-    context.enrichedDescription = await TextEditor.enrichHTML(this.document.system.improvedDescription, { async: true })
+    context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.improvedDescription, { async: true })
     context.canProgress = this.document.system.canProgress
     return context
   }

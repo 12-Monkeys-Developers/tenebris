@@ -67,8 +67,8 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
     switch (partId) {
       case "main":
         context.tab = context.tabs.main
-        context.enrichedBiens = await TextEditor.enrichHTML(this.document.system.biens, { async: true })
-        context.enrichedLangues = await TextEditor.enrichHTML(this.document.system.langues, { async: true })
+        context.enrichedBiens = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.biens, { async: true })
+        context.enrichedLangues = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.langues, { async: true })
         break
       case "talents":
         context.tab = context.tabs.talents
@@ -93,7 +93,7 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
    * @protected
    */
   async _onDrop(event) {
-    const data = TextEditor.getDragEventData(event)
+    const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event)
 
     switch (data.type) {
       case "Item":
