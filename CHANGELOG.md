@@ -1,3 +1,6 @@
+1.1.2
+- Dernière version pour Foundry V12 : fixe la version maximum à 12
+
 1.1.1
 - Gestionnaire de Personnages : un changement sur un acteur ou un joueur rafraichit les informations
 

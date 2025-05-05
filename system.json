@@ -15,7 +15,8 @@
   ],
   "compatibility": {
     "minimum": "12",
-    "verified": "12"
+    "verified": "12",
+    "maximum": "12"
   },
   "esmodules": ["tenebris.mjs"],
   "styles": ["css/tenebris.css"],
