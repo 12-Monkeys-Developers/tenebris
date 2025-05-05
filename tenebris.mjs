@@ -50,11 +50,11 @@ Hooks.once("init", function () {
   }
 
   // Register sheet application classes
-  foundry.documents.collections.Actors.unregisterSheet("core", ActorSheet)
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet)
   foundry.documents.collections.Actors.registerSheet("tenebris", applications.TenebrisCharacterSheet, { types: ["character"], makeDefault: true })
   foundry.documents.collections.Actors.registerSheet("tenebris", applications.TenebrisOpponentSheet, { types: ["opponent"], makeDefault: true })
 
-  foundry.documents.collections.Items.unregisterSheet("core", ItemSheet)
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ActorSheet)
   foundry.documents.collections.Items.registerSheet("tenebris", applications.TenebrisTalentSheet, { types: ["talent"], makeDefault: true })
   foundry.documents.collections.Items.registerSheet("tenebris", applications.TenebrisPathSheet, { types: ["path"], makeDefault: true })
   foundry.documents.collections.Items.registerSheet("tenebris", applications.TenebrisWeaponSheet, { types: ["weapon"], makeDefault: true })
@@ -99,10 +99,6 @@ Hooks.once("init", function () {
   // Activate socket handler
   game.socket.on(`system.${SYSTEM.id}`, handleSocketEvent)
 
-  // Pre-localize configuration objects
-  // TODO : encore d'actualité ?
-  // preLocalizeConfig()
-
   initControlButtons()
 
   setupTextEnrichers()
@@ -123,24 +119,6 @@ Hooks.once("init", function () {
   console.info("CTHULHU TENEBRIS | System Initialized")
 })
 
-/**
- * Perform one-time configuration of system configuration objects.
- */
-function preLocalizeConfig() {
-  const localizeConfigObject = (obj, keys) => {
-    for (let o of Object.values(obj)) {
-      for (let k of keys) {
-        o[k] = game.i18n.localize(o[k])
-      }
-    }
-  }
-
-  // CONFIG.Dice.rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value)]))
-
-  // localizeConfigObject(SYSTEM.ACTION.TAG_CATEGORIES, ["label"])
-  // localizeConfigObject(CONFIG.Dice.rollModes, ["label"])
-}
-
 Hooks.once("ready", function () {
   console.info("CTHULHU TENEBRIS | Ready")
   game.system.applicationFortune = new applications.TenebrisFortune()
@@ -156,7 +134,7 @@ Hooks.once("ready", function () {
   _showUserGuide()
 
   /**
-   *
+   * Affiche le guide utilisateur du système
    */
   async function _showUserGuide() {
     if (game.user.isGM) {
@@ -222,9 +200,7 @@ Hooks.on("renderChatMessage", (message, html, data) => {
   else if (typeMessage === "askRoll") {
     // Affichage des boutons de jet de dés uniquement pour les joueurs
     if (game.user.isGM) {
-      html.find(".ask-roll-dice").each((i, btn) => {
-        btn.style.display = "none"
-      })
+      document.querySelectorAll(".ask-roll-dice").forEach((btn) => (btn.style.display = "none"))
     } else {
       html.find(".ask-roll-dice").click((event) => {
         const btn = $(event.currentTarget)
