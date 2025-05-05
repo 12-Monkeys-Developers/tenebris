@@ -176,7 +176,7 @@ export default class TenebrisRoll extends Roll {
       }
     }
 
-    const rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value)]))
+    const rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value.label)]))
     const fieldRollMode = new foundry.data.fields.StringField({
       choices: rollModes,
       blank: false,
