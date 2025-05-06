@@ -157,7 +157,7 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
     const attr = target.dataset.edit
     const current = foundry.utils.getProperty(this.document, attr)
     const { img } = this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ?? {}
-    const fp = new FilePicker({
+    const fp = new foundry.applications.apps.FilePicker.implementation({
       current,
       type: "image",
       redirectToRoot: img ? [img] : [],
