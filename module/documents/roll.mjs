@@ -312,12 +312,12 @@ export default class TenebrisRoll extends Roll {
       ],
       rejectClose: false, // Click on Close button will not launch an error
       render: (event, dialog) => {
-        const rangeInput = dialog.querySelector('input[name="avantages"]')
+        const rangeInput = dialog.element.querySelector('input[name="avantages"]')
         if (rangeInput) {
           rangeInput.addEventListener("change", (event) => {
             event.preventDefault()
             event.stopPropagation()
-            const readOnly = dialog.querySelector('input[name="selectAvantages"]')
+            const readOnly = dialog.element.querySelector('input[name="selectAvantages"]')
             readOnly.value = this._convertAvantages(event.target.value)
           })
         }
