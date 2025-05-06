@@ -272,7 +272,7 @@ export default class TenebrisRoll extends Roll {
       rollAdvantage: this._convertAvantages(options.rollAdvantage),
       rangeAdvantage: this._convertRollAdvantageToRange(options.rollAdvantage),
     }
-    const content = await renderTemplate("systems/tenebris/templates/roll-dialog.hbs", dialogContext)
+    const content = await foundry.applications.handlebars.renderTemplate("systems/tenebris/templates/roll-dialog.hbs", dialogContext)
 
     const title = TenebrisRoll.createTitle(options.rollType, options.rollTarget)
     const label = game.i18n.localize("TENEBRIS.Roll.roll")
@@ -453,7 +453,7 @@ export default class TenebrisRoll extends Roll {
   /** @override */
   async render(chatOptions = {}) {
     let chatData = await this._getChatCardData(chatOptions.isPrivate)
-    return await renderTemplate(this.constructor.CHAT_TEMPLATE, chatData)
+    return await foundry.applications.handlebars.renderTemplate(this.constructor.CHAT_TEMPLATE, chatData)
   }
 
   /**
