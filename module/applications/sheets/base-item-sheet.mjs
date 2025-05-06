@@ -1,4 +1,5 @@
 const { HandlebarsApplicationMixin } = foundry.applications.api
+const { DragDrop } = foundry.applications.ux
 
 export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2) {
   /**
@@ -6,13 +7,6 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
    * @enum {number}
    */
   static SHEET_MODES = { EDIT: 0, PLAY: 1 }
-
-  constructor(options = {}) {
-    super(options)
-    this.#dragDrop = this.#createDragDropHandlers()
-  }
-
-  #dragDrop
 
   /** @override */
   static DEFAULT_OPTIONS = {
@@ -32,6 +26,23 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
       toggleSheet: TenebrisItemSheet.#onToggleSheet,
       editImage: TenebrisItemSheet.#onEditImage,
     },
+  }
+
+  /** @inheritDoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options)
+    new DragDrop.implementation({
+      dragSelector: ".draggable",
+      permissions: {
+        dragstart: this._canDragStart.bind(this),
+        drop: this._canDragDrop.bind(this),
+      },
+      callbacks: {
+        dragstart: this._onDragStart.bind(this),
+        dragover: this._onDragOver.bind(this),
+        drop: this._onDrop.bind(this),
+      },
+    }).bind(this.element)
   }
 
   /**
@@ -72,31 +83,7 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
     return context
   }
 
-  /** @override */
-  _onRender(context, options) {
-    this.#dragDrop.forEach((d) => d.bind(this.element))
-  }
-
   // #region Drag-and-Drop Workflow
-  /**
-   * Create drag-and-drop workflow handlers for this Application
-   * @returns {DragDrop[]}     An array of DragDrop handlers
-   * @private
-   */
-  #createDragDropHandlers() {
-    return this.options.dragDrop.map((d) => {
-      d.permissions = {
-        dragstart: this._canDragStart.bind(this),
-        drop: this._canDragDrop.bind(this),
-      }
-      d.callbacks = {
-        dragstart: this._onDragStart.bind(this),
-        dragover: this._onDragOver.bind(this),
-        drop: this._onDrop.bind(this),
-      }
-      return new DragDrop(d)
-    })
-  }
 
   /**
    * Define whether a user is able to begin a dragstart workflow for a given drag selector
@@ -123,18 +110,7 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
    * @param {DragEvent} event       The originating DragEvent
    * @protected
    */
-  _onDragStart(event) {
-    const el = event.currentTarget
-    if ("link" in event.target.dataset) return
-
-    // Extract the data you need
-    let dragData = null
-
-    if (!dragData) return
-
-    // Set data transfer
-    event.dataTransfer.setData("text/plain", JSON.stringify(dragData))
-  }
+  _onDragStart(event) {}
 
   /**
    * Callback actions which occur when a dragged element is over a drop target.
