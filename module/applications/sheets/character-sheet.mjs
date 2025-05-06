@@ -220,28 +220,17 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
   // #region Drag-and-Drop Workflow
 
   /**
-   * Callback actions which occur when a dragged element is dropped on a target.
-   * @param {DragEvent} event       The originating DragEvent
+   * Handle a dropped Item on the Actor Sheet.
+   * @param {DragEvent} event     The initiating drop event
+   * @param {Item} item           The dropped Item document
+   * @returns {Promise<void>}
    * @protected
    */
-  async _onDrop(event) {
-    if (!this.isEditable || !this.isEditMode) return
-    const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event)
-
-    // Handle different data types
-    switch (data.type) {
-      case "Item":
-        const item = await fromUuid(data.uuid)
-        if (!["path", "weapon", "armor", "spell"].includes(item.type)) return
-        if (item.type === "path") return this.#onDropPathItem(item)
-        if (item.type === "weapon") return super._onDropItem(item)
-        if (item.type === "armor") return this._onDropItem(item)
-        if (item.type === "spell") return this._onDropItem(item)
-    }
-  }
-
-  async #onDropPathItem(item) {
-    await this.document.addPath(item)
+  async _onDropItem(event, item) {
+    if (!["path", "weapon", "armor", "spell"].includes(item.type)) return
+    if (!this.actor.isOwner) return
+    if (item.type === "path") return await this.document.addPath(item)
+    else return super._onDropItem(event, item)
   }
 
   // #endregion

@@ -7,13 +7,6 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
    */
   static SHEET_MODES = { EDIT: 0, PLAY: 1 }
 
-  constructor(options = {}) {
-    super(options)
-    this.#dragDrop = this.#createDragDropHandlers()
-  }
-
-  #dragDrop
-
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ["tenebris", "actor"],
@@ -27,7 +20,6 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
     window: {
       resizable: true,
     },
-    dragDrop: [{ dragSelector: '[data-drag="true"], .rollable', dropSelector: null }],
     actions: {
       editImage: TenebrisActorSheet.#onEditImage,
       toggleSheet: TenebrisActorSheet.#onToggleSheet,
@@ -76,70 +68,18 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
   }
 
   /** @override */
-  _onRender(context, options) {
-    this.#dragDrop.forEach((d) => d.bind(this.element))
+  async _onRender(context, options) {
+    await super._onRender(context, options)
     // Add listeners to rollable elements
     const rollables = this.element.querySelectorAll(".rollable")
     rollables.forEach((d) => d.addEventListener("click", this._onRoll.bind(this)))
   }
 
-  // #region Drag-and-Drop Workflow
-  /**
-   * Create drag-and-drop workflow handlers for this Application
-   * @returns {DragDrop[]}     An array of DragDrop handlers
-   * @private
-   */
-  #createDragDropHandlers() {
-    return this.options.dragDrop.map((d) => {
-      d.permissions = {
-        dragstart: this._canDragStart.bind(this),
-        drop: this._canDragDrop.bind(this),
-      }
-      d.callbacks = {
-        dragstart: this._onDragStart.bind(this),
-        dragover: this._onDragOver.bind(this),
-        drop: this._onDrop.bind(this),
-      }
-      return new DragDrop(d)
-    })
-  }
-
-  /**
-   * Callback actions which occur when a dragged element is dropped on a target.
-   * @param {DragEvent} event       The originating DragEvent
-   * @protected
-   */
-  async _onDrop(event) {}
-
-  /**
-   * Define whether a user is able to begin a dragstart workflow for a given drag selector
-   * @param {string} selector       The candidate HTML selector for dragging
-   * @returns {boolean}             Can the current user drag this selector?
-   * @protected
-   */
-  _canDragStart(selector) {
-    return this.isEditable
-  }
-
-  /**
-   * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector
-   * @param {string} selector       The candidate HTML selector for the drop target
-   * @returns {boolean}             Can the current user drop on this selector?
-   * @protected
-   */
-  _canDragDrop(selector) {
-    return this.isEditable && this.document.isOwner
-  }
-
-  /**
-   * Callback actions which occur at the beginning of a drag start workflow.
-   * @param {DragEvent} event       The originating DragEvent
-   * @protected
-   */
-  _onDragStart(event) {
+  /** @override */
+  async _onDragStart(event) {
     if ("link" in event.target.dataset) return
 
-    const el = event.currentTarget.closest('[data-drag="true"]')
+    const el = event.currentTarget.closest(".draggable")
     const dragType = el.dataset.dragType
 
     let dragData = {}
@@ -187,27 +127,10 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
         break
     }
 
-    // Extract the data you need
-
-    if (!dragData) return
-
     // Set data transfer
+    if (!dragData) return
     event.dataTransfer.setData("text/plain", JSON.stringify(dragData))
   }
-
-  /**
-   * Callback actions which occur when a dragged element is over a drop target.
-   * @param {DragEvent} event       The originating DragEvent
-   * @protected
-   */
-  _onDragOver(event) {}
-
-  async _onDropItem(item) {
-    let itemData = item.toObject()
-    await this.document.createEmbeddedDocuments("Item", [itemData], { renderSheet: false })
-  }
-
-  // #endregion
 
   // #region Actions
   /**
