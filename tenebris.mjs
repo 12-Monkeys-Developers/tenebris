@@ -181,18 +181,18 @@ Hooks.once("ready", function () {
   }
 })
 
-Hooks.on("renderChatMessage", (message, html, data) => {
+Hooks.on("renderChatMessageHTML", (message, html, data) => {
   const typeMessage = data.message.flags.tenebris?.typeMessage
   // Message de fortune
   if (typeMessage === "fortune") {
     if (game.user.isGM && !data.message.flags.tenebris?.accepted) {
-      html.find(".button").click((event) => applications.TenebrisFortune.acceptRequest(event, html, data))
+      html.querySelector(".button").addEventListener("click", (event) => applications.TenebrisFortune.acceptRequest(event, html, data))
     } else {
-      html.find(".button").each((i, btn) => {
+      html.querySelectorAll(".button").forEach((btn) => {
         btn.style.display = "none"
       })
       if (game.user.isGM) {
-        html.find(".fortune-accepted").each((i, btn) => (btn.style.display = "flex"))
+        html.querySelectorAll(".fortune-accepted").forEach((btn) => (btn.style.display = "flex"))
       }
     }
   }
@@ -200,16 +200,17 @@ Hooks.on("renderChatMessage", (message, html, data) => {
   else if (typeMessage === "askRoll") {
     // Affichage des boutons de jet de dés uniquement pour les joueurs
     if (game.user.isGM) {
-      document.querySelectorAll(".ask-roll-dice").forEach((btn) => (btn.style.display = "none"))
+      html.querySelectorAll(".ask-roll-dice").forEach((btn) => (btn.style.display = "none"))
     } else {
-      html.find(".ask-roll-dice").click((event) => {
-        const btn = $(event.currentTarget)
-        const type = btn.data("type")
-        const value = btn.data("value")
-        const avantage = btn.data("avantage") ?? "="
-        const character = game.user.character
-        if (type === SYSTEM.ROLL_TYPE.RESOURCE) character.rollResource(value)
-        else if (type === SYSTEM.ROLL_TYPE.SAVE) character.rollSave(value, avantage)
+      html.querySelectorAll(".ask-roll-dice").forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+          const type = btn.dataset.type
+          const value = btn.dataset.value
+          const avantage = btn.dataset.avantage ?? "="
+          const character = game.user.character
+          if (type === SYSTEM.ROLL_TYPE.RESOURCE) character.rollResource(value)
+          else if (type === SYSTEM.ROLL_TYPE.SAVE) character.rollSave(value, avantage)
+        })
       })
     }
   }
