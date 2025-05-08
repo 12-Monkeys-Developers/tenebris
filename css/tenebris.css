@@ -15,9 +15,7 @@
   width: 120px;
   height: 120px;
 }
-i.tenebris {
-  width: 36px;
-  height: 36px;
+.icon.tenebris {
   background-image: var(--logo-standard);
   background-size: 100%;
   background-position: center;
