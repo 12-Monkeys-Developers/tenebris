@@ -16,7 +16,7 @@ import * as applications from "./module/applications/_module.mjs"
 import { handleSocketEvent } from "./module/socket.mjs"
 import { configureDiceSoNice } from "./module/dice.mjs"
 import { Macros } from "./module/macros.mjs"
-import { initControlButtons } from "./module/control-buttons.mjs"
+import initControlButtons from "./module/control-buttons.mjs"
 import { setupTextEnrichers } from "./module/enrichers.mjs"
 
 Hooks.once("init", function () {

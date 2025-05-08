@@ -1,39 +1,34 @@
 /**
  * Menu spécifique au système
  */
-export function initControlButtons() {
+export default function initControlButtons() {
   Hooks.on("getSceneControlButtons", (controls) => {
-    const menu = {
+    controls.tenebris = {
       name: "tenebris",
       title: "Cthulhu Tenebris",
       icon: "tenebris",
+      layer: "tenebris",
       tools: {
         fortune: {
           name: "fortune",
           title: game.i18n.localize("TENEBRIS.Fortune.title"),
           icon: "fa-solid fa-clover",
-          toggle: true,
-          onChange: (_event, toggled) => {
-            if (!foundry.applications.instances.has("tenebris-application-fortune")) {
-              game.system.applicationFortune.render(true)
-            } else game.system.applicationFortune.close()
+          button: true,
+          onChange: (event, active) => {
+            if (!foundry.applications.instances.has("tenebris-application-fortune")) game.system.applicationFortune.render(true)
           },
         },
         gmManager: {
           name: "gmManager",
           title: game.i18n.localize("TENEBRIS.Manager.title"),
           icon: "fa-solid fa-users",
-          toggle: true,
+          button: true,
           visible: game.user.isGM,
-          onChange: (_event, toggled) => {
-            if (!foundry.applications.instances.has("tenebris-application-manager")) {
-              game.system.applicationManager.render(true)
-            } else game.system.applicationManager.close()
+          onChange: (event, active) => {
+            if (!foundry.applications.instances.has("tenebris-application-manager")) game.system.applicationManager.render(true)
           },
         },
       },
     }
-
-    controls.tenebris = menu
   })
 }
