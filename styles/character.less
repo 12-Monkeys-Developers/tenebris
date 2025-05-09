@@ -134,11 +134,11 @@
   .character-caracteristiques {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    flex: 1;
+    gap: 20px;
 
     .character-caracteristique {
       display: flex;
+      justify-content: space-between;
       align-items: center;
       .rollable:hover,
       .rollable:focus {
@@ -146,6 +146,8 @@
         cursor: pointer;
       }
       .form-group {
+        display: flex;
+        justify-content: space-between;
         flex: 1;
         padding-left: 5px;
         .form-fields {
@@ -193,11 +195,11 @@
   .character-ressources {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    flex: 1;
+    gap: 20px;
 
     .character-ressource {
       display: flex;
+      justify-content: space-between;
       align-items: center;
       .rollable:hover,
       .rollable:focus {
@@ -206,6 +208,8 @@
           pointer;
       }
       .form-group {
+        display: flex;
+        justify-content: space-between;
         flex: 1;
         padding-left: 5px;
         .form-fields {
@@ -257,7 +261,7 @@
   }
 }
 
-.tab.character-items {
+.tab.character-items.active {
   display: grid;
   grid-template-columns: 1fr;
   legend {

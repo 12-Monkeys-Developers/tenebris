@@ -53,17 +53,13 @@ export default class TenebrisActorSheet extends HandlebarsApplicationMixin(found
 
   /** @override */
   async _prepareContext() {
-    const context = {
-      fields: this.document.schema.fields,
-      systemFields: this.document.system.schema.fields,
-      actor: this.document,
-      system: this.document.system,
-      source: this.document.toObject(),
-      enrichedDescription: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.description, { async: true }),
-      isEditMode: this.isEditMode,
-      isPlayMode: this.isPlayMode,
-      isEditable: this.isEditable,
-    }
+    const context = await super._prepareContext()
+    context.systemFields = this.document.system.schema.fields
+    context.actor = this.document
+    context.system = this.document.system
+    context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.description, { async: true })
+    context.isEditMode = this.isEditMode
+    context.isPlayMode = this.isPlayMode
     return context
   }
 

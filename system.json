@@ -67,5 +67,11 @@
         "ASSISTANT": "OWNER"
       }
     }
-  ]
+  ],
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "html", "hbs", "json"],
+      "path": ["css", "templates", "lang"]
+    }
+  }
 }

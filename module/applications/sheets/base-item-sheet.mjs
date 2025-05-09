@@ -69,17 +69,13 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
 
   /** @override */
   async _prepareContext() {
-    const context = {
-      fields: this.document.schema.fields,
-      systemFields: this.document.system.schema.fields,
-      item: this.document,
-      system: this.document.system,
-      source: this.document.toObject(),
-      enrichedDescription: await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.description, { async: true }),
-      isEditMode: this.isEditMode,
-      isPlayMode: this.isPlayMode,
-      isEditable: this.isEditable,
-    }
+    const context = await super._prepareContext()
+    context.systemFields = this.document.system.schema.fields
+    context.item = this.document
+    context.system = this.document.system
+    context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.description, { async: true })
+    context.isEditMode = this.isEditMode
+    context.isPlayMode = this.isPlayMode
     return context
   }
 
@@ -91,9 +87,7 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
    * @returns {boolean}             Can the current user drag this selector?
    * @protected
    */
-  _canDragStart(selector) {
-    return this.isEditable
-  }
+  _canDragStart(selector) {}
 
   /**
    * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector
@@ -102,7 +96,7 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
    * @protected
    */
   _canDragDrop(selector) {
-    return this.isEditable && this.document.isOwner
+    return this.document.isOwner
   }
 
   /**

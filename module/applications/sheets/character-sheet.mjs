@@ -21,45 +21,27 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
 
   /** @override */
   static PARTS = {
-    main: {
-      template: "systems/tenebris/templates/character-main.hbs",
-    },
-    tabs: {
-      template: "templates/generic/tab-navigation.hbs",
-    },
-    items: {
-      template: "systems/tenebris/templates/character-items.hbs",
-    },
-    biography: {
-      template: "systems/tenebris/templates/character-biography.hbs",
-    },
+    main: { template: "systems/tenebris/templates/character-main.hbs" },
+    tabs: { template: "templates/generic/tab-navigation.hbs" },
+    items: { template: "systems/tenebris/templates/character-items.hbs" },
+    biography: { template: "systems/tenebris/templates/character-biography.hbs" },
   }
 
   /** @override */
-  tabGroups = {
-    sheet: "items",
-  }
-
-  /**
-   * Prepare an array of form header tabs.
-   * @returns {Record<string, Partial<ApplicationTab>>}
-   */
-  #getTabs() {
-    const tabs = {
-      items: { id: "items", group: "sheet", icon: "fa-solid fa-shapes", label: "TENEBRIS.Character.Label.details" },
-      biography: { id: "biography", group: "sheet", icon: "fa-solid fa-book", label: "TENEBRIS.Character.Label.biography" },
-    }
-    for (const v of Object.values(tabs)) {
-      v.active = this.tabGroups[v.group] === v.id
-      v.cssClass = v.active ? "active" : ""
-    }
-    return tabs
+  static TABS = {
+    primary: {
+      tabs: [
+        { id: "items", icon: "fa-solid fa-user" },
+        { id: "biography", icon: "fa-solid fa-book" },
+      ],
+      initial: "items",
+      labelPrefix: "TENEBRIS.Tabs.character",
+    },
   }
 
   /** @override */
   async _prepareContext() {
     const context = await super._prepareContext()
-    context.tabs = this.#getTabs()
 
     context.tooltipsCaracteristiques = {
       rob: this._generateTooltip("save", "rob"),
@@ -147,6 +129,8 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         drag: true,
       },
     }
+
+    console.log("Tenebris | Character Sheet Context Prepared", context)
     return context
   }
 
@@ -164,14 +148,14 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
   }
 
   /** @override */
-  async _preparePartContext(partId, context) {
+  async _preparePartContext(partId, context, options) {
+    await super._preparePartContext(partId, context, options)
     const doc = this.document
     switch (partId) {
       case "main":
         context.enrichedBiens = await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.biens, { async: true })
         break
       case "items":
-        context.tab = context.tabs.items
         const talents = await this._prepareTalents()
         context.talents = talents
         context.talentsAppris = talents.filter((talent) => talent.appris)
@@ -181,7 +165,6 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         context.hasSpells = context.spells.length > 0
         break
       case "biography":
-        context.tab = context.tabs.biography
         context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.description, { async: true })
         context.enrichedLangues = await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.langues, { async: true })
         context.enrichedNotes = await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.notes, { async: true })

@@ -351,6 +351,16 @@
       "experienceDetail": "Expérience {detail}",
       "maximum": "Maximum"
     },
+    "Tabs": {
+      "character": {
+        "items": "Equipement",
+        "biography": "Biographie"    
+      },
+      "path": {
+        "main": "Profil",
+        "talents": "Talents"
+      }
+    },
     "Edit": "Editer",
     "Delete": "Supprimer",
     "ToggleSheet": "Changer de mode",

@@ -34,31 +34,15 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
   }
 
   /** @override */
-  tabGroups = {
-    sheet: "main",
-  }
-
-  /**
-   * Prepare an array of form header tabs.
-   * @returns {Record<string, Partial<ApplicationTab>>}
-   */
-  #getTabs() {
-    const tabs = {
-      main: { id: "main", group: "sheet", icon: "fa-solid fa-user", label: "TENEBRIS.Label.profil" },
-      talents: { id: "talents", group: "sheet", icon: "fa-solid fa-book", label: "TENEBRIS.Label.talents" },
-    }
-    for (const v of Object.values(tabs)) {
-      v.active = this.tabGroups[v.group] === v.id
-      v.cssClass = v.active ? "active" : ""
-    }
-    return tabs
-  }
-
-  /** @override */
-  async _prepareContext() {
-    const context = await super._prepareContext()
-    context.tabs = this.#getTabs()
-    return context
+  static TABS = {
+    sheet: {
+      tabs: [
+        { id: "main", icon: "fa-solid fa-user" },
+        { id: "talents", icon: "fa-solid fa-book" },
+      ],
+      initial: "details",
+      labelPrefix: "TENEBRIS.Tabs.path",
+    },
   }
 
   /** @override */

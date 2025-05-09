@@ -80,7 +80,7 @@
     <legend>{{localize "TENEBRIS.Character.Label.caracteristiques"}}</legend>
     <div class="character-caracteristique draggable" data-drag-type="save">
       <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.rob}}" style="font-size: small;"></i>
-        {{formField systemFields.caracteristiques.fields.rob.fields.valeur value=system.caracteristiques.rob.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveRob}}
+        {{formField systemFields.caracteristiques.fields.rob.fields.valeur value=system.caracteristiques.rob.valeur disabled=isPlayMode classes="rollable" dataset=rollType.saveRob}}
         {{#if isEditMode}}
           <div class="experience">
             <div data-tooltip="{{localize "TENEBRIS.Label.experience"}}">{{formInput systemFields.caracteristiques.fields.rob.fields.progression.fields.experience value=system.caracteristiques.rob.progression.experience}}</div>
