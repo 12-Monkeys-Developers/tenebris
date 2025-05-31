@@ -1,4 +1,4 @@
-<section class="tab path-{{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+<section class="tab path-talents{{#if tabs.talents.active}} active{{/if}}" data-group="primary" data-tab="talents" >
   {{!log "path-talents" this}}
   {{#each talents as |item|}}
     {{!log "path-talent" this}}

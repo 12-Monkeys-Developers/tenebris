@@ -19,52 +19,48 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
 
   /** @override */
   static PARTS = {
-    header: {
-      template: "systems/tenebris/templates/path-header.hbs",
-    },
-    tabs: {
-      template: "templates/generic/tab-navigation.hbs",
-    },
-    main: {
-      template: "systems/tenebris/templates/path-main.hbs",
-    },
-    talents: {
-      template: "systems/tenebris/templates/path-talents.hbs",
-    },
+    header: { template: "systems/tenebris/templates/path-header.hbs" },
+    tabs: { template: "templates/generic/tab-navigation.hbs" },
+    main: { template: "systems/tenebris/templates/path-main.hbs" },
+    talents: { template: "systems/tenebris/templates/path-talents.hbs" },
   }
 
   /** @override */
   static TABS = {
-    sheet: {
+    primary: {
       tabs: [
         { id: "main", icon: "fa-solid fa-user" },
         { id: "talents", icon: "fa-solid fa-book" },
       ],
-      initial: "details",
+      initial: "main",
       labelPrefix: "TENEBRIS.Tabs.path",
     },
   }
 
   /** @override */
-  async _preparePartContext(partId, context) {
+  async _prepareContext() {
+    const context = await super._prepareContext()
+    console.log("Tenebris | Path Sheet Context Prepared", context)
+    return context
+  }
+
+  /** @override */
+  async _preparePartContext(partId, context, options) {
+    await super._preparePartContext(partId, context, options)
     const doc = this.document
     switch (partId) {
       case "main":
-        context.tab = context.tabs.main
         context.enrichedBiens = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.biens, { async: true })
         context.enrichedLangues = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.langues, { async: true })
         break
       case "talents":
-        context.tab = context.tabs.talents
         const talentItems = []
         for (const talent of this.item.system.talents) {
           const talentItem = await fromUuid(talent)
           if (talentItem) talentItems.push(talentItem)
         }
-
         context.talents = talentItems
         context.talents.sort((a, b) => a.name.localeCompare(b.name, game.i18n.lang))
-
         break
     }
     return context

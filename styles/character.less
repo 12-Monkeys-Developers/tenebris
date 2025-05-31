@@ -6,7 +6,7 @@
 
 .character-main {
   display: flex;
-  
+
   .character-personnage {
     display: flex;
     gap: 10px;
@@ -204,8 +204,7 @@
       .rollable:hover,
       .rollable:focus {
         text-shadow: 0 0 8px var(--color-shadow-primary);
-        cursor:
-          pointer;
+        cursor: pointer;
       }
       .form-group {
         display: flex;
@@ -249,15 +248,6 @@
 
   .character-ressources-edit {
     min-width: 400px;
-  }
-}
-
-.character-biography {
-  prose-mirror.inactive {
-    min-height: 40px;
-  }
-  prose-mirror.active {
-    min-height: 150px;
   }
 }
 
@@ -327,6 +317,23 @@
   .appris {
     font-weight: bold;
   }
+  prose-mirror.inactive {
+    min-height: 40px;
+  }
+  prose-mirror.active {
+    min-height: 150px;
+  }
+}
+
+nav.tabs [data-tab] {
+  color: var(--color-dark-1);
+}
+
+nav.tabs [data-tab].active {
+  color: var(--color-dark-1);
+}
+
+.character-biography {
   prose-mirror.inactive {
     min-height: 40px;
   }

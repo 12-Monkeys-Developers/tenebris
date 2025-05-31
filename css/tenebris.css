@@ -58,6 +58,26 @@
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
 }
+.tenebris .item-sheet-common .header {
+  display: flex;
+}
+.tenebris .item-sheet-common .header img {
+  width: 50px;
+  height: 50px;
+}
+.tenebris .item-sheet-common .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .item-sheet-common .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.tenebris .item-sheet-common .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
+}
 .tenebris .character-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1);
@@ -75,8 +95,9 @@
 }
 .tenebris .character-content input,
 .tenebris .character-content select {
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .character-content input[name="name"] {
   height: 50px;
@@ -330,12 +351,6 @@
 .tenebris .character-main .character-ressources-edit {
   min-width: 400px;
 }
-.tenebris .character-biography prose-mirror.inactive {
-  min-height: 40px;
-}
-.tenebris .character-biography prose-mirror.active {
-  min-height: 150px;
-}
 .tenebris .tab.character-items.active {
   display: grid;
   grid-template-columns: 1fr;
@@ -406,6 +421,18 @@
 .tenebris .tab.character-items.active prose-mirror.active {
   min-height: 150px;
 }
+.tenebris nav.tabs [data-tab] {
+  color: var(--color-dark-1);
+}
+.tenebris nav.tabs [data-tab].active {
+  color: var(--color-dark-1);
+}
+.tenebris .character-biography prose-mirror.inactive {
+  min-height: 40px;
+}
+.tenebris .character-biography prose-mirror.active {
+  min-height: 150px;
+}
 .tenebris .opponent-content {
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1);
@@ -423,8 +450,9 @@
 }
 .tenebris .opponent-content input,
 .tenebris .opponent-content select {
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .opponent-content input[name="name"] {
   height: 50px;
@@ -479,7 +507,7 @@
 .tenebris .opponent-main .opponent-gauche {
   display: flex;
   flex-direction: column;
-  min-width: 250px;
+  min-width: 280px;
 }
 .tenebris .opponent-main .opponent-gauche .opponent-caracteristiques .form-group {
   display: flex;
@@ -543,8 +571,9 @@
 }
 .tenebris .path-content input,
 .tenebris .path-content select {
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .path-content input[name="name"] {
   height: 50px;
@@ -580,9 +609,30 @@
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
 }
+.tenebris .path-content .header {
+  display: flex;
+}
+.tenebris .path-content .header img {
+  width: 50px;
+  height: 50px;
+}
+.tenebris .path-content .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .path-content .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.tenebris .path-content .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
+}
 .tenebris .path-content .path-name {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 .tenebris .path-content .path-name .control {
   margin: 5px;
@@ -591,72 +641,72 @@
   width: 50px;
   height: 50px;
 }
-.tenebris .path-content .path-main {
+.tenebris .path-content .path-main.active {
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
   /* Optionnel : supprimer le margin-right sur la dernière colonne si vous avez besoin d'un espacement précis */
 }
-.tenebris .path-content .path-main .profil {
+.tenebris .path-content .path-main.active .profil {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-.tenebris .path-content .path-main .profil-gauche,
-.tenebris .path-content .path-main .profil-droite {
+.tenebris .path-content .path-main.active .profil-gauche,
+.tenebris .path-content .path-main.active .profil-droite {
   flex: 1;
   /* Chaque colonne prend la moitié de l'espace disponible */
   padding: 10px;
   /* Espacement intérieur */
 }
-.tenebris .path-content .path-main .profil-gauche {
+.tenebris .path-content .path-main.active .profil-gauche {
   margin-right: 10px;
   /* Espace entre les deux colonnes */
 }
-.tenebris .path-content .path-main .profil-droite {
+.tenebris .path-content .path-main.active .profil-droite {
   margin-right: 0;
 }
-.tenebris .path-content .path-main .biens prose-mirror {
+.tenebris .path-content .path-main.active .biens prose-mirror {
   height: 100%;
 }
-.tenebris .path-content .path-main .langues prose-mirror {
+.tenebris .path-content .path-main.active .langues prose-mirror {
   height: 100%;
 }
-.tenebris .path-content .path-main .description {
+.tenebris .path-content .path-main.active .description {
   grid-column: span 3;
 }
-.tenebris .path-content .path-main .description prose-mirror.inactive {
+.tenebris .path-content .path-main.active .description prose-mirror.inactive {
   min-height: 40px;
 }
-.tenebris .path-content .path-main .description prose-mirror.active {
+.tenebris .path-content .path-main.active .description prose-mirror.active {
   min-height: 150px;
 }
-.tenebris .path-content .path-talents {
+.tenebris .path-content .path-talents.active {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
 }
-.tenebris .path-content .path-talents .talent {
+.tenebris .path-content .path-talents.active .talent {
   background-color: #f0f0f0;
   padding: 5px;
   border-radius: 5px;
 }
-.tenebris .path-content .path-talents .talent .header {
+.tenebris .path-content .path-talents.active .talent .header {
   display: flex;
   justify-content: space-between;
 }
-.tenebris .path-content .path-talents .talent .header .name {
+.tenebris .path-content .path-talents.active .talent .header .name {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.5);
   padding-left: 20px;
 }
-.tenebris .path-content .path-talents .talent .header .controls {
+.tenebris .path-content .path-talents.active .talent .header .controls {
   font-size: calc(var(--font-size-standard) * 0.8);
 }
-.tenebris .path-content .path-talents .talent .progression {
+.tenebris .path-content .path-talents.active .talent .progression {
   display: flex;
   justify-content: space-between;
   padding-top: 10px;
 }
-.tenebris .path-content .path-talents .talent .description {
+.tenebris .path-content .path-talents.active .talent .description {
   font-size: calc(var(--font-size-standard) * 1);
 }
 .tenebris .talent-content {
@@ -675,8 +725,9 @@
 }
 .tenebris .talent-content input,
 .tenebris .talent-content select {
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .talent-content input[name="name"] {
   height: 50px;
@@ -728,7 +779,12 @@
   margin-right: 10px;
   width: 200px;
 }
+.tenebris .talent-content .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
+}
 .tenebris .talent-content input[type="checkbox"] {
+  background-color: rgba(0, 0, 0, 0);
   font-size: var(--font-size-14);
   width: 20px;
 }
@@ -754,8 +810,9 @@
 }
 .tenebris .weapon-content input,
 .tenebris .weapon-content select {
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .weapon-content input[name="name"] {
   height: 50px;
@@ -798,8 +855,18 @@
   width: 50px;
   height: 50px;
 }
-.tenebris .weapon-content label {
-  flex: 10%;
+.tenebris .weapon-content .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .weapon-content .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.tenebris .weapon-content .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
 }
 .tenebris .armor-content {
   font-family: var(--font-primary);
@@ -817,8 +884,9 @@
 }
 .tenebris .armor-content input,
 .tenebris .armor-content select {
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .armor-content input[name="name"] {
   height: 50px;
@@ -861,8 +929,22 @@
   width: 50px;
   height: 50px;
 }
-.tenebris .armor-content label {
-  flex: 10%;
+.tenebris .armor-content .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .armor-content .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.tenebris .armor-content .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
+}
+.tenebris .armor-content .form-group.short-input input {
+  padding-top: 10px;
+  width: 50px;
 }
 .tenebris .spell-content {
   font-family: var(--font-primary);
@@ -880,8 +962,9 @@
 }
 .tenebris .spell-content input,
 .tenebris .spell-content select {
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .spell-content input[name="name"] {
   height: 50px;
@@ -937,6 +1020,13 @@
   width: 100%;
   margin-top: 5px;
 }
+.tenebris .spell-content .header {
+  display: flex;
+}
+.tenebris .spell-content .header img {
+  width: 50px;
+  height: 50px;
+}
 .tenebris .spell-content .form-group .form-fields input {
   width: 300px;
   padding-top: 10px;
@@ -972,8 +1062,9 @@
 }
 .tenebris .attack-content input,
 .tenebris .attack-content select {
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .attack-content input[name="name"] {
   height: 50px;
@@ -1016,8 +1107,22 @@
   width: 50px;
   height: 50px;
 }
-.tenebris .attack-content label {
-  flex: 10%;
+.tenebris .attack-content .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .attack-content .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.tenebris .attack-content .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
+}
+.tenebris .attack-content .form-group input {
+  padding-top: 10px;
+  width: 100px;
 }
 .tenebris.fortune img {
   border: 0px;

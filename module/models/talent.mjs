@@ -37,8 +37,8 @@ export default class TenebrisTalent extends foundry.abstract.TypeDataModel {
     return ""
   }
 
-  async getPathName() {
-    const path = await fromUuid(this.path)
+  get pathName() {
+    const path = fromUuidSync(this.path)
     return path ? path.name : ""
   }
 }
