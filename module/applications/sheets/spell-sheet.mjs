@@ -5,7 +5,7 @@ export default class TenebrisSpellSheet extends TenebrisItemSheet {
   static DEFAULT_OPTIONS = {
     classes: ["spell"],
     position: {
-      width: 450,
+      width: 500,
     },
     window: {
       contentClasses: ["spell-content"],

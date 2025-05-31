@@ -57,7 +57,6 @@
 .tenebris .item-sheet-common label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
 }
 .tenebris .character-content {
   font-family: var(--font-primary);
@@ -76,7 +75,6 @@
 }
 .tenebris .character-content input,
 .tenebris .character-content select {
-  background-color: rgba(0, 0, 0, 0.1);
   border-color: var(--color-dark-6);
   color: var(--color-dark-2);
 }
@@ -190,7 +188,7 @@
   gap: 2px;
   align-items: center;
 }
-.tenebris .character-main .character-personnage .character-droite .character-infos .character-pv .character-pv-value .form-fields input {
+.tenebris .character-main .character-personnage .character-droite .character-infos .character-pv .character-pv-value input {
   flex: none;
   width: 50px;
   margin-left: 10px;
@@ -425,7 +423,6 @@
 }
 .tenebris .opponent-content input,
 .tenebris .opponent-content select {
-  background-color: rgba(0, 0, 0, 0.1);
   border-color: var(--color-dark-6);
   color: var(--color-dark-2);
 }
@@ -546,7 +543,6 @@
 }
 .tenebris .path-content input,
 .tenebris .path-content select {
-  background-color: rgba(0, 0, 0, 0.1);
   border-color: var(--color-dark-6);
   color: var(--color-dark-2);
 }
@@ -583,7 +579,6 @@
 .tenebris .path-content label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
 }
 .tenebris .path-content .path-name {
   display: flex;
@@ -680,7 +675,6 @@
 }
 .tenebris .talent-content input,
 .tenebris .talent-content select {
-  background-color: rgba(0, 0, 0, 0.1);
   border-color: var(--color-dark-6);
   color: var(--color-dark-2);
 }
@@ -717,7 +711,6 @@
 .tenebris .talent-content label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
 }
 .tenebris .talent-content .header {
   display: flex;
@@ -726,16 +719,24 @@
   width: 50px;
   height: 50px;
 }
+.tenebris .talent-content .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .talent-content .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
 .tenebris .talent-content input[type="checkbox"] {
   font-size: var(--font-size-14);
   width: 20px;
-  padding-top: 0;
-}
-.tenebris .talent-content input[type="checkbox"]:checked {
-  background-color: rgba(0, 0, 0, 0.1);
 }
 .tenebris .talent-content input[type="checkbox"]:checked::after {
   color: rgba(0, 0, 0, 0.1);
+}
+.tenebris .talent-content range-picker input[type="number"] {
+  padding-top: 10px;
 }
 .tenebris .weapon-content {
   font-family: var(--font-primary);
@@ -753,7 +754,6 @@
 }
 .tenebris .weapon-content input,
 .tenebris .weapon-content select {
-  background-color: rgba(0, 0, 0, 0.1);
   border-color: var(--color-dark-6);
   color: var(--color-dark-2);
 }
@@ -790,7 +790,6 @@
 .tenebris .weapon-content label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
 }
 .tenebris .weapon-content .header {
   display: flex;
@@ -818,7 +817,6 @@
 }
 .tenebris .armor-content input,
 .tenebris .armor-content select {
-  background-color: rgba(0, 0, 0, 0.1);
   border-color: var(--color-dark-6);
   color: var(--color-dark-2);
 }
@@ -855,7 +853,6 @@
 .tenebris .armor-content label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
 }
 .tenebris .armor-content .header {
   display: flex;
@@ -883,7 +880,6 @@
 }
 .tenebris .spell-content input,
 .tenebris .spell-content select {
-  background-color: rgba(0, 0, 0, 0.1);
   border-color: var(--color-dark-6);
   color: var(--color-dark-2);
 }
@@ -920,7 +916,6 @@
 .tenebris .spell-content label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
 }
 .tenebris .spell-content .header {
   display: flex;
@@ -929,8 +924,33 @@
   width: 50px;
   height: 50px;
 }
-.tenebris .spell-content label {
-  flex: 10%;
+.tenebris .spell-content .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .spell-content .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.tenebris .spell-content .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
+}
+.tenebris .spell-content .form-group .form-fields input {
+  width: 300px;
+  padding-top: 10px;
+}
+.tenebris .spell-content .form-group .form-fields select {
+  width: 100px;
+}
+.tenebris .spell-content .form-group.long-input input {
+  padding-top: 10px;
+  width: 100%;
+}
+.tenebris .spell-content .form-group.short-input input {
+  padding-top: 10px;
+  width: 50px;
 }
 .tenebris .spell-content input[name="system.consequenceA"],
 .tenebris .spell-content input[name="system.consequenceB"] {
@@ -952,7 +972,6 @@
 }
 .tenebris .attack-content input,
 .tenebris .attack-content select {
-  background-color: rgba(0, 0, 0, 0.1);
   border-color: var(--color-dark-6);
   color: var(--color-dark-2);
 }
@@ -989,7 +1008,6 @@
 .tenebris .attack-content label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
 }
 .tenebris .attack-content .header {
   display: flex;

@@ -63,8 +63,9 @@
               {{formField systemFields.commanditaire value=system.commanditaire rootId=partId disabled=isPlayMode classes="character-commanditaire"}}
             </div>
             <div class="character-pv">
+                <label>Points de vie</label>
                 <div class="character-pv-value">
-                    {{formField systemFields.pv.fields.value value=system.pv.value}}
+                    {{formInput systemFields.pv.fields.value value=system.pv.value}}
                 </div>
                 <div class="pv-separator">/</div>
                 <div class="character-pv-max">

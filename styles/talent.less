@@ -10,17 +10,28 @@
     }
   }
 
+  .form-group {
+    display: flex;
+    align-items: center;
+    label {
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 200px;
+    }
+  }
+
   input[type="checkbox"] {
     font-size: var(--font-size-14);
     width: 20px;
-    padding-top: 0;
-  }
-
-  input[type="checkbox"]:checked {
-    background-color: rgba(0, 0, 0, 0.1);
   }
   
   input[type="checkbox"]:checked::after {
     color: rgba(0, 0, 0, 0.1);
+  }
+
+  range-picker {
+    input[type="number"] {
+      padding-top: 10px;
+    }
   }
 }
