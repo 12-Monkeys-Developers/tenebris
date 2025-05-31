@@ -16,7 +16,6 @@ import * as applications from "./module/applications/_module.mjs"
 import { handleSocketEvent } from "./module/socket.mjs"
 import { configureDiceSoNice } from "./module/dice.mjs"
 import { Macros } from "./module/macros.mjs"
-import initControlButtons from "./module/control-buttons.mjs"
 import { setupTextEnrichers } from "./module/enrichers.mjs"
 
 Hooks.once("init", function () {
@@ -98,8 +97,6 @@ Hooks.once("init", function () {
 
   // Activate socket handler
   game.socket.on(`system.${SYSTEM.id}`, handleSocketEvent)
-
-  initControlButtons()
 
   setupTextEnrichers()
 
@@ -237,6 +234,39 @@ Hooks.on("hotbarDrop", (bar, data, slot) => {
   if (["Actor", "Item", "JournalEntry", "roll", "rollDamage", "rollAttack"].includes(data.type)) {
     Macros.createTenebrisMacro(data, slot)
     return false
+  }
+})
+
+Hooks.on("renderMacroDirectory", (application, html, context, options) => {
+  console.info("Tenebris | Adding Fortune button to Macro Directory")
+  const header = html.querySelector("header")
+  if (header) {
+    const buttonsContainer = document.createElement("div")
+    buttonsContainer.classList.add("tenebris-buttons-container", "flexrow")
+
+    const buttonFortune = document.createElement("div")
+    buttonFortune.classList.add("tenebris-button", "tenebris-fortune-button")
+    buttonFortune.innerHTML = `<i class="fa-solid fa-clover" data-tooltip="${game.i18n.localize("TENEBRIS.Fortune.title")}"></i>`
+    buttonFortune.addEventListener("click", () => {
+      if (!foundry.applications.instances.has("tenebris-application-fortune")) {
+        game.system.applicationFortune.render(true)
+      }
+    })
+    buttonsContainer.appendChild(buttonFortune)
+
+    if (game.user.isGM) {
+      const buttonManager = document.createElement("div")
+      buttonManager.classList.add("tenebris-button", "tenebris-manager-button")
+      buttonManager.innerHTML = `<i class="fa-solid fa-users" data-tooltip="${game.i18n.localize("TENEBRIS.Manager.title")}"></i>`
+      buttonManager.addEventListener("click", () => {
+        if (!foundry.applications.instances.has("tenebris-application-manager")) {
+          game.system.applicationManager.render(true)
+        }
+      })
+      buttonsContainer.appendChild(buttonManager)
+    }
+
+    header.appendChild(buttonsContainer)
   }
 })
 
