@@ -4,12 +4,6 @@
   --font-secondary: "Amiri", serif;
   --logo-standard: url("../assets/tenebris-logo.webp");
 }
-#logo {
-  content: var(--logo-standard);
-  width: 50px;
-  height: 50px;
-  margin-left: 15px;
-}
 #pause > img {
   content: var(--logo-standard);
   width: 120px;
@@ -1300,7 +1294,6 @@ input[name="selectAvantages"] {
   display: flex;
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1);
-  color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -1314,4 +1307,7 @@ input[name="selectAvantages"] {
 }
 #tenebris-application-manager .tenebris-table .player {
   font-size: calc(var(--font-size-standard) * 1);
+}
+#tenebris-application-manager .tenebris-table tbody {
+  color: var(--color-dark-1);
 }
