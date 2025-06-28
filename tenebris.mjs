@@ -113,6 +113,14 @@ Hooks.once("init", function () {
     applications.TenebrisManager.askRollForAll(type, target, title, avantage)
   })
 
+  // Add a custom sidebar tab
+  CONFIG.ui.sidebar.TABS.tenebris = {
+    active: false,
+    icon: `tenebris`,
+    tooltip: `Cthulhu Tenebris`,
+  }
+  CONFIG.ui.tenebris = applications.TenebrisSidebarMenu
+
   console.info("CTHULHU TENEBRIS | System Initialized")
 })
 

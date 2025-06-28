@@ -1,0 +1,33 @@
+<section class="tenebris info flexcol">
+  <h1 class="title">{{localize "TENEBRIS.Sidebar.title"}}</h1>
+  <p class="subtitle version">{{version}}</p>
+</section>
+
+<section class="tenebris support flexcol">
+  <h4 class="divider">{{localize "TENEBRIS.Sidebar.support"}}</h4>
+  <a class="button" href="https://discord.gg/rXSJTuY" rel="nofollow noopener" target="_blank" data-tooltip="{{localize 'TENEBRIS.Sidebar.discordSingesTooltip'}}">
+    <i class="fa-solid fa-landmark" inert></i>
+    {{localize "TENEBRIS.Sidebar.discordSinges"}}
+  </a>
+  <a class="button" href="https://discord.gg/pPSDNJk" rel="nofollow noopener" target="_blank" data-tooltip="{{localize 'TENEBRIS.Sidebar.discordLaFonderieTooltip'}}">
+    <i class="fa-solid fa-landmark" inert></i>
+    {{localize "TENEBRIS.Sidebar.discordLaFonderie"}}
+  </a>
+</section>
+
+{{#if user.isGM}}
+  <section class="tenebris system flexcol">
+    <h4 class="divider">{{localize "TENEBRIS.Sidebar.menu"}}</h4>
+
+    <button type="button" data-action="openApp" data-app="gmmanager" data-tooltip="{{localize 'TENEBRIS.Sidebar.gmManagerTooltip'}}">
+      <i class="fa-solid fa-users" inert></i>
+      {{localize "TENEBRIS.Sidebar.gmManager"}}
+    </button>
+
+    <button type="button" data-action="openApp" data-app="fortune" data-tooltip="{{localize 'TENEBRIS.Sidebar.fortuneTooltip'}}">
+      <i class="fas fa-magnifying-glass" inert></i>
+      {{localize "TENEBRIS.Sidebar.fortune"}}
+    </button>
+
+  </section>
+{{/if}}

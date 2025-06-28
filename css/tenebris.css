@@ -41,6 +41,67 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.tenebris-sidebar {
+  flex-direction: column;
+  overflow-y: auto;
+  color: var(--color-text-secondary);
+}
+.tenebris-sidebar.active {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+.tenebris-sidebar section {
+  gap: 0.5rem;
+}
+.tenebris-sidebar section h4 {
+  margin: 0;
+}
+.tenebris-sidebar section a.button {
+  flex-basis: 2rem;
+}
+.tenebris-sidebar .info {
+  font-size: var(--font-size-13);
+}
+.tenebris-sidebar .info .title {
+  margin: 0;
+  font-size: var(--font-size-32);
+  text-align: center;
+  letter-spacing: -0.3px;
+}
+.tenebris-sidebar .info .subtitle {
+  margin: -0.5rem 0 0;
+  color: var(--color-text-subtle);
+  text-align: center;
+}
+.tenebris-sidebar .info > div {
+  display: flex;
+  justify-content: space-between;
+}
+.tenebris-sidebar .info > div .label {
+  color: var(--color-text-emphatic);
+}
+.tenebris-sidebar .info > div .value {
+  color: var(--color-text-secondary);
+}
+.tenebris-sidebar .info .notification-pip {
+  margin-left: 0.25rem;
+  color: var(--color-text-accent);
+  position: initial;
+}
+#tenebris-popout {
+  overflow-y: hidden;
+}
+#tenebris-popout .window-content {
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+.icon.tenebris {
+  background-image: var(--logo-standard);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .tenebris .character-sheet-common label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.4);
