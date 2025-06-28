@@ -40,7 +40,7 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
   /** @override */
   async _prepareContext() {
     const context = await super._prepareContext()
-    console.log("Tenebris | Path Sheet Context Prepared", context)
+    // console.log("Tenebris | Path Sheet Context Prepared", context)
     return context
   }
 

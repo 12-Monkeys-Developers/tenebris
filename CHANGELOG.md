@@ -1,3 +1,6 @@
+2.0.1
+- Correction de la gestion des personnages : des infos n'étaient plus affichées
+
 2.0.0
 - Compatibilité Foundry V13
 

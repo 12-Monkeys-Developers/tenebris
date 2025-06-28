@@ -11,7 +11,7 @@ export default class TenebrisManager extends HandlebarsApplicationMixin(Applicat
   constructor(options = {}) {
     super()
     Hooks.on("updateActor", () => game.system.applicationManager.render(false))
-    Hooks.on("renderPlayerList", () => game.system.applicationManager.render(false))
+    Hooks.on("renderPlayers", () => game.system.applicationManager.render(false))
   }
 
   static DEFAULT_OPTIONS = {
