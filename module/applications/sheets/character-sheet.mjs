@@ -130,7 +130,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
       },
     }
 
-    console.log("Tenebris | Character Sheet Context Prepared", context)
+    //console.log("Tenebris | Character Sheet Context Prepared", context)
     return context
   }
 
