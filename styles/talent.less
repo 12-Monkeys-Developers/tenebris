@@ -2,25 +2,19 @@
   .sheet-common();
   .item-sheet-common();
 
-  .header {
-    display: flex;
-    img {
-      width: 50px;
-      height: 50px;
-    }
-  }
-
   input[type="checkbox"] {
+    background-color: rgba(0, 0, 0, 0.0);
     font-size: var(--font-size-14);
     width: 20px;
-    padding-top: 0;
-  }
-
-  input[type="checkbox"]:checked {
-    background-color: rgba(0, 0, 0, 0.1);
   }
   
   input[type="checkbox"]:checked::after {
     color: rgba(0, 0, 0, 0.1);
+  }
+
+  range-picker {
+    input[type="number"] {
+      padding-top: 10px;
+    }
   }
 }

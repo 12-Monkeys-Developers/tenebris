@@ -123,7 +123,7 @@ export default class TenebrisFortune extends HandlebarsApplicationMixin(Applicat
       user: game.user,
       isGM: game.user.isGM,
     }
-    const content = await renderTemplate("systems/tenebris/templates/chat-fortune.hbs", chatData)
+    const content = await foundry.applications.handlebars.renderTemplate("systems/tenebris/templates/chat-fortune.hbs", chatData)
     const messageData = {
       style: CONST.CHAT_MESSAGE_STYLES.OTHER,
       user: origin,

@@ -21,45 +21,27 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
 
   /** @override */
   static PARTS = {
-    main: {
-      template: "systems/tenebris/templates/character-main.hbs",
-    },
-    tabs: {
-      template: "templates/generic/tab-navigation.hbs",
-    },
-    items: {
-      template: "systems/tenebris/templates/character-items.hbs",
-    },
-    biography: {
-      template: "systems/tenebris/templates/character-biography.hbs",
-    },
+    main: { template: "systems/tenebris/templates/character-main.hbs" },
+    tabs: { template: "templates/generic/tab-navigation.hbs" },
+    items: { template: "systems/tenebris/templates/character-items.hbs" },
+    biography: { template: "systems/tenebris/templates/character-biography.hbs" },
   }
 
   /** @override */
-  tabGroups = {
-    sheet: "items",
-  }
-
-  /**
-   * Prepare an array of form header tabs.
-   * @returns {Record<string, Partial<ApplicationTab>>}
-   */
-  #getTabs() {
-    const tabs = {
-      items: { id: "items", group: "sheet", icon: "fa-solid fa-shapes", label: "TENEBRIS.Character.Label.details" },
-      biography: { id: "biography", group: "sheet", icon: "fa-solid fa-book", label: "TENEBRIS.Character.Label.biography" },
-    }
-    for (const v of Object.values(tabs)) {
-      v.active = this.tabGroups[v.group] === v.id
-      v.cssClass = v.active ? "active" : ""
-    }
-    return tabs
+  static TABS = {
+    primary: {
+      tabs: [
+        { id: "items", icon: "fa-solid fa-user" },
+        { id: "biography", icon: "fa-solid fa-book" },
+      ],
+      initial: "items",
+      labelPrefix: "TENEBRIS.Tabs.character",
+    },
   }
 
   /** @override */
   async _prepareContext() {
     const context = await super._prepareContext()
-    context.tabs = this.#getTabs()
 
     context.tooltipsCaracteristiques = {
       rob: this._generateTooltip("save", "rob"),
@@ -147,6 +129,8 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         drag: true,
       },
     }
+
+    //console.log("Tenebris | Character Sheet Context Prepared", context)
     return context
   }
 
@@ -164,15 +148,15 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
   }
 
   /** @override */
-  async _preparePartContext(partId, context) {
+  async _preparePartContext(partId, context, options) {
+    await super._preparePartContext(partId, context, options)
     const doc = this.document
     switch (partId) {
       case "main":
-        context.enrichedBiens = await TextEditor.enrichHTML(doc.system.biens, { async: true })
+        context.enrichedBiens = await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.biens, { async: true })
         break
       case "items":
-        context.tab = context.tabs.items
-        const talents = await this._prepareTalents()
+        const talents = this._prepareTalents()
         context.talents = talents
         context.talentsAppris = talents.filter((talent) => talent.appris)
         context.weapons = doc.itemTypes.weapon
@@ -181,10 +165,9 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
         context.hasSpells = context.spells.length > 0
         break
       case "biography":
-        context.tab = context.tabs.biography
-        context.enrichedDescription = await TextEditor.enrichHTML(doc.system.description, { async: true })
-        context.enrichedLangues = await TextEditor.enrichHTML(doc.system.langues, { async: true })
-        context.enrichedNotes = await TextEditor.enrichHTML(doc.system.notes, { async: true })
+        context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.description, { async: true })
+        context.enrichedLangues = await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.langues, { async: true })
+        context.enrichedNotes = await foundry.applications.ux.TextEditor.implementation.enrichHTML(doc.system.notes, { async: true })
         break
     }
     return context
@@ -195,24 +178,23 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
    *
    * @returns {Array} An array of talents with their properties.
    */
-  async _prepareTalents() {
-    const talents = await Promise.all(
-      this.document.itemTypes.talent.map(async (talent) => {
-        const pathName = await talent.system.getPathName()
-        return {
-          id: talent.id,
-          uuid: talent.uuid,
-          name: talent.name,
-          img: talent.img,
-          path: `Obtenu par ${pathName}`,
-          description: talent.system.improvedDescription,
-          progression: talent.system.progression,
-          niveau: talent.system.niveau,
-          appris: talent.system.appris,
-          details: talent.system.details,
-        }
-      }),
-    )
+  _prepareTalents() {
+    const talents = this.document.itemTypes.talent.map((talent) => {
+      const pathName = talent.system.pathName
+      return {
+        id: talent.id,
+        uuid: talent.uuid,
+        name: talent.name,
+        img: talent.img,
+        path: pathName !== "" ? `Obtenu par ${pathName}` : "",
+        description: talent.system.improvedDescription,
+        progression: talent.system.progression,
+        niveau: talent.system.niveau,
+        appris: talent.system.appris,
+        details: talent.system.details,
+      }
+    })
+
     talents.sort((a, b) => b.appris - a.appris || a.name.localeCompare(b.name, game.i18n.lang))
     return talents
   }
@@ -220,28 +202,17 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
   // #region Drag-and-Drop Workflow
 
   /**
-   * Callback actions which occur when a dragged element is dropped on a target.
-   * @param {DragEvent} event       The originating DragEvent
+   * Handle a dropped Item on the Actor Sheet.
+   * @param {DragEvent} event     The initiating drop event
+   * @param {Item} item           The dropped Item document
+   * @returns {Promise<void>}
    * @protected
    */
-  async _onDrop(event) {
-    if (!this.isEditable || !this.isEditMode) return
-    const data = TextEditor.getDragEventData(event)
-
-    // Handle different data types
-    switch (data.type) {
-      case "Item":
-        const item = await fromUuid(data.uuid)
-        if (!["path", "weapon", "armor", "spell"].includes(item.type)) return
-        if (item.type === "path") return this.#onDropPathItem(item)
-        if (item.type === "weapon") return super._onDropItem(item)
-        if (item.type === "armor") return this._onDropItem(item)
-        if (item.type === "spell") return this._onDropItem(item)
-    }
-  }
-
-  async #onDropPathItem(item) {
-    await this.document.addPath(item)
+  async _onDropItem(event, item) {
+    if (!["path", "weapon", "armor", "spell"].includes(item.type)) return
+    if (!this.actor.isOwner) return
+    if (item.type === "path") return await this.document.addPath(item)
+    else return super._onDropItem(event, item)
   }
 
   // #endregion

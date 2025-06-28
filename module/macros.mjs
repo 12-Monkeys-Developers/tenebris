@@ -33,7 +33,7 @@ export class Macros {
             ? `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}', '=');`
             : `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollType}', '${dropData.rollTarget}');`
         const rollName = `${game.i18n.localize("TENEBRIS.Label.jet")} ${game.i18n.localize(`TENEBRIS.Manager.${dropData.rollTarget}`)}`
-        this.createMacro(slot, rollName, rollCommand, "icons/svg/d20-grey.svg")
+        this.createMacro(slot, rollName, rollCommand, "icons/svg/d20-highlight.svg")
         break
 
       case "rollDamage":
@@ -46,7 +46,7 @@ export class Macros {
       case "rollAttack":
         const rollAttackCommand = `game.actors.get('${dropData.actorId}').system.roll('${dropData.rollValue}', '${dropData.rollTarget}');`
         const rollAttackName = `${game.i18n.localize("TENEBRIS.Label.jet")} ${dropData.rollTarget}`
-        this.createMacro(slot, rollAttackName, rollAttackCommand, "icons/svg/d20-grey.svg")
+        this.createMacro(slot, rollAttackName, rollAttackCommand, "icons/svg/d20-highlight.svg")
         break
 
       default:

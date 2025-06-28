@@ -8,3 +8,5 @@ export { default as TenebrisSpellSheet } from "./sheets/spell-sheet.mjs"
 export { default as TenebrisAttackSheet } from "./sheets/attack-sheet.mjs"
 export { default as TenebrisFortune } from "./fortune.mjs"
 export { default as TenebrisManager } from "./manager.mjs"
+
+export { default as TenebrisSidebarMenu } from "./sidebar-menu.mjs"

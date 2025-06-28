@@ -5,6 +5,7 @@
   .path-name {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
     .control {
       margin: 5px;
     }
@@ -14,7 +15,7 @@
     }
   }
 
-  .path-main {
+  .path-main.active {
     display: grid;
     grid-template-columns: 2fr 2fr 1fr;
 
@@ -61,7 +62,7 @@
     }
   }
 
-  .path-talents {
+  .path-talents.active {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;

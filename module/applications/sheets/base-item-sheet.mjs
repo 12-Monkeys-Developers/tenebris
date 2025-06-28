@@ -1,4 +1,5 @@
 const { HandlebarsApplicationMixin } = foundry.applications.api
+const { DragDrop } = foundry.applications.ux
 
 export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ItemSheetV2) {
   /**
@@ -6,13 +7,6 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
    * @enum {number}
    */
   static SHEET_MODES = { EDIT: 0, PLAY: 1 }
-
-  constructor(options = {}) {
-    super(options)
-    this.#dragDrop = this.#createDragDropHandlers()
-  }
-
-  #dragDrop
 
   /** @override */
   static DEFAULT_OPTIONS = {
@@ -32,6 +26,23 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
       toggleSheet: TenebrisItemSheet.#onToggleSheet,
       editImage: TenebrisItemSheet.#onEditImage,
     },
+  }
+
+  /** @inheritDoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options)
+    new DragDrop.implementation({
+      dragSelector: ".draggable",
+      permissions: {
+        dragstart: this._canDragStart.bind(this),
+        drop: this._canDragDrop.bind(this),
+      },
+      callbacks: {
+        dragstart: this._onDragStart.bind(this),
+        dragover: this._onDragOver.bind(this),
+        drop: this._onDrop.bind(this),
+      },
+    }).bind(this.element)
   }
 
   /**
@@ -58,45 +69,17 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
 
   /** @override */
   async _prepareContext() {
-    const context = {
-      fields: this.document.schema.fields,
-      systemFields: this.document.system.schema.fields,
-      item: this.document,
-      system: this.document.system,
-      source: this.document.toObject(),
-      enrichedDescription: await TextEditor.enrichHTML(this.document.system.description, { async: true }),
-      isEditMode: this.isEditMode,
-      isPlayMode: this.isPlayMode,
-      isEditable: this.isEditable,
-    }
+    const context = await super._prepareContext()
+    context.systemFields = this.document.system.schema.fields
+    context.item = this.document
+    context.system = this.document.system
+    context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.description, { async: true })
+    context.isEditMode = this.isEditMode
+    context.isPlayMode = this.isPlayMode
     return context
   }
 
-  /** @override */
-  _onRender(context, options) {
-    this.#dragDrop.forEach((d) => d.bind(this.element))
-  }
-
   // #region Drag-and-Drop Workflow
-  /**
-   * Create drag-and-drop workflow handlers for this Application
-   * @returns {DragDrop[]}     An array of DragDrop handlers
-   * @private
-   */
-  #createDragDropHandlers() {
-    return this.options.dragDrop.map((d) => {
-      d.permissions = {
-        dragstart: this._canDragStart.bind(this),
-        drop: this._canDragDrop.bind(this),
-      }
-      d.callbacks = {
-        dragstart: this._onDragStart.bind(this),
-        dragover: this._onDragOver.bind(this),
-        drop: this._onDrop.bind(this),
-      }
-      return new DragDrop(d)
-    })
-  }
 
   /**
    * Define whether a user is able to begin a dragstart workflow for a given drag selector
@@ -104,9 +87,7 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
    * @returns {boolean}             Can the current user drag this selector?
    * @protected
    */
-  _canDragStart(selector) {
-    return this.isEditable
-  }
+  _canDragStart(selector) {}
 
   /**
    * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector
@@ -115,7 +96,7 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
    * @protected
    */
   _canDragDrop(selector) {
-    return this.isEditable && this.document.isOwner
+    return this.document.isOwner
   }
 
   /**
@@ -123,18 +104,7 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
    * @param {DragEvent} event       The originating DragEvent
    * @protected
    */
-  _onDragStart(event) {
-    const el = event.currentTarget
-    if ("link" in event.target.dataset) return
-
-    // Extract the data you need
-    let dragData = null
-
-    if (!dragData) return
-
-    // Set data transfer
-    event.dataTransfer.setData("text/plain", JSON.stringify(dragData))
-  }
+  _onDragStart(event) {}
 
   /**
    * Callback actions which occur when a dragged element is over a drop target.
@@ -177,7 +147,7 @@ export default class TenebrisItemSheet extends HandlebarsApplicationMixin(foundr
     const attr = target.dataset.edit
     const current = foundry.utils.getProperty(this.document, attr)
     const { img } = this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ?? {}
-    const fp = new FilePicker({
+    const fp = new foundry.applications.apps.FilePicker.implementation({
       current,
       type: "image",
       redirectToRoot: img ? [img] : [],

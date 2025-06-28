@@ -30,50 +30,57 @@
   .opponent-gauche {
     display: flex;
     flex-direction: column;
-    min-width: 250px;
+    min-width: 280px;
 
     .opponent-caracteristiques {
-      display: flex;
-      flex-direction: column;
-      .form-fields {
-        flex: none;
-        input {
-          width: 50px;
+      .form-group {
+        display: flex;
+        justify-content: space-between;
+        label {
+          margin-top: 5px;
+        }
+        .form-fields {
+          margin-top: 5px;
+          input {
+            width: 50px;
+          }
         }
       }
     }
 
     .opponent-attacks {
-        legend {
-            a {
-                font-size: calc(var(--font-size-standard) * 1.6);
-            }
+      margin-bottom: 0;
+      legend {
+        a {
+          font-size: calc(var(--font-size-standard) * 1.6);
         }
-        .opponent-attack {
-            display: flex;
-            justify-content: space-between;
-        }
+      }
+      .opponent-attack {
+        display: flex;
+        justify-content: space-between;
+      }
     }
 
     .opponent-spells {
       legend {
-          a {
-              font-size: calc(var(--font-size-standard) * 1.6);
-          }
+        a {
+          font-size: calc(var(--font-size-standard) * 1.6);
+        }
       }
       .opponent-spell {
-          display: flex;
-          justify-content: space-between;
+        display: flex;
+        justify-content: space-between;
       }
-  }
+    }
   }
 
   .opponent-droite {
+    width: 100%;
     .opponent-description {
-      flex: 1; /* Prend également l'espace disponible */
-      min-width: 200px; /* Pour éviter que le contenu ne déborde */
+      height: 100%;
       prose-mirror.inactive {
         min-height: 40px;
+        height: 100%;
       }
       prose-mirror.active {
         min-height: 450px;

@@ -351,6 +351,16 @@
       "experienceDetail": "Expérience {detail}",
       "maximum": "Maximum"
     },
+    "Tabs": {
+      "character": {
+        "items": "Equipement",
+        "biography": "Biographie"    
+      },
+      "path": {
+        "main": "Profil",
+        "talents": "Talents"
+      }
+    },
     "Edit": "Editer",
     "Delete": "Supprimer",
     "ToggleSheet": "Changer de mode",
@@ -433,6 +443,19 @@
       "bourse": "Bourse",
       "magie": "Magie",
       "roll": "Faire le jet"
+    },
+    "Sidebar": {
+      "title": "Cthulhu Tenebris",
+      "support": "Support",
+      "discordSinges": "Discord des XII Singes",
+      "discordSingesTooltip": "Rejoignez le Discord des XII Singes pour discuter du système Cthulhu Hack et trouver du support dans le canal Foundry.",
+      "discordLaFonderie": "Discord de la Fonderie",
+      "discordLaFonderieTooltip": "Rejoignez le serveur francophone dédié à Foundry VTT et son canal Cthulhu Hack",
+      "menu": "Système",
+      "gmManager": "Gestionnaire de personnages",
+      "gmManagerTooltip": "Ouvre le gestionnaire de personnages",
+      "fortune": "Roue de Fortune",
+      "fortuneTooltip": "Ouvre la roue de Fortune"
     }
   }
 }

@@ -38,8 +38,8 @@ export default class TenebrisOpponentSheet extends TenebrisActorSheet {
    * @protected
    */
   async _onDrop(event) {
-    if (!this.isEditable || !this.isEditMode) return
-    const data = TextEditor.getDragEventData(event)
+    if (!this.isEditMode) return
+    const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event)
 
     // Handle different data types
     switch (data.type) {

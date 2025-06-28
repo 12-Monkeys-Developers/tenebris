@@ -16,7 +16,6 @@ import * as applications from "./module/applications/_module.mjs"
 import { handleSocketEvent } from "./module/socket.mjs"
 import { configureDiceSoNice } from "./module/dice.mjs"
 import { Macros } from "./module/macros.mjs"
-import { initControlButtons } from "./module/control-buttons.mjs"
 import { setupTextEnrichers } from "./module/enrichers.mjs"
 
 Hooks.once("init", function () {
@@ -50,17 +49,17 @@ Hooks.once("init", function () {
   }
 
   // Register sheet application classes
-  Actors.unregisterSheet("core", ActorSheet)
-  Actors.registerSheet("tenebris", applications.TenebrisCharacterSheet, { types: ["character"], makeDefault: true })
-  Actors.registerSheet("tenebris", applications.TenebrisOpponentSheet, { types: ["opponent"], makeDefault: true })
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet)
+  foundry.documents.collections.Actors.registerSheet("tenebris", applications.TenebrisCharacterSheet, { types: ["character"], makeDefault: true })
+  foundry.documents.collections.Actors.registerSheet("tenebris", applications.TenebrisOpponentSheet, { types: ["opponent"], makeDefault: true })
 
-  Items.unregisterSheet("core", ItemSheet)
-  Items.registerSheet("tenebris", applications.TenebrisTalentSheet, { types: ["talent"], makeDefault: true })
-  Items.registerSheet("tenebris", applications.TenebrisPathSheet, { types: ["path"], makeDefault: true })
-  Items.registerSheet("tenebris", applications.TenebrisWeaponSheet, { types: ["weapon"], makeDefault: true })
-  Items.registerSheet("tenebris", applications.TenebrisSpellSheet, { types: ["spell"], makeDefault: true })
-  Items.registerSheet("tenebris", applications.TenebrisArmorSheet, { types: ["armor"], makeDefault: true })
-  Items.registerSheet("tenebris", applications.TenebrisAttackSheet, { types: ["attack"], makeDefault: true })
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet)
+  foundry.documents.collections.Items.registerSheet("tenebris", applications.TenebrisTalentSheet, { types: ["talent"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet("tenebris", applications.TenebrisPathSheet, { types: ["path"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet("tenebris", applications.TenebrisWeaponSheet, { types: ["weapon"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet("tenebris", applications.TenebrisSpellSheet, { types: ["spell"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet("tenebris", applications.TenebrisArmorSheet, { types: ["armor"], makeDefault: true })
+  foundry.documents.collections.Items.registerSheet("tenebris", applications.TenebrisAttackSheet, { types: ["attack"], makeDefault: true })
 
   // Other Document Configuration
   CONFIG.ChatMessage.documentClass = documents.TenebrisChatMessage
@@ -99,12 +98,6 @@ Hooks.once("init", function () {
   // Activate socket handler
   game.socket.on(`system.${SYSTEM.id}`, handleSocketEvent)
 
-  // Pre-localize configuration objects
-  // TODO : encore d'actualité ?
-  // preLocalizeConfig()
-
-  initControlButtons()
-
   setupTextEnrichers()
 
   // Gestion des jets de dés depuis les journaux
@@ -120,26 +113,16 @@ Hooks.once("init", function () {
     applications.TenebrisManager.askRollForAll(type, target, title, avantage)
   })
 
+  // Add a custom sidebar tab
+  CONFIG.ui.sidebar.TABS.tenebris = {
+    active: false,
+    icon: `tenebris`,
+    tooltip: `Cthulhu Tenebris`,
+  }
+  CONFIG.ui.tenebris = applications.TenebrisSidebarMenu
+
   console.info("CTHULHU TENEBRIS | System Initialized")
 })
-
-/**
- * Perform one-time configuration of system configuration objects.
- */
-function preLocalizeConfig() {
-  const localizeConfigObject = (obj, keys) => {
-    for (let o of Object.values(obj)) {
-      for (let k of keys) {
-        o[k] = game.i18n.localize(o[k])
-      }
-    }
-  }
-
-  // CONFIG.Dice.rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value)]))
-
-  // localizeConfigObject(SYSTEM.ACTION.TAG_CATEGORIES, ["label"])
-  // localizeConfigObject(CONFIG.Dice.rollModes, ["label"])
-}
 
 Hooks.once("ready", function () {
   console.info("CTHULHU TENEBRIS | Ready")
@@ -156,7 +139,7 @@ Hooks.once("ready", function () {
   _showUserGuide()
 
   /**
-   *
+   * Affiche le guide utilisateur du système
    */
   async function _showUserGuide() {
     if (game.user.isGM) {
@@ -203,18 +186,18 @@ Hooks.once("ready", function () {
   }
 })
 
-Hooks.on("renderChatMessage", (message, html, data) => {
+Hooks.on("renderChatMessageHTML", (message, html, data) => {
   const typeMessage = data.message.flags.tenebris?.typeMessage
   // Message de fortune
   if (typeMessage === "fortune") {
     if (game.user.isGM && !data.message.flags.tenebris?.accepted) {
-      html.find(".button").click((event) => applications.TenebrisFortune.acceptRequest(event, html, data))
+      html.querySelector(".button").addEventListener("click", (event) => applications.TenebrisFortune.acceptRequest(event, html, data))
     } else {
-      html.find(".button").each((i, btn) => {
+      html.querySelectorAll(".button").forEach((btn) => {
         btn.style.display = "none"
       })
       if (game.user.isGM) {
-        html.find(".fortune-accepted").each((i, btn) => (btn.style.display = "flex"))
+        html.querySelectorAll(".fortune-accepted").forEach((btn) => (btn.style.display = "flex"))
       }
     }
   }
@@ -222,18 +205,17 @@ Hooks.on("renderChatMessage", (message, html, data) => {
   else if (typeMessage === "askRoll") {
     // Affichage des boutons de jet de dés uniquement pour les joueurs
     if (game.user.isGM) {
-      html.find(".ask-roll-dice").each((i, btn) => {
-        btn.style.display = "none"
-      })
+      html.querySelectorAll(".ask-roll-dice").forEach((btn) => (btn.style.display = "none"))
     } else {
-      html.find(".ask-roll-dice").click((event) => {
-        const btn = $(event.currentTarget)
-        const type = btn.data("type")
-        const value = btn.data("value")
-        const avantage = btn.data("avantage") ?? "="
-        const character = game.user.character
-        if (type === SYSTEM.ROLL_TYPE.RESOURCE) character.rollResource(value)
-        else if (type === SYSTEM.ROLL_TYPE.SAVE) character.rollSave(value, avantage)
+      html.querySelectorAll(".ask-roll-dice").forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+          const type = btn.dataset.type
+          const value = btn.dataset.value
+          const avantage = btn.dataset.avantage ?? "="
+          const character = game.user.character
+          if (type === SYSTEM.ROLL_TYPE.RESOURCE) character.rollResource(value)
+          else if (type === SYSTEM.ROLL_TYPE.SAVE) character.rollSave(value, avantage)
+        })
       })
     }
   }
@@ -260,6 +242,39 @@ Hooks.on("hotbarDrop", (bar, data, slot) => {
   if (["Actor", "Item", "JournalEntry", "roll", "rollDamage", "rollAttack"].includes(data.type)) {
     Macros.createTenebrisMacro(data, slot)
     return false
+  }
+})
+
+Hooks.on("renderMacroDirectory", (application, html, context, options) => {
+  console.info("Tenebris | Adding Fortune button to Macro Directory")
+  const header = html.querySelector("header")
+  if (header) {
+    const buttonsContainer = document.createElement("div")
+    buttonsContainer.classList.add("tenebris-buttons-container", "flexrow")
+
+    const buttonFortune = document.createElement("div")
+    buttonFortune.classList.add("tenebris-button", "tenebris-fortune-button")
+    buttonFortune.innerHTML = `<i class="fa-solid fa-clover" data-tooltip="${game.i18n.localize("TENEBRIS.Fortune.title")}"></i>`
+    buttonFortune.addEventListener("click", () => {
+      if (!foundry.applications.instances.has("tenebris-application-fortune")) {
+        game.system.applicationFortune.render(true)
+      }
+    })
+    buttonsContainer.appendChild(buttonFortune)
+
+    if (game.user.isGM) {
+      const buttonManager = document.createElement("div")
+      buttonManager.classList.add("tenebris-button", "tenebris-manager-button")
+      buttonManager.innerHTML = `<i class="fa-solid fa-users" data-tooltip="${game.i18n.localize("TENEBRIS.Manager.title")}"></i>`
+      buttonManager.addEventListener("click", () => {
+        if (!foundry.applications.instances.has("tenebris-application-manager")) {
+          game.system.applicationManager.render(true)
+        }
+      })
+      buttonsContainer.appendChild(buttonManager)
+    }
+
+    header.appendChild(buttonsContainer)
   }
 })
 

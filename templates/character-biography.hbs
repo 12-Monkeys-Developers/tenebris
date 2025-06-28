@@ -1,4 +1,4 @@
-<section class="tab character-{{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+<section class="tab character-biography{{#if tabs.biography.active}} active{{/if}}" data-group="primary" data-tab="biography">
   <fieldset>
     <legend>{{localize "TENEBRIS.Character.Label.description"}}</legend>
     {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled=true}}

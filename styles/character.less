@@ -6,7 +6,7 @@
 
 .character-main {
   display: flex;
-  
+
   .character-personnage {
     display: flex;
     gap: 10px;
@@ -92,7 +92,7 @@
           gap: 2px;
           align-items: center;
           .character-pv-value {
-            .form-fields input {
+            input {
               flex: none;
               width: 50px;
               margin-left: 10px;
@@ -134,11 +134,11 @@
   .character-caracteristiques {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    flex: 1;
+    gap: 20px;
 
     .character-caracteristique {
       display: flex;
+      justify-content: space-between;
       align-items: center;
       .rollable:hover,
       .rollable:focus {
@@ -146,6 +146,8 @@
         cursor: pointer;
       }
       .form-group {
+        display: flex;
+        justify-content: space-between;
         flex: 1;
         padding-left: 5px;
         .form-fields {
@@ -193,19 +195,20 @@
   .character-ressources {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    flex: 1;
+    gap: 20px;
 
     .character-ressource {
       display: flex;
+      justify-content: space-between;
       align-items: center;
       .rollable:hover,
       .rollable:focus {
         text-shadow: 0 0 8px var(--color-shadow-primary);
-        cursor:
-          pointer;
+        cursor: pointer;
       }
       .form-group {
+        display: flex;
+        justify-content: space-between;
         flex: 1;
         padding-left: 5px;
         .form-fields {
@@ -248,16 +251,7 @@
   }
 }
 
-.character-biography {
-  prose-mirror.inactive {
-    min-height: 40px;
-  }
-  prose-mirror.active {
-    min-height: 150px;
-  }
-}
-
-.tab.character-items {
+.tab.character-items.active {
   display: grid;
   grid-template-columns: 1fr;
   legend {
@@ -323,6 +317,23 @@
   .appris {
     font-weight: bold;
   }
+  prose-mirror.inactive {
+    min-height: 40px;
+  }
+  prose-mirror.active {
+    min-height: 150px;
+  }
+}
+
+nav.tabs [data-tab] {
+  color: var(--color-dark-1);
+}
+
+nav.tabs [data-tab].active {
+  color: var(--color-dark-1);
+}
+
+.character-biography {
   prose-mirror.inactive {
     min-height: 40px;
   }

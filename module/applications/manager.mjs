@@ -112,7 +112,7 @@ export default class TenebrisManager extends HandlebarsApplicationMixin(Applicat
 
     ChatMessage.create({
       user: game.user.id,
-      content: await renderTemplate(`systems/tenebris/templates/chat-ask-roll.hbs`, {
+      content: await foundry.applications.handlebars.renderTemplate(`systems/tenebris/templates/chat-ask-roll.hbs`, {
         title: title !== null ? title : "",
         text: text,
         rollType: type,
@@ -136,7 +136,7 @@ export default class TenebrisManager extends HandlebarsApplicationMixin(Applicat
 
     ChatMessage.create({
       user: game.user.id,
-      content: await renderTemplate(`systems/tenebris/templates/chat-ask-roll.hbs`, {
+      content: await foundry.applications.handlebars.renderTemplate(`systems/tenebris/templates/chat-ask-roll.hbs`, {
         text: text,
         rollType: type,
         value: value,

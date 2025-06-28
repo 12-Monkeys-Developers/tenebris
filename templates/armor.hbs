@@ -2,19 +2,14 @@
   <div class="header">
     <img class="item-img" src="{{item.img}}" data-edit="img" data-action="editImage" data-tooltip="{{item.name}}" />
     {{formInput fields.name value=source.name}}
-  </div> 
+  </div>
 
   {{formField systemFields.categorie value=system.categorie localize=true}}
-  {{formField systemFields.valeur value=system.valeur}}
-  {{formField systemFields.malus value=system.malus}}
+  {{formField systemFields.valeur value=system.valeur classes="short-input"}}
+  {{formField systemFields.malus value=system.malus classes="short-input"}}
+
   <fieldset>
     <legend>{{localize "TENEBRIS.Label.description"}}</legend>
-    {{formInput
-      systemFields.description
-      enriched=enrichedDescription
-      value=system.description
-      name="system.description"
-      toggled="false"
-    }}
+    {{formInput systemFields.description enriched=enrichedDescription value=system.description name="system.description" toggled="false"}}
   </fieldset>
 </section>

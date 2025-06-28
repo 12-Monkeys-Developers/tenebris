@@ -4,22 +4,12 @@
   --font-secondary: "Amiri", serif;
   --logo-standard: url("../assets/tenebris-logo.webp");
 }
-#logo {
-  content: var(--logo-standard);
-  width: 50px;
-  height: 50px;
-  margin-left: 15px;
-}
 #pause > img {
   content: var(--logo-standard);
-  height: 192px;
-  width: 192px;
-  top: -45px;
-  left: calc(50% - 96px);
+  width: 120px;
+  height: 120px;
 }
-i.tenebris {
-  width: 36px;
-  height: 36px;
+.icon.tenebris {
   background-image: var(--logo-standard);
   background-size: 100%;
   background-position: center;
@@ -51,6 +41,67 @@ i.tenebris {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.tenebris-sidebar {
+  flex-direction: column;
+  overflow-y: auto;
+  color: var(--color-text-secondary);
+}
+.tenebris-sidebar.active {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+.tenebris-sidebar section {
+  gap: 0.5rem;
+}
+.tenebris-sidebar section h4 {
+  margin: 0;
+}
+.tenebris-sidebar section a.button {
+  flex-basis: 2rem;
+}
+.tenebris-sidebar .info {
+  font-size: var(--font-size-13);
+}
+.tenebris-sidebar .info .title {
+  margin: 0;
+  font-size: var(--font-size-32);
+  text-align: center;
+  letter-spacing: -0.3px;
+}
+.tenebris-sidebar .info .subtitle {
+  margin: -0.5rem 0 0;
+  color: var(--color-text-subtle);
+  text-align: center;
+}
+.tenebris-sidebar .info > div {
+  display: flex;
+  justify-content: space-between;
+}
+.tenebris-sidebar .info > div .label {
+  color: var(--color-text-emphatic);
+}
+.tenebris-sidebar .info > div .value {
+  color: var(--color-text-secondary);
+}
+.tenebris-sidebar .info .notification-pip {
+  margin-left: 0.25rem;
+  color: var(--color-text-accent);
+  position: initial;
+}
+#tenebris-popout {
+  overflow-y: hidden;
+}
+#tenebris-popout .window-content {
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+.icon.tenebris {
+  background-image: var(--logo-standard);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .tenebris .character-sheet-common label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.4);
@@ -61,7 +112,26 @@ i.tenebris {
 .tenebris .item-sheet-common label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
+}
+.tenebris .item-sheet-common .header {
+  display: flex;
+}
+.tenebris .item-sheet-common .header img {
+  width: 50px;
+  height: 50px;
+}
+.tenebris .item-sheet-common .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .item-sheet-common .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.tenebris .item-sheet-common .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
 }
 .tenebris .character-content {
   font-family: var(--font-primary);
@@ -80,9 +150,9 @@ i.tenebris {
 }
 .tenebris .character-content input,
 .tenebris .character-content select {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .character-content input[name="name"] {
   height: 50px;
@@ -117,14 +187,6 @@ i.tenebris {
 }
 .tenebris .character-main {
   display: flex;
-  /*&.character-main-play {
-    min-width: 1030px;
-  }
-
-  &.character-main-edit {
-    min-width: 1410px;
-    width: 100%;
-  }*/
 }
 .tenebris .character-main .character-personnage {
   display: flex;
@@ -202,7 +264,7 @@ i.tenebris {
   gap: 2px;
   align-items: center;
 }
-.tenebris .character-main .character-personnage .character-droite .character-infos .character-pv .character-pv-value .form-fields input {
+.tenebris .character-main .character-personnage .character-droite .character-infos .character-pv .character-pv-value input {
   flex: none;
   width: 50px;
   margin-left: 10px;
@@ -236,11 +298,11 @@ i.tenebris {
 .tenebris .character-main .character-caracteristiques {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  flex: 1;
+  gap: 20px;
 }
 .tenebris .character-main .character-caracteristiques .character-caracteristique {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 .tenebris .character-main .character-caracteristiques .character-caracteristique .rollable:hover,
@@ -249,6 +311,8 @@ i.tenebris {
   cursor: pointer;
 }
 .tenebris .character-main .character-caracteristiques .character-caracteristique .form-group {
+  display: flex;
+  justify-content: space-between;
   flex: 1;
   padding-left: 5px;
 }
@@ -291,11 +355,11 @@ i.tenebris {
 .tenebris .character-main .character-ressources {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  flex: 1;
+  gap: 20px;
 }
 .tenebris .character-main .character-ressources .character-ressource {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 .tenebris .character-main .character-ressources .character-ressource .rollable:hover,
@@ -304,6 +368,8 @@ i.tenebris {
   cursor: pointer;
 }
 .tenebris .character-main .character-ressources .character-ressource .form-group {
+  display: flex;
+  justify-content: space-between;
   flex: 1;
   padding-left: 5px;
 }
@@ -340,80 +406,86 @@ i.tenebris {
 .tenebris .character-main .character-ressources-edit {
   min-width: 400px;
 }
-.tenebris .character-biography prose-mirror.inactive {
-  min-height: 40px;
-}
-.tenebris .character-biography prose-mirror.active {
-  min-height: 150px;
-}
-.tenebris .tab.character-items {
+.tenebris .tab.character-items.active {
   display: grid;
   grid-template-columns: 1fr;
 }
-.tenebris .tab.character-items legend a {
+.tenebris .tab.character-items.active legend a {
   font-size: calc(var(--font-size-standard) * 1.4);
   padding-left: 5px;
 }
-.tenebris .tab.character-items .talents {
+.tenebris .tab.character-items.active .talents {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
 }
-.tenebris .tab.character-items .talents .talent {
+.tenebris .tab.character-items.active .talents .talent {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.tenebris .tab.character-items .talents .talent .item-img {
+.tenebris .tab.character-items.active .talents .talent .item-img {
   width: 50px;
   height: 50px;
 }
-.tenebris .tab.character-items .weapons {
+.tenebris .tab.character-items.active .weapons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
-.tenebris .tab.character-items .weapons .weapon {
+.tenebris .tab.character-items.active .weapons .weapon {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.tenebris .tab.character-items .weapons .weapon .item-img {
+.tenebris .tab.character-items.active .weapons .weapon .item-img {
   width: 50px;
   height: 50px;
   margin: 5px 0 0 0;
 }
-.tenebris .tab.character-items .armors {
+.tenebris .tab.character-items.active .armors {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
-.tenebris .tab.character-items .armors .armor {
+.tenebris .tab.character-items.active .armors .armor {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.tenebris .tab.character-items .armors .armor .item-img {
+.tenebris .tab.character-items.active .armors .armor .item-img {
   width: 50px;
   height: 50px;
   margin: 5px 0 0 0;
 }
-.tenebris .tab.character-items .spells {
+.tenebris .tab.character-items.active .spells {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
-.tenebris .tab.character-items .spells .spell {
+.tenebris .tab.character-items.active .spells .spell {
   display: flex;
   gap: 10px;
 }
-.tenebris .tab.character-items .appris {
+.tenebris .tab.character-items.active .appris {
   font-weight: bold;
 }
-.tenebris .tab.character-items prose-mirror.inactive {
+.tenebris .tab.character-items.active prose-mirror.inactive {
   min-height: 40px;
 }
-.tenebris .tab.character-items prose-mirror.active {
+.tenebris .tab.character-items.active prose-mirror.active {
+  min-height: 150px;
+}
+.tenebris nav.tabs [data-tab] {
+  color: var(--color-dark-1);
+}
+.tenebris nav.tabs [data-tab].active {
+  color: var(--color-dark-1);
+}
+.tenebris .character-biography prose-mirror.inactive {
+  min-height: 40px;
+}
+.tenebris .character-biography prose-mirror.active {
   min-height: 150px;
 }
 .tenebris .opponent-content {
@@ -433,9 +505,9 @@ i.tenebris {
 }
 .tenebris .opponent-content input,
 .tenebris .opponent-content select {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .opponent-content input[name="name"] {
   height: 50px;
@@ -490,17 +562,23 @@ i.tenebris {
 .tenebris .opponent-main .opponent-gauche {
   display: flex;
   flex-direction: column;
-  min-width: 250px;
+  min-width: 280px;
 }
-.tenebris .opponent-main .opponent-gauche .opponent-caracteristiques {
+.tenebris .opponent-main .opponent-gauche .opponent-caracteristiques .form-group {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 }
-.tenebris .opponent-main .opponent-gauche .opponent-caracteristiques .form-fields {
-  flex: none;
+.tenebris .opponent-main .opponent-gauche .opponent-caracteristiques .form-group label {
+  margin-top: 5px;
 }
-.tenebris .opponent-main .opponent-gauche .opponent-caracteristiques .form-fields input {
+.tenebris .opponent-main .opponent-gauche .opponent-caracteristiques .form-group .form-fields {
+  margin-top: 5px;
+}
+.tenebris .opponent-main .opponent-gauche .opponent-caracteristiques .form-group .form-fields input {
   width: 50px;
+}
+.tenebris .opponent-main .opponent-gauche .opponent-attacks {
+  margin-bottom: 0;
 }
 .tenebris .opponent-main .opponent-gauche .opponent-attacks legend a {
   font-size: calc(var(--font-size-standard) * 1.6);
@@ -516,14 +594,15 @@ i.tenebris {
   display: flex;
   justify-content: space-between;
 }
+.tenebris .opponent-main .opponent-droite {
+  width: 100%;
+}
 .tenebris .opponent-main .opponent-droite .opponent-description {
-  flex: 1;
-  /* Prend également l'espace disponible */
-  min-width: 200px;
-  /* Pour éviter que le contenu ne déborde */
+  height: 100%;
 }
 .tenebris .opponent-main .opponent-droite .opponent-description prose-mirror.inactive {
   min-height: 40px;
+  height: 100%;
 }
 .tenebris .opponent-main .opponent-droite .opponent-description prose-mirror.active {
   min-height: 450px;
@@ -547,9 +626,9 @@ i.tenebris {
 }
 .tenebris .path-content input,
 .tenebris .path-content select {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .path-content input[name="name"] {
   height: 50px;
@@ -584,11 +663,31 @@ i.tenebris {
 .tenebris .path-content label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
+}
+.tenebris .path-content .header {
+  display: flex;
+}
+.tenebris .path-content .header img {
+  width: 50px;
+  height: 50px;
+}
+.tenebris .path-content .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .path-content .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.tenebris .path-content .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
 }
 .tenebris .path-content .path-name {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 .tenebris .path-content .path-name .control {
   margin: 5px;
@@ -597,72 +696,72 @@ i.tenebris {
   width: 50px;
   height: 50px;
 }
-.tenebris .path-content .path-main {
+.tenebris .path-content .path-main.active {
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
   /* Optionnel : supprimer le margin-right sur la dernière colonne si vous avez besoin d'un espacement précis */
 }
-.tenebris .path-content .path-main .profil {
+.tenebris .path-content .path-main.active .profil {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-.tenebris .path-content .path-main .profil-gauche,
-.tenebris .path-content .path-main .profil-droite {
+.tenebris .path-content .path-main.active .profil-gauche,
+.tenebris .path-content .path-main.active .profil-droite {
   flex: 1;
   /* Chaque colonne prend la moitié de l'espace disponible */
   padding: 10px;
   /* Espacement intérieur */
 }
-.tenebris .path-content .path-main .profil-gauche {
+.tenebris .path-content .path-main.active .profil-gauche {
   margin-right: 10px;
   /* Espace entre les deux colonnes */
 }
-.tenebris .path-content .path-main .profil-droite {
+.tenebris .path-content .path-main.active .profil-droite {
   margin-right: 0;
 }
-.tenebris .path-content .path-main .biens prose-mirror {
+.tenebris .path-content .path-main.active .biens prose-mirror {
   height: 100%;
 }
-.tenebris .path-content .path-main .langues prose-mirror {
+.tenebris .path-content .path-main.active .langues prose-mirror {
   height: 100%;
 }
-.tenebris .path-content .path-main .description {
+.tenebris .path-content .path-main.active .description {
   grid-column: span 3;
 }
-.tenebris .path-content .path-main .description prose-mirror.inactive {
+.tenebris .path-content .path-main.active .description prose-mirror.inactive {
   min-height: 40px;
 }
-.tenebris .path-content .path-main .description prose-mirror.active {
+.tenebris .path-content .path-main.active .description prose-mirror.active {
   min-height: 150px;
 }
-.tenebris .path-content .path-talents {
+.tenebris .path-content .path-talents.active {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
 }
-.tenebris .path-content .path-talents .talent {
+.tenebris .path-content .path-talents.active .talent {
   background-color: #f0f0f0;
   padding: 5px;
   border-radius: 5px;
 }
-.tenebris .path-content .path-talents .talent .header {
+.tenebris .path-content .path-talents.active .talent .header {
   display: flex;
   justify-content: space-between;
 }
-.tenebris .path-content .path-talents .talent .header .name {
+.tenebris .path-content .path-talents.active .talent .header .name {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.5);
   padding-left: 20px;
 }
-.tenebris .path-content .path-talents .talent .header .controls {
+.tenebris .path-content .path-talents.active .talent .header .controls {
   font-size: calc(var(--font-size-standard) * 0.8);
 }
-.tenebris .path-content .path-talents .talent .progression {
+.tenebris .path-content .path-talents.active .talent .progression {
   display: flex;
   justify-content: space-between;
   padding-top: 10px;
 }
-.tenebris .path-content .path-talents .talent .description {
+.tenebris .path-content .path-talents.active .talent .description {
   font-size: calc(var(--font-size-standard) * 1);
 }
 .tenebris .talent-content {
@@ -681,9 +780,9 @@ i.tenebris {
 }
 .tenebris .talent-content input,
 .tenebris .talent-content select {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .talent-content input[name="name"] {
   height: 50px;
@@ -718,7 +817,6 @@ i.tenebris {
 .tenebris .talent-content label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
 }
 .tenebris .talent-content .header {
   display: flex;
@@ -727,16 +825,29 @@ i.tenebris {
   width: 50px;
   height: 50px;
 }
+.tenebris .talent-content .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .talent-content .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.tenebris .talent-content .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
+}
 .tenebris .talent-content input[type="checkbox"] {
+  background-color: rgba(0, 0, 0, 0);
   font-size: var(--font-size-14);
   width: 20px;
-  padding-top: 0;
-}
-.tenebris .talent-content input[type="checkbox"]:checked {
-  background-color: rgba(0, 0, 0, 0.1);
 }
 .tenebris .talent-content input[type="checkbox"]:checked::after {
   color: rgba(0, 0, 0, 0.1);
+}
+.tenebris .talent-content range-picker input[type="number"] {
+  padding-top: 10px;
 }
 .tenebris .weapon-content {
   font-family: var(--font-primary);
@@ -754,9 +865,9 @@ i.tenebris {
 }
 .tenebris .weapon-content input,
 .tenebris .weapon-content select {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .weapon-content input[name="name"] {
   height: 50px;
@@ -791,7 +902,6 @@ i.tenebris {
 .tenebris .weapon-content label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
 }
 .tenebris .weapon-content .header {
   display: flex;
@@ -800,8 +910,18 @@ i.tenebris {
   width: 50px;
   height: 50px;
 }
-.tenebris .weapon-content label {
-  flex: 10%;
+.tenebris .weapon-content .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .weapon-content .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.tenebris .weapon-content .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
 }
 .tenebris .armor-content {
   font-family: var(--font-primary);
@@ -819,9 +939,9 @@ i.tenebris {
 }
 .tenebris .armor-content input,
 .tenebris .armor-content select {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .armor-content input[name="name"] {
   height: 50px;
@@ -856,7 +976,6 @@ i.tenebris {
 .tenebris .armor-content label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
 }
 .tenebris .armor-content .header {
   display: flex;
@@ -865,8 +984,22 @@ i.tenebris {
   width: 50px;
   height: 50px;
 }
-.tenebris .armor-content label {
-  flex: 10%;
+.tenebris .armor-content .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .armor-content .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.tenebris .armor-content .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
+}
+.tenebris .armor-content .form-group.short-input input {
+  padding-top: 10px;
+  width: 50px;
 }
 .tenebris .spell-content {
   font-family: var(--font-primary);
@@ -884,9 +1017,9 @@ i.tenebris {
 }
 .tenebris .spell-content input,
 .tenebris .spell-content select {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .spell-content input[name="name"] {
   height: 50px;
@@ -921,7 +1054,6 @@ i.tenebris {
 .tenebris .spell-content label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
 }
 .tenebris .spell-content .header {
   display: flex;
@@ -930,8 +1062,40 @@ i.tenebris {
   width: 50px;
   height: 50px;
 }
-.tenebris .spell-content label {
-  flex: 10%;
+.tenebris .spell-content .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .spell-content .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.tenebris .spell-content .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
+}
+.tenebris .spell-content .header {
+  display: flex;
+}
+.tenebris .spell-content .header img {
+  width: 50px;
+  height: 50px;
+}
+.tenebris .spell-content .form-group .form-fields input {
+  width: 300px;
+  padding-top: 10px;
+}
+.tenebris .spell-content .form-group .form-fields select {
+  width: 100px;
+}
+.tenebris .spell-content .form-group.long-input input {
+  padding-top: 10px;
+  width: 100%;
+}
+.tenebris .spell-content .form-group.short-input input {
+  padding-top: 10px;
+  width: 50px;
 }
 .tenebris .spell-content input[name="system.consequenceA"],
 .tenebris .spell-content input[name="system.consequenceB"] {
@@ -953,9 +1117,9 @@ i.tenebris {
 }
 .tenebris .attack-content input,
 .tenebris .attack-content select {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: var(--color-dark-6);
-  color: var(--color-dark-2);
+  color: var(--color-dark-1);
 }
 .tenebris .attack-content input[name="name"] {
   height: 50px;
@@ -990,7 +1154,6 @@ i.tenebris {
 .tenebris .attack-content label {
   font-family: var(--font-secondary);
   font-size: calc(var(--font-size-standard) * 1.6);
-  flex: 50%;
 }
 .tenebris .attack-content .header {
   display: flex;
@@ -999,8 +1162,22 @@ i.tenebris {
   width: 50px;
   height: 50px;
 }
-.tenebris .attack-content label {
-  flex: 10%;
+.tenebris .attack-content .form-group {
+  display: flex;
+  align-items: center;
+}
+.tenebris .attack-content .form-group label {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.tenebris .attack-content .form-group .form-fields {
+  width: 100%;
+  margin-top: 5px;
+}
+.tenebris .attack-content .form-group input {
+  padding-top: 10px;
+  width: 100px;
 }
 .tenebris.fortune img {
   border: 0px;
@@ -1178,7 +1355,6 @@ input[name="selectAvantages"] {
   display: flex;
   font-family: var(--font-primary);
   font-size: calc(var(--font-size-standard) * 1);
-  color: var(--color-dark-1);
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -1192,4 +1368,7 @@ input[name="selectAvantages"] {
 }
 #tenebris-application-manager .tenebris-table .player {
   font-size: calc(var(--font-size-standard) * 1);
+}
+#tenebris-application-manager .tenebris-table tbody {
+  color: var(--color-dark-1);
 }

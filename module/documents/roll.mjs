@@ -176,7 +176,7 @@ export default class TenebrisRoll extends Roll {
       }
     }
 
-    const rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value)]))
+    const rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value.label)]))
     const fieldRollMode = new foundry.data.fields.StringField({
       choices: rollModes,
       blank: false,
@@ -272,7 +272,7 @@ export default class TenebrisRoll extends Roll {
       rollAdvantage: this._convertAvantages(options.rollAdvantage),
       rangeAdvantage: this._convertRollAdvantageToRange(options.rollAdvantage),
     }
-    const content = await renderTemplate("systems/tenebris/templates/roll-dialog.hbs", dialogContext)
+    const content = await foundry.applications.handlebars.renderTemplate("systems/tenebris/templates/roll-dialog.hbs", dialogContext)
 
     const title = TenebrisRoll.createTitle(options.rollType, options.rollTarget)
     const label = game.i18n.localize("TENEBRIS.Roll.roll")
@@ -312,12 +312,12 @@ export default class TenebrisRoll extends Roll {
       ],
       rejectClose: false, // Click on Close button will not launch an error
       render: (event, dialog) => {
-        const rangeInput = dialog.querySelector('input[name="avantages"]')
+        const rangeInput = dialog.element.querySelector('input[name="avantages"]')
         if (rangeInput) {
           rangeInput.addEventListener("change", (event) => {
             event.preventDefault()
             event.stopPropagation()
-            const readOnly = dialog.querySelector('input[name="selectAvantages"]')
+            const readOnly = dialog.element.querySelector('input[name="selectAvantages"]')
             readOnly.value = this._convertAvantages(event.target.value)
           })
         }
@@ -453,7 +453,7 @@ export default class TenebrisRoll extends Roll {
   /** @override */
   async render(chatOptions = {}) {
     let chatData = await this._getChatCardData(chatOptions.isPrivate)
-    return await renderTemplate(this.constructor.CHAT_TEMPLATE, chatData)
+    return await foundry.applications.handlebars.renderTemplate(this.constructor.CHAT_TEMPLATE, chatData)
   }
 
   /**

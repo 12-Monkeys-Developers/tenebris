@@ -19,68 +19,48 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
 
   /** @override */
   static PARTS = {
-    header: {
-      template: "systems/tenebris/templates/path-header.hbs",
-    },
-    tabs: {
-      template: "templates/generic/tab-navigation.hbs",
-    },
-    main: {
-      template: "systems/tenebris/templates/path-main.hbs",
-    },
-    talents: {
-      template: "systems/tenebris/templates/path-talents.hbs",
-    },
+    header: { template: "systems/tenebris/templates/path-header.hbs" },
+    tabs: { template: "templates/generic/tab-navigation.hbs" },
+    main: { template: "systems/tenebris/templates/path-main.hbs" },
+    talents: { template: "systems/tenebris/templates/path-talents.hbs" },
   }
 
   /** @override */
-  tabGroups = {
-    sheet: "main",
-  }
-
-  /**
-   * Prepare an array of form header tabs.
-   * @returns {Record<string, Partial<ApplicationTab>>}
-   */
-  #getTabs() {
-    const tabs = {
-      main: { id: "main", group: "sheet", icon: "fa-solid fa-user", label: "TENEBRIS.Label.profil" },
-      talents: { id: "talents", group: "sheet", icon: "fa-solid fa-book", label: "TENEBRIS.Label.talents" },
-    }
-    for (const v of Object.values(tabs)) {
-      v.active = this.tabGroups[v.group] === v.id
-      v.cssClass = v.active ? "active" : ""
-    }
-    return tabs
+  static TABS = {
+    primary: {
+      tabs: [
+        { id: "main", icon: "fa-solid fa-user" },
+        { id: "talents", icon: "fa-solid fa-book" },
+      ],
+      initial: "main",
+      labelPrefix: "TENEBRIS.Tabs.path",
+    },
   }
 
   /** @override */
   async _prepareContext() {
     const context = await super._prepareContext()
-    context.tabs = this.#getTabs()
+    console.log("Tenebris | Path Sheet Context Prepared", context)
     return context
   }
 
   /** @override */
-  async _preparePartContext(partId, context) {
+  async _preparePartContext(partId, context, options) {
+    await super._preparePartContext(partId, context, options)
     const doc = this.document
     switch (partId) {
       case "main":
-        context.tab = context.tabs.main
-        context.enrichedBiens = await TextEditor.enrichHTML(this.document.system.biens, { async: true })
-        context.enrichedLangues = await TextEditor.enrichHTML(this.document.system.langues, { async: true })
+        context.enrichedBiens = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.biens, { async: true })
+        context.enrichedLangues = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.document.system.langues, { async: true })
         break
       case "talents":
-        context.tab = context.tabs.talents
         const talentItems = []
         for (const talent of this.item.system.talents) {
           const talentItem = await fromUuid(talent)
           if (talentItem) talentItems.push(talentItem)
         }
-
         context.talents = talentItems
         context.talents.sort((a, b) => a.name.localeCompare(b.name, game.i18n.lang))
-
         break
     }
     return context
@@ -93,7 +73,7 @@ export default class TenebrisPathSheet extends TenebrisItemSheet {
    * @protected
    */
   async _onDrop(event) {
-    const data = TextEditor.getDragEventData(event)
+    const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event)
 
     switch (data.type) {
       case "Item":

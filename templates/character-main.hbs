@@ -63,8 +63,9 @@
               {{formField systemFields.commanditaire value=system.commanditaire rootId=partId disabled=isPlayMode classes="character-commanditaire"}}
             </div>
             <div class="character-pv">
+                <label>Points de vie</label>
                 <div class="character-pv-value">
-                    {{formField systemFields.pv.fields.value value=system.pv.value}}
+                    {{formInput systemFields.pv.fields.value value=system.pv.value}}
                 </div>
                 <div class="pv-separator">/</div>
                 <div class="character-pv-max">
@@ -78,9 +79,9 @@
 
   <fieldset class="character-caracteristiques character-caracteristiques-{{ifThen isPlayMode 'play' 'edit'}}">
     <legend>{{localize "TENEBRIS.Character.Label.caracteristiques"}}</legend>
-    <div class="character-caracteristique" data-drag="true" data-drag-type="save">
+    <div class="character-caracteristique draggable" data-drag-type="save">
       <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.rob}}" style="font-size: small;"></i>
-        {{formField systemFields.caracteristiques.fields.rob.fields.valeur value=system.caracteristiques.rob.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveRob}}
+        {{formField systemFields.caracteristiques.fields.rob.fields.valeur value=system.caracteristiques.rob.valeur disabled=isPlayMode classes="rollable" dataset=rollType.saveRob}}
         {{#if isEditMode}}
           <div class="experience">
             <div data-tooltip="{{localize "TENEBRIS.Label.experience"}}">{{formInput systemFields.caracteristiques.fields.rob.fields.progression.fields.experience value=system.caracteristiques.rob.progression.experience}}</div>
@@ -88,7 +89,7 @@
           </div>
         {{/if}}
     </div>
-    <div class="character-caracteristique" data-drag="true" data-drag-type="save">
+    <div class="character-caracteristique draggable" data-drag-type="save">
         <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.dex}}" style="font-size: small;"></i>
         {{formField systemFields.caracteristiques.fields.dex.fields.valeur value=system.caracteristiques.dex.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveDex}}
         {{#if isEditMode}}
@@ -98,7 +99,7 @@
           </div>
         {{/if}}
     </div>
-    <div class="character-caracteristique" data-drag="true" data-drag-type="save">
+    <div class="character-caracteristique draggable" data-drag-type="save">
       <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.int}}" style="font-size: small;"></i>
         {{formField systemFields.caracteristiques.fields.int.fields.valeur value=system.caracteristiques.int.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveInt}} 
         {{#if isEditMode}}
@@ -108,7 +109,7 @@
           </div>
         {{/if}}
     </div>
-    <div class="character-caracteristique" data-drag="true" data-drag-type="save">
+    <div class="character-caracteristique draggable" data-drag-type="save">
       <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.per}}" style="font-size: small;"></i>
         {{formField systemFields.caracteristiques.fields.per.fields.valeur value=system.caracteristiques.per.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.savePer}}
         {{#if isEditMode}}
@@ -118,7 +119,7 @@
           </div>
         {{/if}}
     </div>
-    <div class="character-caracteristique" data-drag="true" data-drag-type="save">
+    <div class="character-caracteristique draggable" data-drag-type="save">
       <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsCaracteristiques.vol}}" style="font-size: small;"></i>
         {{formField systemFields.caracteristiques.fields.vol.fields.valeur value=system.caracteristiques.vol.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.saveVol}}
         {{#if isEditMode}}
@@ -132,7 +133,7 @@
 
   <fieldset class="character-ressources character-ressources-{{ifThen isPlayMode 'play' 'edit'}}">
     <legend>{{localize "TENEBRIS.Character.Label.ressources"}}</legend>
-    <div class="character-ressource" data-drag="true" data-drag-type="resource">
+    <div class="character-ressource draggable" data-drag-type="resource">
         <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsRessources.san}}" style="font-size: small;"></i>
         {{formField systemFields.ressources.fields.san.fields.valeur value=system.ressources.san.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.resourceSan}} 
         {{#if isEditMode}}
@@ -142,7 +143,7 @@
           </div>
         {{/if}}
     </div>
-    <div class="character-ressource" data-drag="true" data-drag-type="resource">
+    <div class="character-ressource draggable" data-drag-type="resource">
         <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsRessources.oeil}}" style="font-size: small;"></i>
         {{formField systemFields.ressources.fields.oeil.fields.valeur value=system.ressources.oeil.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.resourceOeil}} 
         {{#if isEditMode}}
@@ -152,7 +153,7 @@
           </div>
         {{/if}}
     </div>
-        <div class="character-ressource" data-drag="true" data-drag-type="resource">          
+        <div class="character-ressource draggable" data-drag-type="resource">          
         <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsRessources.verbe}}" style="font-size: small;"></i>
         {{formField systemFields.ressources.fields.verbe.fields.valeur value=system.ressources.verbe.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.resourceVerbe}} 
         {{#if isEditMode}}
@@ -162,7 +163,7 @@
           </div>
         {{/if}}
     </div>
-        <div class="character-ressource" data-drag="true" data-drag-type="resource">
+        <div class="character-ressource draggable" data-drag-type="resource">
         <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsRessources.bourse}}" style="font-size: small;"></i>
         {{formField systemFields.ressources.fields.bourse.fields.valeur value=system.ressources.bourse.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.resourceBourse}} 
         {{#if isEditMode}}
@@ -172,7 +173,7 @@
           </div>
         {{/if}}
     </div>
-    <div class="character-ressource" data-drag="true" data-drag-type="resource">
+    <div class="character-ressource draggable" data-drag-type="resource">
         <i class="fa fa-question-circle" aria-hidden="true" data-tooltip="{{tooltipsRessources.magie}}" style="font-size: small;"></i>
         {{formField systemFields.ressources.fields.magie.fields.valeur value=system.ressources.magie.valeur rootId=partId disabled=isPlayMode classes="rollable" dataset=rollType.resourceMagie}} 
         {{#if isEditMode}}

@@ -1,4 +1,4 @@
-<section class="tab character-{{tab.id}} {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+<section class="tab character-items{{#if tabs.items.active}} active{{/if}}" data-group="primary" data-tab="items" >
 
   <fieldset>
     <legend data-tooltip="{{localize "TENEBRIS.Tooltip.learnedTalents"}}" data-tooltip-direction="UP">{{localize "TENEBRIS.Label.talents"}}</legend>
@@ -37,7 +37,7 @@
     <div class="weapons">
       {{#each weapons as |item|}}
         {{!log 'weapon' this}}
-        <div class="weapon" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-drag="true" data-drag-type="damage">
+        <div class="weapon draggable" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-drag-type="damage">
           {{#if (ne item.img "icons/svg/item-bag.svg")}}
             <img class="item-img" src="{{item.img}}" data-tooltip="{{item.name}}" />
           {{/if}}
@@ -85,7 +85,7 @@
         <div class="spells">
           {{#each spells as |item|}}
             {{!log 'weapon' this}}
-            <div class="spell" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-drag="true" data-drag-type="spell">
+            <div class="spell draggable" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-drag-type="spell">
               <div class="name" data-tooltip="{{{item.system.description}}}">
                 {{item.name}}
               </div>
