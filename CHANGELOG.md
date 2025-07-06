@@ -1,3 +1,6 @@
+2.0.2
+- Suppression des boutons de menu dans MacroDirectory
+
 2.0.1
 - Correction de la gestion des personnages : des infos n'étaient plus affichées
 
