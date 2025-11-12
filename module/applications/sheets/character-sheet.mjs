@@ -212,7 +212,7 @@ export default class TenebrisCharacterSheet extends TenebrisActorSheet {
     if (!["path", "weapon", "armor", "spell"].includes(item.type)) return
     if (!this.actor.isOwner) return
     if (item.type === "path") return await this.document.addPath(item)
-    else return super._onDropItem(event, item)
+    return super._onDropItem(event, item)
   }
 
   // #endregion

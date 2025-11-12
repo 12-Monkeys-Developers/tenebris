@@ -33,32 +33,17 @@ export default class TenebrisOpponentSheet extends TenebrisActorSheet {
   }
 
   /**
-   * Callback actions which occur when a dragged element is dropped on a target.
-   * @param {DragEvent} event       The originating DragEvent
+   * Handle a dropped Item on the Actor Sheet.
+   * @param {DragEvent} event     The initiating drop event
+   * @param {Item} item           The dropped Item document
+   * @returns {Promise<void>}
    * @protected
    */
-  async _onDrop(event) {
-    if (!this.isEditMode) return
-    const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event)
-
-    // Handle different data types
-    switch (data.type) {
-      case "Item":
-        const item = await fromUuid(data.uuid)
-        if (item.type === "attack") return this.#onDropAttackItem(item)
-        if (item.type === "spell") return this._onDropItem(item)
-    }
-  }
-
-  /**
-   * Handles the drop event of an attack item.
-   *
-   * @param {Object} item The attack item being dropped.
-   * @returns {Promise<void>} A promise that resolves when the attack item has been added to the document.
-   * @private
-   */
-  async #onDropAttackItem(item) {
-    await this.document.addAttack(item)
+  async _onDropItem(event, item) {
+    if (!["attack", "spell"].includes(item.type)) return
+    if (!this.actor.isOwner) return
+    if (item.type === "attack") return await this.document.addAttack(item)
+    return super._onDropItem(event, item)
   }
 
   /**
