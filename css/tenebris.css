@@ -41,6 +41,9 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.tenebris-tooltip-spell {
+  max-width: 600px;
+}
 .tenebris-sidebar {
   flex-direction: column;
   overflow-y: auto;

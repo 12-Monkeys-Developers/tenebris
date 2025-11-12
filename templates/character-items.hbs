@@ -86,7 +86,7 @@
           {{#each spells as |item|}}
             {{!log 'weapon' this}}
             <div class="spell draggable" data-item-id="{{item.id}}" data-item-uuid="{{item.uuid}}" data-drag-type="spell">
-              <div class="name" data-tooltip="{{{item.system.description}}}">
+              <div class="name" data-tooltip="{{{item.system.tooltip}}}" data-tooltip-direction="UP" data-tooltip-class="tenebris-tooltip-spell">
                 {{item.name}}
               </div>
               {{#if @root.isEditMode}}

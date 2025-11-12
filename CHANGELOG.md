@@ -1,3 +1,7 @@
+2.0.3
+- Correction du drop de sortilège sur un adversaire
+- Infobulle d'un sortilège : tous les éléments sont maintenant affichés
+
 2.0.2
 - Suppression des boutons de menu dans MacroDirectory
 

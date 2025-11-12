@@ -24,4 +24,17 @@ export default class TenebrisSpell extends foundry.abstract.TypeDataModel {
 
   /** @override */
   static LOCALIZATION_PREFIXES = ["TENEBRIS.Spell"]
+
+  get tooltip() {
+    return `
+    <b>Préparation</b> : ${this.preparation} action(s) <br>
+    <b>Cible</b> : ${this.cible} <br>
+    <b>Portee</b> : ${this.portee} <br>
+    <b>Durée</b> : ${this.duree} <br>
+    <b>Conséquence A</b> : ${this.consequenceA} <br>
+    <b>Conséquence B</b> : ${this.consequenceB}
+    <hr>
+    ${this.description}
+    `
+  }
 }

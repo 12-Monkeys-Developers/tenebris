@@ -53,7 +53,7 @@
         <legend>{{localize "TENEBRIS.Label.spells"}}{{#if isEditMode}}<a class="action" data-tooltip="{{localize "TENEBRIS.Tooltip.addSpell"}}" data-tooltip-direction="UP"><i class="fas fa-plus" data-action="createSpell"></i></a>{{/if}}</legend>
         {{#each spells as |spell|}}
           <div class="opponent-spell">
-            <div class="name" data-tooltip="{{{spell.system.description}}}">
+            <div class="name" data-tooltip="{{{spell.system.tooltip}}}" data-tooltip-direction="UP" data-tooltip-class="tenebris-tooltip-spell">
               {{spell.name}}
             </div>
             {{#if @root.isEditMode}}
