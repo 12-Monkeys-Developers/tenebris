@@ -1,3 +1,6 @@
+2.1.0
+- Compatibilité Foundry V14
+
 2.0.3
 - Correction du drop de sortilège sur un adversaire
 - Infobulle d'un sortilège : tous les éléments sont maintenant affichés
