@@ -143,7 +143,10 @@
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
 }
 .tenebris .character-content input:disabled,
 .tenebris .character-content select:disabled {
@@ -409,9 +412,29 @@
 .tenebris .character-main .character-ressources-edit {
   min-width: 400px;
 }
+.tenebris .tab.character-main.active {
+  overflow-y: auto;
+}
 .tenebris .tab.character-items.active {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.tenebris .tab.character-items.active > fieldset:nth-child(3) {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.tenebris .tab.character-items.active > fieldset:nth-child(3) prose-mirror {
+  flex: 1;
+  min-height: 40px;
+  overflow-y: auto;
+}
+.tenebris .tab.character-items.active > fieldset:not(:nth-child(3)) {
+  flex-shrink: 0;
 }
 .tenebris .tab.character-items.active legend a {
   font-size: calc(var(--font-size-standard) * 1.4);
@@ -477,7 +500,7 @@
   min-height: 40px;
 }
 .tenebris .tab.character-items.active prose-mirror.active {
-  min-height: 150px;
+  min-height: 40px;
 }
 .tenebris nav.tabs [data-tab] {
   color: var(--color-dark-1);
@@ -485,11 +508,34 @@
 .tenebris nav.tabs [data-tab].active {
   color: var(--color-dark-1);
 }
+.tenebris .character-biography.active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.tenebris .character-biography.active > fieldset:first-child,
+.tenebris .character-biography.active > fieldset:last-child {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.tenebris .character-biography.active > fieldset:first-child prose-mirror,
+.tenebris .character-biography.active > fieldset:last-child prose-mirror {
+  flex: 1;
+  min-height: 40px;
+  overflow-y: auto;
+}
+.tenebris .character-biography.active > fieldset:nth-child(2) {
+  flex-shrink: 0;
+}
 .tenebris .character-biography prose-mirror.inactive {
   min-height: 40px;
 }
 .tenebris .character-biography prose-mirror.active {
-  min-height: 150px;
+  min-height: 40px;
 }
 .tenebris .opponent-content {
   font-family: var(--font-primary);
@@ -620,6 +666,10 @@
   background-image: var(--background-image-base);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
 }
 .tenebris .path-content input:disabled,
 .tenebris .path-content select:disabled {
@@ -702,6 +752,10 @@
 .tenebris .path-content .path-main.active {
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
+  grid-template-rows: auto 1fr;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
   /* Optionnel : supprimer le margin-right sur la dernière colonne si vous avez besoin d'un espacement précis */
 }
 .tenebris .path-content .path-main.active .profil {
@@ -730,12 +784,15 @@
 }
 .tenebris .path-content .path-main.active .description {
   grid-column: span 3;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
-.tenebris .path-content .path-main.active .description prose-mirror.inactive {
+.tenebris .path-content .path-main.active .description prose-mirror {
+  flex: 1;
   min-height: 40px;
-}
-.tenebris .path-content .path-main.active .description prose-mirror.active {
-  min-height: 150px;
+  overflow-y: auto;
 }
 .tenebris .path-content .path-talents.active {
   display: grid;
