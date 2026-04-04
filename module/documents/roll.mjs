@@ -176,7 +176,7 @@ export default class TenebrisRoll extends Roll {
       }
     }
 
-    const rollModes = Object.fromEntries(Object.entries(CONFIG.Dice.rollModes).map(([key, value]) => [key, game.i18n.localize(value.label)]))
+    const rollModes = Object.fromEntries(Object.entries(CONFIG.ChatMessage.modes).map(([key, value]) => [key, game.i18n.localize(value.label)]))
     const fieldRollMode = new foundry.data.fields.StringField({
       choices: rollModes,
       blank: false,
@@ -271,6 +271,7 @@ export default class TenebrisRoll extends Roll {
       targetArmor,
       rollAdvantage: this._convertAvantages(options.rollAdvantage),
       rangeAdvantage: this._convertRollAdvantageToRange(options.rollAdvantage),
+      visibility: game.settings.get("core", "messageMode"),
     }
     const content = await foundry.applications.handlebars.renderTemplate("systems/tenebris/templates/roll-dialog.hbs", dialogContext)
 
@@ -521,12 +522,13 @@ export default class TenebrisRoll extends Roll {
    *
    * @param {Object} [messageData={}] Additional data to include in the message.
    * @param {Object} options Options for message creation.
-   * @param {string} options.rollMode The mode of the roll (e.g., public, private).
+   * @param {string} [options.messageMode] The message visibility mode (key of CONFIG.ChatMessage.modes).
+   * @param {string} [options.rollMode] Deprecated. Use messageMode instead.
    * @param {boolean} [options.create=true] Whether to create the message.
    * @returns {Promise} - A promise that resolves when the message is created.
    */
-  async toMessage(messageData = {}, { rollMode, create = true } = {}) {
-    super.toMessage(
+  async toMessage(messageData = {}, { messageMode, rollMode, create = true } = {}) {
+    return super.toMessage(
       {
         isSave: this.isSave,
         isResource: this.isResource,
@@ -544,7 +546,7 @@ export default class TenebrisRoll extends Roll {
         realDamage: this.realDamage,
         ...messageData,
       },
-      { rollMode: rollMode },
+      { messageMode: messageMode ?? rollMode, create },
     )
   }
 

@@ -171,6 +171,6 @@ export default class TenebrisCharacter extends foundry.abstract.TypeDataModel {
       const newValue = TenebrisUtils.findLowerDice(value)
       await this.parent.update({ [`system.ressources.${rollTarget}.valeur`]: newValue })
     }
-    await roll.toMessage({}, { rollMode: roll.options.rollMode })
+    await roll.toMessage({}, { messageMode: roll.options.rollMode })
   }
 }

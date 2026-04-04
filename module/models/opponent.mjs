@@ -40,7 +40,7 @@ export default class TenebrisOpponent extends foundry.abstract.TypeDataModel {
       actorImage: this.parent.img,
     })
     if (!roll) return null
-    await roll.toMessage({}, { rollMode: roll.options.rollMode })
+    await roll.toMessage({}, { messageMode: roll.options.rollMode })
   }
 
   get toolTip() {
